@@ -75,7 +75,7 @@
 /* Begin PBXFileReference section */
 		1F31AE8C1C8535920091C31B /* PlatformKEXTs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PlatformKEXTs.xcodeproj; path = ../PlatformKEXTs/PlatformKEXTs.xcodeproj; sourceTree = "<group>"; };
 		1F31AEA81C8535C40091C31B /* Kernel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kernel.xcodeproj; path = ../Kernel/Kernel.xcodeproj; sourceTree = "<group>"; };
-		1F31AEBC1C8535E60091C31B /* libcorecrypto_mbedtls.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcorecrypto_mbedtls.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F31AEBC1C8535E60091C31B /* libmbedtls_kernel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmbedtls_kernel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F31AEC21C85369B0091C31B /* aes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aes.c; sourceTree = "<group>"; };
 		1F31AEC31C85369B0091C31B /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
 		1F31AEC41C85369B0091C31B /* aesni.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aesni.c; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 		1F31AEA41C8535B30091C31B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1F31AEBC1C8535E60091C31B /* libcorecrypto_mbedtls.a */,
+				1F31AEBC1C8535E60091C31B /* libmbedtls_kernel.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -432,9 +432,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1F31AEBB1C8535E60091C31B /* corecrypto_mbedtls */ = {
+		1F31AEBB1C8535E60091C31B /* mbedtls_kernel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1F31AEBD1C8535E60091C31B /* Build configuration list for PBXNativeTarget "corecrypto_mbedtls" */;
+			buildConfigurationList = 1F31AEBD1C8535E60091C31B /* Build configuration list for PBXNativeTarget "mbedtls_kernel" */;
 			buildPhases = (
 				1F31AEB81C8535E60091C31B /* Sources */,
 				1F31AEB91C8535E60091C31B /* Frameworks */,
@@ -444,9 +444,9 @@
 			);
 			dependencies = (
 			);
-			name = corecrypto_mbedtls;
+			name = mbedtls_kernel;
 			productName = corecrypto_mbedtls;
-			productReference = 1F31AEBC1C8535E60091C31B /* libcorecrypto_mbedtls.a */;
+			productReference = 1F31AEBC1C8535E60091C31B /* libmbedtls_kernel.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -485,7 +485,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				1F31AEBB1C8535E60091C31B /* corecrypto_mbedtls */,
+				1F31AEBB1C8535E60091C31B /* mbedtls_kernel */,
 			);
 		};
 /* End PBXProject section */
@@ -700,7 +700,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1F31AEBD1C8535E60091C31B /* Build configuration list for PBXNativeTarget "corecrypto_mbedtls" */ = {
+		1F31AEBD1C8535E60091C31B /* Build configuration list for PBXNativeTarget "mbedtls_kernel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1F31AEBE1C8535E60091C31B /* Debug */,
