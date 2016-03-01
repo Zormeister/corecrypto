@@ -571,12 +571,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ADDITIONAL_SDKS = "$(ANDROMEDA_SDK_ROOT)";
+				ANDROMEDA_SDK_HEADER_PATHS_KERNEL = "$(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/Kernel.framework/PrivateHeaders $(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/Kernel.framework/Headers";
+				ANDROMEDA_SDK_HEADER_PATHS_USER = "$(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/System.framework/PrivateHeaders $(ANDROMEDA_SDK_ROOT)/usr/include";
 				ANDROMEDA_SDK_ROOT = "$(PROJECT_TEMP_ROOT)/xnu";
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/System.framework/PrivateHeaders",
-					"$(ANDROMEDA_SDK_ROOT)/usr/include",
-				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 			};
 			name = Debug;
@@ -585,12 +583,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ADDITIONAL_SDKS = "$(ANDROMEDA_SDK_ROOT)";
+				ANDROMEDA_SDK_HEADER_PATHS_KERNEL = "$(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/Kernel.framework/PrivateHeaders $(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/Kernel.framework/Headers";
+				ANDROMEDA_SDK_HEADER_PATHS_USER = "$(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/System.framework/PrivateHeaders $(ANDROMEDA_SDK_ROOT)/usr/include";
 				ANDROMEDA_SDK_ROOT = "$(DSTROOT)";
 				GCC_USE_STANDARD_INCLUDE_SEARCHING = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/System.framework/PrivateHeaders",
-					"$(ANDROMEDA_SDK_ROOT)/usr/include",
-				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 			};
 			name = Release;
@@ -635,7 +631,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)",
-					"$(inherited)",
+					"$(ANDROMEDA_SDK_HEADER_PATHS_KERNEL)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -679,7 +675,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)",
-					"$(inherited)",
+					"$(ANDROMEDA_SDK_HEADER_PATHS_KERNEL)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
