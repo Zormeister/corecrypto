@@ -73,7 +73,9 @@
  *
  * Comment if your system does not support time functions
  */
+#ifndef KERNEL
 #define MBEDTLS_HAVE_TIME
+#endif
 
 /**
  * \def MBEDTLS_HAVE_TIME_DATE
@@ -85,7 +87,9 @@
  *
  * Comment if your system does not have a correct clock.
  */
+#ifndef KERNEL
 #define MBEDTLS_HAVE_TIME_DATE
+#endif
 
 /**
  * \def MBEDTLS_PLATFORM_MEMORY
@@ -128,7 +132,9 @@
  * Uncomment to prevent default assignment of standard functions in the
  * platform layer.
  */
-//#define MBEDTLS_PLATFORM_NO_STD_FUNCTIONS
+#ifdef KERNEL
+#define MBEDTLS_PLATFORM_NO_STD_FUNCTIONS
+#endif
 
 /**
  * \def MBEDTLS_PLATFORM_EXIT_ALT
@@ -169,7 +175,7 @@
  *
  * Uncomment to get warnings on using deprecated functions.
  */
-//#define MBEDTLS_DEPRECATED_WARNING
+#define MBEDTLS_DEPRECATED_WARNING
 
 /**
  * \def MBEDTLS_DEPRECATED_REMOVED
@@ -756,7 +762,9 @@
  *
  * Enable functions that use the filesystem.
  */
+#ifndef KERNEL
 #define MBEDTLS_FS_IO
+#endif
 
 /**
  * \def MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES
@@ -780,7 +788,9 @@
  *
  * Uncomment this macro to disable the built-in platform entropy functions.
  */
-//#define MBEDTLS_NO_PLATFORM_ENTROPY
+#ifdef KERNEL
+#define MBEDTLS_NO_PLATFORM_ENTROPY
+#endif
 
 /**
  * \def MBEDTLS_ENTROPY_FORCE_SHA256
@@ -871,6 +881,7 @@
  */
 #define MBEDTLS_SELF_TEST
 
+#ifndef KERNEL
 /**
  * \def MBEDTLS_SHA256_SMALLER
  *
@@ -1340,6 +1351,7 @@
  */
 //#define MBEDTLS_ZLIB_SUPPORT
 /* \} name SECTION: mbed TLS feature support */
+#endif // KERNEL
 
 /**
  * \name SECTION: mbed TLS modules
@@ -1604,7 +1616,9 @@
  *
  * This module is used for testing (ssl_client/server).
  */
+#ifndef KERNEL
 #define MBEDTLS_CERTS_C
+#endif
 
 /**
  * \def MBEDTLS_CIPHER_C
@@ -1616,7 +1630,9 @@
  *
  * Uncomment to enable generic cipher wrappers.
  */
+#ifndef KERNEL
 #define MBEDTLS_CIPHER_C
+#endif
 
 /**
  * \def MBEDTLS_CTR_DRBG_C
@@ -1644,7 +1660,9 @@
  *
  * This module provides debugging functions.
  */
+#ifndef KERNEL
 #define MBEDTLS_DEBUG_C
+#endif
 
 /**
  * \def MBEDTLS_DES_C
@@ -1774,7 +1792,9 @@
  *
  * This module enables mbedtls_strerror().
  */
+#ifndef KERNEL
 #define MBEDTLS_ERROR_C
+#endif
 
 /**
  * \def MBEDTLS_GCM_C
@@ -1903,7 +1923,9 @@
  *
  * This module provides TCP/IP networking routines.
  */
+#ifndef KERNEL
 #define MBEDTLS_NET_C
+#endif
 
 /**
  * \def MBEDTLS_OID_C
@@ -2162,6 +2184,7 @@
  */
 #define MBEDTLS_SHA512_C
 
+#ifndef KERNEL
 /**
  * \def MBEDTLS_SSL_CACHE_C
  *
@@ -2239,6 +2262,7 @@
  * This module is required for SSL/TLS.
  */
 #define MBEDTLS_SSL_TLS_C
+#endif // KERNEL
 
 /**
  * \def MBEDTLS_THREADING_C
@@ -2271,7 +2295,9 @@
  *
  * This module is used by the HAVEGE random number generator.
  */
+#ifndef KERNEL
 #define MBEDTLS_TIMING_C
+#endif
 
 /**
  * \def MBEDTLS_VERSION_C
@@ -2504,6 +2530,26 @@
 #include YOTTA_CFG_MBEDTLS_USER_CONFIG_FILE
 #elif defined(MBEDTLS_USER_CONFIG_FILE)
 #include MBEDTLS_USER_CONFIG_FILE
+#endif
+
+#if KERNEL
+#define MBEDTLS_PLATFORM_PRINTF_MACRO kprintf
+
+#include <string.h>
+#define strstr(big, little) strnstr(big, little, strlen(big))
+
+extern void kprintf(const char *, ...);
+extern void *kalloc(unsigned int);
+extern void kfree(void *);
+
+#define calloc(nelem, size) kalloc_bzero(nelem, size)
+#define free(ptr) kfree(ptr)
+
+static inline void *kalloc_bzero(size_t element_count, size_t element_size) {
+	void *ptr = kalloc((unsigned int)(element_count * element_size));
+	bzero(ptr, element_count * element_size);
+	return ptr;
+}
 #endif
 
 #include "check_config.h"
