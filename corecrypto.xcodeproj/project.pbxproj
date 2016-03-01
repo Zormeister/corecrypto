@@ -212,6 +212,7 @@
 		1F31AF471C85369C0091C31B /* x509write_csr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = x509write_csr.c; sourceTree = "<group>"; };
 		1F31AF481C85369C0091C31B /* xtea.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xtea.c; sourceTree = "<group>"; };
 		1F31AF491C85369C0091C31B /* xtea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xtea.h; sourceTree = "<group>"; };
+		1F31AFD21C85370A0091C31B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +278,7 @@
 		1F31AEC11C85369B0091C31B /* mbedtls */ = {
 			isa = PBXGroup;
 			children = (
+				1F31AFD21C85370A0091C31B /* LICENSE.txt */,
 				1F31AEC21C85369B0091C31B /* aes.c */,
 				1F31AEC31C85369B0091C31B /* aes.h */,
 				1F31AEC41C85369B0091C31B /* aesni.c */,
