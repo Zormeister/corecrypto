@@ -58,7 +58,7 @@
 
 #if defined(_WIN32) && !defined(EFIX64) && !defined(EFI32)
 #include <windows.h>
-#else
+#elif !defined(KERNEL)
 #include <time.h>
 #endif
 
@@ -491,7 +491,7 @@ int mbedtls_x509_crl_parse( mbedtls_x509_crl *chain, const unsigned char *buf, s
 {
 #if defined(MBEDTLS_PEM_PARSE_C)
     int ret;
-    size_t use_len;
+    size_t use_len = 0;
     mbedtls_pem_context pem;
     int is_pem = 0;
 

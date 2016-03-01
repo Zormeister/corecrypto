@@ -31,6 +31,9 @@
 
 #include "asn1.h"
 #include "pk.h"
+#ifdef KERNEL
+#include "cipher.h"
+#endif
 
 #include <stddef.h>
 
@@ -536,7 +539,6 @@ int mbedtls_oid_get_extended_key_usage( const mbedtls_asn1_buf *oid, const char 
  */
 int mbedtls_oid_get_oid_by_md( mbedtls_md_type_t md_alg, const char **oid, size_t *olen );
 
-#if defined(MBEDTLS_CIPHER_C)
 /**
  * \brief          Translate encryption algorithm OID into cipher_type
  *
@@ -546,7 +548,6 @@ int mbedtls_oid_get_oid_by_md( mbedtls_md_type_t md_alg, const char **oid, size_
  * \return         0 if successful, or MBEDTLS_ERR_OID_NOT_FOUND
  */
 int mbedtls_oid_get_cipher_alg( const mbedtls_asn1_buf *oid, mbedtls_cipher_type_t *cipher_alg );
-#endif /* MBEDTLS_CIPHER_C */
 
 #if defined(MBEDTLS_PKCS12_C)
 /**

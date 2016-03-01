@@ -224,7 +224,7 @@ int mbedtls_pem_read_buffer( mbedtls_pem_context *ctx, const char *header, const
     if( ctx == NULL )
         return( MBEDTLS_ERR_PEM_BAD_INPUT_DATA );
 
-    s1 = (unsigned char *) strstr( (const char *) data, header );
+	s1 = (unsigned char *) strstr( (const char *) data, header );
 
     if( s1 == NULL )
         return( MBEDTLS_ERR_PEM_NO_HEADER_FOOTER_PRESENT );

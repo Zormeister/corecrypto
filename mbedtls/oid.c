@@ -31,8 +31,13 @@
 
 #include "mbedtls/oid.h"
 #include "mbedtls/rsa.h"
+#ifdef KERNEL
+#include "mbedtls/cipher.h"
+#endif
 
+#ifndef KERNEL
 #include <stdio.h>
+#endif
 #include <string.h>
 
 #if defined(MBEDTLS_PLATFORM_C)
@@ -484,7 +489,6 @@ FN_OID_GET_ATTR1(mbedtls_oid_get_ec_grp, oid_ecp_grp_t, grp_id, mbedtls_ecp_grou
 FN_OID_GET_OID_BY_ATTR1(mbedtls_oid_get_oid_by_ec_grp, oid_ecp_grp_t, oid_ecp_grp, mbedtls_ecp_group_id, grp_id)
 #endif /* MBEDTLS_ECP_C */
 
-#if defined(MBEDTLS_CIPHER_C)
 /*
  * For PKCS#5 PBES2 encryption algorithm
  */
@@ -511,7 +515,6 @@ static const oid_cipher_alg_t oid_cipher_alg[] =
 
 FN_OID_TYPED_FROM_ASN1(oid_cipher_alg_t, cipher_alg, oid_cipher_alg)
 FN_OID_GET_ATTR1(mbedtls_oid_get_cipher_alg, oid_cipher_alg_t, cipher_alg, mbedtls_cipher_type_t, cipher_alg)
-#endif /* MBEDTLS_CIPHER_C */
 
 #if defined(MBEDTLS_MD_C)
 /*

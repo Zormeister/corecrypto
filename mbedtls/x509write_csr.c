@@ -37,7 +37,9 @@
 #include "mbedtls/asn1write.h"
 
 #include <string.h>
+#ifndef KERNEL
 #include <stdlib.h>
+#endif
 
 #if defined(MBEDTLS_PEM_WRITE_C)
 #include "mbedtls/pem.h"

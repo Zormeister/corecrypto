@@ -40,7 +40,9 @@
 #include "mbedtls/x509_crt.h"
 #include "mbedtls/oid.h"
 
+#ifndef KERNEL
 #include <stdio.h>
+#endif
 #include <string.h>
 
 #if defined(MBEDTLS_PEM_PARSE_C)
@@ -62,7 +64,7 @@
 
 #if defined(_WIN32) && !defined(EFIX64) && !defined(EFI32)
 #include <windows.h>
-#else
+#elif !defined(KERNEL)
 #include <time.h>
 #endif
 
