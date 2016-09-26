@@ -149,6 +149,13 @@
 			remoteGlobalIDString = 1F37E27E18592E42001B9501;
 			remoteInfo = ctfmerge;
 		};
+		1F9F2ADC1D98CF3F003A39D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F31AEA81C8535C40091C31B /* Kernel.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F42B3DD18592FE90023356E;
+			remoteInfo = mach_kernel;
+		};
 		1FB2F6BD1C87B278009C0F4C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F31AEA81C8535C40091C31B /* Kernel.xcodeproj */;
@@ -577,6 +584,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1F9F2ADD1D98CF3F003A39D7 /* PBXTargetDependency */,
 			);
 			name = mbedtls_kernel;
 			productName = corecrypto_mbedtls;
@@ -815,6 +823,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1F9F2ADD1D98CF3F003A39D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = mach_kernel;
+			targetProxy = 1F9F2ADC1D98CF3F003A39D7 /* PBXContainerItemProxy */;
+		};
 		1FB2F6BE1C87B278009C0F4C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = mach_kernel;
