@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0DA5D51DA0AE02002E0672 /* libmbedtls_kernel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F31AEBC1C8535E60091C31B /* libmbedtls_kernel.a */; };
 		1F16A0101C87BFE10071A80A /* cc_cmp_safe.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F16A00F1C87BFE10071A80A /* cc_cmp_safe.c */; };
 		1F16A0121C87C1200071A80A /* cc_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F16A0111C87C1200071A80A /* cc_debug.c */; };
 		1F16A0141C87C18E0071A80A /* cc_debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F16A0131C87C18E0071A80A /* cc_debug.h */; };
@@ -89,6 +90,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1F0DA5C91DA0ADFE002E0672 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F31AE851C8535470091C31B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F31AEBB1C8535E60091C31B;
+			remoteInfo = mbedtls_kernel;
+		};
 		1F31AE951C8535920091C31B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F31AE8C1C8535920091C31B /* PlatformKEXTs.xcodeproj */;
@@ -334,6 +342,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F0DA5D51DA0AE02002E0672 /* libmbedtls_kernel.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +629,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1F0DA5CA1DA0ADFE002E0672 /* PBXTargetDependency */,
 				1FB2F6BE1C87B278009C0F4C /* PBXTargetDependency */,
 			);
 			name = corecrypto_kernel;
@@ -843,6 +853,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1F0DA5CA1DA0ADFE002E0672 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F31AEBB1C8535E60091C31B /* mbedtls_kernel */;
+			targetProxy = 1F0DA5C91DA0ADFE002E0672 /* PBXContainerItemProxy */;
+		};
 		1F9F2ADD1D98CF3F003A39D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = mach_kernel;
