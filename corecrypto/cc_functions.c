@@ -55,6 +55,7 @@ void ccpad_xts_encrypt_stub(const struct ccmode_xts *xts, ccxts_ctx *ctx, unsign
 	cc_abort("ccpad_xts_encrypt(): function unimplemented");
 }
 
+#if 0
 const struct crypto_functions _cc_callbacks = {
 	/* digests common functions */
 	ccdigest_init_stub,
@@ -111,3 +112,4 @@ const struct crypto_functions _cc_callbacks = {
 	ccpad_xts_encrypt_stub,
 	ccpad_xts_decrypt_stub
 };
+#endif
