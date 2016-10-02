@@ -29,7 +29,11 @@
 #include MBEDTLS_CONFIG_FILE
 #endif
 
+#if KERNEL
+#include <sys/types.h>
+#else
 #include <stddef.h>
+#endif
 #include <stdint.h>
 
 /* padlock.c and aesni.c rely on these values! */
