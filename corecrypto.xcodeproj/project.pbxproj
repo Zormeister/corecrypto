@@ -81,8 +81,11 @@
 		1F31B01D1C85398A0091C31B /* x509write_csr.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F31AF471C85369C0091C31B /* x509write_csr.c */; };
 		1F31B01E1C85398A0091C31B /* xtea.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F31AF481C85369C0091C31B /* xtea.c */; };
 		1F332F2C1C8D201C00C74D80 /* cc_abort.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F332F2B1C8D201C00C74D80 /* cc_abort.h */; };
+		1F4D11C71D9CCA1500782B10 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D11C51D9CCA1300782B10 /* md5.c */; };
+		1F4D11C91D9CCBA100782B10 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D11C81D9CCBA100782B10 /* sha1.c */; };
 		1FB2F6C41C87B2EC009C0F4C /* cc_kext_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FB2F6C11C87B2E6009C0F4C /* cc_kext_main.c */; };
 		1FB2F6C61C87B42D009C0F4C /* cc_clear.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FB2F6C51C87B42D009C0F4C /* cc_clear.c */; };
+		1FDA24121D98DA16003D41DA /* cc_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA24061D98D841003D41DA /* cc_functions.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,10 +313,13 @@
 		1F31AF491C85369C0091C31B /* xtea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xtea.h; sourceTree = "<group>"; };
 		1F31AFD21C85370A0091C31B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		1F332F2B1C8D201C00C74D80 /* cc_abort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_abort.h; sourceTree = "<group>"; };
+		1F4D11C51D9CCA1300782B10 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		1F4D11C81D9CCBA100782B10 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
 		1FB2F6AA1C87B253009C0F4C /* corecrypto.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = corecrypto.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB2F6C11C87B2E6009C0F4C /* cc_kext_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_kext_main.c; sourceTree = "<group>"; };
 		1FB2F6C21C87B2E6009C0F4C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB2F6C51C87B42D009C0F4C /* cc_clear.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_clear.c; sourceTree = "<group>"; };
+		1FDA24061D98D841003D41DA /* cc_functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_functions.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -529,15 +535,26 @@
 			path = mbedtls;
 			sourceTree = "<group>";
 		};
+		1F4D11C41D9CC9FF00782B10 /* algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				1F4D11C51D9CCA1300782B10 /* md5.c */,
+				1F4D11C81D9CCBA100782B10 /* sha1.c */,
+			);
+			path = algorithms;
+			sourceTree = "<group>";
+		};
 		1FB2F6BF1C87B2BA009C0F4C /* corecrypto */ = {
 			isa = PBXGroup;
 			children = (
+				1F4D11C41D9CC9FF00782B10 /* algorithms */,
 				1FB2F6C01C87B2C6009C0F4C /* kext */,
 				1FB2F6C51C87B42D009C0F4C /* cc_clear.c */,
 				1F16A00F1C87BFE10071A80A /* cc_cmp_safe.c */,
 				1F16A0131C87C18E0071A80A /* cc_debug.h */,
 				1F16A0111C87C1200071A80A /* cc_debug.c */,
 				1F332F2B1C8D201C00C74D80 /* cc_abort.h */,
+				1FDA24061D98D841003D41DA /* cc_functions.c */,
 			);
 			path = corecrypto;
 			sourceTree = "<group>";
@@ -813,8 +830,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F4D11C71D9CCA1500782B10 /* md5.c in Sources */,
 				1F16A0101C87BFE10071A80A /* cc_cmp_safe.c in Sources */,
 				1F16A0121C87C1200071A80A /* cc_debug.c in Sources */,
+				1FDA24121D98DA16003D41DA /* cc_functions.c in Sources */,
+				1F4D11C91D9CCBA100782B10 /* sha1.c in Sources */,
 				1FB2F6C41C87B2EC009C0F4C /* cc_kext_main.c in Sources */,
 				1FB2F6C61C87B42D009C0F4C /* cc_clear.c in Sources */,
 			);
