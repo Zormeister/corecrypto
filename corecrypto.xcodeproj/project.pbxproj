@@ -25,6 +25,37 @@
 		1F332F2B1C8D201C00C74D80 /* cc_abort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_abort.h; sourceTree = "<group>"; };
 		1F4D11C51D9CCA1300782B10 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		1F4D11C81D9CCBA100782B10 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		1F65CFE41F2800C60073759F /* ccmd5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccmd5.h; sourceTree = "<group>"; };
+		1F65CFE51F2800C60073759F /* ccaes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccaes.h; sourceTree = "<group>"; };
+		1F65CFE61F2800C60073759F /* ccdrbg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccdrbg.h; sourceTree = "<group>"; };
+		1F65CFE71F2800C60073759F /* cc_debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cc_debug.h; sourceTree = "<group>"; };
+		1F65CFE81F2800C60073759F /* ccdrbg_impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccdrbg_impl.h; sourceTree = "<group>"; };
+		1F65CFE91F2800C60073759F /* cc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cc.h; sourceTree = "<group>"; };
+		1F65CFEA1F2800C60073759F /* ccdigest_priv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccdigest_priv.h; sourceTree = "<group>"; };
+		1F65CFEB1F2800C60073759F /* ccder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccder.h; sourceTree = "<group>"; };
+		1F65CFEC1F2800C60073759F /* ccdes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccdes.h; sourceTree = "<group>"; };
+		1F65CFED1F2800C60073759F /* cchmac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cchmac.h; sourceTree = "<group>"; };
+		1F65CFEE1F2800C60073759F /* ccrsa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccrsa.h; sourceTree = "<group>"; };
+		1F65CFEF1F2800C60073759F /* cczp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cczp.h; sourceTree = "<group>"; };
+		1F65CFF01F2800C60073759F /* cc_macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cc_macros.h; sourceTree = "<group>"; };
+		1F65CFF11F2800C60073759F /* ccsha2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccsha2.h; sourceTree = "<group>"; };
+		1F65CFF21F2800C60073759F /* ccmode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccmode.h; sourceTree = "<group>"; };
+		1F65CFF31F2800C60073759F /* ccdigest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccdigest.h; sourceTree = "<group>"; };
+		1F65CFF41F2800C60073759F /* ccpbkdf2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccpbkdf2.h; sourceTree = "<group>"; };
+		1F65CFF51F2800C60073759F /* ccpad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccpad.h; sourceTree = "<group>"; };
+		1F65CFF61F2800C60073759F /* ccmode_impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccmode_impl.h; sourceTree = "<group>"; };
+		1F65CFF71F2800C60073759F /* cc_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cc_config.h; sourceTree = "<group>"; };
+		1F65CFF81F2800C60073759F /* ccrng_system.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccrng_system.h; sourceTree = "<group>"; };
+		1F65CFF91F2800C60073759F /* ccsha1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccsha1.h; sourceTree = "<group>"; };
+		1F65CFFA1F2800C60073759F /* ccmode_siv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccmode_siv.h; sourceTree = "<group>"; };
+		1F65CFFB1F2800C60073759F /* ccrc4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccrc4.h; sourceTree = "<group>"; };
+		1F65CFFC1F2800C60073759F /* ccn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccn.h; sourceTree = "<group>"; };
+		1F65CFFD1F2800C60073759F /* ccrng.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccrng.h; sourceTree = "<group>"; };
+		1F65CFFE1F2800C60073759F /* cc_priv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cc_priv.h; sourceTree = "<group>"; };
+		1F65CFFF1F2800C60073759F /* cccmac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cccmac.h; sourceTree = "<group>"; };
+		1F65D0001F2800C60073759F /* ccmode_factory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccmode_factory.h; sourceTree = "<group>"; };
+		1F65D0011F2800C60073759F /* ccasn1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccasn1.h; sourceTree = "<group>"; };
+		1F65D0021F2801220073759F /* register_crypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = register_crypto.h; sourceTree = "<group>"; };
 		1FB2F6AA1C87B253009C0F4C /* corecrypto.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = corecrypto.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB2F6C11C87B2E6009C0F4C /* cc_kext_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_kext_main.c; sourceTree = "<group>"; };
 		1FB2F6C21C87B2E6009C0F4C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,6 +77,7 @@
 		1F31AE841C8535470091C31B = {
 			isa = PBXGroup;
 			children = (
+				1F65CFE21F2800A20073759F /* include */,
 				1FB2F6BF1C87B2BA009C0F4C /* src */,
 				1F31AEA41C8535B30091C31B /* Products */,
 			);
@@ -68,6 +100,51 @@
 			path = algorithms;
 			sourceTree = "<group>";
 		};
+		1F65CFE21F2800A20073759F /* include */ = {
+			isa = PBXGroup;
+			children = (
+				1F65CFE31F2800A90073759F /* corecrypto */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		1F65CFE31F2800A90073759F /* corecrypto */ = {
+			isa = PBXGroup;
+			children = (
+				1F65CFE91F2800C60073759F /* cc.h */,
+				1F65CFF71F2800C60073759F /* cc_config.h */,
+				1F65CFE71F2800C60073759F /* cc_debug.h */,
+				1F65CFF01F2800C60073759F /* cc_macros.h */,
+				1F65CFFE1F2800C60073759F /* cc_priv.h */,
+				1F65CFE51F2800C60073759F /* ccaes.h */,
+				1F65D0011F2800C60073759F /* ccasn1.h */,
+				1F65CFFF1F2800C60073759F /* cccmac.h */,
+				1F65CFEB1F2800C60073759F /* ccder.h */,
+				1F65CFEC1F2800C60073759F /* ccdes.h */,
+				1F65CFEA1F2800C60073759F /* ccdigest_priv.h */,
+				1F65CFF31F2800C60073759F /* ccdigest.h */,
+				1F65CFE81F2800C60073759F /* ccdrbg_impl.h */,
+				1F65CFE61F2800C60073759F /* ccdrbg.h */,
+				1F65CFED1F2800C60073759F /* cchmac.h */,
+				1F65CFE41F2800C60073759F /* ccmd5.h */,
+				1F65D0001F2800C60073759F /* ccmode_factory.h */,
+				1F65CFF61F2800C60073759F /* ccmode_impl.h */,
+				1F65CFFA1F2800C60073759F /* ccmode_siv.h */,
+				1F65CFF21F2800C60073759F /* ccmode.h */,
+				1F65CFFC1F2800C60073759F /* ccn.h */,
+				1F65CFF51F2800C60073759F /* ccpad.h */,
+				1F65CFF41F2800C60073759F /* ccpbkdf2.h */,
+				1F65CFFB1F2800C60073759F /* ccrc4.h */,
+				1F65CFF81F2800C60073759F /* ccrng_system.h */,
+				1F65CFFD1F2800C60073759F /* ccrng.h */,
+				1F65CFEE1F2800C60073759F /* ccrsa.h */,
+				1F65CFF91F2800C60073759F /* ccsha1.h */,
+				1F65CFF11F2800C60073759F /* ccsha2.h */,
+				1F65CFEF1F2800C60073759F /* cczp.h */,
+			);
+			path = corecrypto;
+			sourceTree = "<group>";
+		};
 		1FB2F6BF1C87B2BA009C0F4C /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,7 +155,6 @@
 				1F16A0131C87C18E0071A80A /* cc_debug.h */,
 				1F16A0111C87C1200071A80A /* cc_debug.c */,
 				1F332F2B1C8D201C00C74D80 /* cc_abort.h */,
-				1FDA24061D98D841003D41DA /* cc_functions.c */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -86,6 +162,8 @@
 		1FB2F6C01C87B2C6009C0F4C /* kext */ = {
 			isa = PBXGroup;
 			children = (
+				1F65D0021F2801220073759F /* register_crypto.h */,
+				1FDA24061D98D841003D41DA /* cc_functions.c */,
 				1FB2F6C11C87B2E6009C0F4C /* cc_kext_main.c */,
 				1FB2F6C21C87B2E6009C0F4C /* Info.plist */,
 			);
@@ -216,6 +294,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/include";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				ONLY_ACTIVE_ARCH = YES;
 			};
@@ -252,6 +331,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/include";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 			};
 			name = Release;
@@ -293,13 +373,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)",
-					"$(ANDROMEDA_SDK_HEADER_PATHS_KERNEL)",
-				);
 				INFOPLIST_FILE = src/kext/Info.plist;
 				INSTALL_PATH = /System/Library/Extensions;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULE_NAME = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				MODULE_START = cc_kext_start;
 				MODULE_STOP = cc_kext_stop;
@@ -344,13 +420,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)",
-					"$(ANDROMEDA_SDK_HEADER_PATHS_KERNEL)",
-				);
 				INFOPLIST_FILE = src/kext/Info.plist;
 				INSTALL_PATH = /System/Library/Extensions;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULE_NAME = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				MODULE_START = cc_kext_start;
 				MODULE_STOP = cc_kext_stop;

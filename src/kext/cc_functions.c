@@ -1,4 +1,4 @@
-#include <libkern/crypto/register_crypto.h>
+#include "register_crypto.h"
 #include <corecrypto/cc_abort.h>
 #include <corecrypto/ccmd5.h>
 #include <corecrypto/ccsha1.h>
