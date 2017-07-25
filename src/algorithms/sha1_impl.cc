@@ -14,9 +14,6 @@
 #include <corecrypto/ccdigest.h>
 #include <sys/systm.h>
 
-#define byte uint8_t
-#define u32bit uint32_t
-
 /**
 * Load a big-endian word
 * @param in a pointer to some bytes
@@ -25,13 +22,13 @@
 */
 /*
 template<typename T>
-inline T load_be(const byte in[], size_t off)
+inline T load_be(const uint8_t in[], size_t off)
 */
-static inline u32bit load_be(const byte in[], size_t off)
+static inline uint32_t load_be(const uint8_t in[], size_t off)
 {
-    in += off * sizeof(u32bit);
-    u32bit out = 0;
-    for(size_t i = 0; i != sizeof(u32bit); ++i)
+    in += off * sizeof(uint32_t);
+    uint32_t out = 0;
+    for(size_t i = 0; i != sizeof(uint32_t); ++i)
         out = (out << 8) | in[i];
     return out;
 }
@@ -45,11 +42,11 @@ static inline u32bit load_be(const byte in[], size_t off)
 /*
 template<typename T>
 inline void load_be(T out[],
-                    const byte in[],
+                    const uint8_t in[],
                     size_t count)
 */
-static inline void load_be_n(u32bit out[],
-                             const byte in[],
+static inline void load_be_n(uint32_t out[],
+                             const uint8_t in[],
                              size_t count)
 {
     if(count > 0)
@@ -69,17 +66,17 @@ static inline void load_be_n(u32bit out[],
 /*
 template<typename T> inline T rotate_left(T input, size_t rot)
 */
-static inline u32bit rotate_left(u32bit input, size_t rot)
+static inline uint32_t rotate_left(uint32_t input, size_t rot)
 {
     if(rot == 0)
         return input;
-    return static_cast<u32bit>((input << rot) | (input >> (8*sizeof(u32bit)-rot)));;
+    return static_cast<uint32_t>((input << rot) | (input >> (8*sizeof(uint32_t)-rot)));;
 }
 
 /*
 * SHA-160 F1 Function
 */
-static inline void F1(u32bit A, u32bit& B, u32bit C, u32bit D, u32bit& E, u32bit msg)
+static inline void F1(uint32_t A, uint32_t& B, uint32_t C, uint32_t D, uint32_t& E, uint32_t msg)
 {
     E += (D ^ (B & (C ^ D))) + msg + 0x5A827999 + rotate_left(A, 5);
     B  = rotate_left(B, 30);
@@ -88,7 +85,7 @@ static inline void F1(u32bit A, u32bit& B, u32bit C, u32bit D, u32bit& E, u32bit
 /*
 * SHA-160 F2 Function
 */
-static inline void F2(u32bit A, u32bit& B, u32bit C, u32bit D, u32bit& E, u32bit msg)
+static inline void F2(uint32_t A, uint32_t& B, uint32_t C, uint32_t D, uint32_t& E, uint32_t msg)
 {
     E += (B ^ C ^ D) + msg + 0x6ED9EBA1 + rotate_left(A, 5);
     B  = rotate_left(B, 30);
@@ -97,7 +94,7 @@ static inline void F2(u32bit A, u32bit& B, u32bit C, u32bit D, u32bit& E, u32bit
 /*
 * SHA-160 F3 Function
 */
-static inline void F3(u32bit A, u32bit& B, u32bit C, u32bit D, u32bit& E, u32bit msg)
+static inline void F3(uint32_t A, uint32_t& B, uint32_t C, uint32_t D, uint32_t& E, uint32_t msg)
 {
     E += ((B & C) | ((B | C) & D)) + msg + 0x8F1BBCDC + rotate_left(A, 5);
     B  = rotate_left(B, 30);
@@ -106,7 +103,7 @@ static inline void F3(u32bit A, u32bit& B, u32bit C, u32bit D, u32bit& E, u32bit
 /*
 * SHA-160 F4 Function
 */
-static inline void F4(u32bit A, u32bit& B, u32bit C, u32bit D, u32bit& E, u32bit msg)
+static inline void F4(uint32_t A, uint32_t& B, uint32_t C, uint32_t D, uint32_t& E, uint32_t msg)
 {
     E += (B ^ C ^ D) + msg + 0xCA62C1D6 + rotate_left(A, 5);
     B  = rotate_left(B, 30);
@@ -122,13 +119,13 @@ void pdcsha1_compress(ccdigest_state_t s, unsigned long nblocks, const void *dat
 {
     //printf("%s\n", __func__);
 
-    const byte *input = (const byte *)data;
+    const uint8_t *input = (const uint8_t *)data;
 
     uint32_t *state = ccdigest_u32(s);
 
-    u32bit A = state[0], B = state[1], C = state[2], D = state[3], E = state[4];
+    uint32_t A = state[0], B = state[1], C = state[2], D = state[3], E = state[4];
 
-    u32bit m_W[80];
+    uint32_t m_W[80];
 
     for(size_t i = 0; i != nblocks; ++i)
     {

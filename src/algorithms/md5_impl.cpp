@@ -13,9 +13,6 @@
 #include <corecrypto/ccdigest.h>
 #include <sys/systm.h>
 
-#define byte uint8_t
-#define u32bit uint32_t
-
 /**
 * Load a little-endian word
 * @param in a pointer to some bytes
@@ -23,14 +20,14 @@
 * @return off'th T of in, as a litte-endian value
 */
 /*template<typename T>
-inline T load_le(const byte in[], size_t off)
+inline T load_le(const uint8_t in[], size_t off)
 */
-static u32bit load_le(const byte in[], size_t off)
+static uint32_t load_le(const uint8_t in[], size_t off)
 {
-    in += off * sizeof(u32bit);
-    u32bit out = 0;
-    for(size_t i = 0; i != sizeof(u32bit); ++i)
-        out = (out << 8) | in[sizeof(u32bit)-1-i];
+    in += off * sizeof(uint32_t);
+    uint32_t out = 0;
+    for(size_t i = 0; i != sizeof(uint32_t); ++i)
+        out = (out << 8) | in[sizeof(uint32_t)-1-i];
     return out;
 }
 
@@ -43,11 +40,11 @@ static u32bit load_le(const byte in[], size_t off)
 /*
 template<typename T>
 inline void load_le(T out[],
-                    const byte in[],
+                    const uint8_t in[],
                     size_t count)
 */
-static inline void load_le(u32bit out[],
-                           const byte in[],
+static inline void load_le(uint32_t out[],
+                           const uint8_t in[],
                            size_t count)
 {
     if(count > 0)
@@ -66,18 +63,18 @@ static inline void load_le(u32bit out[],
 /*
 template<typename T> inline T rotate_left(T input, size_t rot)
 */
-static inline u32bit rotate_left(u32bit input, size_t rot)
+static inline uint32_t rotate_left(uint32_t input, size_t rot)
 {
     if(rot == 0)
         return input;
-    return static_cast<u32bit>((input << rot) | (input >> (8*sizeof(u32bit)-rot)));;
+    return static_cast<uint32_t>((input << rot) | (input >> (8*sizeof(uint32_t)-rot)));;
 }
 
 /*
 * MD5 FF Function
 */
-static inline void FF(u32bit& A, u32bit B, u32bit C, u32bit D, u32bit msg,
-                      byte S, u32bit magic)
+static inline void FF(uint32_t& A, uint32_t B, uint32_t C, uint32_t D, uint32_t msg,
+                      uint8_t S, uint32_t magic)
 {
     A += (D ^ (B & (C ^ D))) + msg + magic;
     A  = rotate_left(A, S) + B;
@@ -86,8 +83,8 @@ static inline void FF(u32bit& A, u32bit B, u32bit C, u32bit D, u32bit msg,
 /*
 * MD5 GG Function
 */
-static inline void GG(u32bit& A, u32bit B, u32bit C, u32bit D, u32bit msg,
-                      byte S, u32bit magic)
+static inline void GG(uint32_t& A, uint32_t B, uint32_t C, uint32_t D, uint32_t msg,
+                      uint8_t S, uint32_t magic)
 {
     A += (C ^ (D & (B ^ C))) + msg + magic;
     A  = rotate_left(A, S) + B;
@@ -96,8 +93,8 @@ static inline void GG(u32bit& A, u32bit B, u32bit C, u32bit D, u32bit msg,
 /*
 * MD5 HH Function
 */
-static inline void HH(u32bit& A, u32bit B, u32bit C, u32bit D, u32bit msg,
-                      byte S, u32bit magic)
+static inline void HH(uint32_t& A, uint32_t B, uint32_t C, uint32_t D, uint32_t msg,
+                      uint8_t S, uint32_t magic)
 {
     A += (B ^ C ^ D) + msg + magic;
     A  = rotate_left(A, S) + B;
@@ -106,8 +103,8 @@ static inline void HH(u32bit& A, u32bit B, u32bit C, u32bit D, u32bit msg,
 /*
 * MD5 II Function
 */
-static inline void II(u32bit& A, u32bit B, u32bit C, u32bit D, u32bit msg,
-                      byte S, u32bit magic)
+static inline void II(uint32_t& A, uint32_t B, uint32_t C, uint32_t D, uint32_t msg,
+                      uint8_t S, uint32_t magic)
 {
     A += (C ^ (B | ~D)) + msg + magic;
     A  = rotate_left(A, S) + B;
@@ -120,13 +117,13 @@ void pdcmd5_compress(ccdigest_state_t s, unsigned long nblocks, const void *data
 {
     //printf("%s\n", __func__);
     
-    const byte *input = (const byte *)data;
+    const uint8_t *input = (const uint8_t *)data;
 
     uint32_t *state = ccdigest_u32(s);
 
-    u32bit A = state[0], B = state[1], C = state[2], D = state[3];
+    uint32_t A = state[0], B = state[1], C = state[2], D = state[3];
 
-    u32bit m_M[16];
+    uint32_t m_M[16];
 
     for(size_t i = 0; i != nblocks; ++i)
     {
