@@ -15,7 +15,7 @@
 #include <corecrypto/ccdigest.h>
 #include <corecrypto/cc_priv.h>
 
-void pdcdigest_update(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
+void ccdigest_update(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
                       unsigned long len, const void *data) {
     char * data_ptr = (char *) data;
     while (len > 0) {

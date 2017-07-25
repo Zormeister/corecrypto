@@ -10,17 +10,16 @@ extern void pdcdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ct
 extern void pdcdigest_fn(const struct ccdigest_info *di, unsigned long len, const void *data, void *digest);
 
 extern const struct ccdigest_info pdcmd5_di;
-extern const struct ccdigest_info pdcsha1_di;
 extern const struct ccmode_ecb pdcaes_ecb_encrypt;
 extern const struct ccmode_ecb pdcaes_ecb_decrypt;
 extern const struct ccmode_cbc pdcaes_cbc_encrypt;
 extern const struct ccmode_cbc pdcaes_cbc_decrypt;
 
 const struct crypto_functions pdcrypto_internal_functions = {
-	.ccdigest_init_fn = pdcdigest_init,
-	.ccdigest_update_fn = pdcdigest_update,
+	.ccdigest_init_fn = ccdigest_init,
+	.ccdigest_update_fn = ccdigest_update,
 	.ccmd5_di = &pdcmd5_di,
-	.ccsha1_di = &pdcsha1_di,
+	.ccsha1_di = &ccsha1_ltc_di,
 
 	.ccdigest_final_fn = pdcdigest_final_fn,
 	.ccdigest_fn = pdcdigest_fn,
