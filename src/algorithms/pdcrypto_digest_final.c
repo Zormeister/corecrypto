@@ -73,3 +73,15 @@ void pdcdigest_final_64be(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
         CC_STORE32_BE(ccdigest_state_u32(di, ctx)[i], digest+(4*i));
     }
 }
+
+void pdcdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest) {
+	// TODO: Is this the correct implementation?
+
+#if BYTE_ORDER == BIG_ENDIAN
+	pdcdigest_final_64be(di, ctx, (unsigned char *)digest);
+#elif BYTE_ORDER == LITTLE_ENDIAN
+	pdcdigest_final_64le(di, ctx, (unsigned char *)digest);
+#else
+	cc_abort("Unsupported byte order");
+#endif
+}

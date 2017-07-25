@@ -55,13 +55,18 @@ void ccpad_xts_encrypt_stub(const struct ccmode_xts *xts, ccxts_ctx *ctx, unsign
 	cc_abort("ccpad_xts_encrypt(): function unimplemented");
 }
 
+extern void pdcdigest_init(const struct ccdigest_info *di, ccdigest_ctx_t ctx);
+extern void pdcdigest_update(const struct ccdigest_info *di, ccdigest_ctx_t ctx, unsigned long len, const void *data);
+extern void pdcdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest);
+extern void pdcdigest_fn(const struct ccdigest_info *di, unsigned long len, const void *data, void *digest);
+
 #if 0
 const struct crypto_functions _cc_callbacks = {
 	/* digests common functions */
-	ccdigest_init_stub,
-	ccdigest_update_stub,
-	ccdigest_final_stub,
-	ccdigest_stub,
+	pdcdigest_init,
+	pdcdigest_update,
+	pdcdigest_final_fn,
+	pdcdigest_fn,
 
 	/* digest implementations */
 	&ccmd5_ltc_di,
