@@ -5,7 +5,7 @@ int cc_cmp_safe(size_t num, const void *ptr1, const void *ptr2) {
 
 	volatile const unsigned char *buffer1 = ptr1;
 	volatile const unsigned char *buffer2 = ptr2;
-	unsigned char result;
+	unsigned char result = 0;
 
 	while (num != 0) {
 		result |= *buffer1 ^ *buffer2;
