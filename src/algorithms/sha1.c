@@ -1,38 +1,34 @@
+//
+//  pdcrypto_sha1.c
+//  pdcrypto
+//
+//  Created by rafirafi on 3/17/16.
+//  Copyright (c) 2016 rafirafi. All rights reserved.
+//
+
 #include <corecrypto/ccsha1.h>
-#include <corecrypto/cc_abort.h>
+#include <corecrypto/ccdigest_priv.h>
 
-static void ccsha1_ltc_compress(ccdigest_state_t state, unsigned long nblocks, const void *data) {
-	cc_abort("ccsha1_ltc_di->compress(): function unimplemented");
-}
+#include "pdcrypto_digest_final.h"
 
-static void ccsha1_ltc_final(const struct ccdigest_info *di, ccdigest_state_t state, unsigned char *digest) {
-	cc_abort("ccsha1_ltc_di->final(): function unimplemented");
-}
+void pdcsha1_compress(ccdigest_state_t state, unsigned long nblocks, const void *data);
 
-const struct ccdigest_info ccsha1_ltc_di = {
-	CCSHA1_OUTPUT_SIZE, CCSHA1_STATE_SIZE, CCSHA1_BLOCK_SIZE,
-	ccoid_sha1_len, ccoid_sha1,
-	NULL,
-	ccsha1_ltc_compress,
-	ccsha1_ltc_final
+const uint32_t pdcsha1_initial_state[5] = {
+    0x67452301UL, // A
+    0xefcdab89UL, // B
+    0x98badcfeUL, // C
+    0x10325476UL, // D
+    0xc3d2e1f0UL  // E
 };
 
-const struct ccdigest_info ccsha1_eay_di = {
-	CCSHA1_OUTPUT_SIZE, CCSHA1_STATE_SIZE, CCSHA1_BLOCK_SIZE,
-	ccoid_sha1_len, ccoid_sha1,
-	NULL,
-	ccsha1_ltc_compress,
-	ccsha1_ltc_final
+const struct ccdigest_info pdcsha1_di = {
+    .output_size = CCSHA1_OUTPUT_SIZE,
+    .state_size = CCSHA1_STATE_SIZE,
+    .block_size = CCSHA1_BLOCK_SIZE,
+    .oid_size = ccoid_sha1_len,
+    .oid = (unsigned char *)CC_DIGEST_OID_SHA1,
+    .initial_state = pdcsha1_initial_state,
+    .compress = pdcsha1_compress,
+    .final = pdcdigest_final_64be
 };
 
-const uint32_t ccsha1_initial_state[5] = {
-	0, 0, 0, 0, 0
-};
-
-const struct ccdigest_info *ccsha1_di(void) {
-	return &ccsha1_ltc_di;
-}
-
-void ccsha1_final(const struct ccdigest_info *di, ccdigest_ctx_t ctx, unsigned char *digest) {
-	cc_abort("ccsha1_final(): function unimplemented");
-}

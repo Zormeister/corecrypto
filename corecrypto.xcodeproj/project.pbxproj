@@ -9,9 +9,14 @@
 /* Begin PBXBuildFile section */
 		1F16A0101C87BFE10071A80A /* cc_cmp_safe.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F16A00F1C87BFE10071A80A /* cc_cmp_safe.c */; };
 		1F16A0121C87C1200071A80A /* cc_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F16A0111C87C1200071A80A /* cc_debug.c */; };
+		1F1D44491F2802D60043CE92 /* pdcrypto_digest_final.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D443E1F2802BD0043CE92 /* pdcrypto_digest_final.c */; };
+		1F1D444A1F2802D60043CE92 /* pdcrypto_digest_init.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D44411F2802BD0043CE92 /* pdcrypto_digest_init.c */; };
+		1F1D444B1F2802D60043CE92 /* pdcrypto_digest_update.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D44421F2802BD0043CE92 /* pdcrypto_digest_update.c */; };
+		1F1D444C1F2802D60043CE92 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D11C51D9CCA1300782B10 /* md5.c */; };
+		1F1D444D1F2802D60043CE92 /* md5_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D44401F2802BD0043CE92 /* md5_impl.cpp */; };
+		1F1D444E1F2802D60043CE92 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D11C81D9CCBA100782B10 /* sha1.c */; };
+		1F1D444F1F2802D60043CE92 /* sha1_impl.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D443D1F2802BD0043CE92 /* sha1_impl.cc */; };
 		1F332F2C1C8D201C00C74D80 /* cc_abort.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F332F2B1C8D201C00C74D80 /* cc_abort.h */; };
-		1F4D11C71D9CCA1500782B10 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D11C51D9CCA1300782B10 /* md5.c */; };
-		1F4D11C91D9CCBA100782B10 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D11C81D9CCBA100782B10 /* sha1.c */; };
 		1FB2F6C41C87B2EC009C0F4C /* cc_kext_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FB2F6C11C87B2E6009C0F4C /* cc_kext_main.c */; };
 		1FB2F6C61C87B42D009C0F4C /* cc_clear.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FB2F6C51C87B42D009C0F4C /* cc_clear.c */; };
 		1FDA24121D98DA16003D41DA /* cc_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA24061D98D841003D41DA /* cc_functions.c */; };
@@ -20,6 +25,14 @@
 /* Begin PBXFileReference section */
 		1F16A00F1C87BFE10071A80A /* cc_cmp_safe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_cmp_safe.c; sourceTree = "<group>"; };
 		1F16A0111C87C1200071A80A /* cc_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_debug.c; sourceTree = "<group>"; };
+		1F1D443C1F2802BD0043CE92 /* pdcrypto_digest_update.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pdcrypto_digest_update.h; sourceTree = "<group>"; };
+		1F1D443D1F2802BD0043CE92 /* sha1_impl.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sha1_impl.cc; sourceTree = "<group>"; };
+		1F1D443E1F2802BD0043CE92 /* pdcrypto_digest_final.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pdcrypto_digest_final.c; sourceTree = "<group>"; };
+		1F1D443F1F2802BD0043CE92 /* pdcrypto_digest_init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pdcrypto_digest_init.h; sourceTree = "<group>"; };
+		1F1D44401F2802BD0043CE92 /* md5_impl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = md5_impl.cpp; sourceTree = "<group>"; };
+		1F1D44411F2802BD0043CE92 /* pdcrypto_digest_init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pdcrypto_digest_init.c; sourceTree = "<group>"; };
+		1F1D44421F2802BD0043CE92 /* pdcrypto_digest_update.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pdcrypto_digest_update.c; sourceTree = "<group>"; };
+		1F1D44431F2802BD0043CE92 /* pdcrypto_digest_final.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pdcrypto_digest_final.h; sourceTree = "<group>"; };
 		1F332F2B1C8D201C00C74D80 /* cc_abort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_abort.h; sourceTree = "<group>"; };
 		1F4D11C51D9CCA1300782B10 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		1F4D11C81D9CCBA100782B10 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
@@ -92,8 +105,16 @@
 		1F4D11C41D9CC9FF00782B10 /* algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				1F1D44431F2802BD0043CE92 /* pdcrypto_digest_final.h */,
+				1F1D443E1F2802BD0043CE92 /* pdcrypto_digest_final.c */,
+				1F1D443F1F2802BD0043CE92 /* pdcrypto_digest_init.h */,
+				1F1D44411F2802BD0043CE92 /* pdcrypto_digest_init.c */,
+				1F1D443C1F2802BD0043CE92 /* pdcrypto_digest_update.h */,
+				1F1D44421F2802BD0043CE92 /* pdcrypto_digest_update.c */,
 				1F4D11C51D9CCA1300782B10 /* md5.c */,
+				1F1D44401F2802BD0043CE92 /* md5_impl.cpp */,
 				1F4D11C81D9CCBA100782B10 /* sha1.c */,
+				1F1D443D1F2802BD0043CE92 /* sha1_impl.cc */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -245,13 +266,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F4D11C71D9CCA1500782B10 /* md5.c in Sources */,
 				1F16A0101C87BFE10071A80A /* cc_cmp_safe.c in Sources */,
 				1F16A0121C87C1200071A80A /* cc_debug.c in Sources */,
+				1F1D444D1F2802D60043CE92 /* md5_impl.cpp in Sources */,
 				1FDA24121D98DA16003D41DA /* cc_functions.c in Sources */,
-				1F4D11C91D9CCBA100782B10 /* sha1.c in Sources */,
 				1FB2F6C41C87B2EC009C0F4C /* cc_kext_main.c in Sources */,
 				1FB2F6C61C87B42D009C0F4C /* cc_clear.c in Sources */,
+				1F1D444E1F2802D60043CE92 /* sha1.c in Sources */,
+				1F1D444A1F2802D60043CE92 /* pdcrypto_digest_init.c in Sources */,
+				1F1D444C1F2802D60043CE92 /* md5.c in Sources */,
+				1F1D44491F2802D60043CE92 /* pdcrypto_digest_final.c in Sources */,
+				1F1D444F1F2802D60043CE92 /* sha1_impl.cc in Sources */,
+				1F1D444B1F2802D60043CE92 /* pdcrypto_digest_update.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
