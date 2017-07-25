@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1F16A0101C87BFE10071A80A /* cc_cmp_safe.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F16A00F1C87BFE10071A80A /* cc_cmp_safe.c */; };
 		1F16A0121C87C1200071A80A /* cc_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F16A0111C87C1200071A80A /* cc_debug.c */; };
-		1F16A0141C87C18E0071A80A /* cc_debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F16A0131C87C18E0071A80A /* cc_debug.h */; };
 		1F332F2C1C8D201C00C74D80 /* cc_abort.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F332F2B1C8D201C00C74D80 /* cc_abort.h */; };
 		1F4D11C71D9CCA1500782B10 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D11C51D9CCA1300782B10 /* md5.c */; };
 		1F4D11C91D9CCBA100782B10 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D11C81D9CCBA100782B10 /* sha1.c */; };
@@ -21,7 +20,6 @@
 /* Begin PBXFileReference section */
 		1F16A00F1C87BFE10071A80A /* cc_cmp_safe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_cmp_safe.c; sourceTree = "<group>"; };
 		1F16A0111C87C1200071A80A /* cc_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_debug.c; sourceTree = "<group>"; };
-		1F16A0131C87C18E0071A80A /* cc_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_debug.h; sourceTree = "<group>"; };
 		1F332F2B1C8D201C00C74D80 /* cc_abort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_abort.h; sourceTree = "<group>"; };
 		1F4D11C51D9CCA1300782B10 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		1F4D11C81D9CCBA100782B10 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 				1FB2F6C01C87B2C6009C0F4C /* kext */,
 				1FB2F6C51C87B42D009C0F4C /* cc_clear.c */,
 				1F16A00F1C87BFE10071A80A /* cc_cmp_safe.c */,
-				1F16A0131C87C18E0071A80A /* cc_debug.h */,
 				1F16A0111C87C1200071A80A /* cc_debug.c */,
 				1F332F2B1C8D201C00C74D80 /* cc_abort.h */,
 			);
@@ -177,7 +174,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F16A0141C87C18E0071A80A /* cc_debug.h in Headers */,
 				1F332F2C1C8D201C00C74D80 /* cc_abort.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
