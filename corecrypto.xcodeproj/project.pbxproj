@@ -46,7 +46,7 @@
 		1F31AE841C8535470091C31B = {
 			isa = PBXGroup;
 			children = (
-				1FB2F6BF1C87B2BA009C0F4C /* corecrypto */,
+				1FB2F6BF1C87B2BA009C0F4C /* src */,
 				1F31AEA41C8535B30091C31B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,7 +68,7 @@
 			path = algorithms;
 			sourceTree = "<group>";
 		};
-		1FB2F6BF1C87B2BA009C0F4C /* corecrypto */ = {
+		1FB2F6BF1C87B2BA009C0F4C /* src */ = {
 			isa = PBXGroup;
 			children = (
 				1F4D11C41D9CC9FF00782B10 /* algorithms */,
@@ -80,7 +80,7 @@
 				1F332F2B1C8D201C00C74D80 /* cc_abort.h */,
 				1FDA24061D98D841003D41DA /* cc_functions.c */,
 			);
-			path = corecrypto;
+			path = src;
 			sourceTree = "<group>";
 		};
 		1FB2F6C01C87B2C6009C0F4C /* kext */ = {
@@ -297,7 +297,7 @@
 					"$(SRCROOT)",
 					"$(ANDROMEDA_SDK_HEADER_PATHS_KERNEL)",
 				);
-				INFOPLIST_FILE = corecrypto/kext/Info.plist;
+				INFOPLIST_FILE = src/kext/Info.plist;
 				INSTALL_PATH = /System/Library/Extensions;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MODULE_NAME = "$(PRODUCT_BUNDLE_IDENTIFIER)";
@@ -348,7 +348,7 @@
 					"$(SRCROOT)",
 					"$(ANDROMEDA_SDK_HEADER_PATHS_KERNEL)",
 				);
-				INFOPLIST_FILE = corecrypto/kext/Info.plist;
+				INFOPLIST_FILE = src/kext/Info.plist;
 				INSTALL_PATH = /System/Library/Extensions;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MODULE_NAME = "$(PRODUCT_BUNDLE_IDENTIFIER)";
