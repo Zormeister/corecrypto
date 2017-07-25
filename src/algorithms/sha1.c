@@ -21,7 +21,7 @@ const uint32_t pdcsha1_initial_state[5] = {
     0xc3d2e1f0UL  // E
 };
 
-const struct ccdigest_info pdcsha1_di = {
+const struct ccdigest_info ccsha1_ltc_di = {
     .output_size = CCSHA1_OUTPUT_SIZE,
     .state_size = CCSHA1_STATE_SIZE,
     .block_size = CCSHA1_BLOCK_SIZE,
@@ -32,3 +32,13 @@ const struct ccdigest_info pdcsha1_di = {
     .final = pdcdigest_final_64be
 };
 
+const struct ccdigest_info ccsha1_eay_di = {
+	.output_size = CCSHA1_OUTPUT_SIZE,
+	.state_size = CCSHA1_STATE_SIZE,
+	.block_size = CCSHA1_BLOCK_SIZE,
+	.oid_size = ccoid_sha1_len,
+	.oid = (unsigned char *)CC_DIGEST_OID_SHA1,
+	.initial_state = pdcsha1_initial_state,
+	.compress = pdcsha1_compress,
+	.final = pdcdigest_final_64be
+};

@@ -3,22 +3,6 @@
 #include <corecrypto/ccmd5.h>
 #include <corecrypto/ccsha1.h>
 
-void ccdigest_init_stub(const struct ccdigest_info *info, ccdigest_ctx_t ctx) {
-	cc_abort("ccdigest_init(): function unimplemented");
-}
-
-void ccdigest_update_stub(const struct ccdigest_info *info, ccdigest_ctx_t ctx, unsigned long len, const void *data) {
-	cc_abort("ccdigest_update(): function unimplemented");
-}
-
-void ccdigest_final_stub(const struct ccdigest_info *info, ccdigest_ctx_t ctx, void *digest) {
-	cc_abort("ccdigest_final(): function unimplemented");
-}
-
-void ccdigest_stub(const struct ccdigest_info *info, unsigned long len, const void *data, void *digest) {
-	cc_abort("ccdigest(): function unimplemented");
-}
-
 void cchmac_init_stub(const struct ccdigest_info *di, cchmac_ctx_t ctx, unsigned long key_len, const void *key) {
 	cc_abort("cchmac_init(): function unimplemented");
 }
