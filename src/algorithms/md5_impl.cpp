@@ -19,6 +19,9 @@
 * @param off an offset into the array
 * @return off'th T of in, as a litte-endian value
 */
+/*template<typename T>
+inline T load_le(const uint8_t in[], size_t off)
+*/
 static uint32_t load_le(const uint8_t in[], size_t off)
 {
     in += off * sizeof(uint32_t);
@@ -34,7 +37,15 @@ static uint32_t load_le(const uint8_t in[], size_t off)
 * @param in the input array of bytes
 * @param count how many words are in in
 */
-static inline void load_le_multi(uint32_t out[], const uint8_t in[], size_t count)
+/*
+template<typename T>
+inline void load_le(T out[],
+                    const uint8_t in[],
+                    size_t count)
+*/
+static inline void load_le(uint32_t out[],
+                           const uint8_t in[],
+                           size_t count)
 {
     if(count > 0)
     {
@@ -49,48 +60,58 @@ static inline void load_le_multi(uint32_t out[], const uint8_t in[], size_t coun
 * @param rot the number of bits to rotate
 * @return input rotated left by rot bits
 */
+/*
+template<typename T> inline T rotate_left(T input, size_t rot)
+*/
 static inline uint32_t rotate_left(uint32_t input, size_t rot)
 {
     if(rot == 0)
         return input;
-    return (uint32_t)((input << rot) | (input >> (8*sizeof(uint32_t)-rot)));;
+    return static_cast<uint32_t>((input << rot) | (input >> (8*sizeof(uint32_t)-rot)));;
 }
 
 /*
 * MD5 FF Function
 */
-#define FF(A, B, C, D, msg, S, magic) \
-	do { \
-		A += (D ^ (B & (C ^ D))) + msg + magic; \
-		A  = rotate_left(A, S) + B; \
-	} while (0)
+static inline void FF(uint32_t& A, uint32_t B, uint32_t C, uint32_t D, uint32_t msg,
+                      uint8_t S, uint32_t magic)
+{
+    A += (D ^ (B & (C ^ D))) + msg + magic;
+    A  = rotate_left(A, S) + B;
+}
 
 /*
 * MD5 GG Function
 */
-#define GG(A, B, C, D, msg, S, magic)\
-	do { \
-		A += (C ^ (D & (B ^ C))) + msg + magic; \
-		A  = rotate_left(A, S) + B; \
-	} while (0)
+static inline void GG(uint32_t& A, uint32_t B, uint32_t C, uint32_t D, uint32_t msg,
+                      uint8_t S, uint32_t magic)
+{
+    A += (C ^ (D & (B ^ C))) + msg + magic;
+    A  = rotate_left(A, S) + B;
+}
 
 /*
 * MD5 HH Function
 */
-#define HH(A, B, C, D, msg, S, magic) \
-	do { \
-		A += (B ^ C ^ D) + msg + magic; \
-		A  = rotate_left(A, S) + B; \
-	} while (0)
+static inline void HH(uint32_t& A, uint32_t B, uint32_t C, uint32_t D, uint32_t msg,
+                      uint8_t S, uint32_t magic)
+{
+    A += (B ^ C ^ D) + msg + magic;
+    A  = rotate_left(A, S) + B;
+}
 
 /*
 * MD5 II Function
 */
-#define II(A, B, C, D, msg, S, magic) \
-	do { \
-		A += (C ^ (B | ~D)) + msg + magic; \
-		A  = rotate_left(A, S) + B; \
-	} while (0)
+static inline void II(uint32_t& A, uint32_t B, uint32_t C, uint32_t D, uint32_t msg,
+                      uint8_t S, uint32_t magic)
+{
+    A += (C ^ (B | ~D)) + msg + magic;
+    A  = rotate_left(A, S) + B;
+}
+
+extern "C"
+{
 
 void pdcmd5_compress(ccdigest_state_t s, unsigned long nblocks, const void *data)
 {
@@ -106,7 +127,8 @@ void pdcmd5_compress(ccdigest_state_t s, unsigned long nblocks, const void *data
 
     for(size_t i = 0; i != nblocks; ++i)
     {
-        load_le_multi(m_M, input, 16);
+        //load_le(m_M.data(), input, m_M.size());
+        load_le(m_M, input, 16);
 
         FF(A,B,C,D,m_M[ 0], 7,0xD76AA478);   FF(D,A,B,C,m_M[ 1],12,0xE8C7B756);
         FF(C,D,A,B,m_M[ 2],17,0x242070DB);   FF(B,C,D,A,m_M[ 3],22,0xC1BDCEEE);
@@ -154,3 +176,5 @@ void pdcmd5_compress(ccdigest_state_t s, unsigned long nblocks, const void *data
 
     }
 }
+
+} // extern
