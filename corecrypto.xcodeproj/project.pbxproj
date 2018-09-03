@@ -46,6 +46,7 @@
 		1F1D44571F280B490043CE92 /* aes_cbc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = aes_cbc.c; sourceTree = "<group>"; };
 		1F1D44581F280B490043CE92 /* aes128.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = aes128.c; sourceTree = "<group>"; };
 		1F332F2B1C8D201C00C74D80 /* cc_abort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_abort.h; sourceTree = "<group>"; };
+		1F377BA6213DF17100D1C6CA /* corecrypto.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = corecrypto.xcconfig; sourceTree = "<group>"; };
 		1F4D11C51D9CCA1300782B10 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		1F4D11C81D9CCBA100782B10 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
 		1F65CFE41F2800C60073759F /* ccmd5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccmd5.h; sourceTree = "<group>"; };
@@ -102,6 +103,7 @@
 			children = (
 				1F65CFE21F2800A20073759F /* include */,
 				1FB2F6BF1C87B2BA009C0F4C /* src */,
+				1F377BA5213DF15B00D1C6CA /* xcscripts */,
 				1F31AEA41C8535B30091C31B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +114,14 @@
 				1FB2F6AA1C87B253009C0F4C /* corecrypto.kext */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1F377BA5213DF15B00D1C6CA /* xcscripts */ = {
+			isa = PBXGroup;
+			children = (
+				1F377BA6213DF17100D1C6CA /* corecrypto.xcconfig */,
+			);
+			path = xcscripts;
 			sourceTree = "<group>";
 		};
 		1F4D11C41D9CC9FF00782B10 /* algorithms */ = {
@@ -388,6 +398,7 @@
 		};
 		1FB2F6AF1C87B254009C0F4C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F377BA6213DF17100D1C6CA /* corecrypto.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -423,7 +434,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = src/kext/Info.plist;
-				INSTALL_PATH = /System/Library/Extensions;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULE_NAME = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				MODULE_START = cc_kext_start;
@@ -441,6 +451,7 @@
 		};
 		1FB2F6B01C87B254009C0F4C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F377BA6213DF17100D1C6CA /* corecrypto.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -470,7 +481,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = src/kext/Info.plist;
-				INSTALL_PATH = /System/Library/Extensions;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULE_NAME = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				MODULE_START = cc_kext_start;
