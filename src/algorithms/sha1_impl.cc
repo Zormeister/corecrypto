@@ -70,44 +70,47 @@ static inline uint32_t rotate_left(uint32_t input, size_t rot)
 {
     if(rot == 0)
         return input;
-    return (uint32_t)((input << rot) | (input >> (8*sizeof(uint32_t)-rot)));;
+    return static_cast<uint32_t>((input << rot) | (input >> (8*sizeof(uint32_t)-rot)));;
 }
 
 /*
 * SHA-160 F1 Function
 */
-#define F1(A, B, C, D, E, msg) \
-	do { \
-		E += (D ^ (B & (C ^ D))) + msg + 0x5A827999 + rotate_left(A, 5); \
-		B  = rotate_left(B, 30); \
-	} while (0)
+static inline void F1(uint32_t A, uint32_t& B, uint32_t C, uint32_t D, uint32_t& E, uint32_t msg)
+{
+    E += (D ^ (B & (C ^ D))) + msg + 0x5A827999 + rotate_left(A, 5);
+    B  = rotate_left(B, 30);
+}
 
 /*
 * SHA-160 F2 Function
 */
-#define F2(A, B, C, D, E, msg) \
-	do { \
-		E += (B ^ C ^ D) + msg + 0x6ED9EBA1 + rotate_left(A, 5); \
-		B  = rotate_left(B, 30); \
-	} while (0)
+static inline void F2(uint32_t A, uint32_t& B, uint32_t C, uint32_t D, uint32_t& E, uint32_t msg)
+{
+    E += (B ^ C ^ D) + msg + 0x6ED9EBA1 + rotate_left(A, 5);
+    B  = rotate_left(B, 30);
+}
 
 /*
 * SHA-160 F3 Function
 */
-#define F3(A, B, C, D, E, msg) \
-	do { \
-		E += ((B & C) | ((B | C) & D)) + msg + 0x8F1BBCDC + rotate_left(A, 5); \
-		B  = rotate_left(B, 30); \
-	} while (0)
+static inline void F3(uint32_t A, uint32_t& B, uint32_t C, uint32_t D, uint32_t& E, uint32_t msg)
+{
+    E += ((B & C) | ((B | C) & D)) + msg + 0x8F1BBCDC + rotate_left(A, 5);
+    B  = rotate_left(B, 30);
+}
 
 /*
 * SHA-160 F4 Function
 */
-#define F4(A, B, C, D, E, msg) \
-	do { \
-		E += (B ^ C ^ D) + msg + 0xCA62C1D6 + rotate_left(A, 5); \
-		B  = rotate_left(B, 30); \
-	} while (0)
+static inline void F4(uint32_t A, uint32_t& B, uint32_t C, uint32_t D, uint32_t& E, uint32_t msg)
+{
+    E += (B ^ C ^ D) + msg + 0xCA62C1D6 + rotate_left(A, 5);
+    B  = rotate_left(B, 30);
+}
+
+extern "C"
+{
 
 /*
 * SHA-160 Compression Function
@@ -193,4 +196,6 @@ void pdcsha1_compress(ccdigest_state_t s, unsigned long nblocks, const void *dat
         //input += hash_block_size();
         input += 64;
     }
+}
+
 }
