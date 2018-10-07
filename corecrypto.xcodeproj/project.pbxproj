@@ -322,10 +322,6 @@
 		1F31AE891C8535470091C31B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ADDITIONAL_SDKS = "$(ANDROMEDA_SDK_ROOT)";
-				ANDROMEDA_SDK_HEADER_PATHS_KERNEL = "$(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/Kernel.framework/PrivateHeaders $(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/Kernel.framework/Headers";
-				ANDROMEDA_SDK_HEADER_PATHS_USER = "$(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/System.framework/PrivateHeaders $(ANDROMEDA_SDK_ROOT)/usr/include";
-				ANDROMEDA_SDK_ROOT = "$(PROJECT_TEMP_ROOT)/xnu";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -364,10 +360,6 @@
 		1F31AE8A1C8535470091C31B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ADDITIONAL_SDKS = "$(ANDROMEDA_SDK_ROOT)";
-				ANDROMEDA_SDK_HEADER_PATHS_KERNEL = "$(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/Kernel.framework/PrivateHeaders $(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/Kernel.framework/Headers";
-				ANDROMEDA_SDK_HEADER_PATHS_USER = "$(ANDROMEDA_SDK_ROOT)/System/Library/Frameworks/System.framework/PrivateHeaders $(ANDROMEDA_SDK_ROOT)/usr/include";
-				ANDROMEDA_SDK_ROOT = "$(DSTROOT)";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
