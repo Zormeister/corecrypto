@@ -1,4 +1,4 @@
 INSTALL_PATH = /System/Library/Extensions
 
 DARWINBUILD_SDK_MODE = KERNEL
-#include "../darwinbuild.xcconfig"
+#include? "../darwinbuild.xcconfig"
