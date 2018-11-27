@@ -10,7 +10,7 @@ kern_return_t cc_kext_start(kmod_info_t * ki, void *d)
 	if (ret == -1) {
 		printf("warning: corecrypto could not be registered. Did another crypto handler beat us to it?\n");
 	} else {
-		printf("CC loaded\n");
+		printf("corecrypto loaded\n");
 	}
 
     return KERN_SUCCESS;
