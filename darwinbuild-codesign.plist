@@ -8,7 +8,10 @@
     <key>files</key>
     <dict>
         <key>/System/Library/Extensions/corecrypto.kext</key>
-        <true/>
+        <dict>
+            <key>identifier</key>
+            <string>org.puredarwin.kext.corecrypto</string>
+        </dict>
     </dict>
 </dict>
 </plist>
