@@ -68,8 +68,7 @@ CC_INLINE size_t ccsiv_plaintext_size(const struct ccmode_siv *mode,
     return ciphertext_size-mode->cbc->block_size;
 }
 
-// In theory, supported key sizes are 32, 48, 64 bytes
-// In practice, we only support key size 32 bytes due to cmac limitation
+// Supported key sizes are 32, 48, 64 bytes
 CC_INLINE int ccsiv_init(const struct ccmode_siv *mode, ccsiv_ctx *ctx,
                           size_t key_byte_len, const uint8_t *key)
 {
@@ -115,7 +114,8 @@ CC_INLINE int ccsiv_one_shot(const struct ccmode_siv *mode,
 {
     int rc;
     ccsiv_ctx_decl(mode->size, ctx);
-    ccsiv_init(mode, ctx, key_len, key);
+    rc=mode->init(mode, ctx, key_len, key);
+    if (rc) {return rc;}
     rc=mode->set_nonce(ctx, nonce_nbytes, nonce);
     if (rc) {return rc;}
     rc=mode->auth(ctx, adata_nbytes, adata);
@@ -125,14 +125,5 @@ CC_INLINE int ccsiv_one_shot(const struct ccmode_siv *mode,
     ccsiv_ctx_clear(mode->size, ctx);
     return rc;
 }
-
-void ccmode_factory_siv_encrypt(struct ccmode_siv *siv,
-                                const struct ccmode_cbc *cbc,
-                                const struct ccmode_ctr *ctr);
-
-void ccmode_factory_siv_decrypt(struct ccmode_siv *siv,
-                                const struct ccmode_cbc *cbc,
-                                const struct ccmode_ctr *ctr);
-
 
 #endif /* _CORECRYPTO_CCMODE_H_ */
