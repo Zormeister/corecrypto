@@ -12,8 +12,13 @@
 #define _CORECRYPTO_CC_H_
 
 #include <corecrypto/cc_config.h>
+#include <corecrypto/cc_error.h>
 #include <string.h>
 #include <stdint.h>
+
+/* Provide a general purpose macro concat method. */
+#define cc_concat_(a, b) a##b
+#define cc_concat(a, b) cc_concat_(a, b)
 
 /* Manage asserts here because a few functions in header public files do use asserts */
 #define cc_assert(x) assert(x)
@@ -24,6 +29,10 @@
 #else
 #include <assert.h>
 #endif
+
+/* Provide a static assert that can be used to create compile-type failures. */
+#define cc_static_assert(e,m)                                               \
+    ;enum { cc_concat(static_assert_, __COUNTER__) = 1/(int)(!!(e)) }
 
 /* Declare a struct element with a guarenteed alignment of _alignment_.
    The resulting struct can be used to create arrays that are aligned by
@@ -39,32 +48,34 @@ uint8_t b[_alignment_]; \
 /* sizeof of a context declared with cc_ctx_decl */
 #define cc_ctx_sizeof(_type_, _size_) sizeof(_type_[cc_ctx_n(_type_, _size_)])
 
-//- WARNING: The _MSC_VER version of cc_ctx_decl() is not compatible with the way *_decl macros are used in CommonCrypto, AppleKeyStore and SecurityFrameworks
-//  to observe the incompatibilities and errors, use below definition. Corecrypto itself, accepts both deinitions
-//  #define cc_ctx_decl(_type_, _size_, _name_)  _type_ _name_ ## _array[cc_ctx_n(_type_, (_size_))]; _type_ *_name_ = _name_ ## _array
-//- Never use sizeof() operator for the variables declared with cc_ctx_decl(), because it is not be compatible with the _MSC_VER version of cc_ctx_decl().
+/*
+  1. _alloca cannot be removed becasue this header file is compiled with both MSVC++ and with clang.
+  2. The _MSC_VER version of cc_ctx_decl() is not compatible with the way *_decl macros as used in CommonCrypto, AppleKeyStore and SecurityFrameworks. To observe the incompatibilities and errors, use below definition. Corecrypto itself, accepts both deinitions
+      #define cc_ctx_decl(_type_, _size_, _name_)  _type_ _name_ ## _array[cc_ctx_n(_type_, (_size_))]; _type_ *_name_ = _name_ ## _array
+  3. Never use sizeof() operator for the variables declared with cc_ctx_decl(), because it is not be compatible with the _MSC_VER version of cc_ctx_decl().
+ */
 #if defined(_MSC_VER)
- #define UNIQUE_ARRAY(data_type, _var_, total_count) data_type* _var_ = (data_type*)_alloca(sizeof(data_type)*(total_count));
- #define cc_ctx_decl(_type_, _size_, _name_)  UNIQUE_ARRAY(_type_, _name_,cc_ctx_n(_type_, (_size_)))
+#define cc_ctx_decl(_type_, _size_, _name_)  _type_ * _name_ = (_type_ *) _alloca(sizeof(_type_) * cc_ctx_n(_type_, _size_) )
 #else
- #define cc_ctx_decl(_type_, _size_, _name_)  _type_ _name_ [cc_ctx_n(_type_, _size_)]
+#define cc_ctx_decl(_type_, _size_, _name_)  _type_ _name_ [cc_ctx_n(_type_, _size_)]
 #endif
 
 /* bzero is deprecated. memset is the way to go */
 /* FWIW, L4, HEXAGON and ARMCC even with gnu compatibility mode don't have bzero */
 #define cc_zero(_size_,_data_) memset((_data_),0 ,(_size_))
 
-/* cc_clear:
- Set "len" bytes of memory to zero at address "dst".
- cc_clear has been developed so that it won't be optimized out.
- To be used to clear key buffers or sensitive data.
-*/
-CC_NONNULL2
+/*!
+ @brief cc_clear(len, dst) zeroizes array dst and it will not be optimized out.
+ @discussion It is used to clear sensitive data, particularly when the are defined in the stack
+ @param len number of bytes to be cleared in dst
+ @param dst input array
+ */
+CC_NONNULL((2))
 void cc_clear(size_t len, void *dst);
 
 #define cc_copy(_size_, _dst_, _src_) memcpy(_dst_, _src_, _size_)
 
-CC_INLINE CC_NONNULL2 CC_NONNULL3 CC_NONNULL4
+CC_INLINE CC_NONNULL((2, 3, 4))
 void cc_xor(size_t size, void *r, const void *s, const void *t) {
     uint8_t *_r=(uint8_t *)r;
     const uint8_t *_s=(const uint8_t *)s;
@@ -82,7 +93,7 @@ void cc_xor(size_t size, void *r, const void *s, const void *t) {
  @param ptr2 input array
  @return  returns 0 if the num bytes starting at ptr1 are identical to the num bytes starting at ptr2 and 1 if they are different or if num is 0 (empty arrays).
  */
-CC_NONNULL2 CC_NONNULL3
+CC_NONNULL((2, 3))
 int cc_cmp_safe (size_t num, const void * ptr1, const void * ptr2);
 
 /* Exchange S and T of any type.  NOTE: Both and S and T are evaluated

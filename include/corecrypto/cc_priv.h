@@ -53,14 +53,9 @@ The following are not defined yet... define them if needed.
  CC_BSWAP64c : byte swap a 64 bits constant
 
  CC_READ_LE32 : read a 32 bits little endian value
- CC_READ_LE64 : read a 64 bits little endian value
- CC_READ_BE32 : read a 32 bits big endian value
- CC_READ_BE64 : read a 64 bits big endian value
 
  CC_WRITE_LE32 : write a 32 bits little endian value
  CC_WRITE_LE64 : write a 64 bits little endian value
- CC_WRITE_BE32 : write a 32 bits big endian value
- CC_WRITE_BE64 : write a 64 bits big endian value
 
  CC_H2BE64 : convert a 64 bits value between host and big endian order
  CC_H2LE64 : convert a 64 bits value between host and little endian order
@@ -360,6 +355,32 @@ CC_INLINE uint32_t CC_BSWAP(uint32_t x)
 #define CC_H2LE32(x) CC_BSWAP(x)
 #endif
 
+#define	CC_READ_LE32(ptr) \
+( (uint32_t)( \
+((uint32_t)((const uint8_t *)(ptr))[0]) | \
+(((uint32_t)((const uint8_t *)(ptr))[1]) <<  8) | \
+(((uint32_t)((const uint8_t *)(ptr))[2]) << 16) | \
+(((uint32_t)((const uint8_t *)(ptr))[3]) << 24)))
+
+#define	CC_WRITE_LE32(ptr, x) \
+do { \
+((uint8_t *)(ptr))[0] = (uint8_t)( (x)        & 0xFF); \
+((uint8_t *)(ptr))[1] = (uint8_t)(((x) >>  8) & 0xFF); \
+((uint8_t *)(ptr))[2] = (uint8_t)(((x) >> 16) & 0xFF); \
+((uint8_t *)(ptr))[3] = (uint8_t)(((x) >> 24) & 0xFF); \
+} while(0)
+
+#define	CC_WRITE_LE64(ptr, x) \
+do { \
+((uint8_t *)(ptr))[0] = (uint8_t)( (x)        & 0xFF); \
+((uint8_t *)(ptr))[1] = (uint8_t)(((x) >>  8) & 0xFF); \
+((uint8_t *)(ptr))[2] = (uint8_t)(((x) >> 16) & 0xFF); \
+((uint8_t *)(ptr))[3] = (uint8_t)(((x) >> 24) & 0xFF); \
+((uint8_t *)(ptr))[4] = (uint8_t)(((x) >> 32) & 0xFF); \
+((uint8_t *)(ptr))[5] = (uint8_t)(((x) >> 40) & 0xFF); \
+((uint8_t *)(ptr))[6] = (uint8_t)(((x) >> 48) & 0xFF); \
+((uint8_t *)(ptr))[7] = (uint8_t)(((x) >> 56) & 0xFF); \
+} while(0)
 
 /* extract a byte portably */
 #ifdef _MSC_VER
@@ -413,8 +434,8 @@ CC_INLINE uint32_t CC_BSWAP(uint32_t x)
 #define cc_ceiling(a,b)  (((a)+((b)-1))/(b))
 #define CC_BITLEN_TO_BYTELEN(x) cc_ceiling((x), 8)
 
-//cc_abort() is implemented to comply with FIPS 140-2. See radar 19129408
-void cc_abort(const char * msg , ...);
+//cc_try_abort() is implemented to comply with FIPS 140-2. See radar 19129408
+void cc_try_abort(const char * msg , ...);
 
 /*!
  @brief     cc_muxp(s, a, b) is equivalent to z = s ? a : b, but it executes in constant time
@@ -450,6 +471,12 @@ void cc_mux2p(int s, void **r_true, void **r_false, const void *a, const void *b
     r = (~_cond&(a))|(_cond&(b)); \
 }
 
-int cc_is_compiled_with_tu(void);
+/*
+  Unfortunately, since we export this symbol, this declaration needs
+  to be in a public header to satisfy TAPI.
+
+  See fipspost_trace_priv.h for more details.
+*/
+extern const void *fipspost_trace_vtable;
 
 #endif /* _CORECRYPTO_CC_PRIV_H_ */
