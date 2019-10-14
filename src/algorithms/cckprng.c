@@ -2,7 +2,7 @@
 //  Botan  http://botan.randombit.net
 //  License :  https://github.com/randombit/botan/blob/master/doc/license.txt
 
-#include <corecrypto/cckprng.h>
+#include "cckprng.h"
 
 int cckprng_init(cckprng_ctx_t ctx, size_t nbytes, const void *seed) {
 	// Nothing to do here, rdrand cannot be seeded.
