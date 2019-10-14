@@ -6,21 +6,23 @@
 
 extern struct crypto_functions pdcrypto_internal_functions;
 
+static const struct prng_fns cc_kprng_fns = {
+	.init = cckprng_init,
+	.reseed = cckprng_reseed,
+	.addentropy = cckprng_addentropy,
+	.generate = cckprng_generate
+};
+
 kern_return_t cc_kext_start(kmod_info_t * ki, void *d)
 {
 	int ret = register_crypto_functions(&pdcrypto_internal_functions);
 	if (ret == -1) {
 		printf("warning: corecrypto could not be registered. Did another crypto handler beat us to it?\n");
+	} else {
+		register_and_init_prng(&cc_kprng_fns);
+		printf("corecrypto loaded\n");
 	}
 
-	struct prng_fns fns;
-	fns.init = cckprng_init;
-	fns.reseed = cckprng_reseed;
-	fns.addentropy = cckprng_addentropy;
-	fns.generate = cckprng_generate;
-	register_and_init_prng(&fns);
-
-	printf("corecrypto loaded\n");
     return KERN_SUCCESS;
 }
 
