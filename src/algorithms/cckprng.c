@@ -1,7 +1,3 @@
-//  adapted from botan/src/lib/rng/rdrnd_rng/rdrand_rng.cpp
-//  Botan  http://botan.randombit.net
-//  License :  https://github.com/randombit/botan/blob/master/doc/license.txt
-
 #include "cckprng.h"
 #include "yarrow/yarrow.h"
 
