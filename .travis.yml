@@ -1,5 +1,0 @@
-os: osx
-
-script:
-- mkdir -p /tmp/corecrypto.dst
-- xcodebuild -project corecrypto.xcodeproj install DSTROOT=/tmp/corecrypto.dst CODE_SIGN_IDENTITY=""
