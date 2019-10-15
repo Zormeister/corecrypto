@@ -19,7 +19,6 @@ void pdcdigest_fn_dummy(const struct ccdigest_info *di,
                         unsigned long len,
                         const void *data, void *digest);
 
-extern const struct ccdigest_info pdcsha256_di_dummy;
 extern const struct ccdigest_info pdcsha384_di_dummy;
 extern const struct ccdigest_info pdcsha512_di_dummy;
 

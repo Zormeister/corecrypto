@@ -14,6 +14,7 @@ extern const struct ccmode_ecb pdcaes_ecb_encrypt;
 extern const struct ccmode_ecb pdcaes_ecb_decrypt;
 extern const struct ccmode_cbc pdcaes_cbc_encrypt;
 extern const struct ccmode_cbc pdcaes_cbc_decrypt;
+extern const struct ccdigest_info ccsha256_ltc_di;
 
 const struct crypto_functions pdcrypto_internal_functions = {
 	.ccdigest_init_fn = ccdigest_init,
@@ -23,7 +24,7 @@ const struct crypto_functions pdcrypto_internal_functions = {
 
 	.ccdigest_final_fn = pdcdigest_final_fn,
 	.ccdigest_fn = pdcdigest_fn,
-	.ccsha256_di = &pdcsha256_di_dummy,
+	.ccsha256_di = &ccsha256_ltc_di,
 	.ccsha384_di = &pdcsha384_di_dummy,
 	.ccsha512_di = &pdcsha512_di_dummy,
 	.cchmac_init_fn = pdchmac_init_fn_dummy,

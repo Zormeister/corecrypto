@@ -50,6 +50,7 @@
 		1FABCE602355466800F25C08 /* smf.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FABCE5F2355466800F25C08 /* smf.c */; };
 		1FB2F6C41C87B2EC009C0F4C /* cc_kext_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FB2F6C11C87B2E6009C0F4C /* cc_kext_main.c */; };
 		1FB2F6C61C87B42D009C0F4C /* cc_clear.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FB2F6C51C87B42D009C0F4C /* cc_clear.c */; };
+		1FD698A2235624CB001D1030 /* sha256.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1FD698A1235624CB001D1030 /* sha256.cc */; };
 		1FDA24121D98DA16003D41DA /* cc_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA24061D98D841003D41DA /* cc_functions.c */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +137,7 @@
 		1FB2F6C11C87B2E6009C0F4C /* cc_kext_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_kext_main.c; sourceTree = "<group>"; };
 		1FB2F6C21C87B2E6009C0F4C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB2F6C51C87B42D009C0F4C /* cc_clear.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_clear.c; sourceTree = "<group>"; };
+		1FD698A1235624CB001D1030 /* sha256.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sha256.cc; sourceTree = "<group>"; };
 		1FDA24061D98D841003D41DA /* cc_functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_functions.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +200,7 @@
 				1F1D44401F2802BD0043CE92 /* md5_impl.cpp */,
 				1F4D11C81D9CCBA100782B10 /* sha1.c */,
 				1F1D443D1F2802BD0043CE92 /* sha1_impl.cc */,
+				1FD698A1235624CB001D1030 /* sha256.cc */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				1FABCE4F235542CB00F25C08 /* comp.c in Sources */,
 				1FB2F6C41C87B2EC009C0F4C /* cc_kext_main.c in Sources */,
 				1FABCE602355466800F25C08 /* smf.c in Sources */,
+				1FD698A2235624CB001D1030 /* sha256.cc in Sources */,
 				1FB2F6C61C87B42D009C0F4C /* cc_clear.c in Sources */,
 				1F1D444E1F2802D60043CE92 /* sha1.c in Sources */,
 				1FABCE52235542CB00F25C08 /* sha1mod.c in Sources */,

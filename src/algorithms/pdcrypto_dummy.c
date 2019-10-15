@@ -10,33 +10,6 @@
 
 #include <corecrypto/ccsha2.h>
 
-const uint32_t pdcsha256_initial_state[8] = {
-    0x6A09E667UL, // A
-    0xBB67AE85UL, // B
-    0x3C6EF372UL, // C
-    0xA54FF53AUL, // D
-    0x510E527FUL, // E
-    0x9B05688CUL, // F
-    0x1F83D9ABUL, // G
-    0x5BE0CD19UL  // H
-};
-
-static void pdcsha256_compress_dummy(ccdigest_state_t s, unsigned long nblocks, const void *data)
-{
-    printf("%s\n", __func__);
-}
-
-const struct ccdigest_info pdcsha256_di_dummy = {
-    .output_size = CCSHA256_OUTPUT_SIZE,
-    .state_size = CCSHA256_STATE_SIZE,
-    .block_size = CCSHA256_BLOCK_SIZE,
-    .oid_size = ccoid_sha256_len,
-    .oid = (unsigned char *)CC_DIGEST_OID_SHA256,
-    .initial_state = pdcsha256_initial_state,
-    .compress = pdcsha256_compress_dummy,
-    .final = pdcdigest_final_64be
-};
-
 static void pdcsha384_compress_dummy(ccdigest_state_t s, unsigned long nblocks, const void *data)
 {
     printf("%s\n", __func__);
