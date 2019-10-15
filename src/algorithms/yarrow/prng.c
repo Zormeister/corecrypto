@@ -339,8 +339,6 @@ prngOutput(PRNG *p, BYTE *outbuf,UINT outbuflen)
 }
 
 
-extern int gettimeofday(struct timeval *tv, void *tzp);
-
 /* Cause the PRNG to reseed now regardless of entropy pool */
 /* Should this be public? */
 prng_error_status
@@ -398,11 +396,7 @@ prngForceReseed(PRNG *p, LONGLONG ticks)
 
 #if		defined(macintosh) || defined(__APPLE__)
 	#if		defined(TARGET_API_MAC_OSX) || defined(KERNEL_BUILD)
-        #ifdef TARGET_API_MAC_OSX
-            gettimeofday(&tv, NULL);
-        #else
-            microuptime (&tv);
-        #endif
+	    microuptime (&tv);
 	    curTime = (int64_t)tv.tv_sec*1000000LL + (int64_t)tv.tv_usec;
 	} while(curTime < endTime);
 	#else
