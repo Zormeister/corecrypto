@@ -33,9 +33,11 @@ int cckprng_generate(cckprng_ctx_t ctx, size_t nbytes, void *out) {
 		nbytes = CC_MAX(nbytes, 0);
 	}
 
-	prngOutput(ctx->prng, buffer, (UINT)nbytes);
-	ctx->bytes_generated += nbytes;
-	ctx->bytes_since_entropy += nbytes;
+	if (nbytes != 0) {
+		prngOutput(ctx->prng, buffer, (UINT)nbytes);
+		ctx->bytes_generated += nbytes;
+		ctx->bytes_since_entropy += nbytes;
+	}
 
 	return CCKPRNG_OK;
 }
