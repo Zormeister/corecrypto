@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Apple Inc. All rights reserved.
+ * Copyright (c) 2019 Apple Inc. All rights reserved.
  *
  * @APPLE_OSREFERENCE_LICENSE_HEADER_START@
  *
@@ -33,15 +33,42 @@ __BEGIN_DECLS
 
 #include <corecrypto/cckprng.h>
 
-/* kernel prng */
-typedef const struct prng_fns {
-	int (*init)(cckprng_ctx_t ctx, size_t nbytes, const void * seed);
-	int (*reseed)(cckprng_ctx_t ctx, size_t nbytes, const void * seed);
-	int (*addentropy)(cckprng_ctx_t ctx, size_t nbytes, const void * entropy);
-	int (*generate)(cckprng_ctx_t ctx, size_t nbytes, void * out);
-} * prng_fns_t;
+#ifdef XNU_KERNEL_PRIVATE
 
-void register_and_init_prng(prng_fns_t fns);
+#define ENTROPY_BUFFER_BYTE_SIZE 32
+
+#define ENTROPY_BUFFER_SIZE (ENTROPY_BUFFER_BYTE_SIZE / sizeof(uint32_t))
+
+// This mask can be applied to EntropyData.sample_count to get an
+// index suitable for storing the next sample in
+// EntropyData.buffer. Note that ENTROPY_BUFFER_SIZE must be a power
+// of two for the following mask calculation to be valid.
+#define ENTROPY_BUFFER_INDEX_MASK (ENTROPY_BUFFER_SIZE - 1)
+
+typedef struct entropy_data {
+	/*
+	 * TODO: Should sample_count be volatile?  Are we exposed to any races that
+	 * we care about if it is not?
+	 */
+
+	// At 32 bits, this counter can overflow. Since we're primarily
+	// interested in the delta from one read to the next, we don't
+	// worry about this too much.
+	uint32_t sample_count;
+	uint32_t buffer[ENTROPY_BUFFER_SIZE];
+} entropy_data_t;
+
+extern entropy_data_t EntropyData;
+
+/* Trace codes for DBG_SEC_KERNEL: */
+#define ENTROPY_READ(n) SECURITYDBG_CODE(DBG_SEC_KERNEL, n) /* n: 0 .. 3 */
+
+void random_cpu_init(int cpu);
+
+
+#endif /* XNU_KERNEL_PRIVATE */
+
+void register_and_init_prng(struct cckprng_ctx *ctx, const struct cckprng_funcs *funcs);
 
 __END_DECLS
 

@@ -2,14 +2,15 @@
 #include <mach/mach_types.h>
 #include "register_crypto.h"
 #include "prng_random.h"
-#include "../algorithms/cckprng.h"
+#include <corecrypto/cckprng.h>
 
 extern struct crypto_functions pdcrypto_internal_functions;
 
-static const struct prng_fns cc_kprng_fns = {
+static const struct cckprng_funcs cc_kprng_fns = {
 	.init = cckprng_init,
+	.initgen = cckprng_initgen,
 	.reseed = cckprng_reseed,
-	.addentropy = cckprng_addentropy,
+	.refresh = cckprng_refresh,
 	.generate = cckprng_generate
 };
 
@@ -19,7 +20,7 @@ kern_return_t cc_kext_start(kmod_info_t * ki, void *d)
 	if (ret == -1) {
 		printf("warning: corecrypto could not be registered. Did another crypto handler beat us to it?\n");
 	} else {
-		register_and_init_prng(&cc_kprng_fns);
+		register_and_init_prng(NULL, &cc_kprng_fns);
 		printf("corecrypto loaded\n");
 	}
 

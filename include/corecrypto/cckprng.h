@@ -258,6 +258,8 @@ struct cckprng_ctx {
     struct cckprng_diag diag;
 };
 
+#endif
+
 // This collection of function pointers is just a convenience for
 // registering the PRNG with xnu
 struct cckprng_funcs {
@@ -275,8 +277,6 @@ struct cckprng_funcs {
     void (*refresh)(struct cckprng_ctx *ctx);
     void (*generate)(struct cckprng_ctx *ctx, unsigned gen_idx, size_t nbytes, void *out);
 };
-
-#endif
 
 /*
   @function cckprng_init

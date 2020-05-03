@@ -1,27 +1,30 @@
-#include "cckprng.h"
+#include <corecrypto/cckprng.h>
 #include "yarrow/yarrow.h"
 
-int cckprng_init(cckprng_ctx_t ctx, size_t nbytes, const void *seed) {
+void cckprng_init(struct cckprng_ctx *ctx, unsigned max_ngens, size_t entropybuf_nbytes, const void *entropybuf,
+				  const uint32_t *entropybuf_nsamples, size_t seed_nbytes, const void *seed, size_t nonce_nbytes,
+				  const void *nonce) {
 	prngInitialize(&ctx->prng);
 	ctx->bytes_generated = ctx->bytes_since_entropy = 0;
 
-	return cckprng_reseed(ctx, nbytes, seed);
+	cckprng_reseed(ctx, seed_nbytes, seed);
 }
 
-int cckprng_reseed(cckprng_ctx_t ctx, size_t nbytes, const void *seed) {
+void cckprng_initgen(struct cckprng_ctx *ctx, unsigned gen_idx) {
+	// Nothing is needed here.
+}
+
+void cckprng_reseed(struct cckprng_ctx *ctx, size_t nbytes, const void *seed) {
 	prngInput(ctx->prng, (BYTE *)seed, (UINT)nbytes, 0, 0);
 	prngAllowReseed(ctx->prng, 5000);
 	ctx->bytes_since_entropy = 0;
-	return CCKPRNG_OK;
 }
 
-int cckprng_addentropy(cckprng_ctx_t ctx, size_t nbytes, const void *seed) {
-	prngInput(ctx->prng, (BYTE *)seed, (UINT)nbytes, 0, 0);
-	ctx->bytes_since_entropy = 0;
-	return CCKPRNG_OK;
+void cckprng_refresh(struct cckprng_ctx *ctx) {
+	// Nothing is needed here, either.
 }
 
-int cckprng_generate(cckprng_ctx_t ctx, size_t nbytes, void *out) {
+void cckprng_generate(struct cckprng_ctx *ctx, unsigned gen_idx, size_t nbytes, void *out) {
 	BYTE *buffer = (BYTE *)out;
 	while (nbytes > UINT32_MAX) {
 		prngOutput(ctx->prng, buffer, UINT32_MAX);
@@ -38,6 +41,4 @@ int cckprng_generate(cckprng_ctx_t ctx, size_t nbytes, void *out) {
 		ctx->bytes_generated += nbytes;
 		ctx->bytes_since_entropy += nbytes;
 	}
-
-	return CCKPRNG_OK;
 }

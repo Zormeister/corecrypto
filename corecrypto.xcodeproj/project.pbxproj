@@ -29,7 +29,6 @@
 		1F358E7B2354F0370030CA4F /* cc_error.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F358E762354F0370030CA4F /* cc_error.h */; };
 		1F358E7D2354F1570030CA4F /* cckprng.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F358E7C2354F1570030CA4F /* cckprng.c */; };
 		1F6314752354F3DF008CCB89 /* prng_random.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F6314742354F3DF008CCB89 /* prng_random.h */; };
-		1F6314772354F443008CCB89 /* cckprng.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F6314762354F443008CCB89 /* cckprng.h */; };
 		1FABCE4E235542CB00F25C08 /* prng.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FABCE3D235542CB00F25C08 /* prng.h */; };
 		1FABCE4F235542CB00F25C08 /* comp.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FABCE3E235542CB00F25C08 /* comp.c */; };
 		1FABCE50235542CB00F25C08 /* readme-prnguser.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1FABCE3F235542CB00F25C08 /* readme-prnguser.txt */; };
@@ -84,7 +83,6 @@
 		1F4D11C51D9CCA1300782B10 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		1F4D11C81D9CCBA100782B10 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
 		1F6314742354F3DF008CCB89 /* prng_random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prng_random.h; sourceTree = "<group>"; };
-		1F6314762354F443008CCB89 /* cckprng.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cckprng.h; sourceTree = "<group>"; };
 		1F65CFE41F2800C60073759F /* ccmd5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccmd5.h; sourceTree = "<group>"; };
 		1F65CFE51F2800C60073759F /* ccaes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccaes.h; sourceTree = "<group>"; };
 		1F65CFE61F2800C60073759F /* ccdrbg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccdrbg.h; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				1FABCE3C235542CB00F25C08 /* yarrow */,
-				1F6314762354F443008CCB89 /* cckprng.h */,
 				1F358E7C2354F1570030CA4F /* cckprng.c */,
 				1F1D44431F2802BD0043CE92 /* pdcrypto_digest_final.h */,
 				1F1D443E1F2802BD0043CE92 /* pdcrypto_digest_final.c */,
@@ -334,7 +331,6 @@
 				1F358E782354F0370030CA4F /* ccchacha20poly1305.h in Headers */,
 				1F358E7A2354F0370030CA4F /* cc_runtime_config.h in Headers */,
 				1FABCE51235542CB00F25C08 /* yarrow.h in Headers */,
-				1F6314772354F443008CCB89 /* cckprng.h in Headers */,
 				1FABCE59235542CB00F25C08 /* macOnly.h in Headers */,
 				1FABCE5B235542CB00F25C08 /* comp.h in Headers */,
 			);
