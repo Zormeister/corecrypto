@@ -52,6 +52,7 @@
 		1FB2F6C61C87B42D009C0F4C /* cc_clear.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FB2F6C51C87B42D009C0F4C /* cc_clear.c */; };
 		1FD698A2235624CB001D1030 /* sha256.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1FD698A1235624CB001D1030 /* sha256.cc */; };
 		1FDA24121D98DA16003D41DA /* cc_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA24061D98D841003D41DA /* cc_functions.c */; };
+		1FE6C82B245E60E600D738AF /* ccmode_siv_hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FE6C82A245E60E600D738AF /* ccmode_siv_hmac.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +140,7 @@
 		1FB2F6C51C87B42D009C0F4C /* cc_clear.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_clear.c; sourceTree = "<group>"; };
 		1FD698A1235624CB001D1030 /* sha256.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sha256.cc; sourceTree = "<group>"; };
 		1FDA24061D98D841003D41DA /* cc_functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_functions.c; sourceTree = "<group>"; };
+		1FE6C82A245E60E600D738AF /* ccmode_siv_hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccmode_siv_hmac.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,7 @@
 				1F65CFF51F2800C60073759F /* ccpad.h */,
 				1F65CFF41F2800C60073759F /* ccpbkdf2.h */,
 				1F65CFFB1F2800C60073759F /* ccrc4.h */,
+				1FE6C82A245E60E600D738AF /* ccmode_siv_hmac.h */,
 				1F65CFF81F2800C60073759F /* ccrng_system.h */,
 				1F65CFFD1F2800C60073759F /* ccrng.h */,
 				1F65CFEE1F2800C60073759F /* ccrsa.h */,
@@ -313,6 +316,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FE6C82B245E60E600D738AF /* ccmode_siv_hmac.h in Headers */,
 				1FABCE53235542CB00F25C08 /* smf.h in Headers */,
 				1F6314752354F3DF008CCB89 /* prng_random.h in Headers */,
 				1FABCE58235542CB00F25C08 /* WindowsTypesForMac.h in Headers */,
