@@ -14,6 +14,7 @@
 
 #include <corecrypto/cc_priv.h>
 #include <corecrypto/ccdigest.h>
+#include <corecrypto/ccdigest_priv.h>
 #include <corecrypto/ccn.h>
 
 #include <sys/systm.h>
