@@ -55,6 +55,8 @@ const struct crypto_functions pdcrypto_internal_functions = {
 	.ccdes_key_is_weak_fn = pdcdes_key_is_weak_fn_dummy,
 	.ccdes_key_set_odd_parity_fn = pdcdes_key_set_odd_parity_fn_dummy,
 	.ccpad_xts_encrypt_fn = pdcpad_xts_encrypt_fn_dummy,
-	.ccpad_xts_decrypt_fn = pdcpad_xts_decrypt_fn_dummy
+	.ccpad_xts_decrypt_fn = pdcpad_xts_decrypt_fn_dummy,
+
+	.ccrng_fn = ccrng
 };
 
