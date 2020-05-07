@@ -1,4 +1,5 @@
 #include <corecrypto/cckprng.h>
+#include <corecrypto/ccrng.h>
 #include "yarrow/yarrow.h"
 
 void cckprng_init(struct cckprng_ctx *ctx, unsigned max_ngens, size_t entropybuf_nbytes, const void *entropybuf,
@@ -41,4 +42,30 @@ void cckprng_generate(struct cckprng_ctx *ctx, unsigned gen_idx, size_t nbytes, 
 		ctx->bytes_generated += nbytes;
 		ctx->bytes_since_entropy += nbytes;
 	}
+}
+
+// MARK: -
+
+struct ccrng_impl {
+	struct ccrng_state state;
+	struct cckprng_ctx kprng;
+	int initialized;
+};
+
+static int ccrng_generate_impl(struct ccrng_state *rng, size_t outlen, void *out) {
+	struct ccrng_impl *impl = (struct ccrng_impl *)rng;
+	cckprng_generate(&impl->kprng, 0, outlen, out);
+	return 0;
+}
+
+struct ccrng_state *ccrng(int *error) {
+	static struct ccrng_impl ccrng_impl = {0};
+
+	if (!ccrng_impl.initialized) {
+		cckprng_init(&ccrng_impl.kprng, 0, 0, NULL, 0, 0, 0, 0, NULL);
+		ccrng_impl.state.generate = ccrng_generate_impl;
+		ccrng_impl.initialized = 1;
+	}
+
+	return (struct ccrng_state *)&ccrng_impl;
 }
