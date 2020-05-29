@@ -219,3 +219,11 @@ const struct ccdigest_info ccsha512_ltc_di = {
 	.compress = pdcsha512_compress,
 	.final = pdcdigest_final_64be
 };
+
+const struct ccdigest_info *ccsha384_di(void) {
+	return &ccsha384_ltc_di;
+}
+
+const struct ccdigest_info *ccsha512_di(void) {
+	return &ccsha512_ltc_di;
+}

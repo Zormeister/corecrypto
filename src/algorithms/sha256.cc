@@ -188,3 +188,7 @@ const struct ccdigest_info ccsha256_ltc_di = {
 	.compress = pdcsha256_compress,
 	.final = pdcdigest_final_64be
 };
+
+const struct ccdigest_info *ccsha256_di(void) {
+	return &ccsha256_ltc_di;
+}
