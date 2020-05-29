@@ -81,7 +81,7 @@
 #elif	TARGET_API_MAC_CARBON
 	#include <Timer.h>				/* Microseconds */
 	#include <Math64.h>
-#elif	KERNEL_BUILD
+#elif	KERNEL
     #include <sys/time.h>
 #else
 	#error Unknown TARGET_API
@@ -93,6 +93,16 @@
 #if		MUTEX_ENABLE
 static HANDLE Statmutex = NULL;
 static DWORD mutexCreatorId = 0;
+#endif
+
+#if !KERNEL
+#include <stdlib.h>
+
+#define mmInit() // nothing
+#define mmMalloc(size) malloc(size)
+#define mmFree(ptr) free(ptr)
+#define mmGetPtr(ptr) (ptr)
+#define mmReturnPtr(ptr) // nothing
 #endif
 
 #if 0
