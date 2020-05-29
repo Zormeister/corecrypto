@@ -810,6 +810,7 @@
 					"-lsystem_c",
 					"-lsystem_malloc",
 					"-ldyld",
+					"-lsystem_platform",
 				);
 				PRODUCT_NAME = corecrypto;
 				SDKROOT = macosx;
@@ -857,6 +858,7 @@
 					"-lsystem_c",
 					"-lsystem_malloc",
 					"-ldyld",
+					"-lsystem_platform",
 				);
 				PRODUCT_NAME = corecrypto;
 				SDKROOT = macosx;
