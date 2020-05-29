@@ -8,65 +8,6 @@
  * to print what is used by xnu during boot
  */
 
-#include <corecrypto/ccsha2.h>
-
-static void pdcsha384_compress_dummy(ccdigest_state_t s, unsigned long nblocks, const void *data)
-{
-    printf("%s\n", __func__);
-}
-
-const uint64_t pdcsha384_initial_state[8] = {
-    0xCBBB9D5DC1059ED8, // A
-    0x629A292A367CD507, // B
-    0x9159015A3070DD17, // C
-    0x152FECD8F70E5939, // D
-    0x67332667FFC00B31, // E
-    0x8EB44A8768581511, // F
-    0xDB0C2E0D64F98FA7, // G
-    0x47B5481DBEFA4FA4  // H
-};
-
-const struct ccdigest_info pdcsha384_di_dummy = {
-    .output_size = CCSHA384_OUTPUT_SIZE,
-    .state_size = CCSHA512_STATE_SIZE,
-    .block_size = CCSHA512_BLOCK_SIZE,
-    .oid_size = ccoid_sha384_len,
-    .oid = (unsigned char *)CC_DIGEST_OID_SHA384,
-    .initial_state = pdcsha384_initial_state,
-    .compress = pdcsha384_compress_dummy,
-    .final = pdcdigest_final_64be
-};
-
-
-//const struct ccdigest_info pdcsha512_di_dummy;
-
-static void pdcsha512_compress_dummy(ccdigest_state_t s, unsigned long nblocks, const void *data)
-{
-    printf("%s\n", __func__);
-}
-
-const uint64_t pdcsha512_initial_state[8] = {
-    0x6A09E667F3BCC908, // A
-    0xBB67AE8584CAA73B, // B
-    0x3C6EF372FE94F82B, // C
-    0xA54FF53A5F1D36F1, // D
-    0x510E527FADE682D1, // E
-    0x9B05688C2B3E6C1F, // F
-    0x1F83D9ABFB41BD6B, // G
-    0x5BE0CD19137E2179  // H
-};
-
-const struct ccdigest_info pdcsha512_di_dummy = {
-    .output_size = CCSHA512_OUTPUT_SIZE,
-    .state_size = CCSHA512_STATE_SIZE,
-    .block_size = CCSHA512_BLOCK_SIZE,
-    .oid_size = ccoid_sha512_len,
-    .oid = (unsigned char *)CC_DIGEST_OID_SHA512,
-    .initial_state = pdcsha512_initial_state,
-    .compress = pdcsha512_compress_dummy,
-    .final = pdcdigest_final_64be
-};
-
 void pdchmac_init_fn_dummy(const struct ccdigest_info *di,
                            cchmac_ctx_t ctx,
                            unsigned long key_len, const void *key)
