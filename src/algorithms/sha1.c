@@ -43,3 +43,7 @@ const struct ccdigest_info ccsha1_eay_di = {
 	.compress = pdcsha1_compress,
 	.final = pdcdigest_final_64be
 };
+
+const struct ccdigest_info *ccsha1_di(void) {
+	return &ccsha1_ltc_di;
+}
