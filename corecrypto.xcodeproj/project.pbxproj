@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F16A0101C87BFE10071A80A /* cc_cmp_safe.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F16A00F1C87BFE10071A80A /* cc_cmp_safe.c */; };
 		1F16A0121C87C1200071A80A /* cc_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F16A0111C87C1200071A80A /* cc_debug.c */; };
+		1F17F83624809A700080E3C3 /* sha512.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F17F83424809A700080E3C3 /* sha512.cc */; };
 		1F1D44491F2802D60043CE92 /* pdcrypto_digest_final.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D443E1F2802BD0043CE92 /* pdcrypto_digest_final.c */; };
 		1F1D444A1F2802D60043CE92 /* pdcrypto_digest_init.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D44411F2802BD0043CE92 /* pdcrypto_digest_init.c */; };
 		1F1D444B1F2802D60043CE92 /* pdcrypto_digest_update.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D44421F2802BD0043CE92 /* pdcrypto_digest_update.c */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		1F16A00F1C87BFE10071A80A /* cc_cmp_safe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_cmp_safe.c; sourceTree = "<group>"; };
 		1F16A0111C87C1200071A80A /* cc_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_debug.c; sourceTree = "<group>"; };
+		1F17F83424809A700080E3C3 /* sha512.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sha512.cc; sourceTree = "<group>"; };
 		1F1D443C1F2802BD0043CE92 /* pdcrypto_digest_update.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pdcrypto_digest_update.h; sourceTree = "<group>"; };
 		1F1D443D1F2802BD0043CE92 /* sha1_impl.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sha1_impl.cc; sourceTree = "<group>"; };
 		1F1D443E1F2802BD0043CE92 /* pdcrypto_digest_final.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pdcrypto_digest_final.c; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				1F4D11C81D9CCBA100782B10 /* sha1.c */,
 				1F1D443D1F2802BD0043CE92 /* sha1_impl.cc */,
 				1FD698A1235624CB001D1030 /* sha256.cc */,
+				1F17F83424809A700080E3C3 /* sha512.cc */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				1F1D445B1F280B5F0043CE92 /* aes_ecb.c in Sources */,
 				1F1D44511F2807CD0043CE92 /* cc_digest.c in Sources */,
 				1F16A0121C87C1200071A80A /* cc_debug.c in Sources */,
+				1F17F83624809A700080E3C3 /* sha512.cc in Sources */,
 				1F1D444D1F2802D60043CE92 /* md5_impl.cpp in Sources */,
 				1FDA24121D98DA16003D41DA /* cc_functions.c in Sources */,
 				1FABCE4F235542CB00F25C08 /* comp.c in Sources */,
