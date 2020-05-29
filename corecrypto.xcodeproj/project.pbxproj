@@ -81,7 +81,7 @@
 		1F358E752354F0370030CA4F /* cc_runtime_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_runtime_config.h; sourceTree = "<group>"; };
 		1F358E762354F0370030CA4F /* cc_error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc_error.h; sourceTree = "<group>"; };
 		1F358E7C2354F1570030CA4F /* cckprng.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cckprng.c; sourceTree = "<group>"; };
-		1F377BA6213DF17100D1C6CA /* corecrypto.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = corecrypto.xcconfig; sourceTree = "<group>"; };
+		1F377BA6213DF17100D1C6CA /* corecrypto_kernel.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = corecrypto_kernel.xcconfig; sourceTree = "<group>"; };
 		1F4D11C51D9CCA1300782B10 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		1F4D11C81D9CCBA100782B10 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
 		1F6314742354F3DF008CCB89 /* prng_random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prng_random.h; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 		1F377BA5213DF15B00D1C6CA /* xcscripts */ = {
 			isa = PBXGroup;
 			children = (
-				1F377BA6213DF17100D1C6CA /* corecrypto.xcconfig */,
+				1F377BA6213DF17100D1C6CA /* corecrypto_kernel.xcconfig */,
 			);
 			path = xcscripts;
 			sourceTree = "<group>";
@@ -518,7 +518,7 @@
 		};
 		1FB2F6AF1C87B254009C0F4C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F377BA6213DF17100D1C6CA /* corecrypto.xcconfig */;
+			baseConfigurationReference = 1F377BA6213DF17100D1C6CA /* corecrypto_kernel.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -572,7 +572,7 @@
 		};
 		1FB2F6B01C87B254009C0F4C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F377BA6213DF17100D1C6CA /* corecrypto.xcconfig */;
+			baseConfigurationReference = 1F377BA6213DF17100D1C6CA /* corecrypto_kernel.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
