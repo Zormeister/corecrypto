@@ -79,6 +79,16 @@
 		1FE6C82B245E60E600D738AF /* ccmode_siv_hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FE6C82A245E60E600D738AF /* ccmode_siv_hmac.h */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1F615F292480A2A30021D82E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F31AE851C8535470091C31B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F17F83B24809D3C0080E3C3;
+			remoteInfo = corecrypto_static;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1F16A00F1C87BFE10071A80A /* cc_cmp_safe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_cmp_safe.c; sourceTree = "<group>"; };
 		1F16A0111C87C1200071A80A /* cc_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cc_debug.c; sourceTree = "<group>"; };
@@ -447,6 +457,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1F615F2A2480A2A30021D82E /* PBXTargetDependency */,
 			);
 			name = corecrypto_user;
 			productName = corecrypto_user;
@@ -594,6 +605,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1F615F2A2480A2A30021D82E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F17F83B24809D3C0080E3C3 /* corecrypto_static */;
+			targetProxy = 1F615F292480A2A30021D82E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1F17F83E24809D3C0080E3C3 /* Debug */ = {
