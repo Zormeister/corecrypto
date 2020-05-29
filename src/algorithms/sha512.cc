@@ -11,9 +11,11 @@
 //
 
 #include <sys/types.h>
+__BEGIN_DECLS
 #include <corecrypto/ccdigest.h>
 #include <corecrypto/ccsha2.h>
 #include "pdcrypto_digest_final.h"
+__END_DECLS
 
 template<size_t ROT, typename T>
 inline constexpr T rotl(T input)
