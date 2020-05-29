@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <corecrypto/cc.h>
 #include <corecrypto/cc_debug.h>
 

@@ -1,6 +1,6 @@
+#include <stddef.h>
 #include <corecrypto/cc.h>
 #include <corecrypto/ccdigest.h>
-#include <kern/kext_alloc.h>
 #include "cc_abort.h"
 
 void pdcdigest_fn(const struct ccdigest_info *di, unsigned long len, const void *data, void *digest) {

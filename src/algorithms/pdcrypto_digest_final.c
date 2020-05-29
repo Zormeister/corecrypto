@@ -11,6 +11,7 @@
 //  xnu https://opensource.apple.com/source/xnu/xnu-2782.40.9
 //  License https://opensource.apple.com/source/xnu/xnu-2782.40.9/APPLE_LICENSE
 
+#include <stddef.h>
 #include "pdcrypto_digest_final.h"
 
 #include <corecrypto/ccdigest_priv.h>

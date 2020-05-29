@@ -1,6 +1,10 @@
 #include "pdcrypto_dummy.h"
 
+#if KERNEL
 #include <sys/systm.h>
+#else
+#include <stdio.h>
+#endif
 
 #include "pdcrypto_digest_final.h"
 

@@ -12,8 +12,13 @@
 #include <sys/types.h>
 #include <corecrypto/ccdigest.h>
 #include <corecrypto/ccsha2.h>
-#include <sys/systm.h>
 #include "pdcrypto_digest_final.h"
+#if KERNEL
+#include <libkern/crypto/md5.h>
+#include <sys/systm.h>
+#else
+#include <stdlib.h>
+#endif
 
 template<size_t ROT, typename T>
 inline constexpr T rotl(T input)

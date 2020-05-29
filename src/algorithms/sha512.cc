@@ -13,7 +13,6 @@
 #include <sys/types.h>
 #include <corecrypto/ccdigest.h>
 #include <corecrypto/ccsha2.h>
-#include <sys/systm.h>
 #include "pdcrypto_digest_final.h"
 
 template<size_t ROT, typename T>

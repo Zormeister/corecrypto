@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <corecrypto/cc.h>
 
 void cc_clear(size_t len, void *dst) {

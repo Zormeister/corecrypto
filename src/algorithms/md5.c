@@ -6,6 +6,7 @@
 //  Copyright (c) 2016 rafirafi. All rights reserved.
 //
 
+#include <stddef.h>
 #include <corecrypto/ccmd5.h>
 
 #include "pdcrypto_digest_final.h"

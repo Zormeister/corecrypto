@@ -1,8 +1,11 @@
 //  Created by rafirafi on 3/17/16.
 //  Copyright (c) 2016 rafirafi. All rights reserved.
 
+#if KERNEL
 #include <sys/systm.h>
+#endif
 
+#include <stddef.h>
 #include <corecrypto/ccmode.h>
 #include <corecrypto/ccaes.h>
 #include <corecrypto/ccn.h>

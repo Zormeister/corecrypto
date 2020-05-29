@@ -9,9 +9,13 @@
 //  Botan  http://botan.randombit.net
 //  License :  https://github.com/randombit/botan/blob/master/doc/license.txt
 
-#include <libkern/crypto/md5.h>
 #include <corecrypto/ccdigest.h>
+#if KERNEL
+#include <libkern/crypto/md5.h>
 #include <sys/systm.h>
+#else
+#include <stdlib.h>
+#endif
 
 /**
 * Load a little-endian word

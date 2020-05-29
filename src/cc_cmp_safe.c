@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <corecrypto/cc.h>
 
 int cc_cmp_safe(size_t num, const void *ptr1, const void *ptr2) {

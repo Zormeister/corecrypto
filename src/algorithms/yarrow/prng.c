@@ -369,7 +369,7 @@ prngForceReseed(PRNG *p, LONGLONG ticks)
 	#if		defined(macintosh) || defined(__APPLE__)
 		#if		(defined(TARGET_API_MAC_OSX) || defined(KERNEL_BUILD))
 			/* note we can't loop for more than a million microseconds */
-            #ifdef KERNEL_BUILD
+            #ifdef KERNEL
                 microuptime (&tv);
             #else
                 gettimeofday(&tv, NULL);
@@ -395,8 +395,12 @@ prngForceReseed(PRNG *p, LONGLONG ticks)
 		YSHA1Update(&p->pool,buf,64);
 
 #if		defined(macintosh) || defined(__APPLE__)
-	#if		defined(TARGET_API_MAC_OSX) || defined(KERNEL_BUILD)
-	    microuptime (&tv);
+	#if		defined(TARGET_API_MAC_OSX)
+		#ifdef KERNEL
+			microuptime (&tv);
+		#else
+			gettimeofday(&tv, NULL);
+		#endif
 	    curTime = (int64_t)tv.tv_sec*1000000LL + (int64_t)tv.tv_usec;
 	} while(curTime < endTime);
 	#else

@@ -10,9 +10,13 @@
 //  License :  https://github.com/randombit/botan/blob/master/doc/license.txt
 
 #include <sys/types.h>
-#include <libkern/crypto/sha1.h>
 #include <corecrypto/ccdigest.h>
+#if KERNEL
+#include <libkern/crypto/sha1.h>
 #include <sys/systm.h>
+#else
+#include <stdlib.h>
+#endif
 
 /**
 * Load a big-endian word

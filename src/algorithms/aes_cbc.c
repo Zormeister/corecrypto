@@ -4,8 +4,11 @@
 
 // needed by xnu/osfmk/vm/vm_compressor_backing_store.c
 
+#if KERNEL
 #include <sys/systm.h>
+#endif
 
+#include <stddef.h>
 #include <corecrypto/ccmode.h>
 #include <corecrypto/ccaes.h>
 #include <corecrypto/ccn.h>

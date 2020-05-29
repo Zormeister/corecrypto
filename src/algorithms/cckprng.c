@@ -1,6 +1,10 @@
+#include <stddef.h>
 #include <corecrypto/cckprng.h>
 #include <corecrypto/ccrng.h>
 #include "yarrow/yarrow.h"
+#if !KERNEL
+#include <stdint.h>
+#endif
 
 void cckprng_init(struct cckprng_ctx *ctx, unsigned max_ngens, size_t entropybuf_nbytes, const void *entropybuf,
 				  const uint32_t *entropybuf_nsamples, size_t seed_nbytes, const void *seed, size_t nonce_nbytes,
