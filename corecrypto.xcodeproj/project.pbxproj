@@ -51,6 +51,8 @@
 		1F358E7A2354F0370030CA4F /* cc_runtime_config.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F358E752354F0370030CA4F /* cc_runtime_config.h */; };
 		1F358E7B2354F0370030CA4F /* cc_error.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F358E762354F0370030CA4F /* cc_error.h */; };
 		1F358E7D2354F1570030CA4F /* cckprng.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F358E7C2354F1570030CA4F /* cckprng.c */; };
+		1F615F242480A0C10021D82E /* libcorecrypto_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F17F83C24809D3C0080E3C3 /* libcorecrypto_static.a */; };
+		1F615F282480A1110021D82E /* dummy.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F615F262480A10C0021D82E /* dummy.c */; };
 		1F6314752354F3DF008CCB89 /* prng_random.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F6314742354F3DF008CCB89 /* prng_random.h */; };
 		1FABCE4E235542CB00F25C08 /* prng.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FABCE3D235542CB00F25C08 /* prng.h */; };
 		1FABCE4F235542CB00F25C08 /* comp.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FABCE3E235542CB00F25C08 /* comp.c */; };
@@ -108,6 +110,8 @@
 		1F377BA6213DF17100D1C6CA /* corecrypto_kernel.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = corecrypto_kernel.xcconfig; sourceTree = "<group>"; };
 		1F4D11C51D9CCA1300782B10 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		1F4D11C81D9CCBA100782B10 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		1F615F1F2480A0AE0021D82E /* libcorecrypto.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libcorecrypto.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F615F262480A10C0021D82E /* dummy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dummy.c; sourceTree = "<group>"; };
 		1F6314742354F3DF008CCB89 /* prng_random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prng_random.h; sourceTree = "<group>"; };
 		1F65CFE41F2800C60073759F /* ccmd5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccmd5.h; sourceTree = "<group>"; };
 		1F65CFE51F2800C60073759F /* ccaes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccaes.h; sourceTree = "<group>"; };
@@ -175,6 +179,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F615F1D2480A0AE0021D82E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F615F242480A0C10021D82E /* libcorecrypto_static.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1FB2F6A61C87B253009C0F4C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,6 +203,7 @@
 				1F65CFE21F2800A20073759F /* include */,
 				1FB2F6BF1C87B2BA009C0F4C /* src */,
 				1F377BA5213DF15B00D1C6CA /* xcscripts */,
+				1F615F232480A0C10021D82E /* Frameworks */,
 				1F31AEA41C8535B30091C31B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -200,6 +213,7 @@
 			children = (
 				1FB2F6AA1C87B253009C0F4C /* corecrypto.kext */,
 				1F17F83C24809D3C0080E3C3 /* libcorecrypto_static.a */,
+				1F615F1F2480A0AE0021D82E /* libcorecrypto.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,6 +252,21 @@
 				1F17F83424809A700080E3C3 /* sha512.cc */,
 			);
 			path = algorithms;
+			sourceTree = "<group>";
+		};
+		1F615F232480A0C10021D82E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F615F252480A1020021D82E /* user */ = {
+			isa = PBXGroup;
+			children = (
+				1F615F262480A10C0021D82E /* dummy.c */,
+			);
+			path = user;
 			sourceTree = "<group>";
 		};
 		1F65CFE21F2800A20073759F /* include */ = {
@@ -321,6 +350,7 @@
 			children = (
 				1F4D11C41D9CC9FF00782B10 /* algorithms */,
 				1FB2F6C01C87B2C6009C0F4C /* kext */,
+				1F615F252480A1020021D82E /* user */,
 				1FB2F6C51C87B42D009C0F4C /* cc_clear.c */,
 				1F16A00F1C87BFE10071A80A /* cc_cmp_safe.c */,
 				1F16A0111C87C1200071A80A /* cc_debug.c */,
@@ -346,6 +376,13 @@
 
 /* Begin PBXHeadersBuildPhase section */
 		1F17F83824809D3C0080E3C3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F615F1B2480A0AE0021D82E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -399,6 +436,23 @@
 			productReference = 1F17F83C24809D3C0080E3C3 /* libcorecrypto_static.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		1F615F1E2480A0AE0021D82E /* corecrypto_user */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F615F202480A0AE0021D82E /* Build configuration list for PBXNativeTarget "corecrypto_user" */;
+			buildPhases = (
+				1F615F1B2480A0AE0021D82E /* Headers */,
+				1F615F1C2480A0AE0021D82E /* Sources */,
+				1F615F1D2480A0AE0021D82E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = corecrypto_user;
+			productName = corecrypto_user;
+			productReference = 1F615F1F2480A0AE0021D82E /* libcorecrypto.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		1FB2F6A91C87B253009C0F4C /* corecrypto_kernel */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FB2F6BC1C87B254009C0F4C /* Build configuration list for PBXNativeTarget "corecrypto_kernel" */;
@@ -429,6 +483,9 @@
 					1F17F83B24809D3C0080E3C3 = {
 						CreatedOnToolsVersion = 11.5;
 					};
+					1F615F1E2480A0AE0021D82E = {
+						CreatedOnToolsVersion = 11.5;
+					};
 					1FB2F6A91C87B253009C0F4C = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 3P242C9ES5;
@@ -450,6 +507,7 @@
 			targets = (
 				1FB2F6A91C87B253009C0F4C /* corecrypto_kernel */,
 				1F17F83B24809D3C0080E3C3 /* corecrypto_static */,
+				1F615F1E2480A0AE0021D82E /* corecrypto_user */,
 			);
 		};
 /* End PBXProject section */
@@ -492,6 +550,14 @@
 				1F17F84124809D690080E3C3 /* cc_cmp_safe.c in Sources */,
 				1F17F84224809D690080E3C3 /* cc_debug.c in Sources */,
 				1F17F84324809D690080E3C3 /* cc_digest.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F615F1C2480A0AE0021D82E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F615F282480A1110021D82E /* dummy.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,7 +630,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -597,7 +662,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -678,6 +742,105 @@
 					"$(HEADER_SEARCH_PATHS)",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
+			};
+			name = Release;
+		};
+		1F615F212480A0AE0021D82E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3P242C9ES5;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INSTALL_PATH = /usr/lib/system;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-all_load",
+					"-nostdlib",
+					"-umbrella",
+					System,
+					"-L$(SDKROOT)/usr/lib/system",
+					"-lsystem_pthread",
+					"-lsystem_c",
+					"-lsystem_malloc",
+					"-ldyld",
+				);
+				PRODUCT_NAME = corecrypto;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1F615F222480A0AE0021D82E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3P242C9ES5;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INSTALL_PATH = /usr/lib/system;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-all_load",
+					"-nostdlib",
+					"-umbrella",
+					System,
+					"-L$(SDKROOT)/usr/lib/system",
+					"-lsystem_pthread",
+					"-lsystem_c",
+					"-lsystem_malloc",
+					"-ldyld",
+				);
+				PRODUCT_NAME = corecrypto;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -799,6 +962,15 @@
 			buildConfigurations = (
 				1F31AE891C8535470091C31B /* Debug */,
 				1F31AE8A1C8535470091C31B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F615F202480A0AE0021D82E /* Build configuration list for PBXNativeTarget "corecrypto_user" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F615F212480A0AE0021D82E /* Debug */,
+				1F615F222480A0AE0021D82E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
