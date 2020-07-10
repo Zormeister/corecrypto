@@ -51,24 +51,23 @@ void cckprng_generate(struct cckprng_ctx *ctx, unsigned gen_idx, size_t nbytes, 
 // MARK: -
 
 struct ccrng_impl {
-	struct ccrng_state state;
-	struct cckprng_ctx kprng;
-	int initialized;
+	CCRNG_STATE_COMMON;
+	PrngRef prng;
 };
 
 static int ccrng_generate_impl(struct ccrng_state *rng, size_t outlen, void *out) {
 	struct ccrng_impl *impl = (struct ccrng_impl *)rng;
-	cckprng_generate(&impl->kprng, 0, outlen, out);
+	prngOutput(impl->prng, out, (UINT)outlen);
 	return 0;
 }
 
 struct ccrng_state *ccrng(int *error) {
-	static struct ccrng_impl ccrng_impl = {0};
+	static struct ccrng_impl ccrng_impl = { ccrng_generate_impl, NULL };
+	static bool initialized = false;
 
-	if (!ccrng_impl.initialized) {
-		cckprng_init(&ccrng_impl.kprng, 0, 0, NULL, 0, 0, 0, 0, NULL);
-		ccrng_impl.state.generate = ccrng_generate_impl;
-		ccrng_impl.initialized = 1;
+	if (!initialized) {
+		prngInitialize(&ccrng_impl.prng);
+		initialized = true;
 	}
 
 	return (struct ccrng_state *)&ccrng_impl;
