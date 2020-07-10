@@ -11,9 +11,11 @@
 //
 
 #include <sys/types.h>
+__BEGIN_DECLS
 #include <corecrypto/ccdigest.h>
 #include <corecrypto/ccsha2.h>
 #include "pdcrypto_digest_final.h"
+__END_DECLS
 
 template<size_t ROT, typename T>
 inline constexpr T rotl(T input)
@@ -219,3 +221,11 @@ const struct ccdigest_info ccsha512_ltc_di = {
 	.compress = pdcsha512_compress,
 	.final = pdcdigest_final_64be
 };
+
+const struct ccdigest_info *ccsha384_di(void) {
+	return &ccsha384_ltc_di;
+}
+
+const struct ccdigest_info *ccsha512_di(void) {
+	return &ccsha512_ltc_di;
+}
