@@ -995,7 +995,11 @@
 				PRODUCT_NAME = corecrypto;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
-				WARNING_CFLAGS = "-Wno-ignored-attributes";
+				WARNING_CFLAGS = (
+					"-Wno-ignored-attributes",
+					"-Wno-quoted-include-in-framework-header",
+					"-Wno-vla",
+				);
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Debug;
@@ -1041,7 +1045,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.kec.corecrypto;
 				PRODUCT_NAME = corecrypto;
 				SDKROOT = macosx;
-				WARNING_CFLAGS = "-Wno-ignored-attributes";
+				WARNING_CFLAGS = (
+					"-Wno-ignored-attributes",
+					"-Wno-quoted-include-in-framework-header",
+					"-Wno-vla",
+				);
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
