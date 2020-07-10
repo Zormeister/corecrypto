@@ -92,7 +92,6 @@
 		1F6314752354F3DF008CCB89 /* prng_random.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F6314742354F3DF008CCB89 /* prng_random.h */; };
 		1FABCE4E235542CB00F25C08 /* prng.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FABCE3D235542CB00F25C08 /* prng.h */; };
 		1FABCE4F235542CB00F25C08 /* comp.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FABCE3E235542CB00F25C08 /* comp.c */; };
-		1FABCE50235542CB00F25C08 /* readme-prnguser.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1FABCE3F235542CB00F25C08 /* readme-prnguser.txt */; };
 		1FABCE51235542CB00F25C08 /* yarrow.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FABCE40235542CB00F25C08 /* yarrow.h */; };
 		1FABCE52235542CB00F25C08 /* sha1mod.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FABCE41235542CB00F25C08 /* sha1mod.c */; };
 		1FABCE53235542CB00F25C08 /* smf.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FABCE42235542CB00F25C08 /* smf.h */; };
@@ -600,7 +599,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FABCE50235542CB00F25C08 /* readme-prnguser.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
