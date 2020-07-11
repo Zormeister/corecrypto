@@ -884,6 +884,7 @@
 					"-lsystem_c",
 					"-lsystem_malloc",
 					"-ldyld",
+					"-lsystem_platform",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/corecrypto;
 				PRODUCT_NAME = corecrypto;
@@ -933,6 +934,7 @@
 					"-lsystem_c",
 					"-lsystem_malloc",
 					"-ldyld",
+					"-lsystem_platform",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/corecrypto;
 				PRODUCT_NAME = corecrypto;
