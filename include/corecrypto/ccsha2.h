@@ -20,6 +20,27 @@ const struct ccdigest_info *ccsha384_di(void);
 const struct ccdigest_info *ccsha512_di(void);
 
 /* TODO: Placeholders */
+
+/*
+ * RESEARCH SOURCES:
+ *  - https://www.rfc-editor.org/rfc/rfc5754
+ *  - https://www.ncbi.nlm.nih.gov/ieb/ToolBox/CPP_DOC/doxyhtml/oid_8h_source.html
+ */
+
+/*
+ * ZORMEISTER: Breaking down the OIDs
+ *
+ * 06 09 - This is [PLACEHOLDER] - I don't actually *know* yet.
+ * 60 - {joint-iso-itu-t(2) country(16)}
+ * 86 48 - {us(840)}
+ * 01 - {organization(1)}
+ * 65 - {gov(101)}
+ * 03 - {csor(3)}
+ * 04 - {nistAlgorithm(4)}
+ * 02 - {hashalgs(2)}
+ * 0X - Numbers as seen down in the OIDs
+ */
+
 #define ccoid_sha224 ((unsigned char *)"\x06\x09\x60\x86\x48\x01\x65\x03\x04\x02\x04")
 #define ccoid_sha224_len 11
 
