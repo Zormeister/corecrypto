@@ -118,6 +118,15 @@
 		F001367D2D3F736400349FD5 /* pdckeccak.h in Headers */ = {isa = PBXBuildFile; fileRef = F00136782D3F736400349FD5 /* pdckeccak.h */; };
 		F001367E2D3F736400349FD5 /* pdckeccak.c in Sources */ = {isa = PBXBuildFile; fileRef = F00136792D3F736400349FD5 /* pdckeccak.c */; };
 		F001367F2D3F736400349FD5 /* pdckeccak.h in Headers */ = {isa = PBXBuildFile; fileRef = F00136782D3F736400349FD5 /* pdckeccak.h */; };
+		F00136872D4059EC00349FD5 /* pdcxof.c in Sources */ = {isa = PBXBuildFile; fileRef = F00136862D4059EC00349FD5 /* pdcxof.c */; };
+		F00136882D4059EC00349FD5 /* pdcxof.h in Headers */ = {isa = PBXBuildFile; fileRef = F00136852D4059EC00349FD5 /* pdcxof.h */; };
+		F00136892D4059EC00349FD5 /* pdcxof.c in Sources */ = {isa = PBXBuildFile; fileRef = F00136862D4059EC00349FD5 /* pdcxof.c */; };
+		F001368A2D4059EC00349FD5 /* pdcxof.h in Headers */ = {isa = PBXBuildFile; fileRef = F00136852D4059EC00349FD5 /* pdcxof.h */; };
+		F001368B2D4059EC00349FD5 /* pdcxof.c in Sources */ = {isa = PBXBuildFile; fileRef = F00136862D4059EC00349FD5 /* pdcxof.c */; };
+		F001368C2D4059EC00349FD5 /* pdcxof.h in Headers */ = {isa = PBXBuildFile; fileRef = F00136852D4059EC00349FD5 /* pdcxof.h */; };
+		F00D098E2D40B35600349FD5 /* ccwrap.h in Headers */ = {isa = PBXBuildFile; fileRef = F00D098D2D40B35600349FD5 /* ccwrap.h */; };
+		F00D098F2D40B35600349FD5 /* ccwrap.h in Headers */ = {isa = PBXBuildFile; fileRef = F00D098D2D40B35600349FD5 /* ccwrap.h */; };
+		F00D09902D40B35600349FD5 /* ccwrap.h in Headers */ = {isa = PBXBuildFile; fileRef = F00D098D2D40B35600349FD5 /* ccwrap.h */; };
 		F0CA56D12CF9166000521F17 /* ccsha3.h in Headers */ = {isa = PBXBuildFile; fileRef = F0CA56D02CF9165900521F17 /* ccsha3.h */; };
 		F0CA56D32CF9892500521F17 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = F0CA56D22CF9891F00521F17 /* sha3.c */; };
 		F0CA56D42CF9892500521F17 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = F0CA56D22CF9891F00521F17 /* sha3.c */; };
@@ -225,6 +234,10 @@
 		1FE6C82A245E60E600D738AF /* ccmode_siv_hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccmode_siv_hmac.h; sourceTree = "<group>"; };
 		F00136782D3F736400349FD5 /* pdckeccak.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pdckeccak.h; sourceTree = "<group>"; };
 		F00136792D3F736400349FD5 /* pdckeccak.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pdckeccak.c; sourceTree = "<group>"; };
+		F00136852D4059EC00349FD5 /* pdcxof.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pdcxof.h; sourceTree = "<group>"; };
+		F00136862D4059EC00349FD5 /* pdcxof.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pdcxof.c; sourceTree = "<group>"; };
+		F001368F2D405CB700349FD5 /* DARWIN19.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DARWIN19.md; sourceTree = "<group>"; };
+		F00D098D2D40B35600349FD5 /* ccwrap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccwrap.h; sourceTree = "<group>"; };
 		F0CA56D02CF9165900521F17 /* ccsha3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccsha3.h; sourceTree = "<group>"; };
 		F0CA56D22CF9891F00521F17 /* sha3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sha3.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -258,6 +271,7 @@
 		1F31AE841C8535470091C31B = {
 			isa = PBXGroup;
 			children = (
+				F001368F2D405CB700349FD5 /* DARWIN19.md */,
 				1F65CFE21F2800A20073759F /* include */,
 				1FB2F6BF1C87B2BA009C0F4C /* src */,
 				1F377BA5213DF15B00D1C6CA /* xcscripts */,
@@ -347,6 +361,7 @@
 				1F65CFF11F2800C60073759F /* ccsha2.h */,
 				F0CA56D02CF9165900521F17 /* ccsha3.h */,
 				1F65CFEF1F2800C60073759F /* cczp.h */,
+				F00D098D2D40B35600349FD5 /* ccwrap.h */,
 				1F358E742354F0370030CA4F /* fipspost_trace.h */,
 			);
 			path = corecrypto;
@@ -380,6 +395,8 @@
 		1FB2F6BF1C87B2BA009C0F4C /* src */ = {
 			isa = PBXGroup;
 			children = (
+				F00136832D40595500349FD5 /* xof */,
+				F00136822D40594C00349FD5 /* shake */,
 				F001366D2D3F69BC00349FD5 /* aes */,
 				F00136722D3F6A1C00349FD5 /* digest */,
 				F00136762D3F6BD500349FD5 /* dummy */,
@@ -492,10 +509,26 @@
 		F00136772D3F734200349FD5 /* keccak */ = {
 			isa = PBXGroup;
 			children = (
-				F00136782D3F736400349FD5 /* pdckeccak.h */,
 				F00136792D3F736400349FD5 /* pdckeccak.c */,
+				F00136782D3F736400349FD5 /* pdckeccak.h */,
 			);
 			path = keccak;
+			sourceTree = "<group>";
+		};
+		F00136822D40594C00349FD5 /* shake */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = shake;
+			sourceTree = "<group>";
+		};
+		F00136832D40595500349FD5 /* xof */ = {
+			isa = PBXGroup;
+			children = (
+				F00136862D4059EC00349FD5 /* pdcxof.c */,
+				F00136852D4059EC00349FD5 /* pdcxof.h */,
+			);
+			path = xof;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -505,6 +538,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F00D09902D40B35600349FD5 /* ccwrap.h in Headers */,
+				F001368A2D4059EC00349FD5 /* pdcxof.h in Headers */,
 				F001367D2D3F736400349FD5 /* pdckeccak.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +557,7 @@
 				1F615F312480A48C0021D82E /* cc_runtime_config.h in Headers */,
 				1F615F322480A48C0021D82E /* ccaes.h in Headers */,
 				1F615F332480A48C0021D82E /* ccasn1.h in Headers */,
+				F001368C2D4059EC00349FD5 /* pdcxof.h in Headers */,
 				1F615F342480A48C0021D82E /* ccchacha20poly1305.h in Headers */,
 				1F615F352480A48C0021D82E /* cccmac.h in Headers */,
 				1F615F362480A48C0021D82E /* ccder.h in Headers */,
@@ -550,6 +586,7 @@
 				1F615F382480A48C0021D82E /* ccdigest_priv.h in Headers */,
 				1F615F3A2480A48C0021D82E /* ccdrbg_impl.h in Headers */,
 				1F615F402480A48C0021D82E /* ccmode_impl.h in Headers */,
+				F00D098E2D40B35600349FD5 /* ccwrap.h in Headers */,
 				1F615F4E2480A48C0021D82E /* fipspost_trace.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,9 +608,11 @@
 				1FABCE54235542CB00F25C08 /* prngpriv.h in Headers */,
 				1F358E7B2354F0370030CA4F /* cc_error.h in Headers */,
 				1FABCE57235542CB00F25C08 /* entropysources.h in Headers */,
+				F00D098F2D40B35600349FD5 /* ccwrap.h in Headers */,
 				1F332F2C1C8D201C00C74D80 /* cc_abort.h in Headers */,
 				1FABCE5D235542CB00F25C08 /* userdefines.h in Headers */,
 				1F358E772354F0370030CA4F /* cckprng.h in Headers */,
+				F00136882D4059EC00349FD5 /* pdcxof.h in Headers */,
 				1F358E782354F0370030CA4F /* ccchacha20poly1305.h in Headers */,
 				1F358E7A2354F0370030CA4F /* cc_runtime_config.h in Headers */,
 				1FABCE51235542CB00F25C08 /* yarrow.h in Headers */,
@@ -696,6 +735,7 @@
 			files = (
 				1F17F84424809D7B0080E3C3 /* comp.c in Sources */,
 				1F17F84524809D7B0080E3C3 /* sha1mod.c in Sources */,
+				F00136892D4059EC00349FD5 /* pdcxof.c in Sources */,
 				1F17F84724809D7B0080E3C3 /* prng.c in Sources */,
 				1F17F84824809D7B0080E3C3 /* yarrowUtils.c in Sources */,
 				1F17F84924809D7B0080E3C3 /* cckprng.c in Sources */,
@@ -727,6 +767,7 @@
 			files = (
 				1F615F282480A1110021D82E /* dummy.c in Sources */,
 				F001367E2D3F736400349FD5 /* pdckeccak.c in Sources */,
+				F001368B2D4059EC00349FD5 /* pdcxof.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +792,7 @@
 				1F1D444E1F2802D60043CE92 /* sha1.c in Sources */,
 				1FABCE52235542CB00F25C08 /* sha1mod.c in Sources */,
 				1FABCE5A235542CB00F25C08 /* prng.c in Sources */,
+				F00136872D4059EC00349FD5 /* pdcxof.c in Sources */,
 				F0CA56D32CF9892500521F17 /* sha3.c in Sources */,
 				1F1D44591F280B5F0043CE92 /* aes128.c in Sources */,
 				1F1D444A1F2802D60043CE92 /* pdcrypto_digest_init.c in Sources */,
