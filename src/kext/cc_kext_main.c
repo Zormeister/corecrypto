@@ -3,7 +3,7 @@
 #include "register_crypto.h"
 #include "prng_random.h"
 #include <corecrypto/cckprng.h>
-#include "../algorithms/yarrow/yarrow.h"
+#include "../kprng/yarrow/yarrow.h"
 
 extern struct crypto_functions pdcrypto_internal_functions;
 

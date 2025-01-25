@@ -39,12 +39,12 @@ const struct ccdigest_info *ccsha3_512_di(void);
 
 /* Thanks to my good old pal NM, I found out symbols for the C impls. */
 
-#define CCSHA3_224_BLOCK_SIZE 144 /* 1152 / 8 */
+#define CCSHA3_224_BLOCK_SIZE 144
 #define CCSHA3_224_OUTPUT_SIZE 28
 #define CCSHA3_224_STATE_SIZE 200
 extern const struct ccdigest_info ccsha3_224_c_di;
 
-#define CCSHA3_256_BLOCK_SIZE 136 /* 1088 / 8 */
+#define CCSHA3_256_BLOCK_SIZE 136
 #define CCSHA3_256_OUTPUT_SIZE 32
 #define CCSHA3_256_STATE_SIZE 200
 extern const struct ccdigest_info ccsha3_256_c_di;
