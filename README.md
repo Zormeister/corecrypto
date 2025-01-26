@@ -7,5 +7,5 @@ contain `libcorecrypto`, the user-mode equivalent thereof.
 Despite the similar name, this library is **not** based on the released
 source bundle for Apple’s corecrypto implementation, because that code
 is not licensed for re-use. This library is based on the
-[botan](https://github.com/randombit/botan) library, as well as the
-[pdcrypto](https://github.com/rafirafi/pdcrypto) code.
+[botan](https://github.com/randombit/botan) and [LibTomCrypt](https://github.com/libtom/libtomcrypt/) libraries, as well as the
+[pdcrypto](https://github.com/rafirafi/pdcrypto) code
