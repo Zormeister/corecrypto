@@ -11,6 +11,6 @@
 
 #include <corecrypto/ccdigest.h>
 
-void pdcdigest_init(const struct ccdigest_info *di, ccdigest_ctx_t ctx);
+void ccdigest_init(const struct ccdigest_info *di, ccdigest_ctx_t ctx);
 
 #endif /* defined(__pdcrypto__pdcrypto_digest_init__) */

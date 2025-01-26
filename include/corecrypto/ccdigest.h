@@ -90,9 +90,9 @@ void ccdigest_update(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
                      size_t len, const void *data);
 
 CC_INLINE
-void ccdigest_final(const struct ccdigest_info *di, ccdigest_ctx_t ctx, unsigned char *digest)
+void ccdigest_final(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest)
 {
-    di->final(di,ctx,digest);
+    di->final(di,ctx, (unsigned char *)digest);
 }
 
 void ccdigest(const struct ccdigest_info *di, size_t len,

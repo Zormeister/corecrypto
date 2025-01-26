@@ -2,12 +2,8 @@
 #include <corecrypto/cc_abort.h>
 #include <corecrypto/ccmd5.h>
 #include <corecrypto/ccsha1.h>
+#include <corecrypto/ccdigest_priv.h>
 #include "../dummy/pdcrypto_dummy.h"
-
-extern void pdcdigest_init(const struct ccdigest_info *di, ccdigest_ctx_t ctx);
-extern void pdcdigest_update(const struct ccdigest_info *di, ccdigest_ctx_t ctx, unsigned long len, const void *data);
-extern void pdcdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest);
-extern void pdcdigest_fn(const struct ccdigest_info *di, unsigned long len, const void *data, void *digest);
 
 extern const struct ccdigest_info pdcmd5_di;
 extern const struct ccmode_ecb pdcaes_ecb_encrypt;
@@ -22,8 +18,8 @@ const struct crypto_functions pdcrypto_internal_functions = {
 	.ccmd5_di = &pdcmd5_di,
 	.ccsha1_di = &ccsha1_ltc_di,
 
-	.ccdigest_final_fn = pdcdigest_final_fn,
-	.ccdigest_fn = pdcdigest_fn,
+	.ccdigest_final_fn = ccdigest_final,
+	.ccdigest_fn = ccdigest,
 	.ccsha256_di = &ccsha256_ltc_di,
 	.ccsha384_di = &ccsha384_ltc_di,
 	.ccsha512_di = &ccsha512_ltc_di,

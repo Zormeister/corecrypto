@@ -17,7 +17,7 @@
 #include <corecrypto/ccdigest_priv.h>
 #include <corecrypto/cc_priv.h>
 
-void pdcdigest_final_64le(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
+void ccdigest_final_64le(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
                           unsigned char *digest) {
     ccdigest_nbits(di, ctx) += ccdigest_num(di, ctx) * 8;
     ccdigest_data(di, ctx)[ccdigest_num(di, ctx)++] = 0x80;
@@ -46,7 +46,7 @@ void pdcdigest_final_64le(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
     }
 }
 
-void pdcdigest_final_64be(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
+void cccdigest_final_64be(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
                           unsigned char *digest) {
     ccdigest_nbits(di, ctx) += ccdigest_num(di, ctx) * 8;
     ccdigest_data(di, ctx)[ccdigest_num(di, ctx)++] = 0x80;
@@ -75,7 +75,7 @@ void pdcdigest_final_64be(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
     }
 }
 
-void pdcdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest) {
+void ccdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest) {
 	// TODO: Is this the correct implementation?
 
 #if BYTE_ORDER == BIG_ENDIAN

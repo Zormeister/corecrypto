@@ -29,4 +29,12 @@ const struct ccdigest_info *ccdigest_oid_lookup(ccoid_t oid, ...);
 
 #define ccdigest_copy_state(_di_, _dst_, _src_) cc_memcpy_nochk(_dst_, _src_, (_di_)->state_size)
 
+// Migrate some of the internal headers to here for simplicity's sake.
+
+void ccdigest_final_64le(const struct ccdigest_info *di, ccdigest_ctx_t ctx, unsigned char *digest);
+
+void ccdigest_final_64be(const struct ccdigest_info *di, ccdigest_ctx_t ctx, unsigned char *digest);
+
+void ccdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest);
+
 #endif /* _CORECRYPTO_CCDIGEST_PRIV_H_ */
