@@ -3,6 +3,7 @@
 #include <corecrypto/ccmd5.h>
 #include <corecrypto/ccsha1.h>
 #include <corecrypto/ccdigest_priv.h>
+#include <corecrypto/cchmac.h>
 #include "../dummy/pdcrypto_dummy.h"
 
 extern const struct ccdigest_info pdcmd5_di;
@@ -23,10 +24,10 @@ const struct crypto_functions pdcrypto_internal_functions = {
 	.ccsha256_di = &ccsha256_ltc_di,
 	.ccsha384_di = &ccsha384_ltc_di,
 	.ccsha512_di = &ccsha512_ltc_di,
-	.cchmac_init_fn = pdchmac_init_fn_dummy,
-	.cchmac_update_fn = pdchmac_update_fn_dummy,
-	.cchmac_final_fn = pdchmac_final_fn_dummy,
-	.cchmac_fn = pdchmac_fn_dummy,
+	.cchmac_init_fn = cchmac_init,
+	.cchmac_update_fn = cchmac_update,
+	.cchmac_final_fn = cchmac_final,
+	.cchmac_fn = cchmac,
 	.ccaes_ecb_encrypt = &pdcaes_ecb_encrypt,
 	.ccaes_ecb_decrypt = &pdcaes_ecb_decrypt,
 	.ccaes_cbc_encrypt = &pdcaes_cbc_encrypt,
