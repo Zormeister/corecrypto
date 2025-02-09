@@ -2,9 +2,18 @@
 
 #if CC_KERNEL
 #include <kern/debug.h>
-#define cc_abort panic
+
+static void cc_abort(const char *msg) {
+    panic("%s", msg);
+}
+
 #else
 #include <stdio.h>
 #include <stdlib.h>
-#define cc_abort(msg, ...) do { fprintf(stderr, msg, __VA_ARGS__); abort(); } while (0)
+
+static void cc_abort(const char *msg) {
+    fprintf(stderr, "%s", msg);
+    abort();
+}
+
 #endif

@@ -14,6 +14,8 @@
 #include <corecrypto/ccwrap.h>
 
 // dunno.
-bool ccwrap_argsvalid();
+int ccwrap_argsvalid(void);
+
+extern const uint8_t ccwrap_default_iv[8]; // NOTE: This is NOT from any symbols in CoreCrypto. This is me doing my own thing here.
 
 #endif /* _CORECRYPTO_CCWRAP_PRIV_H_ */

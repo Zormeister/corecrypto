@@ -30,7 +30,7 @@ static int pdcmode_aes_cbc_init(const struct ccmode_cbc *cbc, cccbc_ctx *ctx, si
 
     // only 128 case implemented here
     if (key_len != CCAES_KEY_SIZE_128) {
-        cc_abort("%s key len != 128\n", __func__);
+        cc_abort("AES: key len != 128\n");
     }
 
     AES128_set_key((struct _pdcmode_aes128_ctx *)ctx, key);

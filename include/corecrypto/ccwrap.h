@@ -21,9 +21,13 @@ size_t ccwrap_wrapped_size(size_t key_length);
 size_t ccwrap_unwrapped_size(size_t wrapped_length);
 
 // Runtime check that ECB mode is AES-128?
-int ccwrap_auth_encrypt_withiv(struct ccmode_ecb *mode, struct ccecb_ctx *context, size_t key_length, const uint8_t *key, size_t *wrapped_key_length, uint8_t *wrapped_key, const uint8_t *iv);
+int ccwrap_auth_encrypt_withiv(struct ccmode_ecb *mode, ccecb_ctx *context, size_t key_length, const uint8_t *key, size_t *wrapped_key_length, uint8_t *wrapped_key, const uint8_t *iv);
 
-int ccwrap_auth_decrypt_withiv(struct ccmode_ecb *mode, struct ccecb_ctx *context, size_t wrapped_key_length, const uint8_t *wrapped_key, size_t *key_length, uint8_t *key, const uint8_t *iv);
+int ccwrap_auth_encrypt(struct ccmode_ecb *mode, ccecb_ctx *context, size_t key_length, const uint8_t *key, size_t *wrapped_key_length, uint8_t *wrapped_key);
+
+int ccwrap_auth_decrypt_withiv(struct ccmode_ecb *mode, ccecb_ctx *context, size_t wrapped_key_length, const uint8_t *wrapped_key, size_t *key_length, uint8_t *key, const uint8_t *iv);
+
+int ccwrap_auth_decrypt(struct ccmode_ecb *mode, ccecb_ctx *context, size_t wrapped_key_length, const uint8_t *wrapped_key, size_t *key_length, uint8_t *key);
 
 /* The IV setup is weird for AES Key Wrapping, I think the way it's done is that the RFC 3394 IV gets used second after the first IV is used to encrypt the key */
 
