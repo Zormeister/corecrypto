@@ -173,6 +173,9 @@
 		F09953AD2D46DCDE0021D020 /* auth_encrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = F09953AB2D46DCDE0021D020 /* auth_encrypt.c */; };
 		F09953AF2D46DD810021D020 /* constants.c in Sources */ = {isa = PBXBuildFile; fileRef = F09953AE2D46DD810021D020 /* constants.c */; };
 		F09953B02D46DD810021D020 /* constants.c in Sources */ = {isa = PBXBuildFile; fileRef = F09953AE2D46DD810021D020 /* constants.c */; };
+		F0B0813C2D5A924C00349FD5 /* ccchacha20poly1305_priv.h in Headers */ = {isa = PBXBuildFile; fileRef = F0B0813B2D5A923F00349FD5 /* ccchacha20poly1305_priv.h */; };
+		F0B081402D5A96E900349FD5 /* chacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0813F2D5A96E900349FD5 /* chacha20.c */; };
+		F0B081412D5A96E900349FD5 /* chacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0813F2D5A96E900349FD5 /* chacha20.c */; };
 		F0CA56D12CF9166000521F17 /* ccsha3.h in Headers */ = {isa = PBXBuildFile; fileRef = F0CA56D02CF9165900521F17 /* ccsha3.h */; };
 		F0CA56D32CF9892500521F17 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = F0CA56D22CF9891F00521F17 /* sha3.c */; };
 		F0CA56D42CF9892500521F17 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = F0CA56D22CF9891F00521F17 /* sha3.c */; };
@@ -345,6 +348,8 @@
 		F098241D2D484D7200D4B888 /* sizes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sizes.c; sourceTree = "<group>"; };
 		F09953AB2D46DCDE0021D020 /* auth_encrypt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = auth_encrypt.c; sourceTree = "<group>"; };
 		F09953AE2D46DD810021D020 /* constants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = constants.c; sourceTree = "<group>"; };
+		F0B0813B2D5A923F00349FD5 /* ccchacha20poly1305_priv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccchacha20poly1305_priv.h; sourceTree = "<group>"; };
+		F0B0813F2D5A96E900349FD5 /* chacha20.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = chacha20.c; sourceTree = "<group>"; };
 		F0CA56D02CF9165900521F17 /* ccsha3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccsha3.h; sourceTree = "<group>"; };
 		F0CA56D22CF9891F00521F17 /* sha3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sha3.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -466,6 +471,7 @@
 				1F65CFE51F2800C60073759F /* ccaes.h */,
 				1F65D0011F2800C60073759F /* ccasn1.h */,
 				1F358E732354F0370030CA4F /* ccchacha20poly1305.h */,
+				F0B0813B2D5A923F00349FD5 /* ccchacha20poly1305_priv.h */,
 				1F65CFFF1F2800C60073759F /* cccmac.h */,
 				1F65CFEB1F2800C60073759F /* ccder.h */,
 				1F65CFEC1F2800C60073759F /* ccdes.h */,
@@ -533,6 +539,7 @@
 		1FB2F6BF1C87B2BA009C0F4C /* src */ = {
 			isa = PBXGroup;
 			children = (
+				F0B0813D2D5A96CA00349FD5 /* chacha20poly1305 */,
 				F00136832D40595500349FD5 /* xof */,
 				F00136822D40594C00349FD5 /* shake */,
 				F001366D2D3F69BC00349FD5 /* aes */,
@@ -760,6 +767,14 @@
 			path = des;
 			sourceTree = "<group>";
 		};
+		F0B0813D2D5A96CA00349FD5 /* chacha20poly1305 */ = {
+			isa = PBXGroup;
+			children = (
+				F0B0813F2D5A96E900349FD5 /* chacha20.c */,
+			);
+			path = chacha20poly1305;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -813,6 +828,7 @@
 				1F615F462480A48C0021D82E /* ccrc4.h in Headers */,
 				1F615F472480A48C0021D82E /* ccmode_siv_hmac.h in Headers */,
 				1F615F482480A48C0021D82E /* ccrng_system.h in Headers */,
+				F0B0813C2D5A924C00349FD5 /* ccchacha20poly1305_priv.h in Headers */,
 				1F615F492480A48C0021D82E /* ccrng.h in Headers */,
 				1F615F4A2480A48C0021D82E /* ccrsa.h in Headers */,
 				1F615F4B2480A48C0021D82E /* ccsha1.h in Headers */,
@@ -1018,6 +1034,7 @@
 				1F17F84424809D7B0080E3C3 /* comp.c in Sources */,
 				1F17F84524809D7B0080E3C3 /* sha1mod.c in Sources */,
 				F00136892D4059EC00349FD5 /* pdcxof.c in Sources */,
+				F0B081402D5A96E900349FD5 /* chacha20.c in Sources */,
 				1F17F84724809D7B0080E3C3 /* prng.c in Sources */,
 				1F17F84824809D7B0080E3C3 /* yarrowUtils.c in Sources */,
 				F05D85FA2D57008900E8FF15 /* argsvalid.c in Sources */,
@@ -1071,6 +1088,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F05D86082D5732C200E8FF15 /* cchmac.c in Sources */,
+				F0B081412D5A96E900349FD5 /* chacha20.c in Sources */,
 				1F358E7D2354F1570030CA4F /* cckprng.c in Sources */,
 				1F16A0101C87BFE10071A80A /* cc_cmp_safe.c in Sources */,
 				1F1D445B1F280B5F0043CE92 /* aes_ecb.c in Sources */,

@@ -8,6 +8,7 @@
 // ltc usually refers to LibTomCrypt in CoreCrypto.
 
 // thank you so much to Tom St Denis for the implementations
+// LibTomCrypt is licensed under the unlicense.
 // Tom, you're a literal legend for open-sourcing your work and making it freely reusable in the public domain
 
 #include <corecrypto/cc_priv.h>

@@ -9,7 +9,8 @@
 #include <corecrypto/ccmd4.h>
 #include <corecrypto/ccdigest_priv.h>
 
-// thank you so much to Tom St Denis for the implementation for MD4
+// Thank you so much to Tom St Denis for the implementation for MD4
+// LibTomCrypt is licensed under the unlicense.
 
 #define S11 3
 #define S12 7

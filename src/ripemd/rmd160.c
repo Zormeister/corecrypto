@@ -9,6 +9,9 @@
 #include <corecrypto/cc_priv.h>
 #include <corecrypto/ccdigest_priv.h>
 
+// TYVM to Tom St Denis for LibTomCrypt, code used here is adapted from the RMD160 implementation
+// LibTomCrypt is licensed under the unlicense.
+
 const uint32_t ccrmd160_initial_state[5] = {
     0x67452301UL,
     0xefcdab89UL,
