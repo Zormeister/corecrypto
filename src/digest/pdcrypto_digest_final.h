@@ -11,10 +11,4 @@
 
 #include <corecrypto/ccdigest.h>
 
-__BEGIN_DECLS
-void pdcdigest_final_64le(const struct ccdigest_info *di, ccdigest_ctx_t ctx, unsigned char *digest);
-
-void pdcdigest_final_64be(const struct ccdigest_info *di, ccdigest_ctx_t ctx, unsigned char *digest);
-__END_DECLS
-
 #endif /* defined(__pdcrypto__pd_crypto_digest_final__) */

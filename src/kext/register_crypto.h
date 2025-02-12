@@ -46,28 +46,28 @@ extern "C" {
 /* digests */
 typedef void (*ccdigest_init_fn_t)(const struct ccdigest_info *di, ccdigest_ctx_t ctx);
 typedef void (*ccdigest_update_fn_t)(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
-									 unsigned long len, const void *data);
+    unsigned long len, const void *data);
 typedef void (*ccdigest_final_fn_t)(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
-									void *digest);
+    void *digest);
 typedef void (*ccdigest_fn_t)(const struct ccdigest_info *di, unsigned long len,
-							  const void *data, void *digest);
+    const void *data, void *digest);
 
 /* hmac */
 typedef void (*cchmac_init_fn_t)(const struct ccdigest_info *di, cchmac_ctx_t ctx,
-								 unsigned long key_len, const void *key);
+    unsigned long key_len, const void *key);
 typedef void (*cchmac_update_fn_t)(const struct ccdigest_info *di, cchmac_ctx_t ctx,
-								   unsigned long data_len, const void *data);
+    unsigned long data_len, const void *data);
 typedef void (*cchmac_final_fn_t)(const struct ccdigest_info *di, cchmac_ctx_t ctx,
-								  unsigned char *mac);
+    unsigned char *mac);
 
 typedef void (*cchmac_fn_t)(const struct ccdigest_info *di, unsigned long key_len,
-							const void *key, unsigned long data_len, const void *data,
-							unsigned char *mac);
+    const void *key, unsigned long data_len, const void *data,
+    unsigned char *mac);
 
 /* gcm */
 typedef int (*ccgcm_init_with_iv_fn_t)(const struct ccmode_gcm *mode, ccgcm_ctx *ctx,
-									   size_t key_nbytes, const void *key,
-									   const void *iv);
+    size_t key_nbytes, const void *key,
+    const void *iv);
 typedef int (*ccgcm_inc_iv_fn_t)(const struct ccmode_gcm *mode, ccgcm_ctx *ctx, void *iv);
 
 typedef const struct ccchacha20poly1305_fns {
@@ -85,10 +85,10 @@ typedef const struct ccchacha20poly1305_fns {
 
 /* pbkdf2 */
 typedef void (*ccpbkdf2_hmac_fn_t)(const struct ccdigest_info *di,
-								   unsigned long passwordLen, const void *password,
-								   unsigned long saltLen, const void *salt,
-								   unsigned long iterations,
-								   unsigned long dkLen, void *dk);
+    unsigned long passwordLen, const void *password,
+    unsigned long saltLen, const void *salt,
+    unsigned long iterations,
+    unsigned long dkLen, void *dk);
 
 /* des weak key testing */
 typedef int (*ccdes_key_is_weak_fn_t)(void *key, unsigned long  length);
@@ -96,27 +96,27 @@ typedef void (*ccdes_key_set_odd_parity_fn_t)(void *key, unsigned long length);
 
 /* XTS padding */
 typedef void (*ccpad_xts_decrypt_fn_t)(const struct ccmode_xts *xts, ccxts_ctx *ctx,
-									   unsigned long nbytes, const void *in, void *out);
+    unsigned long nbytes, const void *in, void *out);
 
 typedef void (*ccpad_xts_encrypt_fn_t)(const struct ccmode_xts *xts, ccxts_ctx *ctx,
-									   unsigned long nbytes, const void *in, void *out);
+    unsigned long nbytes, const void *in, void *out);
 
 /* CBC padding (such as PKCS7 or CTSx per NIST standard) */
 typedef size_t (*ccpad_cts3_crypt_fn_t)(const struct ccmode_cbc *cbc, cccbc_ctx *cbc_key,
-										cccbc_iv *iv, size_t nbytes, const void *in, void *out);
+    cccbc_iv *iv, size_t nbytes, const void *in, void *out);
 
 /* rng */
 typedef struct ccrng_state *(*ccrng_fn_t)(int *error);
 
 /* rsa */
 typedef int (*ccrsa_make_pub_fn_t)(ccrsa_pub_ctx_t pubk,
-								   size_t exp_nbytes, const uint8_t *exp,
-								   size_t mod_nbytes, const uint8_t *mod);
+    size_t exp_nbytes, const uint8_t *exp,
+    size_t mod_nbytes, const uint8_t *mod);
 
 typedef int (*ccrsa_verify_pkcs1v15_fn_t)(ccrsa_pub_ctx_t key, const uint8_t *oid,
-										  size_t digest_len, const uint8_t *digest,
-										  size_t sig_len, const uint8_t *sig,
-										  bool *valid);
+    size_t digest_len, const uint8_t *digest,
+    size_t sig_len, const uint8_t *sig,
+    bool *valid);
 
 typedef struct crypto_functions {
 	/* digests common functions */

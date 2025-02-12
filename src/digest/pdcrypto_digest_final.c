@@ -79,9 +79,9 @@ void ccdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void 
 	// TODO: Is this the correct implementation?
 
 #if BYTE_ORDER == BIG_ENDIAN
-	pdcdigest_final_64be(di, ctx, (unsigned char *)digest);
+	ccdigest_final_64be(di, ctx, (unsigned char *)digest);
 #elif BYTE_ORDER == LITTLE_ENDIAN
-	pdcdigest_final_64le(di, ctx, (unsigned char *)digest);
+	ccdigest_final_64le(di, ctx, (unsigned char *)digest);
 #else
 	cc_abort("Unsupported byte order");
 #endif

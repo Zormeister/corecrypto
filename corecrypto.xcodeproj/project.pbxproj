@@ -125,12 +125,10 @@
 		F001368B2D4059EC00349FD5 /* pdcxof.c in Sources */ = {isa = PBXBuildFile; fileRef = F00136862D4059EC00349FD5 /* pdcxof.c */; };
 		F001368C2D4059EC00349FD5 /* pdcxof.h in Headers */ = {isa = PBXBuildFile; fileRef = F00136852D4059EC00349FD5 /* pdcxof.h */; };
 		F00D098E2D40B35600349FD5 /* ccwrap.h in Headers */ = {isa = PBXBuildFile; fileRef = F00D098D2D40B35600349FD5 /* ccwrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F00D09902D40B35600349FD5 /* ccwrap.h in Headers */ = {isa = PBXBuildFile; fileRef = F00D098D2D40B35600349FD5 /* ccwrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F01186C52D448647009C285F /* des.c in Sources */ = {isa = PBXBuildFile; fileRef = F01186C42D448647009C285F /* des.c */; };
 		F01186C72D44A883009C285F /* des_cbc.c in Sources */ = {isa = PBXBuildFile; fileRef = F01186C62D44A883009C285F /* des_cbc.c */; };
 		F01186C82D44A883009C285F /* des_cbc.c in Sources */ = {isa = PBXBuildFile; fileRef = F01186C62D44A883009C285F /* des_cbc.c */; };
 		F01186C92D44A883009C285F /* des_cbc.c in Sources */ = {isa = PBXBuildFile; fileRef = F01186C62D44A883009C285F /* des_cbc.c */; };
-		F01186CB2D44BCBC009C285F /* ccwrap_priv.h in Headers */ = {isa = PBXBuildFile; fileRef = F01186CA2D44BB85009C285F /* ccwrap_priv.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F01186CC2D44BCBF009C285F /* ccwrap_priv.h in Headers */ = {isa = PBXBuildFile; fileRef = F01186CA2D44BB85009C285F /* ccwrap_priv.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F01186CE2D44F3A4009C285F /* ccmd2.h in Headers */ = {isa = PBXBuildFile; fileRef = F01186CD2D44F3A4009C285F /* ccmd2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F01186CF2D44F3A4009C285F /* ccmd2.h in Headers */ = {isa = PBXBuildFile; fileRef = F01186CD2D44F3A4009C285F /* ccmd2.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -176,6 +174,7 @@
 		F0B0813C2D5A924C00349FD5 /* ccchacha20poly1305_priv.h in Headers */ = {isa = PBXBuildFile; fileRef = F0B0813B2D5A923F00349FD5 /* ccchacha20poly1305_priv.h */; };
 		F0B081402D5A96E900349FD5 /* chacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0813F2D5A96E900349FD5 /* chacha20.c */; };
 		F0B081412D5A96E900349FD5 /* chacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0813F2D5A96E900349FD5 /* chacha20.c */; };
+		F0B081432D5D44D600349FD5 /* ccxof.h in Headers */ = {isa = PBXBuildFile; fileRef = F0B081422D5D44D000349FD5 /* ccxof.h */; };
 		F0CA56D12CF9166000521F17 /* ccsha3.h in Headers */ = {isa = PBXBuildFile; fileRef = F0CA56D02CF9165900521F17 /* ccsha3.h */; };
 		F0CA56D32CF9892500521F17 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = F0CA56D22CF9891F00521F17 /* sha3.c */; };
 		F0CA56D42CF9892500521F17 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = F0CA56D22CF9891F00521F17 /* sha3.c */; };
@@ -350,6 +349,7 @@
 		F09953AE2D46DD810021D020 /* constants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = constants.c; sourceTree = "<group>"; };
 		F0B0813B2D5A923F00349FD5 /* ccchacha20poly1305_priv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccchacha20poly1305_priv.h; sourceTree = "<group>"; };
 		F0B0813F2D5A96E900349FD5 /* chacha20.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = chacha20.c; sourceTree = "<group>"; };
+		F0B081422D5D44D000349FD5 /* ccxof.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccxof.h; sourceTree = "<group>"; };
 		F0CA56D02CF9165900521F17 /* ccsha3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccsha3.h; sourceTree = "<group>"; };
 		F0CA56D22CF9891F00521F17 /* sha3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sha3.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -503,9 +503,10 @@
 				1F65CFF91F2800C60073759F /* ccsha1.h */,
 				1F65CFF11F2800C60073759F /* ccsha2.h */,
 				F0CA56D02CF9165900521F17 /* ccsha3.h */,
-				1F65CFEF1F2800C60073759F /* cczp.h */,
+				F0B081422D5D44D000349FD5 /* ccxof.h */,
 				F00D098D2D40B35600349FD5 /* ccwrap.h */,
 				F01186CA2D44BB85009C285F /* ccwrap_priv.h */,
+				1F65CFEF1F2800C60073759F /* cczp.h */,
 				1F358E742354F0370030CA4F /* fipspost_trace.h */,
 			);
 			path = corecrypto;
@@ -784,11 +785,9 @@
 			files = (
 				F09057052D45A21B007C6E87 /* ccmd4.h in Headers */,
 				F09057172D46093E007C6E87 /* ccdh_gp.h in Headers */,
-				F00D09902D40B35600349FD5 /* ccwrap.h in Headers */,
 				F01186CE2D44F3A4009C285F /* ccmd2.h in Headers */,
 				F001368A2D4059EC00349FD5 /* pdcxof.h in Headers */,
 				F001367D2D3F736400349FD5 /* pdckeccak.h in Headers */,
-				F01186CB2D44BCBC009C285F /* ccwrap_priv.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,6 +831,7 @@
 				1F615F492480A48C0021D82E /* ccrng.h in Headers */,
 				1F615F4A2480A48C0021D82E /* ccrsa.h in Headers */,
 				1F615F4B2480A48C0021D82E /* ccsha1.h in Headers */,
+				F0B081432D5D44D600349FD5 /* ccxof.h in Headers */,
 				F01186CC2D44BCBF009C285F /* ccwrap_priv.h in Headers */,
 				1F615F4C2480A48C0021D82E /* ccsha2.h in Headers */,
 				1F615F4D2480A48C0021D82E /* cczp.h in Headers */,
