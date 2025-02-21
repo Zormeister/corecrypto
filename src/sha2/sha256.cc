@@ -12,8 +12,8 @@
 #include <sys/types.h>
 __BEGIN_DECLS
 #include <corecrypto/ccdigest.h>
+#include <corecrypto/ccdigest_priv.h>
 #include <corecrypto/ccsha2.h>
-#include "pdcrypto_digest_final.h"
 #if KERNEL
 #include <libkern/crypto/md5.h>
 #include <sys/systm.h>
@@ -188,7 +188,7 @@ const struct ccdigest_info ccsha256_ltc_di = {
 	.oid = (unsigned char *)CC_DIGEST_OID_SHA256,
 	.initial_state = pdcsha256_initial_state,
 	.compress = pdcsha256_compress,
-	.final = pdcdigest_final_64be
+	.final = ccdigest_final_64be
 };
 
 const struct ccdigest_info *ccsha256_di(void) {

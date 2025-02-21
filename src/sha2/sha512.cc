@@ -13,8 +13,8 @@
 #include <sys/types.h>
 __BEGIN_DECLS
 #include <corecrypto/ccdigest.h>
+#include <corecrypto/ccdigest_priv.h>
 #include <corecrypto/ccsha2.h>
-#include "pdcrypto_digest_final.h"
 __END_DECLS
 
 template<size_t ROT, typename T>
@@ -208,7 +208,7 @@ const struct ccdigest_info ccsha384_ltc_di = {
 	.oid = (unsigned char *)CC_DIGEST_OID_SHA384,
 	.initial_state = pdcsha384_initial_state,
 	.compress = pdcsha512_compress,
-	.final = pdcdigest_final_64be
+	.final = ccdigest_final_64be
 };
 
 const struct ccdigest_info ccsha512_ltc_di = {
@@ -219,7 +219,7 @@ const struct ccdigest_info ccsha512_ltc_di = {
 	.oid = (unsigned char *)CC_DIGEST_OID_SHA512,
 	.initial_state = pdcsha512_initial_state,
 	.compress = pdcsha512_compress,
-	.final = pdcdigest_final_64be
+	.final = ccdigest_final_64be
 };
 
 const struct ccdigest_info *ccsha384_di(void) {

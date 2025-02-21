@@ -10,8 +10,6 @@
 #include <corecrypto/ccsha1.h>
 #include <corecrypto/ccdigest_priv.h>
 
-#include "pdcrypto_digest_final.h"
-
 void pdcsha1_compress(ccdigest_state_t state, unsigned long nblocks, const void *data);
 
 const uint32_t pdcsha1_initial_state[5] = {
@@ -30,7 +28,7 @@ const struct ccdigest_info ccsha1_ltc_di = {
     .oid = (unsigned char *)CC_DIGEST_OID_SHA1,
     .initial_state = pdcsha1_initial_state,
     .compress = pdcsha1_compress,
-    .final = pdcdigest_final_64be
+    .final = ccdigest_final_64be
 };
 
 const struct ccdigest_info ccsha1_eay_di = {
@@ -41,7 +39,7 @@ const struct ccdigest_info ccsha1_eay_di = {
 	.oid = (unsigned char *)CC_DIGEST_OID_SHA1,
 	.initial_state = pdcsha1_initial_state,
 	.compress = pdcsha1_compress,
-	.final = pdcdigest_final_64be
+	.final = ccdigest_final_64be
 };
 
 const struct ccdigest_info *ccsha1_di(void) {

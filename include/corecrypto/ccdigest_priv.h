@@ -31,9 +31,9 @@ const struct ccdigest_info *ccdigest_oid_lookup(ccoid_t oid, ...);
 
 // Migrate some of the internal headers to here for simplicity's sake.
 
-void ccdigest_final_64le(const struct ccdigest_info *di, ccdigest_ctx_t ctx, unsigned char *digest);
+void ccdigest_final_64le(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest);
 
-void ccdigest_final_64be(const struct ccdigest_info *di, ccdigest_ctx_t ctx, unsigned char *digest);
+void ccdigest_final_64be(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest);
 
 void ccdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest);
 

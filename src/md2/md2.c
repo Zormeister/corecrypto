@@ -107,7 +107,7 @@ static void md2_process(ccdigest_state_t state, size_t nblocks, const void *data
     }
 }
 
-static void md2_final(const struct ccdigest_info *di, ccdigest_ctx_t ctx, unsigned char *digest) {
+static void md2_final(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest) {
     unsigned long i, k;
 
     unsigned char *X = ccdigest_state_u8(di, ctx);

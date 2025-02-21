@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -175,6 +175,9 @@
 		F0B081402D5A96E900349FD5 /* chacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0813F2D5A96E900349FD5 /* chacha20.c */; };
 		F0B081412D5A96E900349FD5 /* chacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0813F2D5A96E900349FD5 /* chacha20.c */; };
 		F0B081432D5D44D600349FD5 /* ccxof.h in Headers */ = {isa = PBXBuildFile; fileRef = F0B081422D5D44D000349FD5 /* ccxof.h */; };
+		F0B0815E2D5FECDC00349FD5 /* chacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0815D2D5FECD700349FD5 /* chacha20.c */; };
+		F0BFEB552D69204000349FD5 /* der.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BFEB542D69204000349FD5 /* der.c */; };
+		F0BFEB562D69204000349FD5 /* der.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BFEB542D69204000349FD5 /* der.c */; };
 		F0CA56D12CF9166000521F17 /* ccsha3.h in Headers */ = {isa = PBXBuildFile; fileRef = F0CA56D02CF9165900521F17 /* ccsha3.h */; };
 		F0CA56D32CF9892500521F17 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = F0CA56D22CF9891F00521F17 /* sha3.c */; };
 		F0CA56D42CF9892500521F17 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = F0CA56D22CF9891F00521F17 /* sha3.c */; };
@@ -231,7 +234,6 @@
 		1F1D44401F2802BD0043CE92 /* md5_impl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = md5_impl.cpp; sourceTree = "<group>"; };
 		1F1D44411F2802BD0043CE92 /* pdcrypto_digest_init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pdcrypto_digest_init.c; sourceTree = "<group>"; };
 		1F1D44421F2802BD0043CE92 /* pdcrypto_digest_update.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pdcrypto_digest_update.c; sourceTree = "<group>"; };
-		1F1D44431F2802BD0043CE92 /* pdcrypto_digest_final.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pdcrypto_digest_final.h; sourceTree = "<group>"; };
 		1F1D44501F2807CD0043CE92 /* cc_digest.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cc_digest.c; sourceTree = "<group>"; };
 		1F1D44521F280A7C0043CE92 /* pdcrypto_dummy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pdcrypto_dummy.h; sourceTree = "<group>"; };
 		1F1D44531F280A7C0043CE92 /* pdcrypto_dummy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pdcrypto_dummy.c; sourceTree = "<group>"; };
@@ -350,9 +352,26 @@
 		F0B0813B2D5A923F00349FD5 /* ccchacha20poly1305_priv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccchacha20poly1305_priv.h; sourceTree = "<group>"; };
 		F0B0813F2D5A96E900349FD5 /* chacha20.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = chacha20.c; sourceTree = "<group>"; };
 		F0B081422D5D44D000349FD5 /* ccxof.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccxof.h; sourceTree = "<group>"; };
+		F0B081542D5E933000349FD5 /* ccne_kext.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccne_kext.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0B0815D2D5FECD700349FD5 /* chacha20.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = chacha20.c; sourceTree = "<group>"; };
+		F0BFEB542D69204000349FD5 /* der.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = der.c; sourceTree = "<group>"; };
 		F0CA56D02CF9165900521F17 /* ccsha3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccsha3.h; sourceTree = "<group>"; };
 		F0CA56D22CF9891F00521F17 /* sha3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sha3.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F0B081592D5E933000349FD5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F0B081532D5E933000349FD5 /* ccne_kext */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F0B081552D5E933000349FD5 /* ccne_kext */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F0B081592D5E933000349FD5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ccne_kext; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1F17F83A24809D3C0080E3C3 /* Frameworks */ = {
@@ -394,6 +413,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F0B081512D5E933000349FD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -406,6 +432,7 @@
 				1F377BA5213DF15B00D1C6CA /* xcscripts */,
 				F01186EC2D451641009C285F /* cctest */,
 				F090571E2D460B8F007C6E87 /* ccnativeexplorer */,
+				F0B081552D5E933000349FD5 /* ccne_kext */,
 				1F615F232480A0C10021D82E /* Frameworks */,
 				1F31AEA41C8535B30091C31B /* Products */,
 			);
@@ -419,6 +446,7 @@
 				1F615F1F2480A0AE0021D82E /* libcorecrypto.dylib */,
 				F01186EB2D451641009C285F /* cctest */,
 				F090571D2D460B8F007C6E87 /* ccnativeexplorer */,
+				F0B081542D5E933000349FD5 /* ccne_kext.kext */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -540,11 +568,13 @@
 		1FB2F6BF1C87B2BA009C0F4C /* src */ = {
 			isa = PBXGroup;
 			children = (
+				F0BFEB532D691F9400349FD5 /* der */,
 				F0B0813D2D5A96CA00349FD5 /* chacha20poly1305 */,
 				F00136832D40595500349FD5 /* xof */,
 				F00136822D40594C00349FD5 /* shake */,
 				F001366D2D3F69BC00349FD5 /* aes */,
 				F0AF9A702D41C54D00948AAC /* des */,
+				F0B081602D5FF3A700349FD5 /* dh */,
 				F00136722D3F6A1C00349FD5 /* digest */,
 				F05D860A2D57590200E8FF15 /* drbg */,
 				F00136762D3F6BD500349FD5 /* dummy */,
@@ -614,7 +644,6 @@
 		F00136722D3F6A1C00349FD5 /* digest */ = {
 			isa = PBXGroup;
 			children = (
-				1F1D44431F2802BD0043CE92 /* pdcrypto_digest_final.h */,
 				1F1D443E1F2802BD0043CE92 /* pdcrypto_digest_final.c */,
 				1F1D443F1F2802BD0043CE92 /* pdcrypto_digest_init.h */,
 				1F1D44411F2802BD0043CE92 /* pdcrypto_digest_init.c */,
@@ -695,6 +724,7 @@
 		F01186EC2D451641009C285F /* cctest */ = {
 			isa = PBXGroup;
 			children = (
+				F0B0815D2D5FECD700349FD5 /* chacha20.c */,
 				F01186ED2D451641009C285F /* main.c */,
 				F01186F22D451681009C285F /* Test.h */,
 				F01186F32D451769009C285F /* CCTestHashMD2.c */,
@@ -774,6 +804,21 @@
 				F0B0813F2D5A96E900349FD5 /* chacha20.c */,
 			);
 			path = chacha20poly1305;
+			sourceTree = "<group>";
+		};
+		F0B081602D5FF3A700349FD5 /* dh */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = dh;
+			sourceTree = "<group>";
+		};
+		F0BFEB532D691F9400349FD5 /* der */ = {
+			isa = PBXGroup;
+			children = (
+				F0BFEB542D69204000349FD5 /* der.c */,
+			);
+			path = der;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -874,6 +919,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F0B0814F2D5E933000349FD5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -965,6 +1017,29 @@
 			productReference = F090571D2D460B8F007C6E87 /* ccnativeexplorer */;
 			productType = "com.apple.product-type.tool";
 		};
+		F0B081532D5E933000349FD5 /* ccne_kext */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0B0815A2D5E933000349FD5 /* Build configuration list for PBXNativeTarget "ccne_kext" */;
+			buildPhases = (
+				F0B0814F2D5E933000349FD5 /* Headers */,
+				F0B081502D5E933000349FD5 /* Sources */,
+				F0B081512D5E933000349FD5 /* Frameworks */,
+				F0B081522D5E933000349FD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F0B081552D5E933000349FD5 /* ccne_kext */,
+			);
+			name = ccne_kext;
+			packageProductDependencies = (
+			);
+			productName = ccne_kext;
+			productReference = F0B081542D5E933000349FD5 /* ccne_kext.kext */;
+			productType = "com.apple.product-type.kernel-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -990,6 +1065,9 @@
 					F090571C2D460B8F007C6E87 = {
 						CreatedOnToolsVersion = 14.2;
 					};
+					F0B081532D5E933000349FD5 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 				};
 			};
 			buildConfigurationList = 1F31AE881C8535470091C31B /* Build configuration list for PBXProject "corecrypto" */;
@@ -1010,12 +1088,20 @@
 				1F615F1E2480A0AE0021D82E /* corecrypto_user */,
 				F01186EA2D451641009C285F /* cctest */,
 				F090571C2D460B8F007C6E87 /* ccnativeexplorer */,
+				F0B081532D5E933000349FD5 /* ccne_kext */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1FB2F6A81C87B253009C0F4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0B081522D5E933000349FD5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1033,6 +1119,7 @@
 				F09953AD2D46DCDE0021D020 /* auth_encrypt.c in Sources */,
 				1F17F84424809D7B0080E3C3 /* comp.c in Sources */,
 				1F17F84524809D7B0080E3C3 /* sha1mod.c in Sources */,
+				F0BFEB562D69204000349FD5 /* der.c in Sources */,
 				F00136892D4059EC00349FD5 /* pdcxof.c in Sources */,
 				F0B081402D5A96E900349FD5 /* chacha20.c in Sources */,
 				1F17F84724809D7B0080E3C3 /* prng.c in Sources */,
@@ -1102,6 +1189,7 @@
 				F05D86042D5732C200E8FF15 /* cchmac_update.c in Sources */,
 				F09953AF2D46DD810021D020 /* constants.c in Sources */,
 				1F1D444D1F2802D60043CE92 /* md5_impl.cpp in Sources */,
+				F0BFEB552D69204000349FD5 /* der.c in Sources */,
 				F05D860C2D57593700E8FF15 /* ccdrbg_nisthmac.c in Sources */,
 				1FDA24121D98DA16003D41DA /* cc_functions.c in Sources */,
 				1FABCE4F235542CB00F25C08 /* comp.c in Sources */,
@@ -1138,6 +1226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0B0815E2D5FECDC00349FD5 /* chacha20.c in Sources */,
 				F01186EE2D451641009C285F /* main.c in Sources */,
 				F01186F42D451769009C285F /* CCTestHashMD2.c in Sources */,
 				F09057082D45A324007C6E87 /* CCTestHashMD4.c in Sources */,
@@ -1150,6 +1239,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F09057202D460B8F007C6E87 /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0B081502D5E933000349FD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1692,6 +1788,107 @@
 			};
 			name = Release;
 		};
+		F0B0815B2D5E933000349FD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ccne_kext/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 William Kent. All rights reserved.";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				MODULE_NAME = org.puredarwin.ccne_kext;
+				MODULE_START = ccne_kext_start;
+				MODULE_STOP = ccne_kext_stop;
+				MODULE_VERSION = 1.0.0d1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.puredarwin.ccne-kext";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Debug;
+		};
+		F0B0815C2D5E933000349FD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ccne_kext/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 William Kent. All rights reserved.";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				MODULE_NAME = org.puredarwin.ccne_kext;
+				MODULE_START = ccne_kext_start;
+				MODULE_STOP = ccne_kext_stop;
+				MODULE_VERSION = 1.0.0d1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.puredarwin.ccne-kext";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1745,6 +1942,15 @@
 			buildConfigurations = (
 				F09057222D460B8F007C6E87 /* Debug */,
 				F09057232D460B8F007C6E87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0B0815A2D5E933000349FD5 /* Build configuration list for PBXNativeTarget "ccne_kext" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0B0815B2D5E933000349FD5 /* Debug */,
+				F0B0815C2D5E933000349FD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

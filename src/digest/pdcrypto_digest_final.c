@@ -12,13 +12,14 @@
 //  License https://opensource.apple.com/source/xnu/xnu-2782.40.9/APPLE_LICENSE
 
 #include <stddef.h>
-#include "pdcrypto_digest_final.h"
 
 #include <corecrypto/ccdigest_priv.h>
 #include <corecrypto/cc_priv.h>
 
 void ccdigest_final_64le(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
-                          unsigned char *digest) {
+                          void *digest) {
+    unsigned char *dgst = digest;
+
     ccdigest_nbits(di, ctx) += ccdigest_num(di, ctx) * 8;
     ccdigest_data(di, ctx)[ccdigest_num(di, ctx)++] = 0x80;
 
@@ -42,12 +43,13 @@ void ccdigest_final_64le(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
 
     /* copy output */
     for (unsigned int i = 0; i < di->output_size / 4; i++) {
-        CC_STORE32_LE(ccdigest_state_u32(di, ctx)[i], digest+(4*i));
+        CC_STORE32_LE(ccdigest_state_u32(di, ctx)[i], dgst+(4*i));
     }
 }
 
-void cccdigest_final_64be(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
-                          unsigned char *digest) {
+void ccdigest_final_64be(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
+                          void *digest) {
+    unsigned char *dgst = digest;
     ccdigest_nbits(di, ctx) += ccdigest_num(di, ctx) * 8;
     ccdigest_data(di, ctx)[ccdigest_num(di, ctx)++] = 0x80;
     
@@ -71,7 +73,7 @@ void cccdigest_final_64be(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
     
     /* copy output */
     for (unsigned int i = 0; i < di->output_size / 4; i++) {
-        CC_STORE32_BE(ccdigest_state_u32(di, ctx)[i], digest+(4*i));
+        CC_STORE32_BE(ccdigest_state_u32(di, ctx)[i], dgst+(4*i));
     }
 }
 
@@ -79,9 +81,9 @@ void ccdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void 
 	// TODO: Is this the correct implementation?
 
 #if BYTE_ORDER == BIG_ENDIAN
-	ccdigest_final_64be(di, ctx, (unsigned char *)digest);
+	ccdigest_final_64be(di, ctx, digest);
 #elif BYTE_ORDER == LITTLE_ENDIAN
-	ccdigest_final_64le(di, ctx, (unsigned char *)digest);
+	ccdigest_final_64le(di, ctx, digest);
 #else
 	cc_abort("Unsupported byte order");
 #endif

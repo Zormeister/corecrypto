@@ -8,8 +8,7 @@
 
 #include <stddef.h>
 #include <corecrypto/ccmd5.h>
-
-#include "pdcrypto_digest_final.h"
+#include <corecrypto/ccdigest_priv.h>
 
 void pdcmd5_compress(ccdigest_state_t state, unsigned long nblocks, const void *data);
 
@@ -30,6 +29,6 @@ const struct ccdigest_info pdcmd5_di = {
     .oid = (unsigned char *)CC_DIGEST_OID_MD5,
     .initial_state = pdcmd5_initial_state,
     .compress = pdcmd5_compress,
-    .final = pdcdigest_final_64le
+    .final = ccdigest_final_64le
 };
 

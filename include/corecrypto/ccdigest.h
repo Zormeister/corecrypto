@@ -48,7 +48,7 @@ struct ccdigest_info {
     void(*compress)(ccdigest_state_t state, size_t nblocks,
                     const void *data);
     void(*final)(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
-                 unsigned char *digest);
+                 void *digest);
 };
 
 /* Return sizeof a ccdigest_ctx for a given size_t _state_size_ and

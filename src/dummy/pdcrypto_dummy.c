@@ -6,7 +6,7 @@
 #include <stdio.h>
 #endif
 
-#include "pdcrypto_digest_final.h"
+#include <corecrypto/ccdigest.h>
 
 /*
  * to print what is used by xnu during boot
