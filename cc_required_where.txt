@@ -1,0 +1,909 @@
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:		48BEE71215800C2600A6A1E7 /* corecryptoSymmetricBridge.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6F915800C2600A6A1E7 /* corecryptoSymmetricBridge.c */; };
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:		48BEE71315800C2600A6A1E7 /* corecryptoSymmetricBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6FA15800C2600A6A1E7 /* corecryptoSymmetricBridge.h */; };
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:		F4D67A4F1F300A1800856F4A /* corecryptoSymmetricBridge.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6F915800C2600A6A1E7 /* corecryptoSymmetricBridge.c */; };
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:		F4D67A771F300A1800856F4A /* corecryptoSymmetricBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6FA15800C2600A6A1E7 /* corecryptoSymmetricBridge.h */; };
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:		48BEE6F915800C2600A6A1E7 /* corecryptoSymmetricBridge.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecryptoSymmetricBridge.c; sourceTree = "<group>"; };
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:		48BEE6FA15800C2600A6A1E7 /* corecryptoSymmetricBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = corecryptoSymmetricBridge.h; sourceTree = "<group>"; };
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:				48BEE6F915800C2600A6A1E7 /* corecryptoSymmetricBridge.c */,
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:				48BEE6FA15800C2600A6A1E7 /* corecryptoSymmetricBridge.h */,
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:				48BEE71315800C2600A6A1E7 /* corecryptoSymmetricBridge.h in Headers */,
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:				F4D67A771F300A1800856F4A /* corecryptoSymmetricBridge.h in Headers */,
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:				48BEE71215800C2600A6A1E7 /* corecryptoSymmetricBridge.c in Sources */,
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:				F4D67A4F1F300A1800856F4A /* corecryptoSymmetricBridge.c in Sources */,
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:					"-lcorecrypto",
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:					"-lcorecrypto",
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:					"-lcorecrypto",
+./CommonCrypto/CommonCrypto.xcodeproj/project.pbxproj:					"-lcorecrypto",
+./CommonCrypto/Android.mk:    ./lib/corecryptoSymmetricBridge.c \
+./CommonCrypto/Android.mk:LOCAL_SHARED_LIBRARIES := corecrypto \
+./CommonCrypto/Android.mk:    corecrypto \
+./CommonCrypto/Android.mk:LOCAL_PATH := /SWE/release/Software/Harissa/Updates/BuiltHarissa/Roots/corecrypto
+./CommonCrypto/Android.mk:LOCAL_MODULE := corecrypto
+./CommonCrypto/Android.mk:LOCAL_SRC_FILES := prebuilts/$(TARGET_ARCH_ABI)/libcorecrypto.so
+./CommonCrypto/include/Private/CommonRandomSPI.h:#include <corecrypto/ccrng.h>
+./CommonCrypto/CCRegression/CommonCrypto/CommonCryptoSymCTR.c:    /* corecrypto implementation: counter rolls over 64bit */
+./CommonCrypto/CCRegression/CommonCrypto/CommonRandom.c:#include <corecrypto/ccrng_system.h>
+./CommonCrypto/CCRegression/CommonCrypto/CommonRSA.c:#include <corecrypto/cczp.h>
+./CommonCrypto/CCRegression/CommonCrypto/CommonRSA.c:#include <corecrypto/ccrsa.h>
+./CommonCrypto/CCRegression/test/testenv.c: *  corecrypto
+./CommonCrypto/CCRegression/test/testenv.c:        fprintf(stderr, "corecrypto loaded: %s\nDYLIB size %lld bytes\n\n", dl_info.dli_fname, fsize(dl_info.dli_fname));
+./CommonCrypto/CCRegression/test/testenv.c:    //rdar://problem/26799042 corecrypto coresponding radar
+./CommonCrypto/CCRegression/test/testmore.c: *  corecrypto
+./CommonCrypto/CCRegression/test/testlist.c: *  corecrypto
+./CommonCrypto/CCRegression/test/testmore.h: *  corecrypto
+./CommonCrypto/CCRegression/test/testmore.h:#include <corecrypto/ccn.h>
+./CommonCrypto/CCRegression/test/testlist.h: *  corecrypto
+./CommonCrypto/CCRegression/main.c: *  corecrypto
+./CommonCrypto/android/commoncrypto_test/build.gradle:            corecrypto {
+./CommonCrypto/android/commoncrypto_test/build.gradle:                headers.srcDir project.ext.swePath+"/release/Software/Harissa/Updates/BuiltHarissa/Roots/corecrypto/include"
+./CommonCrypto/android/commoncrypto_test/build.gradle:                    sharedLibraryFile = file(project.ext.swePath+"/release/Software/Harissa/Updates/BuiltHarissa/Roots/corecrypto/prebuilts/${targetPlatform.getName()}/libcorecrypto.so")
+./CommonCrypto/android/commoncrypto_test/build.gradle:                        library "corecrypto"
+./CommonCrypto/android/commoncrypto_test/src/main/AndroidManifest.xml:    package="com.apple.corecrypto.test">
+./CommonCrypto/lib/CommonDigest.c:#include <corecrypto/cc.h>
+./CommonCrypto/lib/CommonDigest.c:#include <corecrypto/cc_priv.h>
+./CommonCrypto/lib/CommonDigest.c:#include <corecrypto/ccmd2.h>
+./CommonCrypto/lib/CommonDigest.c:#include <corecrypto/ccmd4.h>
+./CommonCrypto/lib/CommonDigest.c:#include <corecrypto/ccmd5.h>
+./CommonCrypto/lib/CommonDigest.c:#include <corecrypto/ccripemd.h>
+./CommonCrypto/lib/CommonDigest.c:#include <corecrypto/ccsha1.h>
+./CommonCrypto/lib/CommonDigest.c:#include <corecrypto/ccsha2.h>
+./CommonCrypto/lib/CommonDigest.c:// This returns a pointer to the corecrypto "di" structure for a digest.
+./CommonCrypto/lib/CommonDigest.c:// corecrypto to CommonCrypto
+./CommonCrypto/lib/CommonDigest.c:// CommonCrypto to corecrypto
+./CommonCrypto/lib/CommonRSACryptor.c:#include <corecrypto/ccrsa.h>
+./CommonCrypto/lib/CommonRSACryptor.c:#include <corecrypto/ccrsa_priv.h
+./CommonCrypto/lib/CommonRSACryptor.c:#include <corecrypto/ccasn1.h>
+./CommonCrypto/lib/CommonRSACryptor.c:#include <corecrypto/ccn.h>
+./CommonCrypto/lib/CommonRSACryptor.c:    // Consistency check done in corecrypto.
+./CommonCrypto/lib/CommonCryptorPriv.h:#include "corecryptoSymmetricBridge.h"
+./CommonCrypto/lib/CommonCryptorPriv.h:    corecryptoMode  symMode[CC_DIRECTIONS];
+./CommonCrypto/lib/CommonCryptorPriv.h:const corecryptoMode getCipherMode(CCAlgorithm cipher, CCMode mode, CCOperation direction);
+./CommonCrypto/lib/CommonHMAC.c:#include <corecrypto/cchmac.h>
+./CommonCrypto/lib/CommonHMAC.c:#include <corecrypto/cc_priv.h>
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:#include "corecryptoSymmetricBridge.h"
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:#include <corecrypto/ccrc4.h>
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccecb_mode_get_ctx_size(corecryptoMode modeObject) { return modeObject.ecb->size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccecb_mode_get_block_size(corecryptoMode modeObject) { return modeObject.ecb->block_size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccecb_mode_setup(corecryptoMode modeObj, const void * __unused IV,
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccecb_mode_crypt(corecryptoMode modeObj, const void *in, void *out, size_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t cccbc_mode_get_ctx_size(const corecryptoMode modeObject) { return modeObject.cbc->size + 16; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t cccbc_mode_get_block_size(const corecryptoMode modeObject) { return modeObject.cbc->block_size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int cccbc_mode_setup(const corecryptoMode modeObj, const void *iv,
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int cccbc_mode_crypt(const corecryptoMode modeObj, const void *in, void *out, size_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int cccbc_getiv(const corecryptoMode modeObj, void *iv, uint32_t *len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int cccbc_setiv(const corecryptoMode modeObj, const void *iv, uint32_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t cccfb_mode_get_ctx_size(const corecryptoMode modeObject) { return modeObject.cfb->size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t cccfb_mode_get_block_size(const corecryptoMode modeObject) { return modeObject.cfb->block_size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int cccfb_mode_setup(const corecryptoMode modeObj, const void *iv,
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int cccfb_mode_crypt(const corecryptoMode modeObj, const void *in, void *out, size_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t cccfb8_mode_get_ctx_size(const corecryptoMode modeObject) { return modeObject.cfb8->size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t cccfb8_mode_get_block_size(const corecryptoMode modeObject) { return modeObject.cfb8->block_size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int cccfb8_mode_setup(const corecryptoMode modeObj, const void *iv,
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int cccfb8_mode_crypt(const corecryptoMode modeObj, const void *in, void *out, size_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccctr_mode_get_ctx_size(const corecryptoMode modeObject) { return modeObject.ctr->size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccctr_mode_get_block_size(const corecryptoMode modeObject) { return modeObject.ctr->block_size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccctr_mode_setup(const corecryptoMode modeObj, const void *iv,
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccctr_mode_crypt(const corecryptoMode modeObj, const void *in, void *out, size_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccctr_setiv(const corecryptoMode modeObj, const void *iv, uint32_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccofb_mode_get_ctx_size(const corecryptoMode modeObject) { return modeObject.ofb->size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccofb_mode_get_block_size(const corecryptoMode modeObject) { return modeObject.ofb->block_size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccofb_mode_setup(const corecryptoMode modeObj, const void *iv,
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccofb_mode_crypt(const corecryptoMode modeObj, const void *in, void *out, size_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccxts_mode_get_ctx_size(const corecryptoMode modeObject) { return modeObject.xts->size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccxts_mode_get_block_size(const corecryptoMode modeObject) { return modeObject.xts->block_size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccxts_mode_setup(const corecryptoMode modeObj, const void * __unused iv,
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static void ccxts_mode_crypt(const corecryptoMode modeObj, const void *in, void *out, size_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccxts_setiv(const corecryptoMode modeObj, const void *iv, uint32_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccxts_getiv(const corecryptoMode modeObj, void *iv, uint32_t *len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c: * to handle partial blocks - so we use corecrypto's xts pad routines in every case.
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccxts_mode_encrypt_tweak(const corecryptoMode modeObj, const void *in, size_t len, void *out, const void *iv, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccxts_mode_decrypt_tweak(const corecryptoMode modeObj, const void *in, size_t len, void *out, const void *iv, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccgcm_mode_get_ctx_size(const corecryptoMode modeObject) { return modeObject.gcm->size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccgcm_mode_get_block_size(const corecryptoMode modeObject) { return modeObject.gcm->block_size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccgcm_mode_setup(const corecryptoMode modeObj, const void * __unused iv,
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccgcm_mode_crypt(const corecryptoMode modeObj, const void *in, void *out, size_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccgcm_setiv(const corecryptoMode modeObj, const void *iv, uint32_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccccm_mode_get_ctx_size(const corecryptoMode modeObject) { return modeObject.ccm->size + sizeof(ccm_nonce_ctx); }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccccm_mode_get_block_size(const corecryptoMode modeObject) { return modeObject.ccm->block_size; }
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccccm_mode_setup(const corecryptoMode modeObj, const void * __unused iv,
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccccm_mode_crypt(const corecryptoMode modeObj, const void *in, void *out, size_t len, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccccm_mode_done(const corecryptoMode modeObj, modeCtx ctx)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccpkcs7_encrypt_pad(modeCtx ctx, const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj, void *buff, size_t len, void *cipherText, size_t *moved)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccpkcs7_decrypt_pad(modeCtx ctx, const cc2CCModeDescriptor * __unused modeptr, const corecryptoMode modeObj, void *buff, size_t len, void *plainText, size_t *moved)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccpkcs7_encrypt_ecb_pad(modeCtx ctx, const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj, void *buff, size_t len, void *cipherText, size_t *moved)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccpkcs7_decrypt_ecb_pad(modeCtx ctx, const cc2CCModeDescriptor * __unused modeptr, const corecryptoMode modeObj, void *buff, size_t len, void *plainText, size_t *moved)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static inline size_t cc_round_down_by_blocksize(const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj, size_t length) {
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static inline size_t cc_round_up_by_blocksize(const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj, size_t length) {
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccpkcs7_padlen(int encrypting, const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj, size_t inputLength, bool final)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccpkcs7_reserve(int encrypt, const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int cccts3_encrypt_pad(modeCtx ctx, const cc2CCModeDescriptor * __unused modeptr, const corecryptoMode modeObj, void *buff, size_t len, void *cipherText, size_t *moved)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int cccts3_decrypt_pad(modeCtx ctx, const cc2CCModeDescriptor * __unused modeptr, const corecryptoMode modeObj, void *buff, size_t len, void *plainText, size_t *moved)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t cccts3_padlen(int encrypting, const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj, size_t inputLength, bool final)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t cccts3_reserve(int __unused encrypt, const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccnopad_encrypt_pad(modeCtx  __unused ctx, const cc2CCModeDescriptor * __unused modeptr, const corecryptoMode __unused modeObj, void * __unused buff, size_t len, void * __unused cipherText, size_t *moved)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static int ccnopad_decrypt_pad(modeCtx __unused ctx, const cc2CCModeDescriptor * __unused modeptr, const corecryptoMode  __unused modeObj, void *  __unused buff, size_t len, void * __unused plainText, size_t *moved)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccnopad_padlen(int __unused encrypting, const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj, size_t inputLength, bool __unused final)
+./CommonCrypto/lib/corecryptoSymmetricBridge.c:static size_t ccnopad_reserve(int __unused encrypt, const cc2CCModeDescriptor *  __unused modeptr, const corecryptoMode __unused modeObj)
+./CommonCrypto/lib/CommonCryptorGCM.c:#include <corecrypto/ccn.h>
+./CommonCrypto/lib/CommonCryptorGCM.c:    //currently corecrypto accepts NULL
+./CommonCrypto/lib/CommonKeyDerivation.c:#include <corecrypto/ccpbkdf2.h>
+./CommonCrypto/lib/CommonKeyDerivation.c://time functions are from corecrypto
+./CommonCrypto/lib/CommonKeyDerivation.c:#include <corecrypto/cc_absolute_time.h>
+./CommonCrypto/lib/CommonDigestPriv.h:// This should remain internal only.  This bridges the CommonCrypto->corecrypto structures
+./CommonCrypto/lib/ccGlobals.h:#include <corecrypto/ccdh.h>
+./CommonCrypto/lib/ccGlobals.h:#include <corecrypto/ccdigest.h>
+./CommonCrypto/lib/CommonDH.c:#include <corecrypto/ccn.h>
+./CommonCrypto/lib/CommonDH.c:#include <corecrypto/cc_priv.h>
+./CommonCrypto/lib/CommonDH.c:#include <corecrypto/ccdh.h>
+./CommonCrypto/lib/CommonDH.c:#include <corecrypto/ccdh_gp.h>
+./CommonCrypto/lib/CommonCMAC.c:#include <corecrypto/cccmac.h>
+./CommonCrypto/lib/CommonCMAC.c:#include <corecrypto/ccaes.h>
+./CommonCrypto/lib/CommonCryptorRC4.c:#include <corecrypto/ccrc4.h>
+./CommonCrypto/lib/CommonKeyDerivationSPI.c:#include <corecrypto/cchkdf.h>
+./CommonCrypto/lib/CommonKeyDerivationSPI.c:#include <corecrypto/ccansikdf.h>
+./CommonCrypto/lib/CommonKeyDerivationSPI.c:#include <corecrypto/ccnistkdf.h>
+./CommonCrypto/lib/CommonKeyDerivationSPI.c:#include <corecrypto/ccpbkdf2.h>
+./CommonCrypto/lib/CommonSymmetricKeywrap.c:#include <corecrypto/ccwrap_priv.h>
+./CommonCrypto/lib/CommonSymmetricKeywrap.c:    /* if the IV is not null, it must be long enough to satisfy corecrypto */
+./CommonCrypto/lib/CommonSymmetricKeywrap.c:    /* if the IV is not null, it must be long enough to satisfy corecrypto */
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:#ifndef CommonCrypto_corecryptoSymmetricBridge_h
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:#define CommonCrypto_corecryptoSymmetricBridge_h
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:#include <corecrypto/ccn.h>
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:#include <corecrypto/ccmode.h>
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:#include <corecrypto/ccmode_impl.h>
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:#include <corecrypto/ccmode_factory.h>
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:#include <corecrypto/ccaes.h>
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:#include <corecrypto/ccdes.h>
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:#include <corecrypto/cccast.h>
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:#include <corecrypto/ccrc2.h>
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:#include <corecrypto/ccblowfish.h>
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:#include <corecrypto/ccpad.h>
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:} corecryptoMode;
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef int (*ccmode_setup_p)(const corecryptoMode modeObj, const void *iv,
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef int (*ccmode_encrypt_p)(const corecryptoMode modeObj, const void *pt, void *ct, size_t len, modeCtx ctx);
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef int (*ccmode_decrypt_p)(const corecryptoMode modeObj, const void *ct, void *pt, size_t len, modeCtx ctx);
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef int (*ccmode_encrypt_tweaked_p)(const corecryptoMode modeObj, const void *pt, size_t len,
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef int (*ccmode_decrypt_tweaked_p)(const corecryptoMode modeObj, const void *ct, size_t len,
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef int (*ccmode_done_p)(const corecryptoMode modeObj, modeCtx ctx);
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef int (*ccmode_setiv_p)(const corecryptoMode modeObj, const void *iv, uint32_t len, modeCtx ctx);
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef int (*ccmode_getiv_p)(const corecryptoMode modeObj, void *iv, uint32_t *len, modeCtx ctx);
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef size_t (*ccmode_get_ctx_size)(const corecryptoMode modeObj);
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef size_t (*ccmode_get_block_size)(const corecryptoMode modeObj);
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef int (*cc_encrypt_pad_p)(modeCtx ctx, const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj, void *buff, size_t startpoint, void *cipherText, size_t *moved);
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef int (*cc_decrypt_pad_p)(modeCtx ctx, const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj, void *buff, size_t startpoint, void *plainText, size_t *moved);
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef size_t (*ccpadlen_p) (int encrypt, const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj, size_t inputLength, bool final);
+./CommonCrypto/lib/corecryptoSymmetricBridge.h:typedef size_t (*ccreserve_p) (int encrypt, const cc2CCModeDescriptor *modeptr, const corecryptoMode modeObj);
+./CommonCrypto/lib/CommonECCryptor.c:#include <corecrypto/ccec.h>
+./CommonCrypto/lib/CommonECCryptor.c:#pragma mark API for ECDH - needs corecrypto key import / export capability (SPI for now)
+./CommonCrypto/lib/ccGlobals.c:#include <corecrypto/ccmd2.h>
+./CommonCrypto/lib/ccGlobals.c:#include <corecrypto/ccmd4.h>
+./CommonCrypto/lib/ccGlobals.c:#include <corecrypto/ccmd5.h>
+./CommonCrypto/lib/ccGlobals.c:#include <corecrypto/ccripemd.h>
+./CommonCrypto/lib/ccGlobals.c:#include <corecrypto/ccsha1.h>
+./CommonCrypto/lib/ccGlobals.c:#include <corecrypto/ccsha2.h>
+./CommonCrypto/lib/CommonCryptor.c:const corecryptoMode getCipherMode(CCAlgorithm cipher, CCMode mode, CCOperation direction)
+./CommonCrypto/lib/CommonCryptor.c:        case kCCModeECB:  return (corecryptoMode) ccmodeList[cipher][direction].ecb();
+./CommonCrypto/lib/CommonCryptor.c:        case kCCModeCBC:  return (corecryptoMode) ccmodeList[cipher][direction].cbc();
+./CommonCrypto/lib/CommonCryptor.c:        case kCCModeCFB:  return (corecryptoMode) ccmodeList[cipher][direction].cfb();
+./CommonCrypto/lib/CommonCryptor.c:        case kCCModeCFB8: return (corecryptoMode) ccmodeList[cipher][direction].cfb8();
+./CommonCrypto/lib/CommonCryptor.c:        case kCCModeCTR:  return (corecryptoMode) ccmodeList[cipher][direction].ctr();
+./CommonCrypto/lib/CommonCryptor.c:        case kCCModeOFB:  return (corecryptoMode) ccmodeList[cipher][direction].ofb();
+./CommonCrypto/lib/CommonCryptor.c:        case kCCModeXTS:  return (corecryptoMode) ccmodeList[cipher][direction].xts();
+./CommonCrypto/lib/CommonCryptor.c:        case kCCModeGCM:  return (corecryptoMode) ccmodeList[cipher][direction].gcm();
+./CommonCrypto/lib/CommonCryptor.c:        case kCCModeCCM:  return (corecryptoMode) ccmodeList[cipher][direction].ccm();
+./CommonCrypto/lib/CommonCryptor.c:    return (corecryptoMode) (const struct ccmode_ecb*) NULL;
+./CommonCrypto/lib/CommonCollabKeyGen.c:#include <corecrypto/ccckg.h>
+./CommonCrypto/lib/CommonBigNum.c:#include <corecrypto/ccz.h>
+./CommonCrypto/lib/CommonBigNum.c:#include <corecrypto/ccn.h> /* For ccn_sizeof(). */
+./CommonCrypto/lib/CommonBigNum.c:#include <corecrypto/cc_priv.h> /* For CC_LOAD32_BE. */
+./CommonCrypto/lib/CommonBigNum.c:       ccn_readi routine all the way down into corecrypto. */
+./CommonCrypto/lib/timingsafe_bcmp.c:#include <corecrypto/cc_priv.h>
+./CommonCrypto/lib/CommonRandom.c:#include <corecrypto/ccaes.h>
+./CommonCrypto/lib/CommonRandom.c:#include <corecrypto/ccdrbg.h>
+./CommonCrypto/lib/CommonRandom.c:#include <corecrypto/ccrng.h>
+./CommonCrypto/lib/CommonRandom.c:  We don't use /dev/random anymore, use the corecrypto rng instead.
+./CommonCrypto/windows/CCRegression/CCRegression.vcxproj:      <AdditionalDependencies>..\Debug\CommonCrypto.lib;corecrypto2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+./CommonCrypto/windows/CCRegression/CCRegression.vcxproj:      <AdditionalDependencies>..\x64\Debug\CommonCrypto.lib;corecrypto2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+./CommonCrypto/windows/CCRegression/CCRegression.vcxproj:      <AdditionalDependencies>..\Release\CommonCrypto.lib;corecrypto2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+./CommonCrypto/windows/CCRegression/CCRegression.vcxproj:      <AdditionalDependencies>..\x64\Release\CommonCrypto.lib;corecrypto2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+./CommonCrypto/windows/lib/lib.vcxproj.filters:    <ClCompile Include="..\..\lib\corecryptoSymmetricBridge.c">
+./CommonCrypto/windows/lib/lib.vcxproj:    <ClCompile Include="..\..\lib\corecryptoSymmetricBridge.c" />
+./CommonCrypto/libcn/CommonBuffering.c:#include <corecrypto/cc.h>
+./Libc/xcodescripts/libc.xcconfig:UPWARD_LDFLAGS = -Wl,-upward-ldispatch -Wl,-upward-lmacho -Wl,-upward-lsystem_asl -Wl,-upward-lsystem_blocks -Wl,-upward-lsystem_info -Wl,-upward-lsystem_notify -Wl,-upward-lxpc -Wl,-upward-lcorecrypto -Wl,-upward-lsystem_trace
+./Libc/xcodescripts/libc.xcconfig:UPWARD_LDFLAGS[sdk=driverkit*] = -Wl,-upward-lmacho -Wl,-upward-lsystem_blocks -Wl,-upward-lcorecrypto
+./Libc/gen/FreeBSD/arc4random.c:#include <corecrypto/ccrng.h>
+./Security/Security.xcodeproj/project.pbxproj:		E7AAB5F415929493005C8BCC /* libcorecrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcorecrypto.dylib; path = usr/lib/system/libcorecrypto.dylib; sourceTree = SDKROOT; };
+./Security/Security.xcodeproj/project.pbxproj:				E7AAB5F415929493005C8BCC /* libcorecrypto.dylib */,
+./Security/KeychainCircle/KCJoiningRequestSecretSession.m:#include <corecrypto/ccrng.h>
+./Security/KeychainCircle/KCJoiningRequestSecretSession.m:#include <corecrypto/ccsha2.h>
+./Security/KeychainCircle/KCJoiningRequestSecretSession.m:#include <corecrypto/ccdh_gp.h>
+./Security/KeychainCircle/KCJoiningRequestSecretSession.m:#include <corecrypto/ccder.h>
+./Security/KeychainCircle/KCSRPContext.h:#include <corecrypto/ccdigest.h>
+./Security/KeychainCircle/KCSRPContext.h:#include <corecrypto/ccrng.h>
+./Security/KeychainCircle/KCSRPContext.h:#include <corecrypto/ccsrp.h>
+./Security/KeychainCircle/KCDer.h:#include <corecrypto/ccder.h>
+./Security/KeychainCircle/Tests/KCSRPTests.m:#include <corecrypto/ccrng.h>
+./Security/KeychainCircle/Tests/KCSRPTests.m:#include <corecrypto/ccsha2.h>
+./Security/KeychainCircle/Tests/KCSRPTests.m:#include <corecrypto/ccdh_gp.h>
+./Security/KeychainCircle/KCJoiningAcceptSession.m:#include <corecrypto/ccder.h>
+./Security/KeychainCircle/KCJoiningAcceptSession.m:#include <corecrypto/ccrng.h>
+./Security/KeychainCircle/KCJoiningAcceptSession.m:#include <corecrypto/ccsha2.h>
+./Security/KeychainCircle/KCJoiningAcceptSession.m:#include <corecrypto/ccdh_gp.h>
+./Security/KeychainCircle/KCJoiningMessages.m:#include <corecrypto/ccder.h>
+./Security/KeychainCircle/KCSRPContext.m:#include <corecrypto/ccsrp.h>
+./Security/KeychainCircle/KCSRPContext.m:#include <corecrypto/ccsha2.h>
+./Security/KeychainCircle/KCSRPContext.m:#include <corecrypto/ccdh_gp.h>
+./Security/KeychainCircle/KCSRPContext.m:#include <corecrypto/ccder.h>
+./Security/KeychainCircle/KCAESGCMDuplexSession.m:#include <corecrypto/ccaes.h>
+./Security/KeychainCircle/KCAESGCMDuplexSession.m:#include <corecrypto/ccmode.h>
+./Security/KeychainCircle/KCAESGCMDuplexSession.m:#include <corecrypto/cchkdf.h>
+./Security/KeychainCircle/KCAESGCMDuplexSession.m:#include <corecrypto/ccsha2.h>
+./Security/KeychainCircle/KCAESGCMDuplexSession.m:#include <corecrypto/ccder.h>
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:#import <corecrypto/ccrng.h>
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:#import <corecrypto/ccsha1.h>
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:#import <corecrypto/ccsha2.h>
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:#import <corecrypto/ccec.h>
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:#import <corecrypto/ccecies.h>
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:static void test_ies_against_corecrypto(id privKey, ccec_const_cp_t cp, const struct ccdigest_info *di, uint32_t ccKeySize, bool secureIV, SecKeyAlgorithm algorithm) {
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    // Generate SecKey and import it as corecrypto fullkey.
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:static void test_against_corecrypto() {
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_192(), ccsha1_di(), 16, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA1AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_192(), ccsha224_di(), 16, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA224AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_192(), ccsha256_di(), 16, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA256AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_192(), ccsha384_di(), 16, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA384AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_192(), ccsha512_di(), 16, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA512AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_192(), ccsha224_di(), 16, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA224AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_192(), ccsha256_di(), 16, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA256AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_192(), ccsha384_di(), 16, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA384AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_192(), ccsha512_di(), 16, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA512AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_256(), ccsha1_di(), 16, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA1AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_256(), ccsha224_di(), 16, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA224AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_256(), ccsha256_di(), 16, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA256AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_256(), ccsha384_di(), 16, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA384AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_256(), ccsha512_di(), 16, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA512AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_256(), ccsha224_di(), 16, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA224AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_256(), ccsha256_di(), 16, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA256AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_256(), ccsha384_di(), 16, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA384AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_256(), ccsha512_di(), 16, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA512AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_384(), ccsha1_di(), 32, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA1AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_384(), ccsha224_di(), 32, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA224AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_384(), ccsha256_di(), 32, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA256AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_384(), ccsha384_di(), 32, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA384AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_384(), ccsha512_di(), 32, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA512AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_384(), ccsha224_di(), 32, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA224AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_384(), ccsha256_di(), 32, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA256AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_384(), ccsha384_di(), 32, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA384AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_384(), ccsha512_di(), 32, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA512AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_521(), ccsha1_di(), 32, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA1AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_521(), ccsha224_di(), 32, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA224AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_521(), ccsha256_di(), 32, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA256AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_521(), ccsha384_di(), 32, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA384AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_521(), ccsha512_di(), 32, false, kSecKeyAlgorithmECIESEncryptionStandardX963SHA512AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_521(), ccsha224_di(), 32, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA224AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_521(), ccsha256_di(), 32, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA256AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_521(), ccsha384_di(), 32, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA384AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:    test_ies_against_corecrypto(privKey, ccec_cp_521(), ccsha512_di(), 32, true, kSecKeyAlgorithmECIESEncryptionStandardVariableIVX963SHA512AESGCM);
+./Security/OSX/shared_regressions/si-44-seckey-ies.m:        test_against_corecrypto();
+./Security/OSX/shared_regressions/si-44-seckey-ec.m:#import <corecrypto/ccsha1.h>
+./Security/OSX/shared_regressions/si-44-seckey-ec.m:#import <corecrypto/ccsha2.h>
+./Security/OSX/shared_regressions/si-44-seckey-ec.m:#import <corecrypto/ccec.h>
+./Security/OSX/shared_regressions/si-44-seckey-rsa.m:#import <corecrypto/ccrng.h>
+./Security/OSX/shared_regressions/si-44-seckey-rsa.m:#import <corecrypto/ccsha1.h>
+./Security/OSX/shared_regressions/si-44-seckey-rsa.m:#import <corecrypto/ccsha2.h>
+./Security/OSX/shared_regressions/si-44-seckey-rsa.m:#import <corecrypto/ccdigest.h>
+./Security/OSX/shared_regressions/si-44-seckey-rsa.m:#import <corecrypto/ccrsa.h>
+./Security/OSX/libsecurity_transform/lib/CEncryptDecrypt.c:#include "corecrypto/ccsha1.h"
+./Security/OSX/libsecurity_transform/lib/CEncryptDecrypt.c:#include "corecrypto/ccrsa_priv.h"
+./Security/OSX/libsecurity_transform/lib/CEncryptDecrypt.c:#include "corecrypto/ccrng_system.h"
+./Security/OSX/libsecurity_transform/lib/CEncryptDecrypt.c:#include "corecrypto/ccn.h"
+./Security/OSX/libsecurity_transform/lib/CEncryptDecrypt.c:// corecrypto headers don't like C++ (on a deaper level then extern "C" {} can fix
+./Security/OSX/libsecurity_transform/lib/CEncryptDecrypt.c:// so we need a C "shim" for all our corecrypto use.
+./Security/OSX/libsecurity_ssl/Security/sslBuildFlags.h:#undef USE_CDSA_CRYPTO				/* use corecrypto, instead of CDSA */
+./Security/OSX/libsecurity_ssl/Security/sslContext.h:#include <corecrypto/ccec.h>
+./Security/OSX/libsecurity_ssl/security_ssl/sslBuildFlags.h:#undef USE_CDSA_CRYPTO				/* use corecrypto, instead of CDSA */
+./Security/OSX/libsecurity_ssl/security_ssl/sslContext.h:#include <corecrypto/ccec.h>
+./Security/OSX/libsecurity_ssl/lib/sslBuildFlags.h:#undef USE_CDSA_CRYPTO				/* use corecrypto, instead of CDSA */
+./Security/OSX/libsecurity_ssl/lib/sslContext.h:#include <corecrypto/ccec.h>
+./Security/OSX/sec/Security/SecDH.c:#include <corecrypto/ccdh.h>
+./Security/OSX/sec/Security/SecOTRSessionPriv.h:#include <corecrypto/ccn.h>
+./Security/OSX/sec/Security/SecOTRSessionPriv.h:#include <corecrypto/ccmode.h>
+./Security/OSX/sec/Security/SecOTRSessionPriv.h:#include <corecrypto/ccsha1.h>
+./Security/OSX/sec/Security/SecPasswordGenerate.c:#include <corecrypto/ccdigest.h>
+./Security/OSX/sec/Security/SecPasswordGenerate.c:#include <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/SecOTRDHKey.h:#include <corecrypto/ccn.h>
+./Security/OSX/sec/Security/SecOTRDHKey.h:#include <corecrypto/ccsha1.h>
+./Security/OSX/sec/Security/SecEMCS.m:#include <corecrypto/ccpbkdf2.h>
+./Security/OSX/sec/Security/SecEMCS.m:#include <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/SecEMCS.m:#include <corecrypto/ccaes.h>
+./Security/OSX/sec/Security/SecEMCS.m:#include <corecrypto/ccmode.h>
+./Security/OSX/sec/Security/SecEMCS.m:#include <corecrypto/ccwrap.h>
+./Security/OSX/sec/Security/SecRecoveryKey.m:#import <corecrypto/cchkdf.h>
+./Security/OSX/sec/Security/SecRecoveryKey.m:#import <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/SecRecoveryKey.m:#import <corecrypto/ccec.h>
+./Security/OSX/sec/Security/SecOTRPackets.c:#include <corecrypto/ccn.h>
+./Security/OSX/sec/Security/SecOTRPackets.c:#include <corecrypto/ccdigest.h>
+./Security/OSX/sec/Security/SecOTRPackets.c:#include <corecrypto/ccaes.h>
+./Security/OSX/sec/Security/SecOTRPackets.c:#include <corecrypto/ccmode.h>
+./Security/OSX/sec/Security/SecOTRPackets.c:#include <corecrypto/ccmode_factory.h>
+./Security/OSX/sec/Security/SecOTRPackets.c:#include <corecrypto/cchmac.h>
+./Security/OSX/sec/Security/SecOTRPackets.c:#include <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/SecRSAKey.c:#include <corecrypto/ccn.h>
+./Security/OSX/sec/Security/SecRSAKey.c:#include <corecrypto/ccrsa.h>
+./Security/OSX/sec/Security/SecRSAKey.c:#include <corecrypto/ccsha1.h>
+./Security/OSX/sec/Security/SecRSAKey.c:#include <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/SecRSAKey.c:#include <corecrypto/ccrsa_priv.h>
+./Security/OSX/sec/Security/SecOTRSession.c:#include <corecrypto/cchmac.h>
+./Security/OSX/sec/Security/SecOTRSession.c:#include <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/SecOTRSession.c:#include <corecrypto/ccsha1.h>
+./Security/OSX/sec/Security/SecOTRMath.h:#include <corecrypto/ccn.h>
+./Security/OSX/sec/Security/SecOTRMath.h:#include <corecrypto/ccaes.h>
+./Security/OSX/sec/Security/SecOTRMath.h:#include <corecrypto/ccmode.h>
+./Security/OSX/sec/Security/SecServerEncryptionSupport.c:#include <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/SecServerEncryptionSupport.c:#include <corecrypto/ccecies.h>
+./Security/OSX/sec/Security/SecServerEncryptionSupport.c:#include <corecrypto/ccaes.h>
+./Security/OSX/sec/Security/SecServerEncryptionSupport.c:#include <corecrypto/ccder.h>
+./Security/OSX/sec/Security/SecCFAllocator.c:#include <corecrypto/cc.h>
+./Security/OSX/sec/Security/SecEC-tapi.h:#include <corecrypto/ccec.h>
+./Security/OSX/sec/Security/SecECKey.m:#include <corecrypto/ccec.h>
+./Security/OSX/sec/Security/SecECKey.m:#include <corecrypto/ccsha1.h>
+./Security/OSX/sec/Security/SecECKey.m:#include <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/SecECKey.m:#include <corecrypto/ccrng.h>
+./Security/OSX/sec/Security/SecECKey.m:#include <corecrypto/ccder_decode_eckey.h>
+./Security/OSX/sec/Security/SecECKeyPriv.h:#include <corecrypto/ccec.h>
+./Security/OSX/sec/Security/SecOTRPacketData.h:#include <corecrypto/ccn.h>
+./Security/OSX/sec/Security/SecItem.c:#include <corecrypto/ccder.h>
+./Security/OSX/sec/Security/SecSignatureVerificationSupport.c:#include <corecrypto/ccn.h>
+./Security/OSX/sec/Security/SecSignatureVerificationSupport.c:#include <corecrypto/ccec.h>
+./Security/OSX/sec/Security/SecSignatureVerificationSupport.c:#include <corecrypto/ccder.h>
+./Security/OSX/sec/Security/SecKeyAdaptors.m:#include <corecrypto/ccsha1.h>
+./Security/OSX/sec/Security/SecKeyAdaptors.m:#include <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/SecKeyAdaptors.m:#include <corecrypto/ccmd5.h>
+./Security/OSX/sec/Security/SecKeyAdaptors.m:#include <corecrypto/ccrsa_priv.h>
+./Security/OSX/sec/Security/SecKeyAdaptors.m:#include <corecrypto/ccansikdf.h>
+./Security/OSX/sec/Security/SecKeyAdaptors.m:#include <corecrypto/ccmode.h>
+./Security/OSX/sec/Security/SecKeyAdaptors.m:#include <corecrypto/ccaes.h>
+./Security/OSX/sec/Security/SecKeyAdaptors.m:#include <corecrypto/ccder.h>
+./Security/OSX/sec/Security/SecOTRDHKey.c:#include <corecrypto/ccn.h>
+./Security/OSX/sec/Security/SecOTRDHKey.c:#include <corecrypto/ccsha1.h>
+./Security/OSX/sec/Security/SecOTRDHKey.c:#include <corecrypto/ccec_priv.h>
+./Security/OSX/sec/Security/SecOTRDHKey.c:#include <corecrypto/ccec.h>
+./Security/OSX/sec/Security/Regressions/secitem/si-41-sececkey.c:#include <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/Regressions/secitem/si-40-seckey.c:#include <corecrypto/ccsha1.h>
+./Security/OSX/sec/Security/Regressions/secitem/si-40-seckey.c:#include <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/Regressions/secitem/si-69-keydesc.c:#include <corecrypto/ccec.h>
+./Security/OSX/sec/Security/Regressions/secitem/si_77_SecAccessControl.c:#include <corecrypto/ccder.h>
+./Security/OSX/sec/Security/Regressions/otr/otr-packetdata.c:#include <corecrypto/ccn.h>
+./Security/OSX/sec/Security/Regressions/vmdh/vmdh-42-example2.c:#include <corecrypto/ccdh.h>
+./Security/OSX/sec/Security/Regressions/vmdh/vmdh-41-example.c:#include <corecrypto/ccdh.h>
+./Security/OSX/sec/Security/SecOTRPublicIdentity.c:#include <corecrypto/ccn.h>
+./Security/OSX/sec/Security/SecOTRPublicIdentity.c:#include <corecrypto/ccec.h>
+./Security/OSX/sec/Security/SecOTRPublicIdentity.c:#include <corecrypto/ccder.h>
+./Security/OSX/sec/Security/p12pbegen.c:#include <corecrypto/ccn.h>
+./Security/OSX/sec/Security/SecOTRSessionAKE.c:#include <corecrypto/cchmac.h>
+./Security/OSX/sec/Security/SecOTRSessionAKE.c:#include <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/SecOTRMath.c:#include <corecrypto/ccsha2.h>
+./Security/OSX/sec/Security/SecOTRMath.c:#include <corecrypto/cczp.h>
+./Security/OSX/sec/Security/SecOTRMath.c:#include <corecrypto/ccdh_gp.h>
+./Security/OSX/sec/Security/SecKeyInternal.h:#include <corecrypto/ccrng.h>
+./Security/OSX/sec/Security/SecItemBackup.c:#include <corecrypto/ccsha1.h>
+./Security/OSX/sec/Security/SecKey.m:#include <corecrypto/ccrng_system.h>
+./Security/OSX/utilities/SecCFWrappers.h:#include <corecrypto/ccdigest.h>
+./Security/OSX/utilities/SecCFCCWrappers.h:#include <corecrypto/ccsha1.h>
+./Security/OSX/utilities/SecCFCCWrappers.h:#include <corecrypto/ccsha2.h>
+./Security/OSX/utilities/der_set.h:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/der_data.c:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/der_null.c:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/der_date.c:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/der_dictionary.c:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/der_plist.c:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/der_plist_internal.h:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/der_boolean.c:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/der_set.c:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/Regressions/su-16-cfdate-der.c:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/der_string.c:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/der_array.c:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/SecCoreCrypto.c:#include <corecrypto/ccder.h>
+./Security/OSX/utilities/der_number.c:#include <corecrypto/ccder.h>
+./Security/OSX/Breadcrumb/SecBreadcrumb.c:#include <corecrypto/ccaes.h>
+./Security/OSX/Breadcrumb/SecBreadcrumb.c:#include <corecrypto/ccpbkdf2.h>
+./Security/OSX/Breadcrumb/SecBreadcrumb.c:#include <corecrypto/ccmode.h>
+./Security/OSX/Breadcrumb/SecBreadcrumb.c:#include <corecrypto/ccmode_factory.h>
+./Security/OSX/Breadcrumb/SecBreadcrumb.c:#include <corecrypto/ccsha2.h>
+./Security/OSX/libsecurity_keychain/regressions/kc-40-seckey.m:#include <corecrypto/ccsha1.h>
+./Security/OSX/libsecurity_keychain/regressions/kc-40-seckey.m:#include <corecrypto/ccsha2.h>
+./Security/SecurityTool/sharedTool/digest_calc.c:#include <corecrypto/ccsha1.h>
+./Security/SecurityTool/sharedTool/digest_calc.c:#include <corecrypto/ccsha2.h>
+./Security/keychain/ckks/CKKSSIV.m:#include <corecrypto/ccaes.h>
+./Security/keychain/ckks/CKKSSIV.m:#include <corecrypto/ccmode_siv.h>
+./Security/keychain/ckks/CKKSSIV.m:            *error = [NSError errorWithDomain:@"corecrypto"
+./Security/keychain/ckks/CKKSSIV.m:    require_action_quiet(status == 0, out, localerror = [NSError errorWithDomain:@"corecrypto"
+./Security/keychain/ckks/CKKSSIV.m:        require_action_quiet(status == 0, out, localerror = [NSError errorWithDomain:@"corecrypto"
+./Security/keychain/ckks/CKKSSIV.m:        require_action_quiet(status == 0, out, localerror = [NSError errorWithDomain:@"corecrypto"
+./Security/keychain/ckks/CKKSSIV.m:    require_action_quiet(status == 0, out, localerror = [NSError errorWithDomain:@"corecrypto"
+./Security/keychain/SecureObjectSync/SOSFullPeerInfo.m:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSCircle.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSCircle.c:#include <corecrypto/ccdigest.h>
+./Security/keychain/SecureObjectSync/SOSCircle.c:#include <corecrypto/ccsha2.h>
+./Security/keychain/SecureObjectSync/SOSRingConcordanceTrust.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSRingConcordanceTrust.c:#include <corecrypto/ccdigest.h>
+./Security/keychain/SecureObjectSync/SOSRingConcordanceTrust.c:#include <corecrypto/ccsha2.h>
+./Security/keychain/SecureObjectSync/SOSRingConcordanceTrust.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSECWrapUnwrap.c:#include <corecrypto/ccec.h>
+./Security/keychain/SecureObjectSync/SOSAccountPriv.h:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSPeerInfo.m:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSPeerInfo.m:#include <corecrypto/ccdigest.h>
+./Security/keychain/SecureObjectSync/SOSPeerInfo.m:#include <corecrypto/ccsha2.h>
+./Security/keychain/SecureObjectSync/SOSEngine.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSCoder.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSUserKeygen.m:#include <corecrypto/ccrng.h>
+./Security/keychain/SecureObjectSync/SOSUserKeygen.m:#include <corecrypto/ccrng_pbkdf2_prng.h>
+./Security/keychain/SecureObjectSync/SOSUserKeygen.m:#include <corecrypto/ccec.h>
+./Security/keychain/SecureObjectSync/SOSUserKeygen.m:#include <corecrypto/ccdigest.h>
+./Security/keychain/SecureObjectSync/SOSUserKeygen.m:#include <corecrypto/ccsha2.h>
+./Security/keychain/SecureObjectSync/SOSUserKeygen.m:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSPeerInfoDER.m:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSRingUtils.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSRingUtils.c:#include <corecrypto/ccdigest.h>
+./Security/keychain/SecureObjectSync/SOSRingUtils.c:#include <corecrypto/ccsha2.h>
+./Security/keychain/SecureObjectSync/SOSRingUtils.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSPiggyback.m:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSPeerInfoV2.m:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSInternal.m:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSInternal.m:#include <corecrypto/ccrng.h>
+./Security/keychain/SecureObjectSync/SOSInternal.m:#include <corecrypto/ccrng_pbkdf2_prng.h>
+./Security/keychain/SecureObjectSync/SOSPeerInfo.h:#include <corecrypto/ccdigest.h>
+./Security/keychain/SecureObjectSync/SOSRingDER.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSRingDER.c:#include <corecrypto/ccdigest.h>
+./Security/keychain/SecureObjectSync/SOSRingDER.c:#include <corecrypto/ccsha2.h>
+./Security/keychain/SecureObjectSync/SOSRingDER.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSCircleDer.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSRecoveryKeyBag.m:#include <corecrypto/ccec.h>
+./Security/keychain/SecureObjectSync/SOSRecoveryKeyBag.m:#include <corecrypto/ccsha2.h>
+./Security/keychain/SecureObjectSync/SOSRecoveryKeyBag.m:#include <corecrypto/ccrng.h>
+./Security/keychain/SecureObjectSync/SOSAccount.m:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSBackupSliceKeyBag.m:#include <corecrypto/ccec.h>
+./Security/keychain/SecureObjectSync/SOSBackupSliceKeyBag.m:#include <corecrypto/ccsha2.h>
+./Security/keychain/SecureObjectSync/SOSBackupSliceKeyBag.m:#include <corecrypto/ccrng.h>
+./Security/keychain/SecureObjectSync/SOSInternal.h:#include <corecrypto/ccec.h>
+./Security/keychain/SecureObjectSync/SOSBackupEvent.c:#include <corecrypto/ccsha1.h>
+./Security/keychain/SecureObjectSync/Regressions/SOSTestDataSource.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/Regressions/SOSTestDevice.c:#include <corecrypto/ccsha2.h>
+./Security/keychain/SecureObjectSync/Regressions/sc-25-soskeygen.c:#include <corecrypto/ccrng.h>
+./Security/keychain/SecureObjectSync/Regressions/sc-25-soskeygen.c:#include <corecrypto/ccrng_pbkdf2_prng.h>
+./Security/keychain/SecureObjectSync/Regressions/sc-25-soskeygen.c:#include <corecrypto/ccec.h>
+./Security/keychain/SecureObjectSync/Regressions/sc-25-soskeygen.c:#include <corecrypto/ccdigest.h>
+./Security/keychain/SecureObjectSync/Regressions/sc-25-soskeygen.c:#include <corecrypto/ccsha2.h>
+./Security/keychain/SecureObjectSync/Regressions/sc-25-soskeygen.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSMessage.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSDigestVector.h:#include <corecrypto/ccsha1.h>
+./Security/keychain/SecureObjectSync/SOSPeerInfoDER.h:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSRingPeerInfoUtils.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSRingPeerInfoUtils.c:#include <corecrypto/ccdigest.h>
+./Security/keychain/SecureObjectSync/SOSRingPeerInfoUtils.c:#include <corecrypto/ccsha2.h>
+./Security/keychain/SecureObjectSync/SOSRingPeerInfoUtils.c:#include <corecrypto/ccder.h>
+./Security/keychain/SecureObjectSync/SOSManifest.h:#include <corecrypto/ccsha1.h>
+./Security/keychain/SecureObjectSync/SOSCloudCircle.m:#include <corecrypto/ccsha2.h>
+./Security/keychain/SecureObjectSync/SOSPeerInfoCollections.c:#include <corecrypto/ccder.h>
+./Security/keychain/TrustedPeersHelper/TrustedPeersHelper-Bridging-Header.h:#import <corecrypto/cchkdf.h>
+./Security/keychain/TrustedPeersHelper/TrustedPeersHelper-Bridging-Header.h:#import <corecrypto/ccsha2.h>
+./Security/keychain/TrustedPeersHelper/TrustedPeersHelper-Bridging-Header.h:#import <corecrypto/ccec.h>
+./Security/keychain/TrustedPeersHelper/TPHObjcTranslation.h:#import <corecrypto/ccec.h>
+./Security/keychain/TrustedPeersHelper/RecoveryKey/RecoverKeySet.swift:                            throw RecoveryKeySetError.corecryptoKeyGeneration(corecryptoError: status)
+./Security/keychain/TrustedPeersHelper/RecoveryKey/RecoverKeySet.swift:                                throw RecoveryKeySetError.corecryptoKeyGeneration(corecryptoError: status)
+./Security/keychain/TrustedPeersHelper/RecoveryKey/RecoverKeySet.swift:    case corecryptoKeyGeneration(corecryptoError: Int32)
+./Security/keychain/TrustedPeersHelper/RecoveryKey/RecoverKeySet.swift:        case .corecryptoKeyGeneration(corecryptoError: let corecryptoError):
+./Security/keychain/TrustedPeersHelper/RecoveryKey/RecoverKeySet.swift:            return "Key generation crypto failed \(corecryptoError)"
+./Security/keychain/TrustedPeersHelper/RecoveryKey/RecoverKeySet.swift:        case .corecryptoKeyGeneration:
+./Security/keychain/TrustedPeersHelper/RecoveryKey/RecoverKeySet.swift:        case .corecryptoKeyGeneration(corecryptoError: let corecryptoError):
+./Security/keychain/TrustedPeersHelper/RecoveryKey/RecoverKeySet.swift:            userInfo[NSUnderlyingErrorKey] = NSError(domain: "corecrypto", code: Int(corecryptoError), userInfo: nil)
+./Security/keychain/TrustedPeersHelper/BottledPeer/EscrowKeys.swift:                            throw EscrowKeysError.corecryptoKeyGeneration(corecryptoError: status)
+./Security/keychain/TrustedPeersHelper/BottledPeer/EscrowKeys.swift:                                throw EscrowKeysError.corecryptoKeyGeneration(corecryptoError: status)
+./Security/keychain/TrustedPeersHelper/BottledPeer/EscrowKeys.swift:    case corecryptoKeyGeneration(corecryptoError: Int32)
+./Security/keychain/TrustedPeersHelper/BottledPeer/EscrowKeys.swift:        case .corecryptoKeyGeneration(corecryptoError: let corecryptoError):
+./Security/keychain/TrustedPeersHelper/BottledPeer/EscrowKeys.swift:            return "Key generation error \(corecryptoError)"
+./Security/keychain/TrustedPeersHelper/BottledPeer/EscrowKeys.swift:        case .corecryptoKeyGeneration:
+./Security/keychain/TrustedPeersHelper/BottledPeer/EscrowKeys.swift:        case .corecryptoKeyGeneration(corecryptoError: let corecryptoError):
+./Security/keychain/TrustedPeersHelper/BottledPeer/EscrowKeys.swift:            userInfo[NSUnderlyingErrorKey] = NSError(domain: "corecrypto", code: Int(corecryptoError), userInfo: nil)
+./Security/keychain/TrustedPeersHelper/TPHObjcTranslation.m:#import <corecrypto/ccsha2.h>
+./Security/keychain/headers/SecKeyPriv.h:    /* Handing in a private key from corecrypto directly. */
+./Security/keychain/securityd/SecDbItem.c:#include <corecrypto/ccsha1.h>
+./Security/keychain/securityd/Regressions/secd-70-engine.m:#include <corecrypto/ccsha2.h>
+./Security/keychain/securityd/Regressions/secd-71-engine-save.m:#include <corecrypto/ccsha2.h>
+./Security/keychain/securityd/Regressions/secd-70-engine-corrupt.m:#include <corecrypto/ccsha2.h>
+./Security/keychain/securityd/SecDbItem.h:#include <corecrypto/ccsha1.h> // For CCSHA1_OUTPUT_SIZE
+./Security/keychain/securityd/SOSCloudCircleServer.m:#include <corecrypto/ccrng.h>
+./Security/keychain/securityd/SOSCloudCircleServer.m:#include <corecrypto/ccrng_pbkdf2_prng.h>
+./Security/keychain/securityd/SOSCloudCircleServer.m:#include <corecrypto/ccec.h>
+./Security/keychain/securityd/SOSCloudCircleServer.m:#include <corecrypto/ccdigest.h>
+./Security/keychain/securityd/SOSCloudCircleServer.m:#include <corecrypto/ccsha2.h>
+./Security/keychain/securityd/SecKeybagSupport.c:#include <corecrypto/ccder.h>
+./Security/securityd/securityd_service/securityd_service/main.c:#include <corecrypto/ccsha2.h>
+./Security/securityd/securityd_service/securityd_service/main.c:#include <corecrypto/cchmac.h>
+./Security/securityd/src/kcdatabase.cpp:#include <corecrypto/ccmode_siv.h>
+./Security/header_symlinks/Security/SecureObjectSync/SOSPeerInfo.h:#include <corecrypto/ccdigest.h>
+./Security/header_symlinks/Security/SecKeyPriv.h:    /* Handing in a private key from corecrypto directly. */
+./Security/header_symlinks/iOS/Security/SecOTRSessionPriv.h:#include <corecrypto/ccn.h>
+./Security/header_symlinks/iOS/Security/SecOTRSessionPriv.h:#include <corecrypto/ccmode.h>
+./Security/header_symlinks/iOS/Security/SecOTRSessionPriv.h:#include <corecrypto/ccsha1.h>
+./Security/header_symlinks/iOS/Security/SecOTRDHKey.h:#include <corecrypto/ccn.h>
+./Security/header_symlinks/iOS/Security/SecOTRDHKey.h:#include <corecrypto/ccsha1.h>
+./Security/header_symlinks/iOS/Security/SecOTRMath.h:#include <corecrypto/ccn.h>
+./Security/header_symlinks/iOS/Security/SecOTRMath.h:#include <corecrypto/ccaes.h>
+./Security/header_symlinks/iOS/Security/SecOTRMath.h:#include <corecrypto/ccmode.h>
+./Security/header_symlinks/iOS/Security/SecECKeyPriv.h:#include <corecrypto/ccec.h>
+./Security/header_symlinks/iOS/Security/SecOTRPacketData.h:#include <corecrypto/ccn.h>
+./eap8021x/EAP8021X.fproj/eapfast_plugin.c:#include <corecrypto/cc.h>
+./eap8021x/EAP8021X.fproj/EAPSIMAKAUtil.c:#include <corecrypto/cc.h>
+./dyld/dyld3/shared-cache/SharedCacheBuilder.cpp:    // FIPS seal corecrypto, This must be done after stub elimination (so that __TEXT,__text is not changed after sealing)
+./dyld/dyld3/shared-cache/SharedCacheBuilder.cpp:    // find libcorecrypto.dylib in cache being built
+./dyld/dyld3/shared-cache/SharedCacheBuilder.cpp:        if ( strcmp(installName, "/usr/lib/system/libcorecrypto.dylib") == 0 )
+./dyld/dyld3/shared-cache/SharedCacheBuilder.cpp:        _diagnostics.warning("Could not find libcorecrypto.dylib, skipping FIPS sealing");
+./dyld/dyld3/shared-cache/SharedCacheBuilder.cpp:    // find location in libcorecrypto.dylib to store hash of __text section
+./dyld/dyld3/shared-cache/SharedCacheBuilder.cpp:        _diagnostics.warning("Could not find __TEXT/__fips_hmacs section in libcorecrypto.dylib, skipping FIPS sealing");
+./dyld/dyld3/shared-cache/SharedCacheBuilder.cpp:        _diagnostics.warning("__TEXT/__fips_hmacs section in libcorecrypto.dylib is not 32 bytes in size, skipping FIPS sealing");
+./dyld/dyld3/shared-cache/SharedCacheBuilder.cpp:        _diagnostics.warning("Could not find __TEXT/__text section in libcorecrypto.dylib, skipping FIPS sealing");
+./dyld/dyld3/MachOLoaded.cpp:  #include <corecrypto/ccdigest.h>
+./dyld/dyld3/MachOLoaded.cpp:  #include <corecrypto/ccsha1.h>
+./dyld/dyld3/MachOLoaded.cpp:  #include <corecrypto/ccsha2.h>
+./dyld/dyld3/Closure.cpp:  #include <corecrypto/ccdigest.h>
+./dyld/dyld3/Closure.cpp:  #include <corecrypto/ccsha2.h>
+./dyld/configs/libdyld.xcconfig:LIBSYSTEM_LIBS[sdk=*simulator*]     = -Wl,-upward-lsystem_sim_platform -Wl,-upward-lsystem_malloc -Wl,-upward-lsystem_c -Wl,-upward-lsystem_sim_pthread -Wl,-upward-lxpc -Wl,-upward-lsystem_blocks -Wl,-upward-lsystem_sim_kernel -Wl,-upward-lsystem_sandbox -Wl,-upward-ldispatch -Wl,-upward-lcorecrypto  -Wl,-upward-lcompiler_rt
+./dyld/configs/libdyld.xcconfig:LIBSYSTEM_LIBS[sdk=embedded*]       = -Wl,-upward-lsystem_platform     -Wl,-upward-lsystem_malloc -Wl,-upward-lsystem_c -Wl,-upward-lsystem_pthread     -Wl,-upward-lxpc -Wl,-upward-lsystem_blocks -Wl,-upward-lsystem_kernel     -Wl,-upward-lsystem_sandbox -Wl,-upward-ldispatch -Wl,-upward-lcorecrypto  -Wl,-upward-lcompiler_rt
+./dyld/configs/libdyld.xcconfig:LIBSYSTEM_LIBS[sdk=macosx*]         = -Wl,-upward-lsystem_platform     -Wl,-upward-lsystem_malloc -Wl,-upward-lsystem_c -Wl,-upward-lsystem_pthread     -Wl,-upward-lxpc -Wl,-upward-lsystem_blocks -Wl,-upward-lsystem_kernel     -Wl,-upward-lsystem_sandbox -Wl,-upward-ldispatch -Wl,-upward-lcorecrypto  -Wl,-upward-lcompiler_rt
+./dyld/dyld.xcodeproj/project.pbxproj:			shellScript = "# link with all .a files in /usr/local/lib/dyld\nls -1 ${SDKROOT}/usr/local/lib/dyld/*.a > ${DERIVED_SOURCES_DIR}/archives.txt \n\n# link with crash report archive if it exists\nif [ -f ${SDKROOT}/usr/local/lib/libCrashReporterClient.a ]\nthen\n  echo \\\"${SDKROOT}/usr/local/lib/libCrashReporterClient.a\\\" >> ${DERIVED_SOURCES_DIR}/archives.txt \nfi\n\n# link with crypto archive if it exists\nif [ -f ${SDKROOT}/usr/local/lib/libcorecrypto_static.a ]\nthen\n  echo \\\"${SDKROOT}/usr/local/lib/libcorecrypto_static.a\\\" >> ${DERIVED_SOURCES_DIR}/archives.txt\nfi\n";
+./dyld/src/glue.c:#include <corecrypto/ccdigest.h>
+./dyld/src/glue.c:#include <corecrypto/ccsha1.h>
+./dyld/src/glue.c:#include <corecrypto/ccsha2.h>
+./Heimdal/kdc/kerberos5.c:#include <corecrypto/ccsrp.h>
+./Heimdal/kdc/kerberos5.c:#include <corecrypto/ccsha2.h>
+./Heimdal/lib/krb5/replay.c:#include <corecrypto/ccdigest.h>
+./Heimdal/lib/krb5/replay.c:#include <corecrypto/ccsha2.h>
+./Heimdal/lib/krb5/init_creds_pw.c:#include <corecrypto/ccsrp.h>
+./Heimdal/lib/krb5/init_creds_pw.c:#include <corecrypto/ccsrp_gp.h>
+./Heimdal/lib/krb5/init_creds_pw.c:#include <corecrypto/ccdh.h>
+./Heimdal/lib/krb5/init_creds_pw.c:#include <corecrypto/ccsha2.h>
+./Heimdal/lib/krb5/init_creds_pw.c:#include <corecrypto/ccpbkdf2.h>
+./Heimdal/lib/krb5/pfs.c:#include <corecrypto/ccec.h>
+./Heimdal/lib/krb5/pfs.c:#include <corecrypto/ccec25519.h>
+./Heimdal/lib/hdb/keys.c:#include <corecrypto/ccsrp.h>
+./coreTLS/kext/tlsnke/tlsnke-Info.plist:		<key>com.apple.kec.corecrypto</key>
+./coreTLS/kext/tlsnke/tlsnke.c://FIXME: There should be a static ccrng object defined in corecrypto for the kernel.
+./coreTLS/kext/tlsnke/tlsnke.c:#include <corecrypto/ccrng.h>
+./coreTLS/lib/sslCrypto.h:#include <corecrypto/ccdh.h>
+./coreTLS/lib/sslCrypto.h:#include <corecrypto/ccec.h>
+./coreTLS/lib/sslCrypto.h:	ccdh_const_gp_t params,			/* Input - corecrypto object */
+./coreTLS/lib/sslCrypto.h:    ccdh_gp_t           *params,		/* data mallocd and RETURNED - corecrypto object */
+./coreTLS/lib/sslCrypto.h:#include <corecrypto/ccrsa.h>
+./coreTLS/lib/sslCrypto.h:#include <corecrypto/ccec.h>
+./coreTLS/lib/tls_record_internal.h:    struct ccrng_state * rng; /* corecrypto rng interface */
+./coreTLS/lib/tls_record.c:#include <corecrypto/ccdigest.h>
+./coreTLS/lib/tls_record.c:#include <corecrypto/ccmd5.h>
+./coreTLS/lib/tls_record.c:#include <corecrypto/ccsha1.h>
+./coreTLS/lib/tls_record.c:#include <corecrypto/ccsha2.h>
+./coreTLS/lib/symCipher.h:#include <corecrypto/ccrng.h>
+./coreTLS/lib/tls_digest.c:#include <corecrypto/ccdigest.h>
+./coreTLS/lib/tls_digest.c:#include <corecrypto/ccmd5.h>
+./coreTLS/lib/tls_digest.c:#include <corecrypto/ccsha1.h>
+./coreTLS/lib/tls_digest.c:#include <corecrypto/ccsha2.h>
+./coreTLS/lib/sslKeyExchange.c:#include <corecrypto/ccdh_gp.h>
+./coreTLS/lib/sslKeyExchange.c:#include <corecrypto/ccrsa.h>
+./coreTLS/lib/tls_handshake_priv.h:#include <corecrypto/ccec.h>
+./coreTLS/lib/tls_handshake_priv.h:#include <corecrypto/ccdh.h>
+./coreTLS/lib/tls_handshake_priv.h:#include <corecrypto/ccrsa.h>
+./coreTLS/lib/tls_handshake_priv.h:#include <corecrypto/ccrsa.h>
+./coreTLS/lib/tls_handshake_priv.h:#include <corecrypto/ccec.h>
+./coreTLS/lib/tls_record_crypto.c:#include <corecrypto/ccmd5.h>
+./coreTLS/lib/tls_record_crypto.c:#include <corecrypto/cchmac.h>
+./coreTLS/lib/tls_record_crypto.c:// Borrowed from corecrypto - portable versions
+./coreTLS/lib/sslAesGcmCipher.c:#include <corecrypto/ccaes.h>
+./coreTLS/lib/sslAesGcmCipher.c:#include <corecrypto/ccmode.h>
+./coreTLS/lib/sslAesGcmCipher.c:#include <corecrypto/ccrng.h>
+./coreTLS/lib/sslCrypto.c:#include <corecrypto/ccec.h>
+./coreTLS/lib/sslCrypto.c:#include <corecrypto/ccdh.h>
+./coreTLS/lib/sslCrypto.c:#include <corecrypto/ccrsa.h>
+./coreTLS/lib/sslCrypto.c:                      ccdh_const_gp_t params,			/* Input - corecrypto object */
+./coreTLS/lib/sslCrypto.c:int sslEncodeDhParams(ccdh_gp_t         *params,		/* data mallocd and RETURNED - corecrypto object */
+./coreTLS/lib/sslCrypto.c:/* FIXME: This is a "raw" verify, without OID, this should really be implemented in corecrypto. */
+./coreTLS/lib/sslCrypto.c:#include <corecrypto/ccsha1.h>
+./coreTLS/lib/sslCrypto.c:#include <corecrypto/ccsha2.h>
+./coreTLS/lib/sslCrypto.c:/* TODO: Parts of this should really be in corecrypto */
+./coreTLS/lib/symCipher.c: * symCipher.c - corecrypto-based symmetric cipher module
+./coreTLS/lib/symCipher.c:#include <corecrypto/ccaes.h>
+./coreTLS/lib/symCipher.c:#include <corecrypto/ccdes.h>
+./coreTLS/lib/symCipher.c:#include <corecrypto/ccmode.h>
+./coreTLS/lib/tls_record.h:#include <corecrypto/ccrng.h>
+./coreTLS/lib/cryptType.h:#include <corecrypto/ccdigest.h>
+./security_certificates/CertificateTool/CertificateTool/PSCert.m:#import <corecrypto/ccsha1.h>
+./security_certificates/CertificateTool/CertificateTool/PSCert.m:#import <corecrypto/ccsha2.h>
+./security_certificates/CertificateTool/CertificateTool/PSCert.m:#import <corecrypto/ccdigest.h>
+Binary file ./.git/modules/CommonCrypto/index matches
+Binary file ./.git/modules/xnu/index matches
+./OpenLDAP/OpenLDAP/servers/slapd/applehelpers.c://temporary definition to allow corecrypto removing transparent union structures
+./OpenLDAP/OpenLDAP/servers/slapd/applehelpers.c://It can be removed after corecrypto makes the switch
+./OpenLDAP/OpenLDAP/servers/slapd/applehelpers.c:#include <corecrypto/cc.h>
+./OpenLDAP/OpenLDAP/servers/slapd/applehelpers.c:#include <corecrypto/ccdigest.h>
+./OpenLDAP/OpenLDAP/servers/slapd/applehelpers.c:#include <corecrypto/ccsha2.h>
+./OpenLDAP/OpenLDAP/servers/slapd/applehelpers.c:#include <corecrypto/ccsrp.h>
+./OpenLDAP/OpenLDAP/servers/slapd/applehelpers.c:#include <corecrypto/ccsrp_gp.h>
+./Libsystem/requiredlibs:corecrypto
+./Libsystem/requiredlibs_driverkit:corecrypto
+./Libsystem/init.c:#include <corecrypto/cc_priv.h>
+./passwordserver_sasl/cyrus_sasl/plugins/srp.c:#include <corecrypto/cc.h>
+./passwordserver_sasl/cyrus_sasl/plugins/srp.c:#include <corecrypto/ccz.h>
+./passwordserver_sasl/cyrus_sasl/plugins/srp.c:#include <corecrypto/ccdigest.h>
+./passwordserver_sasl/cyrus_sasl/plugins/srp.c:#include <corecrypto/ccsha2.h>
+./passwordserver_sasl/cyrus_sasl/plugins/srp.c:#include <corecrypto/cczp.h>
+./passwordserver_sasl/cyrus_sasl/plugins/srp.c:#include <corecrypto/ccsrp.h>
+./passwordserver_sasl/cyrus_sasl/plugins/srp.c:#include <corecrypto/ccsrp_gp.h>
+./passwordserver_sasl/cyrus_sasl/plugins/srp.c:#include <corecrypto/ccrng.h>
+./passwordserver_sasl/cyrus_sasl/plugins/srp.c:#include <corecrypto/ccrng_system.h>
+./xnu/tools/tests/perf_index/md5.c: *  Adapted for perf_index from ccmd5_ltc.c in corecrypto
+./xnu/tools/lldbmacros/memory.py:            addkext -N <name> : Load one kext that matches the name provided. eg. (lldb) addkext -N corecrypto
+./xnu/bsd/net/content_filter_crypto.c:#include <corecrypto/cchmac.h>
+./xnu/bsd/net/necp.c:#include <corecrypto/cchmac.h>
+./xnu/bsd/net/necp.c:#include <corecrypto/ccsha2.h>
+./xnu/bsd/net/content_filter.h:#include <corecrypto/ccsha2.h>
+./xnu/bsd/nfs/gss/gss_krb5_mech.c:	if (!corecrypto_available()) {
+./xnu/bsd/nfs/gss/ccrypto.c:#include <corecrypto/ccaes.h>
+./xnu/bsd/nfs/gss/ccrypto.c:#include <corecrypto/ccdes.h>
+./xnu/bsd/nfs/gss/ccrypto.c:#include <corecrypto/ccpad.h>
+./xnu/bsd/nfs/gss/ccrypto.c:#include <corecrypto/ccsha1.h>
+./xnu/bsd/nfs/gss/ccrypto.c:int corecrypto_available(void);
+./xnu/bsd/nfs/gss/ccrypto.c:corecrypto_available(void)
+./xnu/bsd/nfs/gss/gss_krb5_mech.h:#include <corecrypto/ccdigest.h>
+./xnu/bsd/nfs/gss/gss_krb5_mech.h:#include <corecrypto/cchmac.h>
+./xnu/bsd/nfs/gss/gss_krb5_mech.h:#include <corecrypto/ccsha1.h>
+./xnu/bsd/nfs/gss/gss_krb5_mech.h:#include <corecrypto/ccdes.h>
+./xnu/bsd/nfs/gss/gss_krb5_mech.h:#include <corecrypto/ccaes.h>
+./xnu/bsd/nfs/gss/gss_krb5_mech.h:#include <corecrypto/ccpad.h>
+./xnu/bsd/nfs/gss/gss_krb5_mech.h:int corecrypto_available(void);
+./xnu/bsd/netinet/tcp_output.c:#include <corecrypto/ccaes.h>
+./xnu/bsd/netinet/tcp_subr.c:#include <corecrypto/ccaes.h>
+./xnu/bsd/netinet/tcp_input.c:#include <corecrypto/ccaes.h>
+./xnu/bsd/netinet/flow_divert.c:#include <corecrypto/cc.h>
+./xnu/bsd/netinet6/esp_chachapoly.c:#include <corecrypto/cc.h>
+./xnu/bsd/netinet6/esp_chachapoly.c:	int rc = 0; // return code of corecrypto operations
+./xnu/bsd/netinet6/esp_chachapoly.c:	int rc = 0; // return code of corecrypto operations
+./xnu/bsd/netinet6/esp_input.c:#include <corecrypto/cc.h>
+./xnu/bsd/netinet6/esp_rijndael.c:	 * The IV is now generated within corecrypto and
+./xnu/EXTERNAL_HEADERS/corecrypto/cczp.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cczp.h:#include <corecrypto/ccn.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cczp.h:#include <corecrypto/ccrng.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccaes.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccaes.h:#include <corecrypto/cc_config.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccaes.h:#include <corecrypto/ccmode.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_config.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_config.h:    Conditional configuration macros specific to corecrypto should be named CORECRYPTO_xxx
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_config.h:    Configuration Macros that are defined outside of corecrypto (eg: KERNEL, DEBUG, ...)
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_config.h:#define CORECRYPTO_HACK_FOR_WINDOWS_DEVELOPMENT 0 //to be removed after <rdar://problem/27304763> port corecrypto to Windows
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_config.h://this allows corecrypto Windows development using xcode
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_config.h:/* For corecrypto kext, CC_STATIC should be undefined */
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_config.h://this the list of corecrypto clients that use assembly and the clang compiler
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_config.h: #warning "You are using the default corecrypto configuration, assembly optimizations may not be available for your platform"
+./xnu/EXTERNAL_HEADERS/corecrypto/cckprng.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cckprng.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_priv.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_priv.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_priv.h:// Fork handlers for the stateful components of corecrypto.
+./xnu/EXTERNAL_HEADERS/corecrypto/ccrc4.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccrc4.h:#include <corecrypto/ccmode.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdes.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdes.h:#include <corecrypto/ccmode.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccrsa.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccrsa.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccrsa.h:#include <corecrypto/ccdigest.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccrsa.h:#include <corecrypto/ccrng.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccrsa.h:#include <corecrypto/cczp.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_debug.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_debug.h:#include <corecrypto/cc_config.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_debug.h:// Printf for corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_debug.h:    #define cc_printf(x...) __android_log_print(ANDROID_LOG_DEBUG, "corecrypto", x);
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_debug.h:// Print utilities for corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_debug.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdrbg_impl.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_error.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdigest_priv.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdigest_priv.h:#include <corecrypto/cc_priv.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdigest_priv.h:#include <corecrypto/ccdigest.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdigest_priv.h:#include <corecrypto/ccasn1.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccasn1.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccasn1.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccchacha20poly1305.h:	corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cc.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cc.h:#include <corecrypto/cc_config.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cc.h:#include <corecrypto/cc_error.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cc.h:#define cc_zero(_size_,_data_) _Pragma ("corecrypto deprecation warning \"'cc_zero' macro is deprecated. Use 'cc_clear' instead.\"") cc_clear(_size_,_data_)
+./xnu/EXTERNAL_HEADERS/corecrypto/fipspost_trace.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_macros.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_macros.h:#include <corecrypto/cc_config.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_macros.h:    const char cc_char []="corecrypto";
+./xnu/EXTERNAL_HEADERS/corecrypto/ccsha1.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccsha1.h:#include <corecrypto/ccdigest.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccsha1.h:#include <corecrypto/cc_config.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_factory.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_factory.h:#include <corecrypto/ccn.h>  /* TODO: Remove dependency on this header. */
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_factory.h:#include <corecrypto/ccmode_impl.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_factory.h: within corecrypto files.
+./xnu/EXTERNAL_HEADERS/corecrypto/cccmac.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cccmac.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cccmac.h:#include <corecrypto/ccmode.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cccmac.h:#include <corecrypto/ccaes.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccn.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccn.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmd5.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmd5.h:#include <corecrypto/ccdigest.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode.h:#include <corecrypto/ccmode_impl.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode.h:#include <corecrypto/ccmode_siv.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode.h:#include <corecrypto/ccmode_siv_hmac.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode.h:   corecrypto at build time using this.
+./xnu/EXTERNAL_HEADERS/corecrypto/cchmac.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cchmac.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cchmac.h:#include <corecrypto/ccdigest.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccpad.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccpad.h:#include <corecrypto/ccmode.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccsha2.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccsha2.h:#include <corecrypto/ccdigest.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccpbkdf2.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccpbkdf2.h:#include <corecrypto/ccdigest.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_runtime_config.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/cc_runtime_config.h:#include <corecrypto/cc_config.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_impl.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_impl.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_impl.h: * @brief corecrypto symmetrical encryption and decryption modes
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_impl.h: * corecrypto supports 6 stateless en(de)cryption modes and 2 stateful authenticated en(de)cryption modes
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_siv.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_siv.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_siv.h:#include <corecrypto/ccmode.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_siv.h:#include <corecrypto/ccmode_impl.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_siv.h:#include <corecrypto/cccmac.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdrbg.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdrbg.h: @header corecrypto/ccdrbg.h
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdrbg.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdrbg.h:#include <corecrypto/ccdrbg_impl.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_siv_hmac.h://  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_siv_hmac.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_siv_hmac.h:#include <corecrypto/ccmode.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_siv_hmac.h:#include <corecrypto/ccmode_impl.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_siv_hmac.h:#include <corecrypto/ccdigest.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_siv_hmac.h:#include <corecrypto/cchmac.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccmode_siv_hmac.h:#include <corecrypto/ccsha2.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdigest.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdigest.h:#include <corecrypto/cc.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccdigest.h:#include <corecrypto/ccn.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccder.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccder.h:#include <corecrypto/ccasn1.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccder.h:#include <corecrypto/ccn.h>
+./xnu/EXTERNAL_HEADERS/corecrypto/ccrng.h: *  corecrypto
+./xnu/EXTERNAL_HEADERS/corecrypto/ccrng.h:#include <corecrypto/cc.h>
+./xnu/san/kasan-blacklist-x86_64:src:./osfmk/corecrypto/cc/src/cc_clear.c
+./xnu/san/kasan-blacklist-x86_64:src:./osfmk/corecrypto/ccdbrg/src/ccdrbg_nisthmac.c
+./xnu/san/kasan-blacklist-x86_64:src:./osfmk/corecrypto/*.c
+./xnu/san/ubsan-blacklist:src:./osfmk/corecrypto/*
+./xnu/osfmk/prng/prng_random.c:#include <corecrypto/ccdigest.h>
+./xnu/osfmk/prng/prng_random.c:#include <corecrypto/ccdrbg.h>
+./xnu/osfmk/prng/prng_random.c:#include <corecrypto/cckprng.h>
+./xnu/osfmk/prng/prng_random.c:#include <corecrypto/ccsha2.h>
+./xnu/osfmk/prng/prng_random.c:	// initialized. This happens during corecrypto kext
+./xnu/osfmk/prng/random.h:#include <corecrypto/cckprng.h>
+./xnu/osfmk/corecrypto/ccdigest/src/ccdigest_init.c: *  corecrypto
+./xnu/osfmk/corecrypto/ccdigest/src/ccdigest_init.c:#include <corecrypto/ccdigest_priv.h>
+./xnu/osfmk/corecrypto/ccdigest/src/ccdigest_init.c:#include <corecrypto/cc_priv.h>
+./xnu/osfmk/corecrypto/ccdigest/src/ccdigest_update.c: *  corecrypto
+./xnu/osfmk/corecrypto/ccdigest/src/ccdigest_update.c:#include <corecrypto/ccdigest.h>
+./xnu/osfmk/corecrypto/ccdigest/src/ccdigest_update.c:#include <corecrypto/cc_priv.h>
+./xnu/osfmk/corecrypto/ccsha1/src/ccdigest_final_64be.c: *  corecrypto
+./xnu/osfmk/corecrypto/ccsha1/src/ccdigest_final_64be.c:#include <corecrypto/ccdigest_priv.h>
+./xnu/osfmk/corecrypto/ccsha1/src/ccdigest_final_64be.c:#include <corecrypto/cc_priv.h>
+./xnu/osfmk/corecrypto/ccsha1/src/ccdigest_internal.h: *  corecrypto
+./xnu/osfmk/corecrypto/ccsha1/src/ccdigest_internal.h:#include <corecrypto/ccdigest.h>
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_K.c: *  corecrypto
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_K.c:#include <corecrypto/cc_config.h>
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_ltc_compress.c: *  corecrypto
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_ltc_compress.c:#include <corecrypto/ccsha2.h>
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_ltc_compress.c:#include <corecrypto/cc_priv.h>
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_di.c: *  corecrypto
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_di.c:#include <corecrypto/ccsha2.h>
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_di.c:#include <corecrypto/cc_runtime_config.h>
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_di.c:#include "corecrypto/fipspost_trace.h"
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_ltc_di.c: *  corecrypto
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_ltc_di.c:#include <corecrypto/ccsha2.h>
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_ltc_di.c:#include <corecrypto/ccdigest_priv.h>
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha256_initial_state.c: *  corecrypto
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha2_internal.h: *  corecrypto
+./xnu/osfmk/corecrypto/ccsha2/src/ccsha2_internal.h:#include <corecrypto/ccdigest.h>
+./xnu/osfmk/corecrypto/ccsha2/src/ccdigest_internal.h: *  corecrypto
+./xnu/osfmk/corecrypto/ccsha2/src/ccdigest_internal.h:#include <corecrypto/ccdigest.h>
+./xnu/osfmk/corecrypto/cchmac/src/cchmac_final.c: *  corecrypto
+./xnu/osfmk/corecrypto/cchmac/src/cchmac_final.c:#include <corecrypto/ccdigest_priv.h>
+./xnu/osfmk/corecrypto/cchmac/src/cchmac_final.c:#include <corecrypto/cchmac.h>
+./xnu/osfmk/corecrypto/cchmac/src/cchmac_final.c:#include <corecrypto/ccn.h>
+./xnu/osfmk/corecrypto/cchmac/src/cchmac_final.c:#include <corecrypto/cc_priv.h>
+./xnu/osfmk/corecrypto/cchmac/src/cchmac.c: *  corecrypto
+./xnu/osfmk/corecrypto/cchmac/src/cchmac.c:#include <corecrypto/cchmac.h>
+./xnu/osfmk/corecrypto/cchmac/src/cchmac.c:#include "corecrypto/fipspost_trace.h"
+./xnu/osfmk/corecrypto/cchmac/src/cchmac_init.c: *  corecrypto
+./xnu/osfmk/corecrypto/cchmac/src/cchmac_init.c:#include <corecrypto/ccdigest_priv.h>
+./xnu/osfmk/corecrypto/cchmac/src/cchmac_init.c:#include <corecrypto/cchmac.h>
+./xnu/osfmk/corecrypto/cchmac/src/cchmac_init.c:#include <corecrypto/ccn.h>
+./xnu/osfmk/corecrypto/cchmac/src/cchmac_init.c:#include <corecrypto/cc_priv.h>
+./xnu/osfmk/corecrypto/cchmac/src/cchmac_update.c: *  corecrypto
+./xnu/osfmk/corecrypto/cchmac/src/cchmac_update.c:#include <corecrypto/cchmac.h>
+./xnu/osfmk/corecrypto/ccdbrg/src/ccdrbg_nisthmac.c: *  corecrypto
+./xnu/osfmk/corecrypto/ccdbrg/src/ccdrbg_nisthmac.c:#include <corecrypto/cc_priv.h>
+./xnu/osfmk/corecrypto/ccdbrg/src/ccdrbg_nisthmac.c:#include <corecrypto/ccdrbg.h>
+./xnu/osfmk/corecrypto/ccdbrg/src/ccdrbg_nisthmac.c:#include <corecrypto/cchmac.h>
+./xnu/osfmk/corecrypto/ccdbrg/src/ccdrbg_nisthmac.c:#include <corecrypto/ccsha2.h>
+./xnu/osfmk/corecrypto/ccdbrg/src/ccdrbg_nisthmac.c:#include <corecrypto/cc_macros.h>
+./xnu/osfmk/corecrypto/ccdbrg/src/ccdrbg_nisthmac.c:#include <corecrypto/cc_debug.h>
+./xnu/osfmk/corecrypto/cc/src/cc_cmp_safe.c: *  corecrypto
+./xnu/osfmk/corecrypto/cc/src/cc_cmp_safe.c:#include <corecrypto/cc_priv.h>
+./xnu/osfmk/corecrypto/cc/src/cc_abort.c: *  corecrypto
+./xnu/osfmk/corecrypto/cc/src/cc_abort.c:#include <corecrypto/cc_priv.h>
+./xnu/osfmk/corecrypto/cc/src/cc_clear.c: *  corecrypto
+./xnu/osfmk/corecrypto/cc/src/cc_clear.c:#include <corecrypto/cc.h>
+./xnu/osfmk/corecrypto/cc/src/cc_clear.c:#include "corecrypto/fipspost_trace.h"
+./xnu/osfmk/conf/files:# Built-in corecrypto for early_random():
+./xnu/osfmk/conf/files:osfmk/corecrypto/cc/src/cc_clear.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/cc/src/cc_cmp_safe.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/cc/src/cc_abort.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/ccdbrg/src/ccdrbg_nisthmac.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/ccdigest/src/ccdigest_init.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/ccdigest/src/ccdigest_update.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/cchmac/src/cchmac.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/cchmac/src/cchmac_init.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/cchmac/src/cchmac_update.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/cchmac/src/cchmac_final.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/ccsha1/src/ccdigest_final_64be.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/ccsha2/src/ccsha256_di.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/ccsha2/src/ccsha256_initial_state.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/ccsha2/src/ccsha256_K.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/ccsha2/src/ccsha256_ltc_compress.c	standard
+./xnu/osfmk/conf/files:osfmk/corecrypto/ccsha2/src/ccsha256_ltc_di.c	standard
+./xnu/libkern/crypto/corecrypto_aes.c:#include <corecrypto/ccmode.h>
+./xnu/libkern/crypto/corecrypto_aes.c:#include <corecrypto/ccaes.h>
+./xnu/libkern/crypto/corecrypto_des.c:#include <corecrypto/ccmode.h>
+./xnu/libkern/crypto/corecrypto_rsa.c:#include <corecrypto/ccrsa.h>
+./xnu/libkern/crypto/corecrypto_chacha20poly1305.c:#include <corecrypto/ccchacha20poly1305.h>
+./xnu/libkern/crypto/corecrypto_rand.c:#include <corecrypto/ccrng.h>
+./xnu/libkern/crypto/corecrypto_sha2.c:#include <corecrypto/ccdigest.h>
+./xnu/libkern/crypto/corecrypto_aesxts.c:#include <corecrypto/ccmode.h>
+./xnu/libkern/crypto/corecrypto_aesxts.c:#include <corecrypto/ccpad.h>
+./xnu/libkern/crypto/corecrypto_aesxts.c:		panic("%s: corecrypto not registered!\n", __FUNCTION__);
+./xnu/libkern/crypto/corecrypto_md5.c:#include <corecrypto/ccdigest.h>
+./xnu/libkern/crypto/corecrypto_sha1.c:#include <corecrypto/ccdigest.h>
+./xnu/libkern/libkern/crypto/aesxts.h:#include <corecrypto/ccmode.h>
+./xnu/libkern/libkern/crypto/aesxts.h:#include <corecrypto/ccaes.h>
+./xnu/libkern/libkern/crypto/aesxts.h:#include <corecrypto/ccn.h>
+./xnu/libkern/libkern/crypto/aesxts.h://possible corecrypto implementation is less than this.
+./xnu/libkern/libkern/crypto/register_crypto.h:#include <corecrypto/ccdigest.h>
+./xnu/libkern/libkern/crypto/register_crypto.h:#include <corecrypto/cchmac.h>
+./xnu/libkern/libkern/crypto/register_crypto.h:#include <corecrypto/ccmode.h>
+./xnu/libkern/libkern/crypto/register_crypto.h:#include <corecrypto/ccrc4.h>
+./xnu/libkern/libkern/crypto/register_crypto.h:#include <corecrypto/ccrng.h>
+./xnu/libkern/libkern/crypto/register_crypto.h:#include <corecrypto/ccrsa.h>
+./xnu/libkern/libkern/crypto/register_crypto.h:#include <corecrypto/ccchacha20poly1305.h>
+./xnu/libkern/libkern/crypto/chacha20poly1305.h:#include <corecrypto/ccchacha20poly1305.h>
+./xnu/libkern/libkern/crypto/sha2.h:#include <corecrypto/ccsha2.h>
+./xnu/libkern/libkern/crypto/crypto_internal.h:/* To access the corecrypto functions */
+./xnu/libkern/libkern/crypto/aes.h:#include <corecrypto/ccmode.h>
+./xnu/libkern/libkern/crypto/aes.h:#include <corecrypto/ccn.h>
+./xnu/libkern/libkern/crypto/aes.h://possible corecrypto implementation is less than this.
+./xnu/libkern/libkern/crypto/des.h:#include <corecrypto/ccmode.h>
+./xnu/libkern/libkern/crypto/des.h:#include <corecrypto/ccdes.h>
+./xnu/libkern/libkern/crypto/des.h:#include <corecrypto/ccn.h>
+./xnu/libkern/libkern/crypto/des.h:/* Unholy hack: this is currently the size for the only implementation of DES in corecrypto */
+./xnu/libkern/libkern/crypto/rsa.h:#include <corecrypto/ccrsa.h>
+./xnu/libkern/libkern/OSKextLib.h: * @abstract A dictionary conataining hashes for corecrypto kext.
+./xnu/libkern/conf/Makefile.template:corecrypto_md5.o_CWARNFLAGS_ADD = -Wno-cast-align
+./xnu/libkern/conf/Makefile.template:corecrypto_sha1.o_CWARNFLAGS_ADD = -Wno-cast-align
+./xnu/libkern/conf/files:libkern/crypto/corecrypto_sha2.c		standard
+./xnu/libkern/conf/files:libkern/crypto/corecrypto_sha1.c		optional crypto
+./xnu/libkern/conf/files:libkern/crypto/corecrypto_md5.c			optional crypto
+./xnu/libkern/conf/files:libkern/crypto/corecrypto_des.c			optional crypto
+./xnu/libkern/conf/files:libkern/crypto/corecrypto_aes.c			optional crypto
+./xnu/libkern/conf/files:libkern/crypto/corecrypto_aesxts.c		optional crypto
+./xnu/libkern/conf/files:libkern/crypto/corecrypto_rand.c		optional crypto
+./xnu/libkern/conf/files:libkern/crypto/corecrypto_rsa.c		    optional crypto
+./xnu/libkern/conf/files:libkern/crypto/corecrypto_chacha20poly1305.c	optional	crypto
