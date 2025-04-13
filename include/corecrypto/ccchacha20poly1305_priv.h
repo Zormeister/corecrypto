@@ -8,6 +8,7 @@
 #ifndef _CORECRYPTO_CCCHACHA20POLY1305_PRIV_H_
 #define _CORECRYPTO_CCCHACHA20POLY1305_PRIV_H_
 
+#include <corecrypto/cc.h>
 #include <corecrypto/ccchacha20poly1305.h>
 
 // i assume this just runs the ChaCha20 cipher on the in data.
@@ -30,5 +31,9 @@ int ccchacha20_update(ccchacha20_ctx *ctx, size_t nbytes, const void *in, void *
 int ccchacha20_final(ccchacha20_ctx *ctx);
 
 int ccchacha20_reset(ccchacha20_ctx *ctx);
+
+/* poly1305 */
+
+int ccpoly1305_init(ccpoly1305_ctx *ctx, const uint8_t *key);
 
 #endif

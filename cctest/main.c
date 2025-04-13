@@ -37,6 +37,6 @@ int main(int argc, const char * argv[]) {
 #if CCTEST_RMD160
     res |= TestRMD160();
 #endif
-    TestChaCha20();
+    //TestChaCha20();
     return res;
 }

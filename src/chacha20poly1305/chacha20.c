@@ -13,33 +13,15 @@
  *  - https://datatracker.ietf.org/doc/html/rfc7539
  */
 
-/* Welcome to hell. My code is broken and I don't know why. */
-/* Give me a month */
-
 #define CHACHA_QUARTERROUND(state,a,b,c,d) \
     state[a] += state[b]; \
-    state[d] ^= state[a]; \
-    state[d] <<= 16; \
+    state[d] = CC_ROL(state[d] ^ state[a], 16); \
     state[c] += state[d]; \
-    state[b] ^= state[c]; \
-    state[b] <<= 12; \
+    state[b] = CC_ROL(state[b] ^ state[c], 12); \
     state[a] += state[b]; \
-    state[d] ^= state[a]; \
-    state[d] <<= 8; \
+    state[d] = CC_ROL(state[d] ^ state[a], 8); \
     state[c] += state[d]; \
-    state[b] ^= state[c]; \
-    state[b] <<= 7
-
-static void run_chacha_round(uint32_t *s) {
-    CHACHA_QUARTERROUND(s, 0, 4, 8, 12);
-    CHACHA_QUARTERROUND(s, 1, 5, 9, 13);
-    CHACHA_QUARTERROUND(s, 2, 6, 10, 14);
-    CHACHA_QUARTERROUND(s, 3, 7, 11, 15);
-    CHACHA_QUARTERROUND(s, 0, 5, 10, 15);
-    CHACHA_QUARTERROUND(s, 1, 6, 11, 12);
-    CHACHA_QUARTERROUND(s, 2, 7, 8, 13);
-    CHACHA_QUARTERROUND(s, 3, 4, 9, 14);
-}
+    state[b] = CC_ROL(state[b] ^ state[c], 7); \
 
 /*
  *  c = constant, k - key, b = counter, n = nonce
@@ -66,7 +48,6 @@ int ccchacha20_init(ccchacha20_ctx *ctx, const uint8_t *key) {
 
     // Copy the 8 bytes of key we need to state[4]
     // Should I worry about endianness? We're always going to be running on a LE system but IDK if I should future-proof this
-    CC_MEMCPY(&ctx->state[4], key, 8);
     CC_WRITE_LE32(&ctx->state[4], *(uint32_t *)(key));
     CC_WRITE_LE32(&ctx->state[5], *(uint32_t *)(key + 4));
     CC_WRITE_LE32(&ctx->state[6], *(uint32_t *)(key + 8));
@@ -94,7 +75,7 @@ int ccchacha20_setnonce(ccchacha20_ctx *ctx, const uint8_t *nonce) {
         return CCERR_PARAMETER;
     }
 
-    if (&ctx->state[13] == 0) {
+    if (ctx->state[13] == 0) {
         // big endian considerations?
         CC_WRITE_LE32(&ctx->state[13], *(uint32_t *)(nonce));
         CC_WRITE_LE32(&ctx->state[14], *(uint32_t *)(nonce + 4));
@@ -107,76 +88,59 @@ int ccchacha20_setnonce(ccchacha20_ctx *ctx, const uint8_t *nonce) {
 }
 
 int ccchacha20_update(ccchacha20_ctx *ctx, size_t nbytes, const void *in, void *out) {
-    uint32_t tmp_state[16];
-    size_t nblocks = 1;
-    size_t remain = nbytes;
+    const uint32_t *data_chunk_ptr = in;
+    uint32_t *out_chunk_buf = out;
 
-    if (ctx == NULL || in == NULL || out == NULL) {
+    if (ctx == NULL || in == NULL || out == NULL) { /* CHECK IF OUR PARAMETERS AREN'T NULL. or maybe that's CC_NONNULL */
         return CCERR_PARAMETER;
     }
+    
+    for (;;) {
+        if (nbytes == 0) { break; }
+        /* for every block we have, */
+        uint32_t *buf = (uint32_t *)ctx->buffer;
+        
+        /* copy our initial state to the buffer so */
+        CC_MEMCPY(buf, ctx->state, CCCHACHA20_BLOCK_NBYTES);
 
-    if ((nbytes % CCCHACHA20_BLOCK_NBYTES) == 0) {
-        nblocks = nbytes / CCCHACHA20_BLOCK_NBYTES;
-    } else {
-        while ((remain -= CCCHACHA20_BLOCK_NBYTES) >= 64) {
-            nblocks++;
-        }
-    }
-    
-    // 8 QRounds, 2 rounds per run, 10 * 2 = 20 rounds
-    for (int i = 1; i <= nblocks; i++) {
-        // Setup variables
-        size_t size = CCCHACHA20_BLOCK_NBYTES;
-        if (i == nblocks && remain) {
-            size = remain;
-        }
-        uint8_t *outptr = ((uint8_t *)out) + (i * CCCHACHA20_BLOCK_NBYTES);
-        const uint8_t *inptr = ((const uint8_t *)in) + (i * CCCHACHA20_BLOCK_NBYTES);
-        if (size == CCCHACHA20_BLOCK_NBYTES) {
-            CC_WRITE_LE64(ctx->buffer, *(uint64_t *)inptr); // 0 - 7
-            CC_WRITE_LE64(ctx->buffer + 8, *(((uint64_t *)inptr) + 8)); // 8 - 15
-            CC_WRITE_LE64(ctx->buffer + 16, *(((uint64_t *)inptr) + 16)); // 16 - 23
-            CC_WRITE_LE64(ctx->buffer + 24, *(((uint64_t *)inptr) + 24)); // 24 - 31
-            CC_WRITE_LE64(ctx->buffer + 32, *(((uint64_t *)inptr) + 32)); // 32 - 39
-            CC_WRITE_LE64(ctx->buffer + 40, *(((uint64_t *)inptr) + 40)); // 40 - 47
-            CC_WRITE_LE64(ctx->buffer + 48, *(((uint64_t *)inptr) + 48)); // 48 - 55
-            CC_WRITE_LE64(ctx->buffer + 56, *(((uint64_t *)inptr) + 56)); // 56 - 63
-        } else {
-            // i cheaped out. if anyone wants to fix this go ahead.
-            CC_MEMCPY(ctx->buffer, inptr, size);
+        /* Setup our state */
+        for (int r = 20; r > 0; r -= 2) {
+            CHACHA_QUARTERROUND(buf, 0, 4, 8, 12);
+            CHACHA_QUARTERROUND(buf, 1, 5, 9, 13);
+            CHACHA_QUARTERROUND(buf, 2, 6, 10, 14);
+            CHACHA_QUARTERROUND(buf, 3, 7, 11, 15);
+            CHACHA_QUARTERROUND(buf, 0, 5, 10, 15);
+            CHACHA_QUARTERROUND(buf, 1, 6, 11, 12);
+            CHACHA_QUARTERROUND(buf, 2, 7, 8, 13);
+            CHACHA_QUARTERROUND(buf, 3, 4, 9, 14);
         }
         
-        // Compute state
-        // for BE: this should already be little endian, right?
-        CC_MEMCPY(tmp_state, ctx->state, CCCHACHA20_BLOCK_NBYTES);
-        for (int r = 0; r < 10; r++) {
-            run_chacha_round(tmp_state);
-        }
-        
+        /* once we're done, we have to add the initial state to the current state, or vice versa. */
         for (int s = 0; s < 16; s++) {
-            tmp_state[s] += ctx->state[s];
+            buf[s] += ctx->state[s];
         }
         
-        // XOR it.
-        cc_xor(CCCHACHA20_BLOCK_NBYTES, ctx->buffer, inptr, tmp_state);
-        ctx->state[12]++; // Increment counter.
-        if (size == CCCHACHA20_BLOCK_NBYTES) {
-            CC_WRITE_LE64(outptr, (uint64_t)ctx->buffer[0]); // 0 - 7
-            CC_WRITE_LE64(outptr + 8, (uint64_t)ctx->buffer[8]); // 8 - 15
-            CC_WRITE_LE64(outptr + 16, (uint64_t)ctx->buffer[16]); // 16 - 23
-            CC_WRITE_LE64(outptr + 24, (uint64_t)ctx->buffer[24]); // 24 - 31
-            CC_WRITE_LE64(outptr + 32, (uint64_t)ctx->buffer[32]); // 32 - 39
-            CC_WRITE_LE64(outptr + 40, (uint64_t)ctx->buffer[40]); // 40 - 47
-            CC_WRITE_LE64(outptr + 48, (uint64_t)ctx->buffer[48]); // 48 - 55
-            CC_WRITE_LE64(outptr + 56, (uint64_t)ctx->buffer[56]); // 56 - 63
+        if (nbytes >= 64) {
+            for (int x = 0; x < 16; x++) {
+                buf[x] ^= CC_H2LE32(data_chunk_ptr[x]);
+            }
+            CC_MEMCPY(out_chunk_buf, ctx->buffer, 64);
         } else {
-            // i cheaped out. if anyone wants to fix this go ahead.
-            cc_memcpy(outptr, ctx->buffer, size);
+            uint8_t tmp[CCCHACHA20_BLOCK_NBYTES];
+            CC_MEMCPY(tmp, data_chunk_ptr, nbytes);
+            for (int x = 0; x < 16; x++) {
+                buf[x] ^= CC_H2LE32(tmp[x]);
+            }
+            CC_MEMCPY(out_chunk_buf, ctx->buffer, nbytes);
+            break; /* i ASSUME this means we're done here. */
         }
-        cc_clear(CCCHACHA20_BLOCK_NBYTES, ctx->buffer);
-        cc_clear(16, tmp_state);
+        
+        ctx->state[12]++; /* if the counter spills over 0xFFFFFFFF then I think whoever is using this is stupid. */
+        nbytes -= 64;
+        data_chunk_ptr += 16;
+        out_chunk_buf += 16;
     }
-    
+
     return CCERR_OK;
 }
 
