@@ -20,7 +20,9 @@ typedef const struct ccec_cp *ccec_const_cp_t;
 
 #define ccec_ccn_size(_cp_) 0
 
-struct ccec_pub_ctx {};
+struct ccec_pub_ctx {
+    
+};
 
 typedef struct ccec_pub_ctx *ccec_pub_ctx_t;
 
@@ -33,10 +35,14 @@ typedef struct ccec_pub_ctx *ccec_full_ctx_t;
 
 ccec_const_cp_t ccec_get_cp(size_t nbits);
 
-int ccec_keysize_is_supported(size_t nbits);
+bool ccec_keysize_is_supported(size_t nbits);
 
 int ccec_sign(const void *key);
 
+ccec_const_cp_t ccec_get_cp(size_t nbits);
+
 int ccec_verify();
+
+size_t ccec_ccn_size(ccec_const_cp_t cp);
 
 #endif /* _CORECRYPTO_CCEC_H_ */

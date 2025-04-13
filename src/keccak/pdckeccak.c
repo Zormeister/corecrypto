@@ -6,7 +6,3 @@
 //
 
 #include "pdckeccak.h"
-
-CC_INLINE void rho(pdckeccak_state_t state) {
-    
-}

@@ -12,38 +12,6 @@
  * to print what is used by xnu during boot
  */
 
-void pdchmac_init_fn_dummy(const struct ccdigest_info *di,
-                           cchmac_ctx_t ctx,
-                           unsigned long key_len, const void *key)
-{
-    printf("%s\n", __func__);
-}
-
-void pdchmac_update_fn_dummy(const struct ccdigest_info *di,
-                             cchmac_ctx_t ctx,
-                             unsigned long data_len,
-                             const void *data)
-{
-    printf("%s\n", __func__);
-}
-
-void pdchmac_final_fn_dummy(const struct ccdigest_info *di,
-                            cchmac_ctx_t ctx,
-                            unsigned char *mac)
-{
-    printf("%s\n", __func__);
-}
-
-void pdchmac_fn_dummy(const struct ccdigest_info *di,
-                      unsigned long key_len,
-                      const void *key,
-                      unsigned long data_len,
-                      const void *data,
-                      unsigned char *mac)
-{
-    printf("%s\n", __func__);
-}
-
 static int pdcmode_ecb_init_dummy(const struct ccmode_ecb *ecb, ccecb_ctx *ctx,
                                    size_t key_len, const void *key)
 {

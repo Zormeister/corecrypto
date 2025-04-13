@@ -138,6 +138,13 @@
 		F01186F42D451769009C285F /* CCTestHashMD2.c in Sources */ = {isa = PBXBuildFile; fileRef = F01186F32D451769009C285F /* CCTestHashMD2.c */; };
 		F01186F52D451D49009C285F /* libcorecrypto_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F17F83C24809D3C0080E3C3 /* libcorecrypto_static.a */; };
 		F01186F92D451E36009C285F /* libc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F01186F82D451E2A009C285F /* libc.tbd */; };
+		F01C07BB2DABCDE500124F05 /* cmac.c in Sources */ = {isa = PBXBuildFile; fileRef = F01C07BA2DABCDE500124F05 /* cmac.c */; };
+		F01F76EA2DAA389900770D5D /* ccnistkdf.h in Headers */ = {isa = PBXBuildFile; fileRef = F01F76E92DAA389900770D5D /* ccnistkdf.h */; };
+		F01F76EC2DAA5A0800770D5D /* ccz.h in Headers */ = {isa = PBXBuildFile; fileRef = F01F76EB2DAA5A0800770D5D /* ccz.h */; };
+		F02AD1AE2DAA8E5A00A760BD /* ccmac_generate_subkeys.c in Sources */ = {isa = PBXBuildFile; fileRef = F02AD1AD2DAA8E5A00A760BD /* ccmac_generate_subkeys.c */; };
+		F02AD1AF2DAA8E5A00A760BD /* ccmac_generate_subkeys.c in Sources */ = {isa = PBXBuildFile; fileRef = F02AD1AD2DAA8E5A00A760BD /* ccmac_generate_subkeys.c */; };
+		F0477A602DAB222100CC1760 /* ccmac_init.c in Sources */ = {isa = PBXBuildFile; fileRef = F0477A5F2DAB222100CC1760 /* ccmac_init.c */; };
+		F0477A612DAB222100CC1760 /* ccmac_init.c in Sources */ = {isa = PBXBuildFile; fileRef = F0477A5F2DAB222100CC1760 /* ccmac_init.c */; };
 		F05D85F92D57008900E8FF15 /* argsvalid.c in Sources */ = {isa = PBXBuildFile; fileRef = F05D85F82D57008900E8FF15 /* argsvalid.c */; };
 		F05D85FA2D57008900E8FF15 /* argsvalid.c in Sources */ = {isa = PBXBuildFile; fileRef = F05D85F82D57008900E8FF15 /* argsvalid.c */; };
 		F05D86022D5732C200E8FF15 /* cchmac_final.c in Sources */ = {isa = PBXBuildFile; fileRef = F05D85FE2D5732C200E8FF15 /* cchmac_final.c */; };
@@ -326,6 +333,12 @@
 		F01186F22D451681009C285F /* Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
 		F01186F32D451769009C285F /* CCTestHashMD2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CCTestHashMD2.c; sourceTree = "<group>"; };
 		F01186F82D451E2A009C285F /* libc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libc.tbd; path = usr/lib/libc.tbd; sourceTree = SDKROOT; };
+		F01C07BA2DABCDE500124F05 /* cmac.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cmac.c; sourceTree = "<group>"; };
+		F01F76E92DAA389900770D5D /* ccnistkdf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccnistkdf.h; sourceTree = "<group>"; };
+		F01F76EB2DAA5A0800770D5D /* ccz.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccz.h; sourceTree = "<group>"; };
+		F02AD1AB2DAA8D3600A760BD /* cccmac_priv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cccmac_priv.h; sourceTree = "<group>"; };
+		F02AD1AD2DAA8E5A00A760BD /* ccmac_generate_subkeys.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccmac_generate_subkeys.c; sourceTree = "<group>"; };
+		F0477A5F2DAB222100CC1760 /* ccmac_init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccmac_init.c; sourceTree = "<group>"; };
 		F05D85F82D57008900E8FF15 /* argsvalid.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = argsvalid.c; sourceTree = "<group>"; };
 		F05D85FC2D5706F500E8FF15 /* ccec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccec.h; sourceTree = "<group>"; };
 		F05D85FE2D5732C200E8FF15 /* cchmac_final.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cchmac_final.c; sourceTree = "<group>"; };
@@ -418,7 +431,6 @@
 				1F377BA5213DF15B00D1C6CA /* xcscripts */,
 				F01186EC2D451641009C285F /* cctest */,
 				F090571E2D460B8F007C6E87 /* ccnativeexplorer */,
-				F0B081552D5E933000349FD5 /* ccne_kext */,
 				1F615F232480A0C10021D82E /* Frameworks */,
 				1F31AEA41C8535B30091C31B /* Products */,
 			);
@@ -487,6 +499,7 @@
 				1F358E732354F0370030CA4F /* ccchacha20poly1305.h */,
 				F0B0813B2D5A923F00349FD5 /* ccchacha20poly1305_priv.h */,
 				1F65CFFF1F2800C60073759F /* cccmac.h */,
+				F02AD1AB2DAA8D3600A760BD /* cccmac_priv.h */,
 				1F65CFEB1F2800C60073759F /* ccder.h */,
 				1F65CFEC1F2800C60073759F /* ccdes.h */,
 				F09057162D460893007C6E87 /* ccdh.h */,
@@ -507,6 +520,7 @@
 				1FE6C82A245E60E600D738AF /* ccmode_siv_hmac.h */,
 				1F65CFF21F2800C60073759F /* ccmode.h */,
 				1F65CFFC1F2800C60073759F /* ccn.h */,
+				F01F76E92DAA389900770D5D /* ccnistkdf.h */,
 				1F65CFF51F2800C60073759F /* ccpad.h */,
 				1F65CFF41F2800C60073759F /* ccpbkdf2.h */,
 				1F65CFFB1F2800C60073759F /* ccrc4.h */,
@@ -520,6 +534,7 @@
 				F0B081422D5D44D000349FD5 /* ccxof.h */,
 				F00D098D2D40B35600349FD5 /* ccwrap.h */,
 				F01186CA2D44BB85009C285F /* ccwrap_priv.h */,
+				F01F76EB2DAA5A0800770D5D /* ccz.h */,
 				1F65CFEF1F2800C60073759F /* cczp.h */,
 				1F358E742354F0370030CA4F /* fipspost_trace.h */,
 			);
@@ -556,6 +571,7 @@
 			children = (
 				F0BFEB532D691F9400349FD5 /* der */,
 				F0B0813D2D5A96CA00349FD5 /* chacha20poly1305 */,
+				F02AD1AC2DAA8E2F00A760BD /* cmac */,
 				F00136832D40595500349FD5 /* xof */,
 				F00136822D40594C00349FD5 /* shake */,
 				F001366D2D3F69BC00349FD5 /* aes */,
@@ -571,8 +587,8 @@
 				F01186D02D44F4A7009C285F /* md2 */,
 				F09057002D459240007C6E87 /* md4 */,
 				F001366F2D3F69DC00349FD5 /* md5 */,
-				F00136752D3F6BBB00349FD5 /* sha3 */,
 				F00136742D3F6A6900349FD5 /* sha2 */,
+				F00136752D3F6BBB00349FD5 /* sha3 */,
 				F00136732D3F6A2E00349FD5 /* sha */,
 				F09057112D45D27E007C6E87 /* ripemd */,
 				1F615F252480A1020021D82E /* user */,
@@ -711,6 +727,7 @@
 			isa = PBXGroup;
 			children = (
 				F0B0815D2D5FECD700349FD5 /* chacha20.c */,
+				F01C07BA2DABCDE500124F05 /* cmac.c */,
 				F01186ED2D451641009C285F /* main.c */,
 				F01186F22D451681009C285F /* Test.h */,
 				F01186F32D451769009C285F /* CCTestHashMD2.c */,
@@ -718,6 +735,15 @@
 				F05D86332D5875C400E8FF15 /* CCTestHashRMD160.c */,
 			);
 			path = cctest;
+			sourceTree = "<group>";
+		};
+		F02AD1AC2DAA8E2F00A760BD /* cmac */ = {
+			isa = PBXGroup;
+			children = (
+				F02AD1AD2DAA8E5A00A760BD /* ccmac_generate_subkeys.c */,
+				F0477A5F2DAB222100CC1760 /* ccmac_init.c */,
+			);
+			path = cmac;
 			sourceTree = "<group>";
 		};
 		F05D85FD2D57327E00E8FF15 /* hmac */ = {
@@ -868,6 +894,8 @@
 				1F615F4D2480A48C0021D82E /* cczp.h in Headers */,
 				1F615F302480A48C0021D82E /* cc_priv.h in Headers */,
 				F01186CF2D44F3A4009C285F /* ccmd2.h in Headers */,
+				F01F76EA2DAA389900770D5D /* ccnistkdf.h in Headers */,
+				F01F76EC2DAA5A0800770D5D /* ccz.h in Headers */,
 				1F615F382480A48C0021D82E /* ccdigest_priv.h in Headers */,
 				1F615F3A2480A48C0021D82E /* ccdrbg_impl.h in Headers */,
 				1F615F402480A48C0021D82E /* ccmode_impl.h in Headers */,
@@ -1148,6 +1176,8 @@
 			files = (
 				1F615F282480A1110021D82E /* dummy.c in Sources */,
 				F001367E2D3F736400349FD5 /* pdckeccak.c in Sources */,
+				F02AD1AF2DAA8E5A00A760BD /* ccmac_generate_subkeys.c in Sources */,
+				F0477A612DAB222100CC1760 /* ccmac_init.c in Sources */,
 				F001368B2D4059EC00349FD5 /* pdcxof.c in Sources */,
 				F01186C92D44A883009C285F /* des_cbc.c in Sources */,
 			);
@@ -1175,6 +1205,7 @@
 				F0BFEB552D69204000349FD5 /* der.c in Sources */,
 				F05D860C2D57593700E8FF15 /* ccdrbg_nisthmac.c in Sources */,
 				1FDA24121D98DA16003D41DA /* cc_functions.c in Sources */,
+				F02AD1AE2DAA8E5A00A760BD /* ccmac_generate_subkeys.c in Sources */,
 				1FABCE4F235542CB00F25C08 /* comp.c in Sources */,
 				1FB2F6C41C87B2EC009C0F4C /* cc_kext_main.c in Sources */,
 				1FABCE602355466800F25C08 /* smf.c in Sources */,
@@ -1184,6 +1215,7 @@
 				1FB2F6C61C87B42D009C0F4C /* cc_clear.c in Sources */,
 				1F1D444E1F2802D60043CE92 /* sha1.c in Sources */,
 				1FABCE52235542CB00F25C08 /* sha1mod.c in Sources */,
+				F0477A602DAB222100CC1760 /* ccmac_init.c in Sources */,
 				1FABCE5A235542CB00F25C08 /* prng.c in Sources */,
 				F00136872D4059EC00349FD5 /* pdcxof.c in Sources */,
 				F0CA56D32CF9892500521F17 /* sha3.c in Sources */,
@@ -1210,6 +1242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0B0815E2D5FECDC00349FD5 /* chacha20.c in Sources */,
+				F01C07BB2DABCDE500124F05 /* cmac.c in Sources */,
 				F01186EE2D451641009C285F /* main.c in Sources */,
 				F01186F42D451769009C285F /* CCTestHashMD2.c in Sources */,
 				F09057082D45A324007C6E87 /* CCTestHashMD4.c in Sources */,
@@ -1728,7 +1761,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1763,7 +1796,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1807,7 +1840,7 @@
 				INFOPLIST_FILE = ccne_kext/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 William Kent. All rights reserved.";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				MODULE_NAME = org.puredarwin.ccne_kext;
 				MODULE_START = ccne_kext_start;
@@ -1855,7 +1888,7 @@
 				INFOPLIST_FILE = ccne_kext/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 William Kent. All rights reserved.";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				MODULE_NAME = org.puredarwin.ccne_kext;
 				MODULE_START = ccne_kext_start;
