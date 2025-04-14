@@ -3,7 +3,6 @@
 //  corecrypto
 //
 //  Created by Zormeister on 12/4/25.
-//  Copyright © 2025 Zormeister. All rights reserved.
 //
 
 #include <corecrypto/cccmac_priv.h>

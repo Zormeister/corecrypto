@@ -10,8 +10,6 @@
 
 #include <corecrypto/ccn.h>
 
-/* imma be honest i've got no idea what's going on here */
-
 struct ccz_class {
     void *ctx;
     void *(*ccz_alloc)(void *ctx, size_t size);
@@ -21,6 +19,7 @@ struct ccz_class {
 
 struct {
     struct ccz_class ccz_class; /* I think? */
+    uint64_t *z; /* Pointer to our large number - look at ccz_class for details. */
 } ccz;
 
 void ccz_init(struct ccz_class *cl, ccz *r);

@@ -143,6 +143,7 @@
 		F01F76EC2DAA5A0800770D5D /* ccz.h in Headers */ = {isa = PBXBuildFile; fileRef = F01F76EB2DAA5A0800770D5D /* ccz.h */; };
 		F02AD1AE2DAA8E5A00A760BD /* ccmac_generate_subkeys.c in Sources */ = {isa = PBXBuildFile; fileRef = F02AD1AD2DAA8E5A00A760BD /* ccmac_generate_subkeys.c */; };
 		F02AD1AF2DAA8E5A00A760BD /* ccmac_generate_subkeys.c in Sources */ = {isa = PBXBuildFile; fileRef = F02AD1AD2DAA8E5A00A760BD /* ccmac_generate_subkeys.c */; };
+		F03D8B0E2DAC68C3004F403D /* ccblowfish.h in Headers */ = {isa = PBXBuildFile; fileRef = F03D8B0D2DAC68C3004F403D /* ccblowfish.h */; };
 		F0477A602DAB222100CC1760 /* ccmac_init.c in Sources */ = {isa = PBXBuildFile; fileRef = F0477A5F2DAB222100CC1760 /* ccmac_init.c */; };
 		F0477A612DAB222100CC1760 /* ccmac_init.c in Sources */ = {isa = PBXBuildFile; fileRef = F0477A5F2DAB222100CC1760 /* ccmac_init.c */; };
 		F05D85F92D57008900E8FF15 /* argsvalid.c in Sources */ = {isa = PBXBuildFile; fileRef = F05D85F82D57008900E8FF15 /* argsvalid.c */; };
@@ -338,6 +339,7 @@
 		F01F76EB2DAA5A0800770D5D /* ccz.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccz.h; sourceTree = "<group>"; };
 		F02AD1AB2DAA8D3600A760BD /* cccmac_priv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cccmac_priv.h; sourceTree = "<group>"; };
 		F02AD1AD2DAA8E5A00A760BD /* ccmac_generate_subkeys.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccmac_generate_subkeys.c; sourceTree = "<group>"; };
+		F03D8B0D2DAC68C3004F403D /* ccblowfish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccblowfish.h; sourceTree = "<group>"; };
 		F0477A5F2DAB222100CC1760 /* ccmac_init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccmac_init.c; sourceTree = "<group>"; };
 		F05D85F82D57008900E8FF15 /* argsvalid.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = argsvalid.c; sourceTree = "<group>"; };
 		F05D85FC2D5706F500E8FF15 /* ccec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccec.h; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 				1F358E752354F0370030CA4F /* cc_runtime_config.h */,
 				1F65CFE51F2800C60073759F /* ccaes.h */,
 				1F65D0011F2800C60073759F /* ccasn1.h */,
+				F03D8B0D2DAC68C3004F403D /* ccblowfish.h */,
 				1F358E732354F0370030CA4F /* ccchacha20poly1305.h */,
 				F0B0813B2D5A923F00349FD5 /* ccchacha20poly1305_priv.h */,
 				1F65CFFF1F2800C60073759F /* cccmac.h */,
@@ -872,6 +875,7 @@
 				1F615F3B2480A48C0021D82E /* ccdrbg.h in Headers */,
 				1F615F3C2480A48C0021D82E /* cchmac.h in Headers */,
 				1F615F3D2480A48C0021D82E /* cckprng.h in Headers */,
+				F03D8B0E2DAC68C3004F403D /* ccblowfish.h in Headers */,
 				1F615F3E2480A48C0021D82E /* ccmd5.h in Headers */,
 				1F615F3F2480A48C0021D82E /* ccmode_factory.h in Headers */,
 				1F615F412480A48C0021D82E /* ccmode_siv.h in Headers */,
