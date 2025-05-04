@@ -9,6 +9,7 @@
 #define Test_h
 
 #include <stdint.h>
+#include <stdlib.h>
 
 enum {
     kCCHashMD2 = 1,

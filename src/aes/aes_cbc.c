@@ -12,7 +12,8 @@
 #include <corecrypto/ccmode.h>
 #include <corecrypto/ccaes.h>
 #include <corecrypto/ccn.h>
-#include "cc_abort.h"
+#include <corecrypto/cc_debug.h>
+#include <corecrypto/cc_abort.h>
 
 #include "aes128.h"
 

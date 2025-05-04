@@ -23,6 +23,19 @@ static struct cckprng_ctx cc_kprng_ctx = {
 
 kern_return_t cc_kext_start(kmod_info_t * ki, void *d)
 {
+
+#if CC_ACCELERATE_KERNEL
+    /* If we wish to accelerate the kernel's functions functions, do so before we register ourself. */
+
+#if CC_INTEL_ASM
+    if (CC_HAS_AESNI()) {
+        pdcrypto_internal_functions.ccaes_ecb_encrypt = &ccaes_intel_ecb_encrypt_aesni_mode;
+        pdcrypto_internal_functions.ccaes_ecb_decrypt = &ccaes_intel_ecb_decrypt_aesni_mode;
+    }
+#endif
+
+#endif
+
 	int ret = register_crypto_functions(&pdcrypto_internal_functions);
 	if (ret == -1) {
 		printf("warning: corecrypto could not be registered. Did another crypto handler beat us to it?\n");

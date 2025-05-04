@@ -9,13 +9,14 @@
 #include <corecrypto/ccmode.h>
 #include <corecrypto/ccaes.h>
 #include <corecrypto/ccn.h>
-#include "cc_abort.h"
+#include <corecrypto/cc_debug.h>
+#include <corecrypto/cc_abort.h>
 
 #include "aes128.h"
 
 static int pdcmode_aes_ecb_init(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t key_len, const void *key)
 {
-    printf("%s\n", __func__);
+    cc_printf("%s\n", __func__);
 
     // normalize key lenght
     //  " Key lengths in the range 16 <= key_len <= 32 are given in bytes,
