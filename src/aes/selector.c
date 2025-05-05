@@ -24,7 +24,7 @@ extern const struct ccmode_ecb ccaes_intel_ecb_decrypt_aesni_mode;
 const struct ccmode_ecb *ccaes_ecb_encrypt_mode(void) {
 
 #if CCAES_INTEL_ASM
-    if (CC_HAS_AESNI() && CC_HAS_AVX2()) {
+    if (CC_HAS_AESNI()) {
         return &ccaes_intel_ecb_encrypt_aesni_mode;
     }
 #elif CC_LINUX_ASM
@@ -37,7 +37,7 @@ const struct ccmode_ecb *ccaes_ecb_encrypt_mode(void) {
 const struct ccmode_ecb *ccaes_ecb_decrypt_mode(void) {
 
 #if CCAES_INTEL_ASM
-    if (CC_HAS_AESNI() && CC_HAS_AVX2()) {
+    if (CC_HAS_AESNI()) {
         return &ccaes_intel_ecb_decrypt_aesni_mode;
     }
 #elif CC_LINUX_ASM
@@ -50,7 +50,7 @@ const struct ccmode_ecb *ccaes_ecb_decrypt_mode(void) {
 const struct ccmode_cbc *ccaes_cbc_encrypt_mode(void) {
 
 #if CCAES_INTEL_ASM
-    if (CC_HAS_AESNI() && CC_HAS_AVX2()) {
+    if (CC_HAS_AESNI()) {
         return &ccaes_intel_cbc_encrypt_aesni_mode;
     }
 #elif CC_LINUX_ASM
@@ -63,7 +63,7 @@ const struct ccmode_cbc *ccaes_cbc_encrypt_mode(void) {
 const struct ccmode_cbc *ccaes_cbc_decrypt_mode(void) {
 
 #if CCAES_INTEL_ASM
-    if (CC_HAS_AESNI() && CC_HAS_AVX2()) {
+    if (CC_HAS_AESNI()) {
         return &ccaes_intel_cbc_decrypt_aesni_mode;
     }
 #elif CC_LINUX_ASM

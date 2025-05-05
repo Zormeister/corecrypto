@@ -5,8 +5,8 @@
 //  Created by Zormeister on 4/5/25.
 //
 
-#ifndef _CORECRYPTO_CC_RSA_PRIV_H_
-#define _CORECRYPTO_CC_RSA_PRIV_H_
+#ifndef _CORECRYPTO_CCRSA_PRIV_H_
+#define _CORECRYPTO_CCRSA_PRIV_H_
 
 #include <corecrypto/ccdigest.h>
 #include <corecrypto/ccrng.h>
@@ -39,4 +39,4 @@ int ccrsa_encrypt_oaep(ccrsa_pub_ctx_t pub,
                        size_t pt_len, const void *pt,
                        size_t tag_len, const void *tag);
 
-#endif /* _CORECRYPTO_CC_RSA_PRIV_H */
+#endif /* _CORECRYPTO_CCRSA_PRIV_H */

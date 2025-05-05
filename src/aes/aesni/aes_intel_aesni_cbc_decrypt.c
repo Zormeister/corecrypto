@@ -10,6 +10,8 @@
 #include <corecrypto/ccmode_impl.h>
 #include <emmintrin.h>
 
+#if CCAES_INTEL_ASM
+
 int ccaes_intel_aesni_cbc_decrypt_init(const struct ccmode_cbc *ecb, cccbc_ctx *ctx,
                                        size_t key_len, const void *key) {
     struct ccaes_intel_aesni_ctx *aesctx = (struct ccaes_intel_aesni_ctx *)ctx;
@@ -48,3 +50,5 @@ const struct ccmode_cbc ccaes_intel_cbc_encrypt_aesni_mode = {
     .init = ccaes_intel_aesni_cbc_decrypt_init,
     .cbc = ccaes_intel_aesni_cbc_decrypt_cbc,
 };
+
+#endif

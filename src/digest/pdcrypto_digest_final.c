@@ -77,6 +77,16 @@ void ccdigest_final_64be(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
     }
 }
 
+#define ZORM_TAMPERING 1
+
+#if ZORM_TAMPERING
+
+void ccdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest) {
+    di->final(di, ctx, digest);
+}
+
+#else
+
 void ccdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest) {
 	// TODO: Is this the correct implementation?
 
@@ -88,3 +98,5 @@ void ccdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void 
 	cc_abort("Unsupported byte order");
 #endif
 }
+
+#endif
