@@ -34,6 +34,10 @@ int ccchacha20_reset(ccchacha20_ctx *ctx);
 
 /* poly1305 */
 
+/* confirmed. */
 int ccpoly1305_init(ccpoly1305_ctx *ctx, const uint8_t *key);
+
+
+int ccpoly1305_update(ccpoly1305_ctx *ctx); /* data? */
 
 #endif

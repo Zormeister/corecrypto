@@ -21,3 +21,12 @@ target("libcorecrypto_static")
     if is_plat("linux") then
         add_defines("CC_LINUX_ASM=1")
     end
+
+target("cctest")
+    set_kind("binary")
+
+    add_deps("libcorecrypto_static")
+
+    add_sysincludedirs("$(projectdir)/include")
+
+    add_files("$(projectdir)/cctest/*.c")

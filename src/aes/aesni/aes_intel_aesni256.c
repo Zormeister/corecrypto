@@ -62,10 +62,6 @@ int ccaes_intel_aesni256_gen_round_keys(struct ccaes_intel_aesni_ctx *ctx) {
 
     ctx->round_keys[14] = expand(ctx->round_keys[12], ctx->round_keys[13]);
 
-    for (int i = 0 ; i < 15; i++) {
-        ctx->decrypt_round_keys[i] = _mm_aesimc_si128(ctx->round_keys[i]);
-    }
-
     return CCERR_OK;
 }
 

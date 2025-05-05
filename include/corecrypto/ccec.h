@@ -9,6 +9,7 @@
 #define _CORECRYPTO_CCEC_H_
 
 #include <corecrypto/cc.h>
+#include <corecrypto/cczp.h>
 
 // hunch based on the ccdh stuff
 struct ccec_cp {
@@ -21,7 +22,7 @@ typedef const struct ccec_cp *ccec_const_cp_t;
 #define ccec_ccn_size(_cp_) 0
 
 struct ccec_pub_ctx {
-    
+
 };
 
 typedef struct ccec_pub_ctx *ccec_pub_ctx_t;

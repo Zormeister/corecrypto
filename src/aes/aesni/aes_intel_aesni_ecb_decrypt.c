@@ -27,7 +27,13 @@ int ccaes_intel_aesni_ecb_decrypt_init(const struct ccmode_ecb *ecb, ccecb_ctx *
         aesctx->nrounds = 14;
     }
 
-    return ccaes_intel_aesni_expand_key(aesctx, key_len, key);
+    int res = ccaes_intel_aesni_expand_key(aesctx, key_len, key);
+
+    for (int i = 0 ; i < aesctx->nrounds + 1; i++) {
+        aesctx->round_keys[i] = _mm_aesimc_si128(aesctx->round_keys[i]);
+    }
+
+    return res;
 };
 
 int ccaes_intel_aesni_ecb_decrypt_ecb(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out) {
@@ -35,7 +41,7 @@ int ccaes_intel_aesni_ecb_decrypt_ecb(const ccecb_ctx *ctx, size_t nblocks, cons
 
     while (nblocks--) {
         __m128i data = _mm_loadu_si128(in);
-        ccaes_intel_aesni_run_cipher_decrypt(aesctx, data);
+        data = ccaes_intel_aesni_run_cipher_decrypt(aesctx, data);
         _mm_store_si128(out, data);
         in += CCAES_BLOCK_SIZE;
         out += CCAES_BLOCK_SIZE;

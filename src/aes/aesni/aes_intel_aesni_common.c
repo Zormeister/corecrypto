@@ -15,13 +15,16 @@
 #include <emmintrin.h>
 #include <immintrin.h>
 #include <wmmintrin.h>
-#include <xmmintrin.h>
 
 /* this is pain */
 int ccaes_intel_aesni_expand_key(struct ccaes_intel_aesni_ctx *ctx, size_t key_len, const void *key) {
     if (key_len == CCAES_KEY_SIZE_128) {
         ctx->round_keys[0] = _mm_loadu_si128(key);
         return ccaes_intel_aesni128_gen_round_keys(ctx);
+    } else if (key_len == CCAES_KEY_SIZE_192) {
+        ctx->round_keys[0] = _mm_loadu_si128(key); /* Key block 1. (16 bytes) */
+        ctx->round_keys[1] = _mm_loadu_epi64(key + 16); /* Key block 2. (8 bytes) */
+        return ccaes_intel_aesni192_gen_round_keys(ctx);
     } else if (key_len == CCAES_KEY_SIZE_256) {
         ctx->round_keys[0] = _mm_loadu_si128(key);
         ctx->round_keys[1] = _mm_loadu_si128((key + CCAES_KEY_SIZE_128));
@@ -48,10 +51,6 @@ __m128i ccaes_intel_aesni_run_cipher_encrypt(struct ccaes_intel_aesni_ctx *ctx, 
 
 __m128i ccaes_intel_aesni_run_cipher_decrypt(struct ccaes_intel_aesni_ctx *ctx, __m128i state) {
     __m128i cur = state;
-
-    for (int i = 0 ; i < ctx->nrounds; i++) {
-        ctx->decrypt_round_keys[i] = _mm_aesimc_si128(ctx->round_keys[i]);
-    }
 
     /* Last key goes first, either key 10, 12 or 14. */
     cur = _mm_xor_si128(cur, ctx->round_keys[ctx->nrounds]);
