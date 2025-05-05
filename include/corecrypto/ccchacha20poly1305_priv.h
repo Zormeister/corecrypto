@@ -40,4 +40,11 @@ int ccpoly1305_init(ccpoly1305_ctx *ctx, const uint8_t *key);
 
 int ccpoly1305_update(ccpoly1305_ctx *ctx); /* data? */
 
+/*
+ 000000000006fa68 T _ccpoly1305
+ 000000000006f7f2 T _ccpoly1305_final
+ 000000000006f145 T _ccpoly1305_init
+ 000000000006f24f T _ccpoly1305_update
+ */
+
 #endif
