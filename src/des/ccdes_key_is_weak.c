@@ -1,5 +1,5 @@
 //
-//  ccdes_is_weak_key.c
+//  ccdes_key_is_weak.c
 //  corecrypto
 //
 //  Created by Zormeister on 10/5/2025.
@@ -29,7 +29,7 @@ const uint8_t weak_keys[16][8] = {
     {0xFE, 0xE0, 0xFE, 0xE0, 0xFE, 0xF1, 0xFE, 0xF1}
 };
 
-int ccdes_is_key_weak(void *key, size_t length) {
+int ccdes_key_is_weak(void *key, size_t length) {
     if (length == 8) {
         for (int i = 0; i < 16; i++) {
             if (!cc_cmp_safe(8, key, weak_keys[i])) {
