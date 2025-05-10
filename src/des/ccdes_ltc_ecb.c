@@ -1,0 +1,84 @@
+//
+//  ccdes_ltc_ecb.c
+//  corecrypto
+//
+//  Created by Zormeister on 25/1/2025.
+//
+
+#include <corecrypto/cc_error.h>
+#include <corecrypto/ccdes.h>
+#include <corecrypto/cc_priv.h>
+#include <corecrypto/ccmode_impl.h>
+#include "ccdes_ltc_internal.h"
+
+// Thank you so much to Tom St Denis for the implementation for DES and Triple-DES
+// LibTomCrypt is licensed under the unlicense.
+
+int ccdes_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t key_len, const void *key) {
+    struct ccdes_ltc_ecb_ctx *lctx = (struct ccdes_ltc_ecb_ctx *)ctx;
+
+    if (key_len != CCDES_KEY_SIZE) {
+        return CCERR_INTERNAL;
+    } else {
+        deskey(key, EN0, lctx->ek);
+        deskey(key, DE1, lctx->dk);
+    }
+
+    return CCERR_OK;
+}
+
+int ltc_des_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out)
+{
+    struct ccdes_ltc_ecb_ctx *lctx = (struct ccdes_ltc_ecb_ctx *)ctx;
+    uint32_t work[2];
+
+    const void *cur_in = in;
+    void *cur_out = out;
+
+    while (nblocks--) {
+        CC_LOAD32_LE(work[0], cur_in);
+        CC_LOAD32_LE(work[1], cur_in+4);
+        desfunc(work, lctx->ek);
+        CC_STORE32_LE(work[0], cur_out);
+        CC_STORE32_LE(work[1], cur_out+4);
+        cur_in += CCDES_BLOCK_SIZE;
+        cur_out += CCDES_BLOCK_SIZE;
+    }
+
+    return CCERR_OK;
+}
+
+int ltc_des_ecb_decrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out)
+{
+    struct ccdes_ltc_ecb_ctx *lctx = (struct ccdes_ltc_ecb_ctx *)ctx;
+    uint32_t work[2];
+
+    const void *cur_in = in;
+    void *cur_out = out;
+
+    while (nblocks--) {
+        CC_LOAD32_LE(work[0], cur_in);
+        CC_LOAD32_LE(work[1], cur_in+4);
+        desfunc(work, lctx->dk);
+        CC_STORE32_LE(work[0], cur_out);
+        CC_STORE32_LE(work[1], cur_out+4);
+        cur_in += CCDES_BLOCK_SIZE;
+        cur_out += CCDES_BLOCK_SIZE;
+    }
+
+    return CCERR_OK;
+}
+
+const struct ccmode_ecb ccdes_ltc_ecb_encrypt_mode = {
+    .size = sizeof(struct ccdes_ltc_ecb_ctx),
+    .block_size = CCDES_BLOCK_SIZE,
+    .init = ccdes_ltc_setup,
+    .ecb = ltc_des_ecb_encrypt,
+};
+
+const struct ccmode_ecb ccdes_ltc_ecb_decrypt_mode = {
+    .size = sizeof(struct ccdes_ltc_ecb_ctx),
+    .block_size = CCDES_BLOCK_SIZE,
+    .init = ccdes_ltc_setup,
+    .ecb = ltc_des_ecb_decrypt,
+};
