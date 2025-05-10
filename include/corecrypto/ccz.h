@@ -8,6 +8,7 @@
 #ifndef _CORECRYPTO_CCZ_H_
 #define _CORECRYPTO_CCZ_H_
 
+#include <stdbool.h>
 #include <corecrypto/ccn.h>
 
 struct ccz_class {
@@ -20,7 +21,7 @@ struct ccz_class {
 struct {
     struct ccz_class ccz_class; /* I think? */
     uint64_t *z; /* Pointer to our large number - look at ccz_class for details. */
-} ccz;
+} typedef ccz;
 
 void ccz_init(struct ccz_class *cl, ccz *r);
 
