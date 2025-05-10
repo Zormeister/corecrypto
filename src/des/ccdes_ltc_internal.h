@@ -1,3 +1,9 @@
+//
+//  ccdes_ltc_internal.h
+//  corecrypto
+//
+//  Created by Zormeister on 10/5/2025.
+//
 
 #ifndef _CORECRYPTO_CCDES_LTC_INTERNAL_H_
 #define _CORECRYPTO_CCDES_LTC_INTERNAL_H_
