@@ -1,5 +1,5 @@
 //
-//  aes_intel_aesni192.c
+//  ccaes_intel_aesni192.c
 //  corecrypto
 //
 //  Created by Zormeister on 5/5/2025.
@@ -9,7 +9,7 @@
 
 #if CCAES_INTEL_ASM
 
-#include "aes_intel_aesni_internal.h"
+#include "ccaes_intel_aesni_internal.h"
 #include <corecrypto/cc_error.h>
 #include <corecrypto/ccaes.h>
 #include <emmintrin.h>

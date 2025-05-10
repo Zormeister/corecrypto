@@ -1,11 +1,11 @@
 //
-//  aes_intel_aesni_ecb.c
+//  ccaes_intel_aesni_ecb.c
 //  corecrypto
 //
 //  Created by Zormeister on 4/5/2025.
 //
 
-#include "aes_intel_aesni_internal.h"
+#include "ccaes_intel_aesni_internal.h"
 #include <corecrypto/cc_error.h>
 #include <corecrypto/ccaes.h>
 #include <emmintrin.h>

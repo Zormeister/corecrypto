@@ -1,12 +1,12 @@
 //
-//  aes_intel_aesni_internal.h
+//  ccaes_intel_aesni_internal.h
 //  corecrypto
 //
 //  Created by Zormeister on 4/5/2025.
 //
 
-#ifndef _CORECRYPTO_CC_AES_INTEL_AESNI_INTERNAL_H_
-#define _CORECRYPTO_CC_AES_INTEL_AESNI_INTERNAL_H_
+#ifndef _CORECRYPTO_CCAES_INTEL_AESNI_INTERNAL_H_
+#define _CORECRYPTO_CCAES_INTEL_AESNI_INTERNAL_H_
 
 #include <corecrypto/ccaes.h>
 
@@ -35,4 +35,4 @@ __m128i ccaes_intel_aesni_run_cipher_decrypt(struct ccaes_intel_aesni_ctx *ctx, 
 
 #endif
 
-#endif /* _CORECRYPTO_CC_AES_INTEL_AESNI_INTERNAL_H_ */
+#endif /* _CORECRYPTO_CCAES_INTEL_AESNI_INTERNAL_H_ */
