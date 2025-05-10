@@ -3,7 +3,6 @@
 //  corecrypto
 //
 //  Created by Zormeister on 14/4/25.
-//  Copyright © 2025 William Kent. All rights reserved.
 //
 
 #ifndef _CORECRYPTO_CCBLOWFISH_H_
@@ -11,5 +10,24 @@
 
 #include <corecrypto/cc_config.h>
 #include <corecrypto/ccmode.h>
+
+#define CCBLOWFISH_BLOCK_SIZE 8
+
+const struct ccmode_ecb *ccblowfish_ecb_encrypt_mode();
+const struct ccmode_ecb *ccblowfish_ecb_decrypt_mode();
+
+const struct ccmode_cbc *ccblowfish_cbc_encrypt_mode();
+const struct ccmode_cbc *ccblowfish_cbc_decrypt_mode();
+
+const struct ccmode_cfb *ccblowfish_cfb_encrypt_mode();
+const struct ccmode_cfb *ccblowfish_cfb_decrypt_mode();
+
+const struct ccmode_cfb8 *ccblowfish_cfb8_encrypt_mode();
+const struct ccmode_cfb8 *ccblowfish_cfb8_decrypt_mode();
+
+const struct ccmode_ctr *ccblowfish_ctr_crypt_mode();
+
+const struct ccmode_ofb *ccblowfish_ofb_encrypt_mode();
+const struct ccmode_ofb *ccblowfish_ofb_decrypt_mode();
 
 #endif /* _CORECRYPTO_CCBLOWFISH_H_ */
