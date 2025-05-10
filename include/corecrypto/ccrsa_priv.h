@@ -22,6 +22,13 @@ int ccrsa_encrypt_eme_pkcs1v15(ccrsa_pub_ctx_t pub,
                                size_t pt_len, const void *pt,
                                size_t tag_len, const void *tag);
 
+int ccrsa_decrypt_eme_pkcs1v15(ccrsa_full_ctx_t pub,
+                               struct ccdigest_info *digest,
+                               struct ccrng_state *rng,
+                               size_t pt_len, void *pt,
+                               size_t ct_len, const void *ct,
+                               size_t tag_len, const void *tag);
+
 /* RSA OAEP functions. There's probably more I'm missing since I need my symbol dump. */
 void ccrsa_oaep_encode(struct ccdigest_info *digest,
                        struct ccrng_state *rng,
