@@ -1,11 +1,18 @@
 #include <sys/systm.h>
 #include <mach/mach_types.h>
+
+#if __has_include(<libkern/crypto/register_crypto.h>) && __has_include(<prng/random.h>)
+#include <libkern/crypto/register_crypto.h>
+#include <prng/random.h>
+#else
 #include "register_crypto.h"
 #include "prng_random.h"
+#endif
+
 #include <corecrypto/cckprng.h>
 #include "../kprng/yarrow/yarrow.h"
 
-extern struct crypto_functions pdcrypto_internal_functions;
+struct crypto_functions cc_functions;
 
 static const struct cckprng_funcs cc_kprng_fns = {
 	.init = cckprng_init,
@@ -21,22 +28,21 @@ static struct cckprng_ctx cc_kprng_ctx = {
 	.bytes_generated = 0
 };
 
+/* cc_populate_fns.c && cc_populate_fns_dummy.c */
+extern void cc_populate_fns(crypto_functions_t fns);
+extern void cc_populate_fns_dummy(crypto_functions_t fns);
+
 kern_return_t cc_kext_start(kmod_info_t * ki, void *d)
 {
+    printf("corecrypto: module start, built %s", __TIMESTAMP__);
 
-#if CC_ACCELERATE_KERNEL
-    /* If we wish to accelerate the kernel's functions functions, do so before we register ourself. */
+    /* Populate our functions. */
+    cc_populate_fns(&cc_functions);
+    cc_populate_fns_dummy(&cc_functions);
 
-#if CC_INTEL_ASM
-    if (CC_HAS_AESNI()) {
-        pdcrypto_internal_functions.ccaes_ecb_encrypt = &ccaes_intel_ecb_encrypt_aesni_mode;
-        pdcrypto_internal_functions.ccaes_ecb_decrypt = &ccaes_intel_ecb_decrypt_aesni_mode;
-    }
-#endif
+	int ret = register_crypto_functions(&cc_functions);
 
-#endif
-
-	int ret = register_crypto_functions(&pdcrypto_internal_functions);
+	/* I should REALLY write the Fortuna derived KPRNG. clangd won't shut up about the yarrow library imported. */
 	if (ret == -1) {
 		printf("warning: corecrypto could not be registered. Did another crypto handler beat us to it?\n");
 	} else {
@@ -46,7 +52,7 @@ kern_return_t cc_kext_start(kmod_info_t * ki, void *d)
 		}
 
 		register_and_init_prng(&cc_kprng_ctx, &cc_kprng_fns);
-		printf("corecrypto loaded\n");
+		printf("corecrypto: registered functions and prng.\n");
 	}
 
     return KERN_SUCCESS;
