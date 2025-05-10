@@ -37,7 +37,29 @@
  *
  * @result     0 if successful.
  */
-int ccnistkdf_ctr_hmac(struct ccdigest_di *digest,
+int ccnistkdf_ctr_hmac(struct ccdigest_info *digest,
+                       size_t key_len, const void *key,
+                       size_t label_len, const void *label,
+                       size_t context_len, const void *context,
+                       size_t derived_len, void *derived_key);
+
+/*!
+ * @function   ccnistkdf_ctr_cmac
+ * @abstract   The NIST KDF in Counter mode, using CMAC.
+ *
+ * @param   cbc          AES-CBC mode to use for CMAC.
+ * @param   key_len      Length of the key Derivation Key
+ * @param   key          The key derivation key
+ * @param   label_len    Length of the Label
+ * @param   label        The label variable of the NIST KDF function.
+ * @param   context_len  Length of the context
+ * @param   context      The context variable of the NIST KDF function.
+ * @param   derived_len  The length of the derived key
+ * @param   derived_key  The derived key
+ *
+ * @result     0 if successful.
+ */
+int ccnistkdf_ctr_cmac(struct ccmode_cbc *cbc,
                        size_t key_len, const void *key,
                        size_t label_len, const void *label,
                        size_t context_len, const void *context,
