@@ -17,5 +17,7 @@ int cccmac_init(const struct ccmode_cbc *cbc, cccmac_ctx_t ctx, size_t key_nbyte
     }
 
     cccmac_generate_subkeys(ctx, key_nbytes, key);
-    return 0;
+    
+    /* Anything else? */
+    return CCERR_OK;
 }

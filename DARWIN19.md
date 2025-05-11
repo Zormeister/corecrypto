@@ -5,7 +5,7 @@
 ### CommonCrypto compatibility
 
 CommonCrypto requires the following from corecrypto:
-- AES block ciper operations in CBC, ECB, CFB8, CTR, CFB, OFB, XTS, GCM and CCM modes
+- AES block cipher operations in CBC, ECB, CFB8, CTR, CFB, OFB, XTS, GCM and CCM modes
 - AES Key Wrapping
 - An implementation of the ANSI Key Derivation function
 - An implementation of the HMAC Key Derivation function
@@ -36,7 +36,7 @@ CommonCrypto requires the following from corecrypto:
 ### Security framework compatibility
 
 The Security project requires the following implementations from corecrypto:
-- AES block ciper operations in GCM mode
+- AES block cipher operations in GCM mode
 - AES Key Wrapping
 - An implementation of the ANSI Key Derivation function
 - An implementation of the HMAC Key Derivation function
@@ -76,7 +76,7 @@ The Heimdal project requires the following implementations from corecrypto:
 ### coreTLS compatibility
 
 The coreTLS project requires the following implementations from corecrypto:
-- AES block ciper operations in GCM mode
+- AES block cipher operations in GCM mode
 - DES operations
 - Diffie-Hellman operations
 - Elliptic Curve cryptography functions
