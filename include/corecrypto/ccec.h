@@ -10,6 +10,7 @@
 
 #include <stdbool.h>
 #include <corecrypto/cc.h>
+#include <corecrypto/ccrng.h>
 #include <corecrypto/cczp.h>
 
 // hunch based on the ccdh stuff
@@ -44,5 +45,29 @@ ccec_const_cp_t ccec_get_cp(size_t nbits);
 int ccec_verify();
 
 size_t ccec_ccn_size(ccec_const_cp_t cp);
+
+int ccec_generate_key(ccec_const_cp_t cp, struct ccrng_state *rng, ccec_full_ctx_t key);
+
+int ccec_get_pubkey_components(ccec_pub_ctx_t key, size_t *key_len,
+                               uint8_t *qx, size_t *qx_len,
+                               uint8_t *qy, size_t *qy_len);
+
+int ccec_get_fullkey_components(ccec_pub_ctx_t key, size_t *key_len,
+                                uint8_t *qx, size_t *qx_len,
+                                uint8_t *qy, size_t *qy_len,
+                                uint8_t *d, size_t *d_len);
+
+int ccec_make_pub(size_t bits, uint8_t *qx, size_t qx_len, uint8_t *qy, size_t qy_len);
+
+size_t ccec_x963_import_priv_size(size_t key_len);
+size_t ccec_x963_import_pub_size(size_t key_len);
+
+int ccec_x963_import_pub(ccec_const_cp_t cp, size_t key_len, uint8_t *key, ccec_pub_ctx_t ctx);
+int ccec_x963_import_priv(ccec_const_cp_t cp, size_t key_len, uint8_t *key, ccec_full_ctx_t ctx);
+
+size_t ccec_compact_import_priv_size(size_t key_len);
+size_t ccec_compact_import_pub_size(size_t key_len);
+
+int ccec_validate_pub(ccec_pub_ctx_t ctx);
 
 #endif /* _CORECRYPTO_CCEC_H_ */
