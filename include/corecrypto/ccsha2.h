@@ -30,7 +30,7 @@ const struct ccdigest_info *ccsha512_di(void);
 /*
  * ZORMEISTER: Breaking down the OIDs
  *
- * 06 09 - This is [PLACEHOLDER] - I don't actually *know* yet.
+ * 06 09 - DER header - 06 == Type (CCASN1_OBJECT_IDENTIFIER), 09 == Length.
  * 60 - {joint-iso-itu-t(2) country(16)}
  * 86 48 - {us(840)}
  * 01 - {organization(1)}
@@ -86,5 +86,7 @@ extern const struct ccdigest_info ccsha512_ltc_di;
 /* SHA384 */
 #define	CCSHA384_OUTPUT_SIZE  48
 extern const struct ccdigest_info ccsha384_ltc_di;
+
+/* Rumor has it that corecrypto gained a SHA-512/256 function somewhere down the line. */
 
 #endif /* _CORECRYPTO_CCSHA2_H_ */

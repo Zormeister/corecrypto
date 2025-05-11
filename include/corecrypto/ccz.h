@@ -11,12 +11,16 @@
 #include <stdbool.h>
 #include <corecrypto/ccn.h>
 
+/* bignum handling in C - that's what ccz is. */
+
+/* hence why we have this structure... */
 struct ccz_class {
     void *ctx;
     void *(*ccz_alloc)(void *ctx, size_t size);
     void *(*ccz_realloc)(void *ctx, size_t oldsize, void *p, size_t newsize);
     void (*ccz_free)(void *ctx, size_t size, void *p);
 };
+/* ^ i guess this could be for abstract APIs, CommonCrypto uses it for a reason after all. maybe EFI uses it somewhere so it can't use the standard malloc? */
 
 struct {
     struct ccz_class ccz_class; /* I think? */
