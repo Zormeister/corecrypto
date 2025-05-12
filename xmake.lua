@@ -7,8 +7,11 @@ target("libcorecrypto_static")
     add_files(
         "src/*.c",
         "src/**.c",
-        "src/aes/**.c"
     )
+
+    if is_arch("x86_64", "i386") then
+        add_files("src/aes/intel/**.c")
+    end
 
     remove_files(
         "src/kext/*.c",
