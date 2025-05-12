@@ -91,14 +91,14 @@ int ltc_des3_ecb_decrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, v
 }
 
 const struct ccmode_ecb ccdes3_ltc_ecb_encrypt_mode = {
-    .size = sizeof(struct ccdes_ltc_ecb_ctx),
+    .size = sizeof(struct ccdes3_ltc_ecb_ctx),
     .block_size = CCDES_BLOCK_SIZE,
     .init = ccdes3_ltc_setup,
     .ecb = ltc_des3_ecb_encrypt,
 };
 
 const struct ccmode_ecb ccdes3_ltc_ecb_decrypt_mode = {
-    .size = sizeof(struct ccdes_ltc_ecb_ctx),
+    .size = sizeof(struct ccdes3_ltc_ecb_ctx),
     .block_size = CCDES_BLOCK_SIZE,
     .init = ccdes3_ltc_setup,
     .ecb = ltc_des3_ecb_decrypt,
