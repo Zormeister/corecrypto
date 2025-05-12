@@ -12,6 +12,8 @@
 #include <corecrypto/ccmode.h>
 
 #define CCBLOWFISH_BLOCK_SIZE 8
+#define CCBLOWFISH_MIN_KEY_SIZE 8
+#define CCBLOWFISH_MAX_KEY_SIZE 72
 
 const struct ccmode_ecb *ccblowfish_ecb_encrypt_mode();
 const struct ccmode_ecb *ccblowfish_ecb_decrypt_mode();
