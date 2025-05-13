@@ -24,14 +24,6 @@ void cc_populate_fns_dummy(crypto_functions_t fns) {
     fns->ccaes_xts_decrypt = &pdcaes_xts_decrypt_dummy;
     fns->ccaes_xts_encrypt = &pdcaes_xts_encrypt_dummy;
 
-    /* Blowfish dummies */
-    fns->ccblowfish_ecb_decrypt = &pdcblowfish_ecb_encrypt_dummy;
-    fns->ccblowfish_ecb_encrypt = &pdcblowfish_ecb_encrypt_dummy;
-
-    /* CAST dummies */
-    fns->cccast_ecb_encrypt = &pdccast_ecb_encrypt_dummy;
-    fns->cccast_ecb_decrypt = &pdccast_ecb_decrypt_dummy;
-
     /* DES dummies */
     fns->ccdes_key_set_odd_parity_fn = pdcdes_key_set_odd_parity_fn_dummy;
 
