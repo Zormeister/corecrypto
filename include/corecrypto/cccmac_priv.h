@@ -10,6 +10,6 @@
 
 #include <corecrypto/cccmac.h>
 
-int cccmac_generate_subkeys(cccmac_ctx_t ctx, size_t key_nbytes, const void *key);
+int cccmac_generate_subkeys(cccmac_ctx_t ctx, size_t key_nbytes, const void *key, uint8_t *key1, uint8_t *key2);
 
 #endif /* _CORECRYPTO_CCCMAC_PRIV_H_ */

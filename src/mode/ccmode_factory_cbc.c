@@ -67,7 +67,7 @@ void ccmode_factory_cbc_encrypt(struct ccmode_cbc *cbc, const struct ccmode_ecb 
 
     cbc->block_size = ecb->block_size; /* equal block sizes */
     cbc->custom = ecb; /* this is how we get the selected ecb mode to the context in init */
-    cbc->size = (sizeof(struct _ccmode_cbc_key) - sizeof(ccecb_ctx)) + ecb->size; /* take into account that the context size could be different across */
+    cbc->size = ccn_sizeof_size(sizeof(struct _ccmode_cbc_key)) + ccn_sizeof_size(ecb->block_size) + ccn_sizeof_size(ecb->size); /* take into account that the context size could be different across */
 
     cbc->init = ccmode_cbc_init;
     cbc->cbc = ccmode_cbc_encrypt;
@@ -78,7 +78,7 @@ void ccmode_factory_cbc_decrypt(struct ccmode_cbc *cbc, const struct ccmode_ecb 
 
     cbc->block_size = ecb->block_size; /* equal block sizes */
     cbc->custom = ecb; /* this is how we get the selected ecb mode to the context in init */
-    cbc->size = (sizeof(struct _ccmode_cbc_key) - sizeof(ccecb_ctx)) + ecb->size; /* take into account that the context size could be different across */
+    cbc->size = ccn_sizeof_size(sizeof(struct _ccmode_cbc_key)) + ccn_sizeof_size(ecb->block_size) + ccn_sizeof_size(ecb->size); /* take into account that the context size could be different across */
 
     cbc->init = ccmode_cbc_init;
     cbc->cbc = ccmode_cbc_decrypt;
