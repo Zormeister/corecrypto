@@ -6,7 +6,7 @@ target("libcorecrypto_static")
 
     add_files(
         "src/*.c",
-        "src/**.c",
+        "src/**.c"
     )
 
     if is_arch("x86_64", "i386") then
