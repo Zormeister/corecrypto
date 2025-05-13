@@ -12,6 +12,7 @@
 #endif
 
 #include <corecrypto/ccaes.h>
+#include <corecrypto/ccblowfish.h>
 #include <corecrypto/ccdes.h>
 #include <corecrypto/ccmd5.h>
 #include <corecrypto/ccsha1.h>
@@ -29,6 +30,10 @@ void cc_populate_fns(crypto_functions_t fns) {
     fns->ccaes_cbc_decrypt = ccaes_cbc_decrypt_mode();
     fns->ccaes_ecb_encrypt = ccaes_ecb_encrypt_mode();
     fns->ccaes_ecb_decrypt = ccaes_ecb_decrypt_mode();
+
+    /* Blowfish functions */
+    fns->ccblowfish_ecb_encrypt = ccblowfish_ecb_encrypt_mode();
+    fns->ccblowfish_ecb_decrypt = ccblowfish_ecb_decrypt_mode();
 
     /* DES functions */
     fns->ccdes_key_is_weak_fn = ccdes_key_is_weak;
