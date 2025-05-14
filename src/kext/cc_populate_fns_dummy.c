@@ -35,7 +35,7 @@ void cc_populate_fns_dummy(crypto_functions_t fns) {
     fns->ccrc4_info = &pdcrc4_info_dummy;
 
     /* RNG dummy */
-    fns->ccrng_fn = ccrng; /* I consider this a dummy because it returns the KPRNG. The **real** CCRNG is an NIST CTR DRBG using AES */
+    fns->ccrng_fn = &ccrng; /* I consider this a dummy because it returns the KPRNG. The **real** CCRNG is an NIST CTR DRBG using AES */
 
 #if CCKEXT_TRACE
     printf("corecrypto: finished populating dummies.\n");

@@ -19,36 +19,12 @@ static int pdcmode_ecb_init_dummy(const struct ccmode_ecb *ecb, ccecb_ctx *ctx,
 	return -1;
 }
 
-static int pdcmode_cbc_init_dummy(const struct ccmode_cbc *cbc, cccbc_ctx *ctx,
-                                   size_t key_len, const void *key)
-{
-    printf("%s\n", __func__);
-	return -1;
-}
-
 const struct ccmode_xts pdcaes_xts_encrypt_dummy;
 const struct ccmode_xts pdcaes_xts_decrypt_dummy;
 const struct ccmode_gcm pdcaes_gcm_encrypt_dummy;
 const struct ccmode_gcm pdcaes_gcm_decrypt_dummy;
 
 const struct ccrc4_info pdcrc4_info_dummy;
-
-const struct ccmode_ecb pdcblowfish_ecb_encrypt_dummy = {
-    .init = pdcmode_ecb_init_dummy
-};
-
-const struct ccmode_ecb pdcblowfish_ecb_decrypt_dummy = {
-    .init = pdcmode_ecb_init_dummy
-};
-
-
-const struct ccmode_ecb pdccast_ecb_encrypt_dummy = {
-    .init = pdcmode_ecb_init_dummy
-};
-
-const struct ccmode_ecb pdccast_ecb_decrypt_dummy = {
-    .init = pdcmode_ecb_init_dummy
-};
 
 
 void pdcdes_key_set_odd_parity_fn_dummy(void *key,

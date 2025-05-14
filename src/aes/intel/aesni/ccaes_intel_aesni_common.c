@@ -23,7 +23,7 @@ int ccaes_intel_aesni_expand_key(struct ccaes_intel_aesni_ctx *ctx, size_t key_l
         return ccaes_intel_aesni128_gen_round_keys(ctx);
     } else if (key_len == CCAES_KEY_SIZE_192) {
         ctx->round_keys[0] = _mm_loadu_si128(key); /* Key block 1. (16 bytes) */
-        ctx->round_keys[1] = _mm_loadu_epi64(key + CCAES_KEY_SIZE_128); /* Key block 2. (8 bytes) */
+        ctx->round_keys[1] = _mm_loadu_si64(key + CCAES_KEY_SIZE_128); /* Key block 2. (8 bytes) */
         return ccaes_intel_aesni192_gen_round_keys(ctx);
     } else if (key_len == CCAES_KEY_SIZE_256) {
         ctx->round_keys[0] = _mm_loadu_si128(key);

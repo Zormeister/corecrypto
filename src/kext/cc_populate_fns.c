@@ -41,7 +41,7 @@ void cc_populate_fns(crypto_functions_t fns) {
     fns->cccast_ecb_decrypt = cccast_ecb_decrypt_mode();
 
     /* DES functions */
-    fns->ccdes_key_is_weak_fn = ccdes_key_is_weak;
+    fns->ccdes_key_is_weak_fn = &ccdes_key_is_weak;
     fns->ccdes_cbc_encrypt = ccdes_cbc_encrypt_mode();
     fns->ccdes_cbc_decrypt = ccdes_cbc_decrypt_mode();
     fns->ccdes_ecb_encrypt = ccdes_ecb_encrypt_mode();
@@ -54,16 +54,16 @@ void cc_populate_fns(crypto_functions_t fns) {
     fns->cctdes_ecb_decrypt = ccdes3_ecb_decrypt_mode();
 
     /* HMAC functions */
-    fns->cchmac_fn = cchmac;
-    fns->cchmac_init_fn = cchmac_init;
-    fns->cchmac_update_fn = cchmac_update;
-    fns->cchmac_final_fn = cchmac_final;
+    fns->cchmac_fn = &cchmac;
+    fns->cchmac_init_fn = &cchmac_init;
+    fns->cchmac_update_fn = &cchmac_update;
+    fns->cchmac_final_fn = &cchmac_final;
 
     /* digest functions */
-    fns->ccdigest_fn = ccdigest;
-    fns->ccdigest_init_fn = ccdigest_init;
-    fns->ccdigest_update_fn = ccdigest_update;
-    fns->ccdigest_final_fn = ccdigest_final;
+    fns->ccdigest_fn = &ccdigest;
+    fns->ccdigest_init_fn = &ccdigest_init;
+    fns->ccdigest_update_fn = &ccdigest_update;
+    fns->ccdigest_final_fn = &ccdigest_final;
 
     /* Hashing digest info pointers */
     fns->ccsha1_di = ccsha1_di();

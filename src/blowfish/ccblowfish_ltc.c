@@ -146,8 +146,8 @@ int ccblowfish_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t ke
       /* encrypt it */
       ccblowfish_ltc_ecb_encrypt((ccecb_ctx *)skey, 1, B, B);
       /* copy it */
-      CC_STORE32_LE(B[0], skey->S[x][y]);
-      CC_STORE32_LE(B[1], skey->S[x][y+1]);
+      skey->K[x] = B[0];
+      skey->K[x+1] = B[1];
    }
 
    /* encrypt S array */
@@ -156,8 +156,8 @@ int ccblowfish_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t ke
           /* encrypt it */
           ccblowfish_ltc_ecb_encrypt((ccecb_ctx *)skey, 1, B, B);
           /* copy it */
-          CC_STORE32_LE(B[0], skey->S[x][y]);
-          CC_STORE32_LE(B[1], skey->S[x][y+1]);
+          skey->S[x][y] = B[0];
+          skey->S[x][y+1] = B[1];
        }
    }
 

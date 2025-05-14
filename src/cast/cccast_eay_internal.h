@@ -8,5 +8,5 @@
 #include <corecrypto/cccast.h>
 #include "cast_lcl.h"
 
-const struct ccmode_ecb cccast_eay_ecb_encrypt_mode;
-const struct ccmode_ecb cccast_eay_ecb_decrypt_mode;
+extern const struct ccmode_ecb cccast_eay_ecb_encrypt_mode;
+extern const struct ccmode_ecb cccast_eay_ecb_decrypt_mode;

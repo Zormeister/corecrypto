@@ -44,7 +44,7 @@ int ccaes_intel_aesni_cbc_decrypt_cbc(const cccbc_ctx *ctx, cccbc_iv *iv, size_t
     return CCERR_OK;
 };
 
-const struct ccmode_cbc ccaes_intel_cbc_encrypt_aesni_mode = {
+const struct ccmode_cbc ccaes_intel_cbc_decrypt_aesni_mode = {
     .size = ccn_sizeof_size(sizeof(struct ccaes_intel_aesni_ctx)),
     .block_size = CCAES_BLOCK_SIZE,
     .init = ccaes_intel_aesni_cbc_decrypt_init,

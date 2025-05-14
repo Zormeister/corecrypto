@@ -14,7 +14,6 @@ int cccmac_generate_subkeys(cccmac_ctx_t ctx, size_t key_nbytes, const void *key
 
     int ret = cccbc_one_shot(cccmac_cbc(ctx), key_nbytes, key, iv, 1, buf, buf);
     if (ret) { return ret; }
-
-
-
+    
+    return CCERR_OK;
 }
