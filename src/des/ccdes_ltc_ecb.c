@@ -36,11 +36,11 @@ int ltc_des_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, vo
     void *cur_out = out;
 
     while (nblocks--) {
-        CC_LOAD32_LE(work[0], cur_in);
-        CC_LOAD32_LE(work[1], cur_in+4);
+        CC_LOAD32_BE(work[0], cur_in);
+        CC_LOAD32_BE(work[1], cur_in+4);
         desfunc(work, lctx->ek);
-        CC_STORE32_LE(work[0], cur_out);
-        CC_STORE32_LE(work[1], cur_out+4);
+        CC_STORE32_BE(work[0], cur_out);
+        CC_STORE32_BE(work[1], cur_out+4);
         cur_in += CCDES_BLOCK_SIZE;
         cur_out += CCDES_BLOCK_SIZE;
     }
@@ -57,11 +57,11 @@ int ltc_des_ecb_decrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, vo
     void *cur_out = out;
 
     while (nblocks--) {
-        CC_LOAD32_LE(work[0], cur_in);
-        CC_LOAD32_LE(work[1], cur_in+4);
+        CC_LOAD32_BE(work[0], cur_in);
+        CC_LOAD32_BE(work[1], cur_in+4);
         desfunc(work, lctx->dk);
-        CC_STORE32_LE(work[0], cur_out);
-        CC_STORE32_LE(work[1], cur_out+4);
+        CC_STORE32_BE(work[0], cur_out);
+        CC_STORE32_BE(work[1], cur_out+4);
         cur_in += CCDES_BLOCK_SIZE;
         cur_out += CCDES_BLOCK_SIZE;
     }

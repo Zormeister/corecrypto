@@ -45,8 +45,8 @@ int ccblowfish_ltc_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void 
    void *cur_out = out;
 
    while (nblocks--) {
-       CC_LOAD32_LE(R, cur_in);
-       CC_LOAD32_LE(L, cur_in+4);
+       CC_LOAD32_BE(R, cur_in);
+       CC_LOAD32_BE(L, cur_in+4);
 
 #ifndef __GNUC__
         const uint32_t *S1, *S2, *S3, *S4;
@@ -69,8 +69,8 @@ int ccblowfish_ltc_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void 
         L ^= skey->K[16];
         R ^= skey->K[17];
 
-       CC_STORE32_LE(R, cur_out);
-       CC_STORE32_LE(L, cur_out+4);
+       CC_STORE32_BE(R, cur_out);
+       CC_STORE32_BE(L, cur_out+4);
 
        cur_in += CCBLOWFISH_BLOCK_SIZE;
        cur_out += CCBLOWFISH_BLOCK_SIZE;
