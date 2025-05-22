@@ -24,9 +24,6 @@ void cc_populate_fns_dummy(crypto_functions_t fns) {
     fns->ccaes_xts_decrypt = &pdcaes_xts_decrypt_dummy;
     fns->ccaes_xts_encrypt = &pdcaes_xts_encrypt_dummy;
 
-    /* DES dummies */
-    fns->ccdes_key_set_odd_parity_fn = pdcdes_key_set_odd_parity_fn_dummy;
-
     /* Padding dummies */
     fns->ccpad_xts_decrypt_fn = pdcpad_xts_encrypt_fn_dummy;
     fns->ccpad_xts_encrypt_fn = pdcpad_xts_decrypt_fn_dummy;

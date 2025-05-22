@@ -42,6 +42,7 @@ void cc_populate_fns(crypto_functions_t fns) {
 
     /* DES functions */
     fns->ccdes_key_is_weak_fn = &ccdes_key_is_weak;
+    fns->ccdes_key_set_odd_parity_fn = &ccdes_key_set_odd_parity;
     fns->ccdes_cbc_encrypt = ccdes_cbc_encrypt_mode();
     fns->ccdes_cbc_decrypt = ccdes_cbc_decrypt_mode();
     fns->ccdes_ecb_encrypt = ccdes_ecb_encrypt_mode();
