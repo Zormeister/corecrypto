@@ -28,9 +28,6 @@ void cc_populate_fns_dummy(crypto_functions_t fns) {
     fns->ccpad_xts_decrypt_fn = pdcpad_xts_encrypt_fn_dummy;
     fns->ccpad_xts_encrypt_fn = pdcpad_xts_decrypt_fn_dummy;
 
-    /* RC4 dummy */
-    fns->ccrc4_info = &pdcrc4_info_dummy;
-
     /* RNG dummy */
     fns->ccrng_fn = &ccrng; /* I consider this a dummy because it returns the KPRNG. The **real** CCRNG is an NIST CTR DRBG using AES */
 

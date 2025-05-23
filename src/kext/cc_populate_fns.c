@@ -15,11 +15,12 @@
 #include <corecrypto/ccblowfish.h>
 #include <corecrypto/cccast.h>
 #include <corecrypto/ccdes.h>
+#include <corecrypto/ccdigest_priv.h>
+#include <corecrypto/cchmac.h>
 #include <corecrypto/ccmd5.h>
 #include <corecrypto/ccsha1.h>
 #include <corecrypto/ccsha2.h>
-#include <corecrypto/ccdigest_priv.h>
-#include <corecrypto/cchmac.h>
+#include <corecrypto/ccrc4.h>
 
 void cc_populate_fns(crypto_functions_t fns) {
 #if CCKEXT_TRACE
@@ -72,6 +73,9 @@ void cc_populate_fns(crypto_functions_t fns) {
     fns->ccsha384_di = ccsha384_di();
     fns->ccsha512_di = ccsha512_di();
     fns->ccmd5_di = ccmd5_di();
+
+    /* RC4 */
+    fns->ccrc4_info = ccrc4();
 
 #if CCKEXT_TRACE
     printf("corecrypto: finished populating implemented functions.\n");
