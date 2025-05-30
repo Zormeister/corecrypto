@@ -23,8 +23,13 @@ struct ccmode_ctr {
 
 /* ccaes_ctr_init */
 
+/* so AES CTR has a VNG implementation... */
+
+/* i'd much rather just use the standard mode for now; at least until I figure out how CTR mode can be accelerated through AES-NI. */
+
+/*
 struct ccaes_ctr_ctx {
-    uint64_t counter[2]; /* first is for the IV, second is for the counter. */
+    uint64_t counter[2]; // first is for the IV, second is for the counter.
 };
 
 
@@ -38,3 +43,4 @@ static struct ccmode_ctr ccaes_ctr_mode = {
 };
 
 const struct ccmode_ctr *ccaes_ctr_crypt_mode() { return &ccaes_ctr_mode; }
+*/

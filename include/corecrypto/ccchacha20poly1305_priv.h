@@ -37,8 +37,11 @@ int ccchacha20_reset(ccchacha20_ctx *ctx);
 /* confirmed. */
 int ccpoly1305_init(ccpoly1305_ctx *ctx, const uint8_t *key);
 
+/* Going off of the ChaCha20 sigs, I'll just do this... */
+int ccpoly1305_update(ccpoly1305_ctx *ctx, size_t nbytes, const void *in);
 
-int ccpoly1305_update(ccpoly1305_ctx *ctx); /* data? */
+/* ok so we need to get the tag somehow. lemme probe */
+int ccpoly1305_final(ccpoly1305_ctx *ctx, void *tag);
 
 /*
  000000000006fa68 T _ccpoly1305

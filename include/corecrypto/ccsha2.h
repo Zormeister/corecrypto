@@ -18,6 +18,8 @@ const struct ccdigest_info *ccsha224_di(void);
 const struct ccdigest_info *ccsha256_di(void);
 const struct ccdigest_info *ccsha384_di(void);
 const struct ccdigest_info *ccsha512_di(void);
+const struct ccdigest_info *ccsha512_224_di(void);
+const struct ccdigest_info *ccsha512_256_di(void);
 
 /* TODO: Placeholders */
 
@@ -52,6 +54,12 @@ const struct ccdigest_info *ccsha512_di(void);
 
 #define ccoid_sha512 ((unsigned char *)"\x06\x09\x60\x86\x48\x01\x65\x03\x04\x02\x03")
 #define ccoid_sha512_len 11
+
+#define ccoid_sha512_224 ((unsigned char *)"\x06\x09\x60\x86\x48\x01\x65\x03\x04\x02\x05")
+#define ccoid_sha512_224_len 11
+
+#define ccoid_sha512_256 ((unsigned char *)"\x06\x09\x60\x86\x48\x01\x65\x03\x04\x02\x06")
+#define ccoid_sha512_256_len 11
 
 
 /* SHA256 */

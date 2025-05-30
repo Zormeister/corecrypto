@@ -7,7 +7,6 @@
 
 #include <corecrypto/cchkdf.h>
 #include <corecrypto/cchmac.h>
-#include <string.h>
 
 int cchkdf_extract(struct ccdigest_info *di, size_t salt_len, const void *salt, size_t ikm_len, const void *ikm, void *prk) {
     if (salt == NULL) {

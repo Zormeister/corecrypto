@@ -2,7 +2,7 @@
 //  ccrc4_eay_internal.h
 //  corecrypto
 //
-//  Created by Zormeister on 9/5/2025.
+//  Created by Zormeister on 23/5/2025.
 //
 
 #include <corecrypto/ccrc4.h>

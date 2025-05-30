@@ -10,9 +10,11 @@
 #include <corecrypto/ccaes.h>
 #include <corecrypto/ccn.h>
 #include <corecrypto/cc_debug.h>
-#include <corecrypto/cc_abort.h>
+#include <corecrypto/cc_priv.h>
 
 #include "aes128.h"
+
+/* ZORMEISTER: AES-NI logic supports AES-128, 192 and 256. When will the non-accelerated version have the same support? */
 
 static int pdcmode_aes_ecb_init(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t key_len, const void *key)
 {

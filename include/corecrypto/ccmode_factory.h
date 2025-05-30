@@ -251,6 +251,8 @@ void ccmode_factory_cfb8_encrypt(struct ccmode_cfb8 *cfb8,
 
 int ccmode_ctr_init(const struct ccmode_ctr *ctr, ccctr_ctx *ctx,
                     size_t rawkey_len, const void *rawkey, const void *iv);
+int ccmode_ctr_setctr(const struct ccmode_ctr *mode, ccctr_ctx *ctx, 
+                      const void *ctr);
 int ccmode_ctr_crypt(ccctr_ctx *ctx, size_t nbytes,
                      const void *in, void *out);
 

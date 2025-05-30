@@ -50,6 +50,7 @@ void cckprng_generate(struct cckprng_ctx *ctx, unsigned gen_idx, size_t nbytes, 
 
 // MARK: -
 
+/*
 struct ccrng_impl {
 	CCRNG_STATE_COMMON;
 	PrngRef prng;
@@ -72,3 +73,5 @@ struct ccrng_state *ccrng(int *error) {
 
 	return (struct ccrng_state *)&ccrng_impl;
 }
+
+*/

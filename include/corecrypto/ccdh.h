@@ -17,14 +17,22 @@ struct ccdh_gp {
     __CCZP_ELEMENTS_DEFINITIONS()
 } CC_ALIGNED(16);
 
+#define ccdh_gp_n(gp) gp->n
+
 typedef struct ccdh_gp *ccdh_gp_t;
 typedef const struct ccdh_gp *ccdh_const_gp_t;
 
-struct ccdh_pub_ctx {};
+int ccdh_init_gp(ccdh_gp_t gp, cc_size n, cc_unit *p, cc_unit *g, cc_size l);
+
+struct ccdh_pub_ctx {
+    ccdh_const_gp_t gp;
+};
 
 typedef struct ccdh_pub_ctx *ccdh_pub_ctx_t;
 
-struct ccdh_full_ctx {};
+struct ccdh_full_ctx {
+    ccdh_const_gp_t gp;
+};
 
 typedef struct ccdh_full_ctx *ccdh_full_ctx_t;
 

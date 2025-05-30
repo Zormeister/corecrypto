@@ -16,18 +16,6 @@ extern const struct ccmode_xts pdcaes_xts_decrypt_dummy;
 extern const struct ccmode_gcm pdcaes_gcm_encrypt_dummy;
 extern const struct ccmode_gcm pdcaes_gcm_decrypt_dummy;
 
-extern const struct ccrc4_info pdcrc4_info_dummy;
-
-extern const struct ccmode_ecb pdcblowfish_ecb_encrypt_dummy;
-extern const struct ccmode_ecb pdcblowfish_ecb_decrypt_dummy;
-
-extern const struct ccmode_ecb pdccast_ecb_encrypt_dummy;
-extern const struct ccmode_ecb pdccast_ecb_decrypt_dummy;
-
-void pdcdes_key_set_odd_parity_fn_dummy(void *key,
-                                         unsigned long length);
-
-
 void pdcpad_xts_decrypt_fn_dummy(const struct ccmode_xts *xts,
                                   ccxts_ctx *ctx,
                                   unsigned long nbytes,

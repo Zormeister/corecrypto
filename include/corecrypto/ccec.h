@@ -22,7 +22,6 @@ typedef struct ccec_cp *ccec_cp_t;
 typedef const struct ccec_cp *ccec_const_cp_t;
 
 struct ccec_pub_ctx {
-
 };
 
 typedef struct ccec_pub_ctx *ccec_pub_ctx_t;
@@ -38,11 +37,11 @@ ccec_const_cp_t ccec_get_cp(size_t nbits);
 
 bool ccec_keysize_is_supported(size_t nbits);
 
-int ccec_sign(const void *key);
+int ccec_sign(ccec_full_ctx_t key, size_t len, const void *data, size_t *signature_len, void *signature);
 
 ccec_const_cp_t ccec_get_cp(size_t nbits);
 
-int ccec_verify();
+int ccec_verify(ccec_pub_ctx_t key, size_t len, const void *data, size_t signature_len, const void *signature, uint32_t *valid);
 
 size_t ccec_ccn_size(ccec_const_cp_t cp);
 
