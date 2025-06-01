@@ -24,8 +24,16 @@
 extern const struct ccmode_ecb ccaes_ltc_ecb_decrypt_mode;
 extern const struct ccmode_ecb ccaes_ltc_ecb_encrypt_mode;
 
+/* ZORMEISTER: This isn't actually a mode in Apple CC, this is my own doing. */
+extern const struct ccmode_ecb ccaes_tinyaes_ecb_decrypt_mode;
+extern const struct ccmode_ecb ccaes_tinyaes_ecb_encrypt_mode;
+
 extern const struct ccmode_cbc ccaes_gladman_cbc_encrypt_mode;
 extern const struct ccmode_cbc ccaes_gladman_cbc_decrypt_mode;
+
+/* ZORMEISTER: This isn't actually a mode in Apple CC, this is my own doing. */
+extern const struct ccmode_cbc ccaes_tinyaes_cbc_decrypt_mode;
+extern const struct ccmode_cbc ccaes_tinyaes_cbc_encrypt_mode;
 
 #if  CCAES_ARM_ASM
 extern const struct ccmode_ecb ccaes_arm_ecb_encrypt_mode;

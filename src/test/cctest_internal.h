@@ -39,15 +39,17 @@ enum {
     crypto_cipher_mode_ecb,
     crypto_cipher_mode_cbc,
     crypto_cipher_mode_ofb,
+    crypto_cipher_mode_cfb,
     crypto_cipher_mode_max,
-} typedef crypto_cipher_mode_type_t;
+} typedef crypto_cipher_mode_t;
 
-typedef int (*cctest_digest_callback)(size_t data_len, const void *data);
-typedef int (*cctest_cipher_callback)(size_t key_len, const void *key, const void *iv, size_t data_len, const void *data);
+typedef int (*cctest_digest_callback)(void);
+typedef int (*cctest_cipher_callback)(void);
 
 int cctest_run_all_tests(void);
 
 int cctest_run_digest_tests(crypto_digest_type_t dgst);
+int cctest_run_cipher_tests(crypto_cipher_type_t ciph, crypto_cipher_mode_t mode);
 
 #endif /* _CORECRYPTO_CCTEST_INTERNAL_H_ */
 

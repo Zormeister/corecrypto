@@ -14,10 +14,12 @@
 CCMODE_CBC_FACTORY(cast, encrypt)
 CCMODE_CBC_FACTORY(cast, decrypt)
 
-const struct ccmode_ecb *cccast_ecb_encrypt_mode() {
+CCMODE_OFB_FACTORY(cast);
+
+const struct ccmode_ecb *cccast_ecb_encrypt_mode(void) {
     return &cccast_eay_ecb_encrypt_mode;
 }
 
-const struct ccmode_ecb *cccast_ecb_decrypt_mode() {
+const struct ccmode_ecb *cccast_ecb_decrypt_mode(void) {
     return &cccast_eay_ecb_decrypt_mode;
 }

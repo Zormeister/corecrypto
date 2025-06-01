@@ -37,7 +37,7 @@ int ccmode_ofb_crypt(ccofb_ctx *ctx, size_t nbytes, const void *in, void *out) {
             okey->pad_len = 0;
         }
 
-        cc_xor(1, (out + i), CCMODE_OFB_IV(okey) + okey->pad_len, (in + i));
+        cc_xor(1, (out + i), CCMODE_OFB_IV(okey) + okey->pad_len, (in + i)); /* tbf i could have just done a normal XOR rather than this bs but whatever. */
         okey->pad_len++;
     }
 

@@ -11,6 +11,8 @@
 CCMODE_CBC_FACTORY(des3, encrypt);
 CCMODE_CBC_FACTORY(des3, decrypt);
 
+CCMODE_OFB_FACTORY(des3);
+
 const struct ccmode_ecb *ccdes3_ecb_decrypt_mode(void) {
     return &ccdes3_ltc_ecb_encrypt_mode;
 }

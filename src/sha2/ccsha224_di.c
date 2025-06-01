@@ -8,6 +8,6 @@
 #include <corecrypto/ccsha2.h>
 #include <corecrypto/ccdigest_priv.h>
 
-const struct ccdigest_info *ccsha224_di() {
+const struct ccdigest_info *ccsha224_di(void) {
     return &ccsha224_ltc_di;
 }

@@ -9,11 +9,6 @@
 #include <corecrypto/ccmode_impl.h>
 #include <corecrypto/cc_runtime_config.h>
 
-extern const struct ccmode_cbc pdcaes_cbc_encrypt;
-extern const struct ccmode_cbc pdcaes_cbc_decrypt;
-extern const struct ccmode_ecb pdcaes_ecb_encrypt;
-extern const struct ccmode_ecb pdcaes_ecb_decrypt;
-
 #if CC_LINUX_ASM
 extern const struct ccmode_cbc ccaes_intel_cbc_encrypt_aesni_mode;
 extern const struct ccmode_cbc ccaes_intel_cbc_decrypt_aesni_mode;
@@ -29,7 +24,7 @@ const struct ccmode_ecb *ccaes_ecb_encrypt_mode(void) {
     }
 #endif
 
-    return &pdcaes_ecb_encrypt;
+    return &ccaes_tinyaes_ecb_encrypt_mode;
 };
 
 const struct ccmode_ecb *ccaes_ecb_decrypt_mode(void) {
@@ -40,7 +35,7 @@ const struct ccmode_ecb *ccaes_ecb_decrypt_mode(void) {
     }
 #endif
 
-    return &pdcaes_ecb_decrypt;
+    return &ccaes_tinyaes_ecb_decrypt_mode;
 };
 
 const struct ccmode_cbc *ccaes_cbc_encrypt_mode(void) {
@@ -51,7 +46,7 @@ const struct ccmode_cbc *ccaes_cbc_encrypt_mode(void) {
     }
 #endif
 
-    return &pdcaes_cbc_encrypt;
+    return &ccaes_tinyaes_cbc_encrypt_mode;
 };
 
 const struct ccmode_cbc *ccaes_cbc_decrypt_mode(void) {
@@ -62,5 +57,5 @@ const struct ccmode_cbc *ccaes_cbc_decrypt_mode(void) {
     }
 #endif
 
-    return &pdcaes_cbc_decrypt;
+    return &ccaes_tinyaes_cbc_decrypt_mode;
 };

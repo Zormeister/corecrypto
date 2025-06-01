@@ -5,6 +5,9 @@
 //  Created by Zormeister on 23/5/2025.
 //
 
+#ifndef _CORECRYPTO_CCRC4_EAY_INTERNAL_H_
+#define _CORECRYPTO_CCRC4_EAY_INTERNAL_H_
+
 #include <corecrypto/ccrc4.h>
 
 typedef uint32_t RC4_INT;
@@ -25,3 +28,5 @@ typedef struct rc4_key_st
 void RC4_set_key(RC4_KEY *key, int len, const unsigned char *data);
 void RC4(RC4_KEY *key, unsigned long len, const unsigned char *indata,
 		unsigned char *outdata);
+
+#endif /* _CORECRYPTO_CCRC4_EAY_INTERNAL_H_ */
