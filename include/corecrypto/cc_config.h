@@ -132,6 +132,12 @@
  #define CC_XNU_KERNEL_PRIVATE 0
 #endif
 
+#if defined (CORECRYPTO_TEST)
+  #if CC_KERNEL
+    #define CORECRYPTO_KEXT_TEST 1
+  #endif
+#endif
+
 // handle unaligned data, if the cpu cannot. Currently for gladman AES and the C version of the SHA256
 #define CC_HANDLE_UNALIGNED_DATA CC_BASEBAND
 

@@ -10,9 +10,12 @@
 
 #include <stdint.h>
 #include <corecrypto/cc.h>
+#include <corecrypto/cc_config.h>
+
+#if CORECRYPTO_TEST
 
 enum {
-    crypto_digest_md2,
+    crypto_digest_md2 = 0,
     crypto_digest_md4,
     crypto_digest_md5,
     crypto_digest_rmd160,
@@ -25,7 +28,7 @@ enum {
 } typedef crypto_digest_type_t;
 
 enum {
-    crypto_cipher_aes,
+    crypto_cipher_aes = 0,
     crypto_cipher_blowfish,
     crypto_cipher_cast,
     crypto_cipher_des,
@@ -50,6 +53,8 @@ int cctest_run_all_tests(void);
 
 int cctest_run_digest_tests(crypto_digest_type_t dgst);
 int cctest_run_cipher_tests(crypto_cipher_type_t ciph, crypto_cipher_mode_t mode);
+
+#endif /* CORECRYPTO_TEST */
 
 #endif /* _CORECRYPTO_CCTEST_INTERNAL_H_ */
 
