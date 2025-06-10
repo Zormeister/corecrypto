@@ -22,6 +22,26 @@
 #include <corecrypto/ccsha2.h>
 #include <corecrypto/ccrc4.h>
 
+/*
+ * Darwin has a tendency to change how the crypto API implements functions
+ * For example, Darwin 20 removed the need for:
+ * - CAST
+ * - Blowfish
+ * - XTS enc/dec padding
+ * - RC4
+ * In the kernel space, which means I'll either have to:
+ * - Have a user-defined Darwin target and modify the local register_crypto.h header / disable functionality in cc_populate_fns
+ * - Have a branch for each Darwin version needing an update
+ *
+ * Both of these sound like a PITA but I've gotta do what I've gotta do.
+ *
+ * XNU versions worthy of note:
+ * - 7195.50.7.100.1
+ * - 8792.41.9
+ * - 8792.61.2
+ * - 8796.101.5
+ */
+
 void cc_populate_fns(crypto_functions_t fns) {
 #if CCKEXT_TRACE
     printf("corecrypto: populating functions for XNU\n");
