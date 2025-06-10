@@ -5,20 +5,12 @@
 //  Created by Zormeister on 22/5/2025.
 //
 
-#include <stdio.h>
 #include <corecrypto/ccn.h>
+#include <corecrypto/cc_debug.h>
 
 void ccn_print(cc_size n, const cc_unit *s) {
     while (n--) {
-#if CCN_UNIT_SIZE == 8
-        printf("%.016lx", s[n]);
-#elif CCN_UNIT_SIZE == 4
-        printf("%.08x", s[n]);
-#elif CCN_UNIT_SIZE == 2
-        printf("%.04x", s[n]);
-#elif CCN_UNIT_SIZE == 1
-        printf("%.02x", s[n]);
-#endif
+        cc_printf("%" CCPRIx_UNIT, s[n]);
     }
 }
 
@@ -27,15 +19,7 @@ void ccn_lprint(cc_size n, const char *label, const cc_unit *s) {
     printf("%s { %zu, ", label, n);
 
     while (n--) {
-#if CCN_UNIT_SIZE == 8
-        printf("%.016lx", s[n]);
-#elif CCN_UNIT_SIZE == 4
-        printf("%.08x", s[n]);
-#elif CCN_UNIT_SIZE == 2
-        printf("%.04x", s[n]);
-#elif CCN_UNIT_SIZE == 1
-        printf("%.02x", s[n]);
-#endif
+        cc_printf("%" CCPRIx_UNIT, s[n]);
     }
     printf("}\n");
 }

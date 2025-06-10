@@ -9,11 +9,6 @@
 
 /* rsp2header hash -f <path/to/file> -o <path/to/out> */
 
-enum RSPKind {
-    Cipher,
-    Hash,
-};
-
 const char *gRSPPath;
 
 const char *gOutputPath;

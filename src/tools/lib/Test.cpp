@@ -47,6 +47,7 @@ KeyMapping gParsingMap[] = {
 
 };
 
+/* This expects that the rsp vector is set on the first byte of the first */
 Test::Test(std::vector<char> rsp, Test::Operation op) {
     this->_operation = op;
 

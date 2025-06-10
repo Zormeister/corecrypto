@@ -326,6 +326,25 @@
 		F01DBC6F2DCF716700813612 /* opt_wrapper_enc.c in Sources */ = {isa = PBXBuildFile; fileRef = F01DBC6D2DCF716700813612 /* opt_wrapper_enc.c */; };
 		F01F76EA2DAA389900770D5D /* ccnistkdf.h in Headers */ = {isa = PBXBuildFile; fileRef = F01F76E92DAA389900770D5D /* ccnistkdf.h */; };
 		F01F76EC2DAA5A0800770D5D /* ccz.h in Headers */ = {isa = PBXBuildFile; fileRef = F01F76EB2DAA5A0800770D5D /* ccz.h */; };
+		F020E6BA2DF68EA500349FD5 /* ccn_print.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6B62DF68EA500349FD5 /* ccn_print.c */; };
+		F020E6BB2DF68EA500349FD5 /* ccz_is_zero.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6B82DF68EA500349FD5 /* ccz_is_zero.c */; };
+		F020E6BC2DF68EA500349FD5 /* ccn_print.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6B62DF68EA500349FD5 /* ccn_print.c */; };
+		F020E6BD2DF68EA500349FD5 /* ccz_is_zero.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6B82DF68EA500349FD5 /* ccz_is_zero.c */; };
+		F020E6C62DF68EB800349FD5 /* ccrc2_ltc_internal.h in Headers */ = {isa = PBXBuildFile; fileRef = F020E6C22DF68EB800349FD5 /* ccrc2_ltc_internal.h */; };
+		F020E6C72DF68EB800349FD5 /* ccrc2_modes.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6C42DF68EB800349FD5 /* ccrc2_modes.c */; };
+		F020E6C82DF68EB800349FD5 /* ccrc2_ltc_setup.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6C32DF68EB800349FD5 /* ccrc2_ltc_setup.c */; };
+		F020E6C92DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6BE2DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt.c */; };
+		F020E6CA2DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6C02DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt.c */; };
+		F020E6CB2DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6C12DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt_mode.c */; };
+		F020E6CC2DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6BF2DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt_mode.c */; };
+		F020E6CD2DF68EB800349FD5 /* ccrc2_ltc_internal.h in Headers */ = {isa = PBXBuildFile; fileRef = F020E6C22DF68EB800349FD5 /* ccrc2_ltc_internal.h */; };
+		F020E6CE2DF68EB800349FD5 /* ccrc2_modes.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6C42DF68EB800349FD5 /* ccrc2_modes.c */; };
+		F020E6CF2DF68EB800349FD5 /* ccrc2_ltc_setup.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6C32DF68EB800349FD5 /* ccrc2_ltc_setup.c */; };
+		F020E6D02DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6BE2DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt.c */; };
+		F020E6D12DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6C02DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt.c */; };
+		F020E6D22DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6C12DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt_mode.c */; };
+		F020E6D32DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F020E6BF2DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt_mode.c */; };
+		F020E6E12DF6900900349FD5 /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F020E6D52DF68EC700349FD5 /* Test.cpp */; };
 		F03D8B0E2DAC68C3004F403D /* ccblowfish.h in Headers */ = {isa = PBXBuildFile; fileRef = F03D8B0D2DAC68C3004F403D /* ccblowfish.h */; };
 		F05D85F92D57008900E8FF15 /* argsvalid.c in Sources */ = {isa = PBXBuildFile; fileRef = F05D85F82D57008900E8FF15 /* argsvalid.c */; };
 		F05D85FA2D57008900E8FF15 /* argsvalid.c in Sources */ = {isa = PBXBuildFile; fileRef = F05D85F82D57008900E8FF15 /* argsvalid.c */; };
@@ -731,6 +750,19 @@
 		F01DBC6D2DCF716700813612 /* opt_wrapper_enc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = opt_wrapper_enc.c; sourceTree = "<group>"; };
 		F01F76E92DAA389900770D5D /* ccnistkdf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccnistkdf.h; sourceTree = "<group>"; };
 		F01F76EB2DAA5A0800770D5D /* ccz.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccz.h; sourceTree = "<group>"; };
+		F020E6B62DF68EA500349FD5 /* ccn_print.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccn_print.c; sourceTree = "<group>"; };
+		F020E6B82DF68EA500349FD5 /* ccz_is_zero.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccz_is_zero.c; sourceTree = "<group>"; };
+		F020E6BE2DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccrc2_ltc_ecb_decrypt.c; sourceTree = "<group>"; };
+		F020E6BF2DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt_mode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccrc2_ltc_ecb_decrypt_mode.c; sourceTree = "<group>"; };
+		F020E6C02DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccrc2_ltc_ecb_encrypt.c; sourceTree = "<group>"; };
+		F020E6C12DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt_mode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccrc2_ltc_ecb_encrypt_mode.c; sourceTree = "<group>"; };
+		F020E6C22DF68EB800349FD5 /* ccrc2_ltc_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccrc2_ltc_internal.h; sourceTree = "<group>"; };
+		F020E6C32DF68EB800349FD5 /* ccrc2_ltc_setup.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccrc2_ltc_setup.c; sourceTree = "<group>"; };
+		F020E6C42DF68EB800349FD5 /* ccrc2_modes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccrc2_modes.c; sourceTree = "<group>"; };
+		F020E6D42DF68EC700349FD5 /* RSPParser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RSPParser.hpp; sourceTree = "<group>"; };
+		F020E6D52DF68EC700349FD5 /* Test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
+		F020E6D72DF68EC700349FD5 /* rsp2header.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rsp2header.cpp; sourceTree = "<group>"; };
+		F020E6DD2DF6900100349FD5 /* liblibRSPParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibRSPParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F02AD1AB2DAA8D3600A760BD /* cccmac_priv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cccmac_priv.h; sourceTree = "<group>"; };
 		F03D8B0D2DAC68C3004F403D /* ccblowfish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccblowfish.h; sourceTree = "<group>"; };
 		F05D85F82D57008900E8FF15 /* argsvalid.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = argsvalid.c; sourceTree = "<group>"; };
@@ -836,6 +868,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F020E6DB2DF6900100349FD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F090571A2D460B8F007C6E87 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -877,6 +916,7 @@
 				F01186EB2D451641009C285F /* cctest */,
 				F090571D2D460B8F007C6E87 /* ccnativeexplorer */,
 				F0B081542D5E933000349FD5 /* ccne_kext.kext */,
+				F020E6DD2DF6900100349FD5 /* liblibRSPParser.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1015,6 +1055,8 @@
 				F001366D2D3F69BC00349FD5 /* aes */,
 				F004E9DC2DD4B2F700103A8F /* blowfish */,
 				F004E9D42DD4B2F700103A8F /* cast */,
+				F020E6B72DF68EA500349FD5 /* ccn */,
+				F020E6B92DF68EA500349FD5 /* ccz */,
 				F0B0813D2D5A96CA00349FD5 /* chacha20poly1305 */,
 				F02AD1AC2DAA8E2F00A760BD /* cmac */,
 				F0AF9A702D41C54D00948AAC /* des */,
@@ -1033,6 +1075,7 @@
 				F001366F2D3F69DC00349FD5 /* md5 */,
 				F01DBC232DCF6A4F00813612 /* mode */,
 				F0851A542DEA581800349FD5 /* pad */,
+				F020E6C52DF68EB800349FD5 /* rc2 */,
 				F0851A5C2DEA584500349FD5 /* rc4 */,
 				F09057112D45D27E007C6E87 /* ripemd */,
 				F01DBC272DCF6A6800813612 /* rng */,
@@ -1041,6 +1084,7 @@
 				F00136752D3F6BBB00349FD5 /* sha3 */,
 				F00136732D3F6A2E00349FD5 /* sha */,
 				F0851A6D2DEA585E00349FD5 /* test */,
+				F020E6D82DF68EC700349FD5 /* tools */,
 				1F615F252480A1020021D82E /* user */,
 				F09953AA2D46DCB80021D020 /* wrap */,
 				F00136832D40595500349FD5 /* xof */,
@@ -1277,6 +1321,54 @@
 			path = opt;
 			sourceTree = "<group>";
 		};
+		F020E6B72DF68EA500349FD5 /* ccn */ = {
+			isa = PBXGroup;
+			children = (
+				F020E6B62DF68EA500349FD5 /* ccn_print.c */,
+			);
+			path = ccn;
+			sourceTree = "<group>";
+		};
+		F020E6B92DF68EA500349FD5 /* ccz */ = {
+			isa = PBXGroup;
+			children = (
+				F020E6B82DF68EA500349FD5 /* ccz_is_zero.c */,
+			);
+			path = ccz;
+			sourceTree = "<group>";
+		};
+		F020E6C52DF68EB800349FD5 /* rc2 */ = {
+			isa = PBXGroup;
+			children = (
+				F020E6BE2DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt.c */,
+				F020E6BF2DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt_mode.c */,
+				F020E6C02DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt.c */,
+				F020E6C12DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt_mode.c */,
+				F020E6C22DF68EB800349FD5 /* ccrc2_ltc_internal.h */,
+				F020E6C32DF68EB800349FD5 /* ccrc2_ltc_setup.c */,
+				F020E6C42DF68EB800349FD5 /* ccrc2_modes.c */,
+			);
+			path = rc2;
+			sourceTree = "<group>";
+		};
+		F020E6D62DF68EC700349FD5 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				F020E6D42DF68EC700349FD5 /* RSPParser.hpp */,
+				F020E6D52DF68EC700349FD5 /* Test.cpp */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		F020E6D82DF68EC700349FD5 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				F020E6D62DF68EC700349FD5 /* lib */,
+				F020E6D72DF68EC700349FD5 /* rsp2header.cpp */,
+			);
+			path = tools;
+			sourceTree = "<group>";
+		};
 		F02AD1AC2DAA8E2F00A760BD /* cmac */ = {
 			isa = PBXGroup;
 			children = (
@@ -1509,6 +1601,7 @@
 				F0851A832DEA58BB00349FD5 /* ccsha2_ltc_internal.h in Headers */,
 				F0851A4C2DEA57A400349FD5 /* ccdh_gp_decl.h in Headers */,
 				F004E9EE2DD4B2F700103A8F /* cast_s.h in Headers */,
+				F020E6C62DF68EB800349FD5 /* ccrc2_ltc_internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1599,6 +1692,7 @@
 				1FABCE56235542CB00F25C08 /* assertverify.h in Headers */,
 				F0851A4A2DEA57A400349FD5 /* ccdh_gp_decl.h in Headers */,
 				F004E9EA2DD4B2F700103A8F /* cast_lcl.h in Headers */,
+				F020E6CD2DF68EB800349FD5 /* ccrc2_ltc_internal.h in Headers */,
 				1FABCE55235542CB00F25C08 /* yarrowUtils.h in Headers */,
 				1FABCE5C235542CB00F25C08 /* sha1mod.h in Headers */,
 				F0851A712DEA585E00349FD5 /* cctest_internal.h in Headers */,
@@ -1621,6 +1715,13 @@
 				1FABCE51235542CB00F25C08 /* yarrow.h in Headers */,
 				1FABCE59235542CB00F25C08 /* macOnly.h in Headers */,
 				1FABCE5B235542CB00F25C08 /* comp.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F020E6D92DF6900100349FD5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1705,6 +1806,25 @@
 			productReference = F01186EB2D451641009C285F /* cctest */;
 			productType = "com.apple.product-type.tool";
 		};
+		F020E6DC2DF6900100349FD5 /* libRSPParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F020E6DE2DF6900100349FD5 /* Build configuration list for PBXNativeTarget "libRSPParser" */;
+			buildPhases = (
+				F020E6D92DF6900100349FD5 /* Headers */,
+				F020E6DA2DF6900100349FD5 /* Sources */,
+				F020E6DB2DF6900100349FD5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libRSPParser;
+			packageProductDependencies = (
+			);
+			productName = libRSPParser;
+			productReference = F020E6DD2DF6900100349FD5 /* liblibRSPParser.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		F090571C2D460B8F007C6E87 /* ccnativeexplorer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F09057212D460B8F007C6E87 /* Build configuration list for PBXNativeTarget "ccnativeexplorer" */;
@@ -1773,6 +1893,9 @@
 					F01186EA2D451641009C285F = {
 						CreatedOnToolsVersion = 14.2;
 					};
+					F020E6DC2DF6900100349FD5 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					F090571C2D460B8F007C6E87 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -1803,6 +1926,7 @@
 				F004E9882DD4AFEC00103A8F /* corecrypto headers */,
 				F004E9BF2DD4B21000103A8F /* corecrypto private headers */,
 				F004E9CC2DD4B29A00103A8F /* CoreCrypto Headers */,
+				F020E6DC2DF6900100349FD5 /* libRSPParser */,
 			);
 		};
 /* End PBXProject section */
@@ -1881,6 +2005,8 @@
 				F004E9F12DD4B2F700103A8F /* cccast_ecb.c in Sources */,
 				F0B0A5472DC9695300349FD5 /* selector.c in Sources */,
 				F01DBC202DCF6A2E00813612 /* cchkdf_expand.c in Sources */,
+				F020E6BC2DF68EA500349FD5 /* ccn_print.c in Sources */,
+				F020E6BD2DF68EA500349FD5 /* ccz_is_zero.c in Sources */,
 				F05D860D2D57593700E8FF15 /* ccdrbg_nisthmac.c in Sources */,
 				1F17F85224809D7B0080E3C3 /* md5_impl.cpp in Sources */,
 				F004EA0C2DD4B3C200103A8F /* ccaes_intel_aesni192.c in Sources */,
@@ -1906,6 +2032,12 @@
 				F0851A7C2DEA58BB00349FD5 /* ccsha256_initial_state.c in Sources */,
 				F0851A7D2DEA58BB00349FD5 /* ccsha224_initial_state.c in Sources */,
 				F0851A7E2DEA58BB00349FD5 /* ccsha256_K.c in Sources */,
+				F020E6C72DF68EB800349FD5 /* ccrc2_modes.c in Sources */,
+				F020E6C82DF68EB800349FD5 /* ccrc2_ltc_setup.c in Sources */,
+				F020E6C92DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt.c in Sources */,
+				F020E6CA2DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt.c in Sources */,
+				F020E6CB2DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt_mode.c in Sources */,
+				F020E6CC2DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt_mode.c in Sources */,
 				F0851A7F2DEA58BB00349FD5 /* ccsha256_di.c in Sources */,
 				F0851A802DEA58BB00349FD5 /* ccsha224_ltc_di.c in Sources */,
 				F0851A812DEA58BB00349FD5 /* ccsha224_di.c in Sources */,
@@ -1991,6 +2123,12 @@
 				1F17F83624809A700080E3C3 /* sha512.cc in Sources */,
 				F01DBC482DCF6C2300813612 /* ccdes_key_is_weak.c in Sources */,
 				F004E9F92DD4B2F700103A8F /* ccblowfish_ltc_constants.c in Sources */,
+				F020E6CE2DF68EB800349FD5 /* ccrc2_modes.c in Sources */,
+				F020E6CF2DF68EB800349FD5 /* ccrc2_ltc_setup.c in Sources */,
+				F020E6D02DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt.c in Sources */,
+				F020E6D12DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt.c in Sources */,
+				F020E6D22DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt_mode.c in Sources */,
+				F020E6D32DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt_mode.c in Sources */,
 				F001367A2D3F736400349FD5 /* pdckeccak.c in Sources */,
 				F01DBC2B2DCF6A6800813612 /* ccrng.c in Sources */,
 				F01186D22D44F4C7009C285F /* md2.c in Sources */,
@@ -2028,6 +2166,8 @@
 				1FABCE5A235542CB00F25C08 /* prng.c in Sources */,
 				F00136872D4059EC00349FD5 /* pdcxof.c in Sources */,
 				F004EA1A2DD4B3C200103A8F /* ccaes_intel_aesni_cbc_encrypt.c in Sources */,
+				F020E6BA2DF68EA500349FD5 /* ccn_print.c in Sources */,
+				F020E6BB2DF68EA500349FD5 /* ccz_is_zero.c in Sources */,
 				F0851A562DEA581800349FD5 /* ccpad_cts1.c in Sources */,
 				F0CA56D32CF9892500521F17 /* sha3.c in Sources */,
 				F0851A8F2DEA658700349FD5 /* ccmode_factory_cfb.c in Sources */,
@@ -2068,6 +2208,14 @@
 				F01186F42D451769009C285F /* CCTestHashMD2.c in Sources */,
 				F09057082D45A324007C6E87 /* CCTestHashMD4.c in Sources */,
 				F05D86342D5875C400E8FF15 /* CCTestHashRMD160.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F020E6DA2DF6900100349FD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F020E6E12DF6900900349FD5 /* Test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2624,6 +2772,79 @@
 			};
 			name = Release;
 		};
+		F020E6DF2DF6900100349FD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F020E6E02DF6900100349FD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		F09057222D460B8F007C6E87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2871,6 +3092,15 @@
 			buildConfigurations = (
 				F01186F02D451641009C285F /* Debug */,
 				F01186F12D451641009C285F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F020E6DE2DF6900100349FD5 /* Build configuration list for PBXNativeTarget "libRSPParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F020E6DF2DF6900100349FD5 /* Debug */,
+				F020E6E02DF6900100349FD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
