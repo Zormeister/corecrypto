@@ -7,6 +7,7 @@
 
 #include "RSPParser.hpp"
 #include <vector>
+#include <cstring>
 
 using namespace CoreCrypto::RSP;
 
@@ -25,7 +26,7 @@ enum struct KeyType {
  */
 
 struct KeyMapping {
-    const std::string_view Key;
+    const char * Key;
     KeyType Type;
     Test::Operation Operation;
 };
@@ -51,5 +52,14 @@ KeyMapping gParsingMap[] = {
 Test::Test(std::vector<char> rsp, Test::Operation op) {
     this->_operation = op;
 
-    
+    size_t pos = 0;
+    size_t max = rsp.size();
+
+    while (pos < max) {
+        for (int i = 0; i < sizeof(gParsingMap) / sizeof(KeyMapping); i++) {
+            if (strncmp(rsp.data(), gParsingMap[i].Key, strlen(gParsingMap[i].Key)) == 0) {
+
+            }
+        }
+    }
 }

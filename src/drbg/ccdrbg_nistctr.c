@@ -33,6 +33,8 @@ done(struct ccdrbg_state *ctx)
     cc_clear(sizeof(struct ccdrbg_nistctr_state), ctx);
 }
 
+
+
 /*
 int (*init)(const struct ccdrbg_info *info, struct ccdrbg_state *drbg,
             size_t entropyLength, const void* entropy,

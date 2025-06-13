@@ -6,20 +6,26 @@
 //
 
 #include <string>
+#include "lib/RSPParser.hpp"
+
+using namespace CoreCrypto::RSP;
 
 /* rsp2header hash -f <path/to/file> -o <path/to/out> */
+/* rsp2header cipher -m cbc -f <path/to/vectors>.rsp -o <path/to/out>.h */
+
+/* usually test vectors contain a DECRYPT and ENCRYPT tag in sections. it is up to RSPParser to handle this. */
 
 const char *gRSPPath;
-
 const char *gOutputPath;
 
-RSPKind gCurrentRSPType;
+Test::Operation gOp = Test::Operation::Hash; /* keep it like this for now */
 
 void parse_args(int argc, const char *argv[]) {
     for (int i = 0; i < argc; i++) {
         std::string str = argv[i];
         if (str == "hash") {
-            gCurrentRSPType = Hash;
+            /* initialise parser context */
+            gOp = Test::Operation::Hash
         } else if (str == "-f") {
             gRSPPath = str.c_str();
         } else if (str == "-o") {
@@ -31,4 +37,3 @@ void parse_args(int argc, const char *argv[]) {
 int main(int argc, const char *argv[]) {
 
 }
-

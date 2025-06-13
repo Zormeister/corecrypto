@@ -12,5 +12,5 @@ int ccmode_cbc_init(const struct ccmode_cbc *cbc, cccbc_ctx *ctx, size_t key_len
 
     fctx->ecb = (struct ccmode_ecb *)cbc->custom; /* set the custom. */
 
-    return fctx->ecb->init(fctx->ecb, (ccecb_ctx *)&fctx->u, key_len, key);
+    return fctx->ecb->init(fctx->ecb, CCMODE_CBC_KEY_ECB_CTX(fctx), key_len, key);
 }
