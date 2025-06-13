@@ -20,5 +20,9 @@
 #define CCMODE_CFB_KEY_PADDING(ctx) (ctx->u + ccn_sizeof_size(ctx->ecb->block_size))
 #define CCMODE_CFB_KEY_ECB_CTX(ctx) (ccecb_ctx *)ctx->u + (2 * ccn_sizeof_size(ctx->ecb->block_size))
 
+#define CCMODE_CTR_KEY_COUNTER(ckey) ckey->u
+#define CCMODE_CTR_KEY_PAD(ckey) (ckey->u + ccn_sizeof_size(ckey->ecb->block_size))
+#define CCMODE_CTR_KEY_ECB_CTX(ckey) (ccecb_ctx *)(ckey->u + ccn_sizeof_size(ckey->ecb->block_size) * 2)
+
 
 #endif /* _CORECRYPTO_CCMODE_INTERNAL_H_ */
