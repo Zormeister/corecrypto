@@ -10,11 +10,11 @@
 /* I assume units are stored in a native order. */
 
 cc_size ccn_n(cc_size n, const cc_unit *s) {
-    cc_size size = 0; /* ccn_is_zero relies on this returning zero when units[0] is zero. */
+    cc_size size = n; /* ccn_is_zero relies on this returning zero when units[0] is zero. */
 
-    for (cc_size i = 0; i < n; i++) {
-        if (s[n] > 0) {
-            size++;
+    while (n--) {
+        if (s[n] == 0) {
+            size--;
         }
     }
 
