@@ -25,4 +25,7 @@
 #define CCMODE_CTR_KEY_ECB_CTX(ckey) (ccecb_ctx *)(ckey->u + ccn_sizeof_size(ckey->ecb->block_size) * 2)
 
 
+#define CCMODE_OFB_KEY_IV(okey) okey->u
+#define CCMODE_OFB_KEY_ECB_CTX(okey) (ccecb_ctx *)okey->u + ccn_sizeof_size(okey->ecb->block_size)
+
 #endif /* _CORECRYPTO_CCMODE_INTERNAL_H_ */
