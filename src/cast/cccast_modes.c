@@ -16,6 +16,9 @@ CCMODE_CBC_FACTORY(cast, decrypt)
 
 CCMODE_OFB_FACTORY(cast);
 
+CCMODE_CFB_FACTORY(cast, cfb, encrypt)
+CCMODE_CFB_FACTORY(cast, cfb, decrypt)
+
 const struct ccmode_ecb *cccast_ecb_encrypt_mode(void) {
     return &cccast_eay_ecb_encrypt_mode;
 }

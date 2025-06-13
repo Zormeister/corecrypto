@@ -12,7 +12,10 @@
 CCMODE_CBC_FACTORY(blowfish, encrypt)
 CCMODE_CBC_FACTORY(blowfish, decrypt)
 
-CCMODE_OFB_FACTORY(blowfish);
+CCMODE_OFB_FACTORY(blowfish)
+
+CCMODE_CFB_FACTORY(blowfish, cfb, encrypt)
+CCMODE_CFB_FACTORY(blowfish, cfb, decrypt)
 
 const struct ccmode_ecb *ccblowfish_ecb_encrypt_mode(void) {
     return &ccblowfish_ltc_ecb_encrypt_mode;

@@ -9,6 +9,12 @@
 #include <corecrypto/ccaes.h>
 #include <corecrypto/ccmode_impl.h>
 #include <corecrypto/cc_runtime_config.h>
+#include <corecrypto/ccmode_factory.h>
+
+CCMODE_CFB_FACTORY(aes, cfb, encrypt)
+CCMODE_CFB_FACTORY(aes, cfb, decrypt)
+
+CCMODE_OFB_FACTORY(aes)
 
 #if CC_LINUX_ASM
 extern const struct ccmode_cbc ccaes_intel_cbc_encrypt_aesni_mode;
