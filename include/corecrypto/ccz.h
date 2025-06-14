@@ -26,7 +26,7 @@ struct ccz_class {
 struct {
     struct ccz_class *ccz_class; /* I think? */
     cc_size n;
-    cc_unit *num;
+    cc_unit u[];
 } typedef ccz;
 
 void ccz_init(struct ccz_class *cl, ccz *r);
@@ -37,16 +37,16 @@ void ccz_zero(ccz *z);
 
 size_t ccz_size(ccz *z);
 
-extern size_t ccz_bitlen(ccz *z);
+size_t ccz_bitlen(ccz *z);
 
-extern void ccz_set(ccz *r, const ccz *s);
+void ccz_set(ccz *r, const ccz *s);
 
-extern bool ccz_is_one(ccz *z);
+bool ccz_is_one(ccz *z);
 
-extern bool ccz_is_prime(ccz *z, size_t rounds);
+bool ccz_is_prime(ccz *z, size_t rounds);
 
-extern bool ccz_is_negative(ccz *z);
+bool ccz_is_negative(ccz *z);
 
-extern bool ccz_is_zero(ccz *z);
+bool ccz_is_zero(ccz *z);
 
 #endif /* _CORECRYPTO_CCZ_H_ */

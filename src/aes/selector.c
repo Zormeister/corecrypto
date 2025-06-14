@@ -13,6 +13,8 @@
 
 CCMODE_CFB_FACTORY(aes, cfb, encrypt)
 CCMODE_CFB_FACTORY(aes, cfb, decrypt)
+CCMODE_CFB_FACTORY(aes, cfb8, decrypt);
+CCMODE_CFB_FACTORY(aes, cfb8, encrypt);
 
 CCMODE_OFB_FACTORY(aes)
 

@@ -15,5 +15,6 @@ int ccmode_cfb_init(const struct ccmode_cfb *cfb, cccfb_ctx *ctx, size_t rawkey_
     ckey->ecb = (const struct ccmode_ecb *)cfb->custom;
     ckey->pad_len = 0;
     cc_memcpy(CCMODE_CFB_KEY_FEEDBACK(ckey), iv, ckey->ecb->block_size);
+    ckey->ecb->init(ckey->ecb, CCMODE_CFB_KEY_ECB_CTX(ckey), rawkey_len, rawkey);
     return CCERR_OK;
 }

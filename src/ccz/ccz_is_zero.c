@@ -9,5 +9,5 @@
 #include <corecrypto/ccn.h>
 
 bool ccz_is_zero(ccz *z) {
-    return ccn_is_zero(z->n, z->num);
+    return ccn_is_zero(z->n, z->u);
 }

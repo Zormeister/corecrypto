@@ -13,6 +13,10 @@ CCMODE_CBC_FACTORY(des, decrypt);
 
 CCMODE_OFB_FACTORY(des);
 
+CCMODE_CFB_FACTORY(des, cfb, decrypt);
+CCMODE_CFB_FACTORY(des, cfb, encrypt);
+CCMODE_CFB_FACTORY(des, cfb8, decrypt);
+CCMODE_CFB_FACTORY(des, cfb8, encrypt);
 
 extern const struct ccmode_ecb ccdes_ltc_ecb_encrypt_mode;
 extern const struct ccmode_ecb ccdes_ltc_ecb_decrypt_mode;
