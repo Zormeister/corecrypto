@@ -17,10 +17,26 @@ struct ccdh_gp {
     __CCZP_ELEMENTS_DEFINITIONS()
 } CC_ALIGNED(16);
 
-#define ccdh_gp_n(gp) gp->n
-
 typedef struct ccdh_gp *ccdh_gp_t;
 typedef const struct ccdh_gp *ccdh_const_gp_t;
+
+/* either this or it's a macro. take your pick. */
+CC_INLINE
+cc_size ccdh_gp_n(ccdh_const_gp_t gp) {
+    return gp->n;
+}
+
+/* 
+ * todo:
+ *  - ccdh_gp_g
+ *  - ccdh_gp_l
+ *  - ccdh_gp_prime
+ *  - ccdh_gp_order
+ *  - ccdh_gp_order_bitlen
+ *  - ccdh_gp_size
+ *
+ *  newer corecrypto has everything as a function now, makes my job easier :)
+ */
 
 int ccdh_init_gp(ccdh_gp_t gp, cc_size n, cc_unit *p, cc_unit *g, cc_size l);
 
@@ -41,7 +57,7 @@ int ccdh_generate_key(ccdh_const_gp_t gp, struct ccrng_state *rng, ccdh_full_ctx
 int ccdh_import_pub(ccdh_const_gp_t gp, size_t pub_key_len, const void *pub_key, ccdh_pub_ctx_t pub);
 void ccdh_export_pub(ccdh_pub_ctx_t ctx, void *out);
 
-int ccdh_compute_shared_secret(ccdh_full_ctx_t ctx, ccdh_pub_ctx_t pub, size_t *shard_key_len, unsigned char *shared_key, struct ccrng_state *rng);
+int ccdh_compute_shared_secret(ccdh_full_ctx_t ctx, ccdh_pub_ctx_t pub, size_t *shared_key_len, void *shared_key, struct ccrng_state *rng);
 
 size_t ccdh_export_pub_size(ccdh_pub_ctx_t ctx);
 

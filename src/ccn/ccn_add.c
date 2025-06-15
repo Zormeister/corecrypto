@@ -15,7 +15,7 @@ cc_unit ccn_add(cc_size n, cc_unit *r, const cc_unit *s, const cc_unit *t) {
 #else
     cc_unit carry = 0;
 
-    cc_abort("wip.");
+    cc_try_abort("wip.");
 
     /* TODO: regular impl */
     return carry;
