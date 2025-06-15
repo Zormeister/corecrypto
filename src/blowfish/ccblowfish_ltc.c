@@ -165,14 +165,14 @@ int ccblowfish_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t ke
 }
 
 const struct ccmode_ecb ccblowfish_ltc_ecb_encrypt_mode = {
-    .size = sizeof(struct ccblowfish_ltc_ctx),
+    .size = ccn_sizeof_size(sizeof(struct ccblowfish_ltc_ctx)),
     .block_size = CCBLOWFISH_BLOCK_SIZE,
     .init = ccblowfish_ltc_setup,
     .ecb = ccblowfish_ltc_ecb_encrypt,
 };
 
 const struct ccmode_ecb ccblowfish_ltc_ecb_decrypt_mode = {
-    .size = sizeof(struct ccblowfish_ltc_ctx),
+    .size = ccn_sizeof_size(sizeof(struct ccblowfish_ltc_ctx)),
     .block_size = CCBLOWFISH_BLOCK_SIZE,
     .init = ccblowfish_ltc_setup,
     .ecb = ccblowfish_ltc_ecb_decrypt,

@@ -6,6 +6,7 @@
 //
 
 #include <corecrypto/cccast.h>
+#include <corecrypto/ccn.h>
 #include <corecrypto/ccmode_impl.h>
 #include <corecrypto/cc_priv.h>
 #include "cast_lcl.h"
@@ -58,14 +59,14 @@ int cccast_ecb_decrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, voi
 }
 
 const struct ccmode_ecb cccast_eay_ecb_encrypt_mode = {
-    .size = sizeof(CAST_KEY),
+    .size = ccn_sizeof_size(sizeof(CAST_KEY)),
     .block_size = CCCAST_BLOCK_SIZE,
     .init = cccast_setup,
     .ecb = cccast_ecb_encrypt,
 };
 
 const struct ccmode_ecb cccast_eay_ecb_decrypt_mode = {
-    .size = sizeof(CAST_KEY),
+    .size = ccn_sizeof_size(sizeof(CAST_KEY)),
     .block_size = CCCAST_BLOCK_SIZE,
     .init = cccast_setup,
     .ecb = cccast_ecb_decrypt,
