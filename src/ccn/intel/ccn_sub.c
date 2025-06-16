@@ -9,7 +9,6 @@
 
 #include <immintrin.h>
 
-
 #if CCN_UNIT_SIZE == 8
 #define cc_subborrow(bin, x, y, out) _subborrow_u64(bin, x, y, out)
 #elif CCN_UNIT_SIZE == 4
@@ -22,7 +21,7 @@ cc_unit ccn_sub_asm(cc_size n, cc_unit *r, const cc_unit *s, const cc_unit *t) {
     uint8_t borrow_in = 0;
 
     if (ccn_cmp(n, s, t) == -1) {
-        return 1; 
+        return 1;
         /* ^ i believe this is what the comment at the header declaration meant */
     }
 

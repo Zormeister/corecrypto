@@ -20,4 +20,6 @@ struct cckeccak_state {
 
 typedef struct cckeccak_state *cckeccak_state_t;
 
+/* ZORMEISTER: I'm so tempted to just erase the notion of ever implementing this how CC does. */
+
 #endif /* _CORECRYPTO_CCKECCAK_H_ */

@@ -13,6 +13,8 @@
 #include <corecrypto/ccrng.h>
 #include <corecrypto/cczp.h>
 
+/* ZORMEISTER: this header is a shitshow. i need to clean it up. */
+
 // hunch based on the ccdh stuff
 struct ccec_cp {
     __CCZP_ELEMENTS_DEFINITIONS()

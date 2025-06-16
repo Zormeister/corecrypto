@@ -9,7 +9,6 @@
 
 #include <immintrin.h>
 
-
 #if CCN_UNIT_SIZE == 8
 #define cc_addcarry(cin, a, b, out) _addcarry_u64(cin, a, b, out)
 #elif CCN_UNIT_SIZE == 4
