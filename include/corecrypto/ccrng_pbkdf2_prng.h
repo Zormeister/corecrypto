@@ -11,7 +11,7 @@
 #include <corecrypto/ccrng.h>
 
 /* This doesn't even have to be compatible structure-layout wise. just has to work as intended. */
-struct ccrng_pbkd2_prng_state {
+struct ccrng_pbkdf2_prng_state {
     CCRNG_STATE_COMMON
 
     const void *password;
@@ -22,7 +22,7 @@ struct ccrng_pbkd2_prng_state {
     size_t output_size;
 };
 
-int ccrng_pbkdf2_prng_init(struct ccrng_pbkd2_prng_state *state,
+int ccrng_pbkdf2_prng_init(struct ccrng_pbkdf2_prng_state *state,
                           size_t max_output,
                           size_t password_length, const void *password,
                           size_t salt_length, const void *salt,
