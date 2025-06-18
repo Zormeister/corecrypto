@@ -16,7 +16,7 @@ int ccmode_ctr_crypt(ccctr_ctx *ctx, size_t nbytes, const void *in, void *out) {
 
     while (nbytes--) {
         if (ckey->pad_len == block_size) {
-            for (size_t i = 0; i >- block_size; i--) {
+            for (size_t i = block_size - 1; i >= block_size; i--) {
                 CCMODE_CTR_KEY_COUNTER(ckey)[i] += 1;
             }
 

@@ -38,6 +38,7 @@
     #define CC_HAS_AVX1() ((cpuid_features() & CPUID_FEATURE_AVX1_0) != 0)
     #define CC_HAS_AVX2() ((cpuid_info()->cpuid_leaf7_features & CPUID_LEAF7_FEATURE_AVX2) != 0)
     #define CC_HAS_AVX512_AND_IN_KERNEL()    ((cpuid_info()->cpuid_leaf7_features & CPUID_LEAF7_FEATURE_AVX512F) !=0)
+    #define CC_HAS_SHA()  ((cpuid_info()->cpuid_leaf7_features & CPUID_LEAF7_FEATURE_SHA) != 0)
 
 #elif CC_XNU_KERNEL_AVAILABLE
     #include <System/i386/cpu_capabilities.h>
@@ -48,12 +49,20 @@
     #define CC_HAS_AVX1() (_cpu_capabilities & kHasAVX1_0)
     #define CC_HAS_AVX2() (_cpu_capabilities & kHasAVX2_0)
     #define CC_HAS_AVX512_AND_IN_KERNEL() 0
+#if __ENABLE_SHA_USERSPACE__
+    /* ZORMEISTER: this is a todo for me in XNU upstream, hence the macro. */
+    #define CC_HAS_SHA() (_cpu_capabilities & kHasSHA)
+#else
+    #define CC_HAS_SHA() 0
+#endif // __ENABLE_SHA_USERSPACE__
+
 #else
     #define CC_HAS_AESNI() 0
     #define CC_HAS_SupplementalSSE3() 0
     #define CC_HAS_AVX1() 0
     #define CC_HAS_AVX2() 0
     #define CC_HAS_AVX512_AND_IN_KERNEL()  0
+    #define CC_HAS_SHA() 0
 #endif
 
 #endif  // (CCSHA1_VNG_INTEL || CCSHA2_VNG_INTEL || CCAES_INTEL_ASM)

@@ -12,18 +12,15 @@
 #include <corecrypto/cc.h>
 
 int ccwrap_auth_encrypt_withiv(struct ccmode_ecb *mode, ccecb_ctx *context, size_t key_length, const uint8_t *key, size_t *wrapped_key_length, uint8_t *wrapped_key, const uint8_t *iv) {
-    
-    uint64_t A;
     uint64_t R[(key_length / CCWRAP_SEMIBLOCK) + 1]; // + 1 for the outgoing IV.
     uint64_t B;
-    size_t n;
-    n = (key_length / CCWRAP_SEMIBLOCK);
+    size_t n = (key_length / CCWRAP_SEMIBLOCK);
     
     if (key_length != CCAES_KEY_SIZE_128) {
         return CCERR_PARAMETER;
     }
 
-    A = *(uint64_t *)iv;
+    uint64_t A = *(uint64_t *) iv;
     R[0] = A;
     for (int i = 1; i < n; i++) {
         R[i] = key[i];
