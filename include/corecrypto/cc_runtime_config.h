@@ -49,12 +49,47 @@
     #define CC_HAS_AVX1() (_cpu_capabilities & kHasAVX1_0)
     #define CC_HAS_AVX2() (_cpu_capabilities & kHasAVX2_0)
     #define CC_HAS_AVX512_AND_IN_KERNEL() 0
-#if __ENABLE_SHA_USERSPACE__
-    /* ZORMEISTER: this is a todo for me in XNU upstream, hence the macro. */
+#if defined(kHasSHA)
+    //
+    // ZORMEISTER:
+    // So far I've implemented kHasSHA in my fork of XNU 6153.141.1,
+    // (see https://github.com/Zormeister/xnu/tree/6153/x86-dev, as of commit a53a66fa63514b14d699767b273826010c2f3d2d)
+    // This will likely have to be expanded in the future, so that
+    // other clients of this corecrypto implementation can take
+    // advantage of the SHA extensions on Intel.
+    //
     #define CC_HAS_SHA() (_cpu_capabilities & kHasSHA)
 #else
     #define CC_HAS_SHA() 0
-#endif // __ENABLE_SHA_USERSPACE__
+#endif // defined(kHasSHA)
+
+#elif __has_include(<immintrin.h>)
+    #include <immintrin.h>
+    #define CC_HAS_AESNI() _may_i_use_cpu_feature(_FEATURE_AES)
+    #define CC_HAS_SupplementalSSE3() _may_i_use_cpu_feature(_FEATURE_SSSE3)
+    #define CC_HAS_AVX1() _may_i_use_cpu_feature(_FEATURE_AVX)
+    #define CC_HAS_AVX2() _may_i_use_cpu_feature(_FEATURE_AVX2)
+    #define CC_HAS_AVX512_AND_IN_KERNEL()  0
+    #define CC_HAS_SHA() _may_i_use_cpu_feature(_FEATURE_SHA)
+
+#elif __has_include(<cpuid.h>)
+    #include <cpuid.h>
+
+    //
+    // ZORMEISTER:
+    // I tried to take advantage of the available macros; but I don't
+    // think I can cover everything without having to mess with
+    // interacting with /proc/cpuinfo
+    // Unless I use an external library or implement a parser for cpuinfo
+    // and have an embedded function.
+    //
+
+    #define CC_HAS_AESNI() __builtin_cpu_supports("aes")
+    #define CC_HAS_SupplementalSSE3() __builtin_cpu_supports("ssse3")
+    #define CC_HAS_AVX1() __builtin_cpu_supports("avx")
+    #define CC_HAS_AVX2() __builtin_cpu_supports("avx2")
+    #define CC_HAS_AVX512_AND_IN_KERNEL() 0
+    #define CC_HAS_SHA() 0
 
 #else
     #define CC_HAS_AESNI() 0
@@ -63,6 +98,7 @@
     #define CC_HAS_AVX2() 0
     #define CC_HAS_AVX512_AND_IN_KERNEL()  0
     #define CC_HAS_SHA() 0
+
 #endif
 
 #endif  // (CCSHA1_VNG_INTEL || CCSHA2_VNG_INTEL || CCAES_INTEL_ASM)

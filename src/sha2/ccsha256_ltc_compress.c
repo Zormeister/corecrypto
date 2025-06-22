@@ -5,7 +5,7 @@
 //  Created by Zormeister on 27/5/2025.
 //
 
-// TYVM to Tom St Denis for LibTomCrypt, code used here is adapted from the RMD160 implementation
+// TYVM to Tom St Denis for LibTomCrypt, code used here is adapted from the SHA2-256 implementation
 // LibTomCrypt is licensed under the unlicense.
 
 #include "ccsha2_ltc_internal.h"
