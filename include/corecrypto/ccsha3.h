@@ -24,6 +24,41 @@ const struct ccdigest_info *ccsha3_512_di(void);
 
 /* Consult NIST FIPS 202 for more info */
 
+
+/*
+ 000000000004bcce t _ccsha3_224_c_compress
+ 000000000008f188 S _ccsha3_224_c_di
+ 000000000004bcea t _ccsha3_224_c_final
+ 000000000004bcfb T _ccsha3_224_di
+ 000000000004bd1f t _ccsha3_224_vng_compress
+ 000000000008f1d8 s _ccsha3_224_vng_di
+ 000000000004bd3b t _ccsha3_224_vng_final
+ 000000000004bf60 t _ccsha3_256_c_compress
+ 000000000008f368 S _ccsha3_256_c_di
+ 000000000004bf7c t _ccsha3_256_c_final
+ 000000000004bf8d T _ccsha3_256_di
+ 000000000004bfb1 t _ccsha3_256_vng_compress
+ 000000000008f3b8 s _ccsha3_256_vng_di
+ 000000000004bfcd t _ccsha3_256_vng_final
+ 000000000004bd4c t _ccsha3_384_c_compress
+ 000000000008f228 S _ccsha3_384_c_di
+ 000000000004bd68 t _ccsha3_384_c_final
+ 000000000004bd79 T _ccsha3_384_di
+ 000000000004bd9d t _ccsha3_384_vng_compress
+ 000000000008f278 s _ccsha3_384_vng_di
+ 000000000004bdb9 t _ccsha3_384_vng_final
+ 000000000004bdca t _ccsha3_512_c_compress
+ 000000000008f2c8 S _ccsha3_512_c_di
+ 000000000004bde6 t _ccsha3_512_c_final
+ 000000000004bdf7 T _ccsha3_512_di
+ 000000000004be1b t _ccsha3_512_vng_compress
+ 000000000008f318 s _ccsha3_512_vng_di
+ 000000000004be37 t _ccsha3_512_vng_final
+ 000000000004be50 T _ccsha3_final
+ 000000000007ffa0 S _ccsha3_keccak_p1600_initial_state
+
+ */
+
 /* See ccsha2.h for an explaination on the OIDs here */
 #define ccoid_sha3_224 ((unsigned char *)"\x06\x09\x60\x86\x48\x01\x65\x03\x04\x02\x07")
 #define ccoid_sha3_224_len 11
