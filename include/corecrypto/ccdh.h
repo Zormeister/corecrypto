@@ -26,6 +26,12 @@ cc_size ccdh_gp_n(ccdh_const_gp_t gp) {
     return gp->n;
 }
 
+cc_unit *ccdh_gp_g(ccdh_const_gp_t);
+cc_unit *ccdh_gp_l(ccdh_const_gp_t);
+cc_unit *ccdh_gp_order(ccdh_const_gp_t);
+cc_size ccdh_gp_order_bitlen(ccdh_const_gp_t);
+cc_size ccdh_gp_size(ccdh_const_gp_t);
+
 /* 
  * todo:
  *  - ccdh_gp_g
