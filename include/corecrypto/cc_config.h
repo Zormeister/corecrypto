@@ -124,6 +124,12 @@
  #define CC_IBOOT 0
 #endif
 
+#if defined (DARWINBOOT) && (DARWINBOOT)
+ #define CC_DARWINBOOT 1
+#else
+ #define CC_DARWINBOOT 0
+#endif
+
 // Defined by the XNU build scripts
 // Applies to code embedded in XNU but NOT to the kext
 #if defined(XNU_KERNEL_PRIVATE)

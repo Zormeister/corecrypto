@@ -446,7 +446,7 @@ do { \
  *  instruction from __builtin_clzl( ).
  */
 
-#if defined(_WIN32)
+#if defined(_WIN32) && !CC_DARWINBOOT
 /* We use the Windows implementations below. */
 #elif defined(__x86_64__) || defined(__i386__) || defined(__arm64__) || defined(__arm__)
 /* We use a thought-to-be-good version of __builtin_clz. */
@@ -459,7 +459,7 @@ do { \
 #endif
 
 
-#if defined(_WIN32)
+#if defined(_WIN32) && !CC_DARWINBOOT
 
 #include <windows.h>
 #include <intrin.h>
@@ -526,7 +526,7 @@ CC_INLINE CC_CONST unsigned cc_clz64_fallback(uint64_t data)
   @discussion @p data is assumed to be nonzero.
 */
 CC_INLINE CC_CONST unsigned cc_clz32(uint32_t data) {
-#if defined(_WIN32)
+#if defined(_WIN32) && !CC_DARWINBOOT
     return clz32_win(data);
 #elif defined(__x86_64__) || defined(__i386__) || defined(__arm64__) || defined(__arm__) || defined(__GNUC__)
     cc_static_assert(sizeof(unsigned) == 4, "clz relies on an unsigned int being 4 bytes");
@@ -547,7 +547,7 @@ CC_INLINE CC_CONST unsigned cc_clz32(uint32_t data) {
   @discussion @p data is assumed to be nonzero.
 */
 CC_INLINE CC_CONST unsigned cc_clz64(uint64_t data) {
-#if defined(_WIN32)
+#if defined(_WIN32) && !CC_DARWINBOOT
     return clz64_win(data);
 #elif defined(__x86_64__) || defined(__i386__) || defined(__arm64__) || defined(__arm__) || defined(__GNUC__)
     return (unsigned)__builtin_clzll(data);
