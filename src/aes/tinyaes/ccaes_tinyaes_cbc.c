@@ -45,7 +45,7 @@ static int pdcmode_aes_cbc_init(const struct ccmode_cbc *cbc, cccbc_ctx *ctx, si
  * but it was simpler to reuse the tinyaes128 aes_cbc and set custom to NULL
  */
 
-static int pdcmode_aes_cbc_encrypt(const cccbc_ctx *ctx, cccbc_iv *iv, unsigned long nblocks, const void *in, void *out)
+static int pdcmode_aes_cbc_encrypt(const cccbc_ctx *ctx, cccbc_iv *iv, size_t nblocks, const void *in, void *out)
 {
     printf("%s\n", __func__);
 
@@ -53,7 +53,7 @@ static int pdcmode_aes_cbc_encrypt(const cccbc_ctx *ctx, cccbc_iv *iv, unsigned 
 	return 0;
 }
 
-static int pdcmode_aes_cbc_decrypt(const cccbc_ctx *ctx, cccbc_iv *iv, unsigned long nblocks, const void *in, void *out)
+static int pdcmode_aes_cbc_decrypt(const cccbc_ctx *ctx, cccbc_iv *iv, size_t nblocks, const void *in, void *out)
 {
     printf("%s\n", __func__);
 
