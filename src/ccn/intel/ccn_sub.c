@@ -7,6 +7,8 @@
 
 #include <corecrypto/ccn.h>
 
+#if CCN_SUB_ASM
+
 #include <immintrin.h>
 
 #if CCN_UNIT_SIZE == 8
@@ -14,8 +16,6 @@
 #elif CCN_UNIT_SIZE == 4
 #define cc_subborrow(bin, x, y, out) _subborrow_u32(bin, x, y, out)
 #endif
-
-#if CCN_SUB_ASM
 
 cc_unit ccn_sub_asm(cc_size n, cc_unit *r, const cc_unit *s, const cc_unit *t) {
     uint8_t borrow_in = 0;

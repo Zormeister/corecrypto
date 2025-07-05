@@ -7,6 +7,8 @@
 
 #include <corecrypto/ccn.h>
 
+#if CCN_ADD_ASM
+
 #include <immintrin.h>
 
 #if CCN_UNIT_SIZE == 8
@@ -14,8 +16,6 @@
 #elif CCN_UNIT_SIZE == 4
 #define cc_addcarry(cin, a, b, out) _addcarry_u32(cin, a, b, out)
 #endif
-
-#if CCN_ADD_ASM
 
 cc_unit ccn_add_asm(cc_size n, cc_unit *r, const cc_unit *s, const cc_unit *t) {
     uint8_t carry_in = 0;
