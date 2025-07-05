@@ -58,7 +58,7 @@ static inline T load_be(const uint8_t in[], size_t off) {
 	return out;
 }
 
-static void pdcsha512_compress(ccdigest_state_t state_t, unsigned long nblocks, const void *data) {
+static void pdcsha512_compress(ccdigest_state_t state_t, size_t nblocks, const void *data) {
 	const uint8_t *input = (const uint8_t *)data;
 	uint64_t *state = ccdigest_u64(state_t);
 

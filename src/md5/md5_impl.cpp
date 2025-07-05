@@ -117,7 +117,7 @@ static inline void II(uint32_t& A, uint32_t B, uint32_t C, uint32_t D, uint32_t 
 extern "C"
 {
 
-void pdcmd5_compress(ccdigest_state_t s, unsigned long nblocks, const void *data)
+void pdcmd5_compress(ccdigest_state_t s, size_t nblocks, const void *data)
 {
     //printf("%s\n", __func__);
     

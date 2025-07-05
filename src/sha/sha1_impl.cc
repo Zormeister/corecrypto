@@ -119,7 +119,7 @@ extern "C"
 /*
 * SHA-160 Compression Function
 */
-void pdcsha1_compress(ccdigest_state_t s, unsigned long nblocks, const void *data)
+void pdcsha1_compress(ccdigest_state_t s, size_t nblocks, const void *data)
 {
     //printf("%s\n", __func__);
 

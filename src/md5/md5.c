@@ -10,7 +10,7 @@
 #include <corecrypto/ccmd5.h>
 #include <corecrypto/ccdigest_priv.h>
 
-void pdcmd5_compress(ccdigest_state_t state, unsigned long nblocks, const void *data);
+void pdcmd5_compress(ccdigest_state_t state, size_t nblocks, const void *data);
 
 const uint32_t pdcmd5_initial_state[4] = {
     0x67452301UL, // A

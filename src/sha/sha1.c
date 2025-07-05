@@ -10,7 +10,7 @@
 #include <corecrypto/ccsha1.h>
 #include <corecrypto/ccdigest_priv.h>
 
-void pdcsha1_compress(ccdigest_state_t state, unsigned long nblocks, const void *data);
+void pdcsha1_compress(ccdigest_state_t state, size_t nblocks, const void *data);
 
 const uint32_t pdcsha1_initial_state[5] = {
     0x67452301UL, // A
