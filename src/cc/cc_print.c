@@ -2,7 +2,7 @@
 #include <corecrypto/cc.h>
 #include <corecrypto/cc_debug.h>
 
-void cc_print(const char *label, unsigned long count, const uint8_t *s) {
+void cc_print(const char *label, size_t count, const uint8_t *s) {
 	size_t prefix_length = 0;
 
 	if (label != NULL) {
@@ -12,7 +12,7 @@ void cc_print(const char *label, unsigned long count, const uint8_t *s) {
 		prefix_length = 0;
 	}
 
-	for (unsigned long index = 0; index < count; index++) {
+	for (size_t index = 0; index < count; index++) {
 		cc_printf("0x%02X, ", s[index]);
 
 		if ((index % 16) == 0) {
