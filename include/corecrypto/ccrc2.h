@@ -13,8 +13,8 @@
 
 #define CCRC2_BLOCK_SIZE 8
 
-const struct ccmode_ecb ccrc2_ltc_ecb_encrypt_mode;
-const struct ccmode_ecb ccrc2_ltc_ecb_decrypt_mode;
+extern const struct ccmode_ecb ccrc2_ltc_ecb_encrypt_mode;
+extern const struct ccmode_ecb ccrc2_ltc_ecb_decrypt_mode;
 
 const struct ccmode_ecb *ccrc2_ecb_decrypt_mode(void);
 const struct ccmode_ecb *ccrc2_ecb_encrypt_mode(void);
