@@ -8,10 +8,6 @@
 #include "ccaes_intel_aesni_internal.h"
 #include <corecrypto/cc_error.h>
 #include <corecrypto/ccaes.h>
-#include <emmintrin.h>
-#include <immintrin.h>
-#include <wmmintrin.h>
-#include <xmmintrin.h>
 
 #if CCAES_INTEL_ASM
 
