@@ -37,7 +37,7 @@ static int pdcmode_aes_ecb_init(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, si
 	return 0;
 }
 
-static int pdcmode_aes_ecb_encrypt(const ccecb_ctx *ctx, unsigned long nblocks, const void *in, void *out)
+static int pdcmode_aes_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out)
 {
     printf("%s\n", __func__);
 
@@ -45,7 +45,7 @@ static int pdcmode_aes_ecb_encrypt(const ccecb_ctx *ctx, unsigned long nblocks, 
 	return 0;
 }
 
-static int pdcmode_aes_ecb_decrypt(const ccecb_ctx *ctx, unsigned long nblocks, const void *in, void *out)
+static int pdcmode_aes_ecb_decrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out)
 {
     printf("%s\n", __func__);
 
