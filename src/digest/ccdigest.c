@@ -2,7 +2,7 @@
 #include <corecrypto/cc.h>
 #include <corecrypto/ccdigest.h>
 
-void ccdigest(const struct ccdigest_info *di, unsigned long len, const void *data, void *digest) {
+void ccdigest(const struct ccdigest_info *di, size_t len, const void *data, void *digest) {
 	ccdigest_di_decl(di, ctx);
 	ccdigest_init(di, ctx);
 	ccdigest_update(di, ctx, len, data);
