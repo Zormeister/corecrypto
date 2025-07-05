@@ -22,7 +22,7 @@
 #define Gamma0(x)       (S(x, 7) ^ S(x, 18) ^ R(x, 3))
 #define Gamma1(x)       (S(x, 17) ^ S(x, 19) ^ R(x, 10))
 
-void ccsha256_ltc_compress(ccdigest_state_t state, unsigned long nblocks, const void *data) {
+void ccsha256_ltc_compress(ccdigest_state_t state, size_t nblocks, const void *data) {
     while (nblocks--) {
         uint32_t S[8], W[64], t0, t1;
 #ifdef CC_SMALL_CODE

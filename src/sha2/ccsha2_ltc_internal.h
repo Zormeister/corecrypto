@@ -17,6 +17,6 @@ extern const uint32_t ccsha512_initial_state[8];
 
 extern const uint32_t ccsha256_K[64];
 
-extern void ccsha256_ltc_compress(ccdigest_state_t state, unsigned long nblocks, const void *data);
+extern void ccsha256_ltc_compress(ccdigest_state_t state, size_t nblocks, const void *data);
 
 #endif
