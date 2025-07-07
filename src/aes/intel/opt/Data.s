@@ -5,9 +5,9 @@
 
 
 // Round constants.
-	.globl	_OLDAESRcon
-	.private_extern	_OLDAESRcon
-_OLDAESRcon:
+	.globl	_AESRcon
+	.private_extern	_AESRcon
+_AESRcon:
 	.byte	0	// Not used, included for indexing simplicity.
 	.byte	0x01
 	.byte	0x02
@@ -22,10 +22,10 @@ _OLDAESRcon:
 
 
 // Tables for InvMixColumn.
-	.globl	_OLDAESInvMixColumnTable
-	.private_extern	_OLDAESInvMixColumnTable
+	.globl	_AESInvMixColumnTable
+	.private_extern	_AESInvMixColumnTable
 	.align	2
-_OLDAESInvMixColumnTable:
+_AESInvMixColumnTable:
 	// Table 0.
 	.long	0x00000000
 	.long	0x0b0d090e
@@ -1057,10 +1057,10 @@ _OLDAESInvMixColumnTable:
 
 
 // Tables for main encryption iterations.
-	.globl	_OLDAESEncryptTable
-	.private_extern	_OLDAESEncryptTable
+	.globl	_AESEncryptTable
+	.private_extern	_AESEncryptTable
 	.align	2
-_OLDAESEncryptTable:
+_AESEncryptTable:
 	// Table 0.
 	.long	0xa56363c6
 	.long	0x847c7cf8
@@ -2092,10 +2092,10 @@ _OLDAESEncryptTable:
 
 
 // Tables for main decryption iterations.
-	.globl	_OLDAESDecryptTable
-	.private_extern	_OLDAESDecryptTable
+	.globl	_AESDecryptTable
+	.private_extern	_AESDecryptTable
 	.align	2
-_OLDAESDecryptTable:
+_AESDecryptTable:
 	// Table 0.
 	.long	0x50a7f451
 	.long	0x5365417e
@@ -3127,10 +3127,10 @@ _OLDAESDecryptTable:
 
 
 // SubBytes embedded in words tables.
-	.globl	_OLDAESSubBytesWordTable
-	.private_extern	_OLDAESSubBytesWordTable
+	.globl	_AESSubBytesWordTable
+	.private_extern	_AESSubBytesWordTable
 	.align	2
-_OLDAESSubBytesWordTable:
+_AESSubBytesWordTable:
 	// Table 0.
 	.long	0x00000063
 	.long	0x0000007c
@@ -4162,10 +4162,10 @@ _OLDAESSubBytesWordTable:
 
 
 // InvSubBytes embedded in words tables.
-	.globl	_OLDAESInvSubBytesWordTable
-	.private_extern	_OLDAESInvSubBytesWordTable
+	.globl	_AESInvSubBytesWordTable
+	.private_extern	_AESInvSubBytesWordTable
 	.align	2
-_OLDAESInvSubBytesWordTable:
+_AESInvSubBytesWordTable:
 	// Table 0.
 	.long	0x00000052
 	.long	0x00000009

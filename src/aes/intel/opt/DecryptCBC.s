@@ -1,8 +1,8 @@
-#include "../AESAssembly.h"
+#include <corecrypto/cc_config.h>
 
 
 // Generate object code only if this implementation has been requested.
-#if defined UseAESedp_IntelAssembly
+#if CCAES_INTEL_ASM
 
 
 /*	AESDecryptCBC.s -- Decrypt blocks with AES in Cipher Block Chaining mode.

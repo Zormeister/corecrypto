@@ -1,5 +1,8 @@
 // Generate object code only if this implementation has been requested.
-#if defined (__x86_64__) || defined (__i386__)
+
+#include <corecrypto/cc_config.h>
+
+#if CCAES_INTEL_ASM && defined (__x86_64__) || defined (__i386__)
 
 
 /*	AES.s -- Core AES routines for Intel processors.
@@ -23,8 +26,6 @@
 	So the various routines in other files are assembled here via #include
 	directives.
 */
-#include "Data.s"
-
 
 #define	TableSize	(256*4)
 	/*	Each of the arrays defined in Data.s except for the round constants

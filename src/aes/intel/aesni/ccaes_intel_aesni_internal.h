@@ -23,7 +23,6 @@ struct ccaes_intel_aesni_ctx {
     __m128i round_keys[15]; /* AES can have a maximum of fourteen rounds. */
 };
 
-/* TODO: AES-192 Round Key generation. */
 /* As of right now this technically only supports AES-128 and AES-256. */
 int ccaes_intel_aesni128_gen_round_keys(struct ccaes_intel_aesni_ctx *ctx);
 int ccaes_intel_aesni192_gen_round_keys(struct ccaes_intel_aesni_ctx *ctx);

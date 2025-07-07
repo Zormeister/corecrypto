@@ -12,11 +12,14 @@
 
 #define ccdh_gp_decl_n(n) \
     struct { \
-        struct cczp_hd hd; \
-        cc_unit p[(n)]; /* consistent with CCZP */ \
-        cc_unit r[(n)]; /* consistent with CCZP */ \
+        cc_size ccn_size; \
+        cc_unit bitlen; \
+        ccmod_func_t zp_func; \
+        cc_unit p[(n)]; \
+        cc_unit r[(n)]; \
         cc_unit g[(n)]; \
-        cc_unit q[(n)]; \
+        cc_unit order[(n)]; \
+        cc_unit l; \
     }
 
 #endif

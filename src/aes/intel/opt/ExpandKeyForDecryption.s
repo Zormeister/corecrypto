@@ -44,6 +44,12 @@
 	sufficient to have the post-InvMixColumn words.
 */
 
+#include <corecrypto/cc_config.h>
+
+
+// Generate object code only if this implementation has been requested.
+#if CCAES_INTEL_ASM
+
 
 /*	Routine:
 
@@ -65,21 +71,21 @@
 			The following names must be locally defined so the assembler
 			can calculate certain offsets.
 
-			static const Word _OLDAESSubBytesWordTable[4][256].
+			static const Word _AESSubBytesWordTable[4][256].
 
-				_OLDAESSubBytesWordTable[i][j] = SubBytes(j) << 8*i, where
-				SubBytes is defined in FIPS-197.  _OLDAESSubBytesWordTable
-				differs from _OLDAESEncryptTable in that it does not include
+				_AESSubBytesWordTable[i][j] = SubBytes(j) << 8*i, where
+				SubBytes is defined in FIPS-197.  _AESSubBytesWordTable
+				differs from _AESEncryptTable in that it does not include
 				the MixColumn operation.  It is used in performing the last
 				round, which differs fromm the previous rounds in that it
 				does not include the MixColumn operation.
 
 			static const Word _AESSInvMixColumnTable[4][256].
 
-				_OLDAESInvMixColumnTable[i][j] contains the contribution of byte
+				_AESInvMixColumnTable[i][j] contains the contribution of byte
 				j to element i of the InvMixColumn operation.
 
-				The four bytes of the word _OLDAESInvMixColumnTable[0][j] are:
+				The four bytes of the word _AESInvMixColumnTable[0][j] are:
 
 					{0xe}*{j}, {0x9}*{j}, {0xd}*{j}, {0xb}*{j},
 
@@ -88,7 +94,7 @@
 				the Galois field represented by j.  _AESInvMixColumn[i][j] has
 				the same bytes, rotated right in the order shown above.
 
-			static const Byte _OLDAESRcon[].
+			static const Byte _AESRcon[].
 
 				Round constants, beginning with OLDAESRcon[1] for the first round
 				(OLDAESRcon[0] is padding.)
@@ -267,15 +273,15 @@ DKeyHas4Words:
 		0:
 			pop		STable		// Get program counter.
 
-		lea		_OLDAESRcon-0b(STable), R
-		lea		_OLDAESInvMixColumnTable-0b(STable), ITable
-		lea		_OLDAESSubBytesWordTable-0b(STable), STable
+		lea		_AESRcon-0b(STable), R
+		lea		_AESInvMixColumnTable-0b(STable), ITable
+		lea		_AESSubBytesWordTable-0b(STable), STable
 
 	#elif defined __x86_64__
 
-		lea		_OLDAESRcon(%rip), R
-		lea		_OLDAESInvMixColumnTable(%rip), ITable
-		lea		_OLDAESSubBytesWordTable(%rip), STable
+		lea		_AESRcon(%rip), R
+		lea		_AESInvMixColumnTable(%rip), ITable
+		lea		_AESSubBytesWordTable(%rip), STable
 
 	#endif
 
@@ -432,15 +438,15 @@ DKeyHas6Words:
 		0:
 			pop		STable		// Get program counter.
 
-		lea		_OLDAESRcon-0b(STable), R
-		lea		_OLDAESInvMixColumnTable-0b(STable), ITable
-		lea		_OLDAESSubBytesWordTable-0b(STable), STable
+		lea		_AESRcon-0b(STable), R
+		lea		_AESInvMixColumnTable-0b(STable), ITable
+		lea		_AESSubBytesWordTable-0b(STable), STable
 
 	#elif defined __x86_64__
 
-		lea		_OLDAESRcon(%rip), R
-		lea		_OLDAESInvMixColumnTable(%rip), ITable
-		lea		_OLDAESSubBytesWordTable(%rip), STable
+		lea		_AESRcon(%rip), R
+		lea		_AESInvMixColumnTable(%rip), ITable
+		lea		_AESSubBytesWordTable(%rip), STable
 
 	#endif
 
@@ -630,15 +636,15 @@ DKeyHas8Words:
 		0:
 			pop		STable		// Get program counter.
 
-		lea		_OLDAESRcon-0b(STable), R
-		lea		_OLDAESInvMixColumnTable-0b(STable), ITable
-		lea		_OLDAESSubBytesWordTable-0b(STable), STable
+		lea		_AESRcon-0b(STable), R
+		lea		_AESInvMixColumnTable-0b(STable), ITable
+		lea		_AESSubBytesWordTable-0b(STable), STable
 
 	#elif defined __x86_64__
 
-		lea		_OLDAESRcon(%rip), R
-		lea		_OLDAESInvMixColumnTable(%rip), ITable
-		lea		_OLDAESSubBytesWordTable(%rip), STable
+		lea		_AESRcon(%rip), R
+		lea		_AESInvMixColumnTable(%rip), ITable
+		lea		_AESSubBytesWordTable(%rip), STable
 
 	#endif
 
@@ -912,3 +918,5 @@ DKeyHas8Words:
 #undef	ve5
 #undef	vt0
 #undef	vt1
+
+#endif

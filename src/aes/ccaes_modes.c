@@ -16,7 +16,9 @@ CCMODE_CFB_FACTORY(aes, cfb, decrypt)
 CCMODE_CFB_FACTORY(aes, cfb8, decrypt);
 CCMODE_CFB_FACTORY(aes, cfb8, encrypt);
 
-CCMODE_OFB_FACTORY(aes)
+CCMODE_CTR_FACTORY(aes);
+
+CCMODE_OFB_FACTORY(aes);
 
 #if CC_LINUX_ASM
 extern const struct ccmode_cbc ccaes_intel_cbc_encrypt_aesni_mode;
@@ -33,6 +35,8 @@ const struct ccmode_ecb *ccaes_ecb_encrypt_mode(void) {
         cc_printf("corecrypto(aes): using AES-NI for ECB encrypt\n");
 #endif
         return &ccaes_intel_ecb_encrypt_aesni_mode;
+    } else {
+        return &ccaes_intel_ecb_encrypt_opt_mode;
     }
 #endif
 
@@ -47,6 +51,8 @@ const struct ccmode_ecb *ccaes_ecb_decrypt_mode(void) {
         cc_printf("corecrypto(aes): using AES-NI for ECB decrypt\n");
 #endif
         return &ccaes_intel_ecb_decrypt_aesni_mode;
+    } else {
+        return &ccaes_intel_ecb_decrypt_opt_mode;
     }
 #endif
 
@@ -61,6 +67,8 @@ const struct ccmode_cbc *ccaes_cbc_encrypt_mode(void) {
         cc_printf("corecrypto(aes): using AES-NI for CBC encrypt\n");
 #endif
         return &ccaes_intel_cbc_encrypt_aesni_mode;
+    } else {
+        return &ccaes_intel_cbc_encrypt_opt_mode;
     }
 #endif
 
@@ -75,6 +83,8 @@ const struct ccmode_cbc *ccaes_cbc_decrypt_mode(void) {
         cc_printf("corecrypto(aes): using AES-NI for CBC decrypt\n");
 #endif
         return &ccaes_intel_cbc_decrypt_aesni_mode;
+    } else {
+        return &ccaes_intel_cbc_decrypt_opt_mode;
     }
 #endif
 

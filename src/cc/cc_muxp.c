@@ -9,9 +9,9 @@
 
 void *cc_muxp(int s, const void *a, const void *b) {
     if (s) {
-        return a;
+        return __DECONST(void *, a);
     } else {
-        return b;
+        return __DECONST(void *, b);
     }
 }
 

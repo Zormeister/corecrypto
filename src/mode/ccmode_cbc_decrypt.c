@@ -17,8 +17,8 @@ int ccmode_cbc_decrypt(const cccbc_ctx *ctx, cccbc_iv *iv, size_t nblocks, const
 
     /* iterate. */
     while (nblocks--) {
-        fctx->ecb->ecb(CCMODE_CBC_KEY_ECB_CTX(fctx), 1, cur_out, cur_out);
-        cc_xor(fctx->ecb->block_size, cur_out, cur_out, cur_iv);
+        fctx->ecb->ecb(CCMODE_CBC_KEY_ECB_CTX(fctx), 1, cur_in, cur_out);
+        cc_xor(fctx->ecb->block_size, cur_out, cur_in, cur_iv);
 
         cur_iv = cur_out; /* set cur_iv to our ciphertext from the last block */
         cur_in += fctx->ecb->block_size;

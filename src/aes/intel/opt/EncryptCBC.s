@@ -1,5 +1,8 @@
 // Generate object code only if this implementation has been requested.
-#if defined (__x86_64__) || defined (__i386__)
+
+#include <corecrypto/cc_config.h>
+
+#if CCAES_INTEL_ASM && defined (__x86_64__) || defined (__i386__)
 
 
 /*	AESEncryptCBC.s -- Encrypt blocks with AES in Cipher Block Chaining mode.
