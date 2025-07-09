@@ -16,21 +16,21 @@
 
 void dump_dh_gp(ccdh_const_gp_t gp) {
     const uint8_t *ptr = (const uint8_t *)gp;
-    for (int i = 0; i < ccdh_gp_size(gp); i++) {
+    for (int i = 0; i < ccdh_gp_size(gp->n) * 5; i++) {
         printf("%02X ", ptr[i]);
     }
     printf("\n");
     
     printf("\n");
     printf("size: %zu\n", gp->n);
-    printf("bits: %zd\n", gp->options);
+    printf("bits: %lld\n", gp->options);
     printf("func: <%p>\n", gp->mulmod_prime);
     printf("prime: <%p>\n", ccdh_gp_prime(gp));
     printf("g: <%p>\n", ccdh_gp_g(gp));
     printf("l: <%p>\n", ccdh_gp_l(gp));
     printf("order: <%p>\n", ccdh_gp_order(gp));
-    printf("order bitlen: %zx", ccdh_gp_order_bitlen(gp));
-    printf("gp size: %zu", ccdh_gp_size(gp));
+    printf("order bitlen: %zx\n", ccdh_gp_order_bitlen(gp));
+    printf("gp size: %zd\n", ccdh_gp_size(gp->n));
 }
 
 void dump_xof(const struct ccxof_info *xof) {

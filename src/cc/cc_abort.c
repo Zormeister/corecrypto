@@ -6,6 +6,7 @@
 //
 
 #include <corecrypto/cc_priv.h>
+#include <corecrypto/cc_config.h>
 
 
 //

@@ -262,14 +262,6 @@
  #endif
 #endif
 
-#if defined(__arm64__) || defined(__arm__)
- #define CCN_IOS				   1
- #define CCN_OSX				   0
-#elif defined(__x86_64__) || defined(__i386__)
- #define CCN_IOS				   0
- #define CCN_OSX				   1
-#endif
-
 #if CC_USE_S3
 /* For corecrypto kext, CC_STATIC should be undefined */
  #define CC_STATIC              1
@@ -303,6 +295,14 @@
 #define CC_DISABLE_RSAKEYGEN 1 /* for iBridge */
 #else
 #define CC_DISABLE_RSAKEYGEN 0 /* default */
+#endif
+
+#if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE
+ #define CCN_IOS                   1
+ #define CCN_OSX                   0
+#else
+ #define CCN_IOS                   0
+ #define CCN_OSX                   1
 #endif
 
 // see rdar://problem/26636018

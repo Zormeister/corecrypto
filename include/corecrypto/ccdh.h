@@ -28,15 +28,17 @@ cc_size ccdh_gp_n(ccdh_const_gp_t gp) {
 
 /* Prime is located at 0. */
 CC_INLINE
-cc_unit *ccdh_gp_prime(ccdh_const_gp_t gp) {
-    return gp->ccn;
+const cc_unit *ccdh_gp_prime(ccdh_const_gp_t gp) {
+    return &gp->ccn[0];
 };
 
 cc_unit *ccdh_gp_g(ccdh_const_gp_t gp);
-cc_unit *ccdh_gp_l(ccdh_const_gp_t);
+cc_unit ccdh_gp_l(ccdh_const_gp_t); /* the L field is a signular unit at the end of the GP */
 cc_unit *ccdh_gp_order(ccdh_const_gp_t);
+
+
 cc_size ccdh_gp_order_bitlen(ccdh_const_gp_t);
-cc_size ccdh_gp_size(ccdh_const_gp_t);
+cc_size ccdh_gp_size(cc_size);
 
 /* 
  * todo:
