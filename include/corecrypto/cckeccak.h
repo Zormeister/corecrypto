@@ -20,6 +20,10 @@ struct cckeccak_state {
 
 typedef struct cckeccak_state *cckeccak_state_t;
 
+int cckeccak_init_state(cckeccak_state_t state);
+
+typedef int (*cckeccak_permutation)(cckeccak_state_t state, size_t length, const void *data);
+
 /*
  000000000001e870 T _cckeccak_absorb_and_pad
  000000000001e805 T _cckeccak_absorb_blocks
