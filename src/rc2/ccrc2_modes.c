@@ -13,12 +13,12 @@ CCMODE_CBC_FACTORY(rc2, decrypt)
 
 CCMODE_OFB_FACTORY(rc2)
 
-
-const struct ccmode_ecb *ccrc2_ecb_encrypt_mode(void) {
+const struct ccmode_ecb *ccrc2_ecb_encrypt_mode(void)
+{
     return &ccrc2_ltc_ecb_encrypt_mode;
 }
 
-const struct ccmode_ecb *ccrc2_ecb_decrypt_mode(void) {
+const struct ccmode_ecb *ccrc2_ecb_decrypt_mode(void)
+{
     return &ccrc2_ltc_ecb_decrypt_mode;
 }
-

@@ -7,9 +7,9 @@
 
 /* EAY modes */
 
-#include <corecrypto/ccmode_factory.h>
-#include <corecrypto/cccast.h>
 #include "cccast_eay_internal.h"
+#include <corecrypto/cccast.h>
+#include <corecrypto/ccmode_factory.h>
 
 CCMODE_CBC_FACTORY(cast, encrypt);
 CCMODE_CBC_FACTORY(cast, decrypt);
@@ -21,10 +21,12 @@ CCMODE_CFB_FACTORY(cast, cfb, decrypt);
 CCMODE_CFB_FACTORY(cast, cfb8, decrypt);
 CCMODE_CFB_FACTORY(cast, cfb8, encrypt);
 
-const struct ccmode_ecb *cccast_ecb_encrypt_mode(void) {
+const struct ccmode_ecb *cccast_ecb_encrypt_mode(void)
+{
     return &cccast_eay_ecb_encrypt_mode;
 }
 
-const struct ccmode_ecb *cccast_ecb_decrypt_mode(void) {
+const struct ccmode_ecb *cccast_ecb_decrypt_mode(void)
+{
     return &cccast_eay_ecb_decrypt_mode;
 }

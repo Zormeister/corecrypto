@@ -57,216 +57,265 @@
  */
 
 #ifdef WIN32
-#include <stdlib.h>
+    #include <stdlib.h>
 #endif
 
 #include <corecrypto/cccast.h>
 
-#define OPENSSL_EXTERN	extern
-//#include "openssl/e_os.h" /* OPENSSL_EXTERN */
+#define OPENSSL_EXTERN extern
+// #include "openssl/e_os.h" /* OPENSSL_EXTERN */
 
-#define CAST_set_key		CC_CAST_set_key
-#define CAST_ecb_encrypt	CC_CAST_ecb_encrypt
-#define CAST_encrypt		CC_CAST_encrypt
-#define CAST_decrypt		CC_CAST_decrypt
+#define CAST_set_key     CC_CAST_set_key
+#define CAST_ecb_encrypt CC_CAST_ecb_encrypt
+#define CAST_encrypt     CC_CAST_encrypt
+#define CAST_decrypt     CC_CAST_decrypt
 
 #define CAST_LONG uint32_t
 
-typedef struct cast_key_st
-	{
-	CAST_LONG data[32];
-	int short_key;	/* Use reduced rounds for short key */
-	} CAST_KEY;
-
+typedef struct cast_key_st {
+    CAST_LONG data[32];
+    int short_key; /* Use reduced rounds for short key */
+} CAST_KEY;
 
 #undef c2l
-#define c2l(c,l)	(l =((unsigned long)(*((c)++)))    , \
-			 l|=((unsigned long)(*((c)++)))<< 8L, \
-			 l|=((unsigned long)(*((c)++)))<<16L, \
-			 l|=((unsigned long)(*((c)++)))<<24L)
+#define c2l(c, l) (l = ((unsigned long)(*((c)++))),         \
+                   l |= ((unsigned long)(*((c)++))) << 8L,  \
+                   l |= ((unsigned long)(*((c)++))) << 16L, \
+                   l |= ((unsigned long)(*((c)++))) << 24L)
 
 /* NOTE - c is not incremented as per c2l */
 #undef c2ln
-#define c2ln(c,l1,l2,n)	{ \
-			c+=n; \
-			l1=l2=0; \
-			switch (n) { \
-			case 8: l2 =((unsigned long)(*(--(c))))<<24L; \
-			case 7: l2|=((unsigned long)(*(--(c))))<<16L; \
-			case 6: l2|=((unsigned long)(*(--(c))))<< 8L; \
-			case 5: l2|=((unsigned long)(*(--(c))));     \
-			case 4: l1 =((unsigned long)(*(--(c))))<<24L; \
-			case 3: l1|=((unsigned long)(*(--(c))))<<16L; \
-			case 2: l1|=((unsigned long)(*(--(c))))<< 8L; \
-			case 1: l1|=((unsigned long)(*(--(c))));     \
-				} \
-			}
+#define c2ln(c, l1, l2, n)                                \
+    {                                                     \
+        c += n;                                           \
+        l1 = l2 = 0;                                      \
+        switch (n) {                                      \
+            case 8:                                       \
+                l2 = ((unsigned long)(*(--(c)))) << 24L;  \
+            case 7:                                       \
+                l2 |= ((unsigned long)(*(--(c)))) << 16L; \
+            case 6:                                       \
+                l2 |= ((unsigned long)(*(--(c)))) << 8L;  \
+            case 5:                                       \
+                l2 |= ((unsigned long)(*(--(c))));        \
+            case 4:                                       \
+                l1 = ((unsigned long)(*(--(c)))) << 24L;  \
+            case 3:                                       \
+                l1 |= ((unsigned long)(*(--(c)))) << 16L; \
+            case 2:                                       \
+                l1 |= ((unsigned long)(*(--(c)))) << 8L;  \
+            case 1:                                       \
+                l1 |= ((unsigned long)(*(--(c))));        \
+        }                                                 \
+    }
 
 #undef l2c
-#define l2c(l,c)	(*((c)++)=(unsigned char)(((l)     )&0xff), \
-			 *((c)++)=(unsigned char)(((l)>> 8L)&0xff), \
-			 *((c)++)=(unsigned char)(((l)>>16L)&0xff), \
-			 *((c)++)=(unsigned char)(((l)>>24L)&0xff))
+#define l2c(l, c) (*((c)++) = (unsigned char)(((l)) & 0xff),        \
+                   *((c)++) = (unsigned char)(((l) >> 8L) & 0xff),  \
+                   *((c)++) = (unsigned char)(((l) >> 16L) & 0xff), \
+                   *((c)++) = (unsigned char)(((l) >> 24L) & 0xff))
 
 /* NOTE - c is not incremented as per l2c */
 #undef l2cn
-#define l2cn(l1,l2,c,n)	{ \
-			c+=n; \
-			switch (n) { \
-			case 8: *(--(c))=(unsigned char)(((l2)>>24L)&0xff); \
-			case 7: *(--(c))=(unsigned char)(((l2)>>16L)&0xff); \
-			case 6: *(--(c))=(unsigned char)(((l2)>> 8L)&0xff); \
-			case 5: *(--(c))=(unsigned char)(((l2)     )&0xff); \
-			case 4: *(--(c))=(unsigned char)(((l1)>>24L)&0xff); \
-			case 3: *(--(c))=(unsigned char)(((l1)>>16L)&0xff); \
-			case 2: *(--(c))=(unsigned char)(((l1)>> 8L)&0xff); \
-			case 1: *(--(c))=(unsigned char)(((l1)     )&0xff); \
-				} \
-			}
+#define l2cn(l1, l2, c, n)                                        \
+    {                                                             \
+        c += n;                                                   \
+        switch (n) {                                              \
+            case 8:                                               \
+                *(--(c)) = (unsigned char)(((l2) >> 24L) & 0xff); \
+            case 7:                                               \
+                *(--(c)) = (unsigned char)(((l2) >> 16L) & 0xff); \
+            case 6:                                               \
+                *(--(c)) = (unsigned char)(((l2) >> 8L) & 0xff);  \
+            case 5:                                               \
+                *(--(c)) = (unsigned char)(((l2)) & 0xff);        \
+            case 4:                                               \
+                *(--(c)) = (unsigned char)(((l1) >> 24L) & 0xff); \
+            case 3:                                               \
+                *(--(c)) = (unsigned char)(((l1) >> 16L) & 0xff); \
+            case 2:                                               \
+                *(--(c)) = (unsigned char)(((l1) >> 8L) & 0xff);  \
+            case 1:                                               \
+                *(--(c)) = (unsigned char)(((l1)) & 0xff);        \
+        }                                                         \
+    }
 
 /* NOTE - c is not incremented as per n2l */
-#define n2ln(c,l1,l2,n)	{ \
-			c+=n; \
-			l1=l2=0; \
-			switch (n) { \
-			case 8: l2 =((unsigned long)(*(--(c))))    ; \
-			case 7: l2|=((unsigned long)(*(--(c))))<< 8; \
-			case 6: l2|=((unsigned long)(*(--(c))))<<16; \
-			case 5: l2|=((unsigned long)(*(--(c))))<<24; \
-			case 4: l1 =((unsigned long)(*(--(c))))    ; \
-			case 3: l1|=((unsigned long)(*(--(c))))<< 8; \
-			case 2: l1|=((unsigned long)(*(--(c))))<<16; \
-			case 1: l1|=((unsigned long)(*(--(c))))<<24; \
-				} \
-			}
+#define n2ln(c, l1, l2, n)                               \
+    {                                                    \
+        c += n;                                          \
+        l1 = l2 = 0;                                     \
+        switch (n) {                                     \
+            case 8:                                      \
+                l2 = ((unsigned long)(*(--(c))));        \
+            case 7:                                      \
+                l2 |= ((unsigned long)(*(--(c)))) << 8;  \
+            case 6:                                      \
+                l2 |= ((unsigned long)(*(--(c)))) << 16; \
+            case 5:                                      \
+                l2 |= ((unsigned long)(*(--(c)))) << 24; \
+            case 4:                                      \
+                l1 = ((unsigned long)(*(--(c))));        \
+            case 3:                                      \
+                l1 |= ((unsigned long)(*(--(c)))) << 8;  \
+            case 2:                                      \
+                l1 |= ((unsigned long)(*(--(c)))) << 16; \
+            case 1:                                      \
+                l1 |= ((unsigned long)(*(--(c)))) << 24; \
+        }                                                \
+    }
 
 /* NOTE - c is not incremented as per l2n */
-#define l2nn(l1,l2,c,n)	{ \
-			c+=n; \
-			switch (n) { \
-			case 8: *(--(c))=(unsigned char)(((l2)    )&0xff); \
-			case 7: *(--(c))=(unsigned char)(((l2)>> 8)&0xff); \
-			case 6: *(--(c))=(unsigned char)(((l2)>>16)&0xff); \
-			case 5: *(--(c))=(unsigned char)(((l2)>>24)&0xff); \
-			case 4: *(--(c))=(unsigned char)(((l1)    )&0xff); \
-			case 3: *(--(c))=(unsigned char)(((l1)>> 8)&0xff); \
-			case 2: *(--(c))=(unsigned char)(((l1)>>16)&0xff); \
-			case 1: *(--(c))=(unsigned char)(((l1)>>24)&0xff); \
-				} \
-			}
+#define l2nn(l1, l2, c, n)                                       \
+    {                                                            \
+        c += n;                                                  \
+        switch (n) {                                             \
+            case 8:                                              \
+                *(--(c)) = (unsigned char)(((l2)) & 0xff);       \
+            case 7:                                              \
+                *(--(c)) = (unsigned char)(((l2) >> 8) & 0xff);  \
+            case 6:                                              \
+                *(--(c)) = (unsigned char)(((l2) >> 16) & 0xff); \
+            case 5:                                              \
+                *(--(c)) = (unsigned char)(((l2) >> 24) & 0xff); \
+            case 4:                                              \
+                *(--(c)) = (unsigned char)(((l1)) & 0xff);       \
+            case 3:                                              \
+                *(--(c)) = (unsigned char)(((l1) >> 8) & 0xff);  \
+            case 2:                                              \
+                *(--(c)) = (unsigned char)(((l1) >> 16) & 0xff); \
+            case 1:                                              \
+                *(--(c)) = (unsigned char)(((l1) >> 24) & 0xff); \
+        }                                                        \
+    }
 
 #undef n2l
-#if	defined(__GNUC__) && defined(__ppc__)
-/* alignment tolerant big-endian optimization */
-	#define n2l(c,l)	{ l= *((unsigned long *)c); c += 4; }
+#if defined(__GNUC__) && defined(__ppc__)
+    /* alignment tolerant big-endian optimization */
+    #define n2l(c, l)                  \
+        {                              \
+            l = *((unsigned long *)c); \
+            c += 4;                    \
+        }
 #else
-/* little endian, etc. */
-	#define n2l(c,l)	(l =((unsigned long)(*((c)++)))<<24L, \
-                         l|=((unsigned long)(*((c)++)))<<16L, \
-                         l|=((unsigned long)(*((c)++)))<< 8L, \
-                         l|=((unsigned long)(*((c)++))))
+    /* little endian, etc. */
+    #define n2l(c, l) (l = ((unsigned long)(*((c)++))) << 24L,  \
+                       l |= ((unsigned long)(*((c)++))) << 16L, \
+                       l |= ((unsigned long)(*((c)++))) << 8L,  \
+                       l |= ((unsigned long)(*((c)++))))
 #endif
 
 #undef l2n
-#if	defined(__GNUC__) && defined(__ppc__)
-	/* alignment tolerant big-endian optimization */
-	#define l2n(l,c)	{ *((unsigned long *)c) = l; c += 4; }
+#if defined(__GNUC__) && defined(__ppc__)
+    /* alignment tolerant big-endian optimization */
+    #define l2n(l, c)                  \
+        {                              \
+            *((unsigned long *)c) = l; \
+            c += 4;                    \
+        }
 #else
-	/* little endian, etc. */
-	#define l2n(l,c)    (*((c)++)=(unsigned char)(((l)>>24L)&0xff), \
-                         *((c)++)=(unsigned char)(((l)>>16L)&0xff), \
-                         *((c)++)=(unsigned char)(((l)>> 8L)&0xff), \
-                         *((c)++)=(unsigned char)(((l)     )&0xff))
+    /* little endian, etc. */
+    #define l2n(l, c) (*((c)++) = (unsigned char)(((l) >> 24L) & 0xff), \
+                       *((c)++) = (unsigned char)(((l) >> 16L) & 0xff), \
+                       *((c)++) = (unsigned char)(((l) >> 8L) & 0xff),  \
+                       *((c)++) = (unsigned char)(((l)) & 0xff))
 
-#endif	/* GNU, big endian */
+#endif /* GNU, big endian */
 
 #if defined(WIN32) && defined(_MSC_VER)
-#define ROTL(a,n)     (_lrotl(a,n))
+    #define ROTL(a, n) (_lrotl(a, n))
 #else
-#define ROTL(a,n)     ((((a)<<(n))&0xffffffffL)|((a)>>(32-(n))))
+    #define ROTL(a, n) ((((a) << (n)) & 0xffffffffL) | ((a) >> (32 - (n))))
 #endif
 
-#define C_M    0x3fc
-#define C_0    22L
-#define C_1    14L
-#define C_2     6L
-#define C_3     2L /* left shift */
+#define C_M 0x3fc
+#define C_0 22L
+#define C_1 14L
+#define C_2 6L
+#define C_3 2L /* left shift */
 
 /* The rotate has an extra 16 added to it to help the x86 asm */
 #if defined(CAST_PTR)
-#define E_CAST(n,key,L,R,OP1,OP2,OP3) \
-	{ \
-	int i; \
-	t=(key[n*2] OP1 R)&0xffffffffL; \
-	i=key[n*2+1]; \
-	t=ROTL(t,i); \
-	L^= (((((*(CAST_LONG *)((unsigned char *) \
-			CAST_S_table0+((t>>C_2)&C_M)) OP2 \
-		*(CAST_LONG *)((unsigned char *) \
-			CAST_S_table1+((t<<C_3)&C_M)))&0xffffffffL) OP3 \
-		*(CAST_LONG *)((unsigned char *) \
-			CAST_S_table2+((t>>C_0)&C_M)))&0xffffffffL) OP1 \
-		*(CAST_LONG *)((unsigned char *) \
-			CAST_S_table3+((t>>C_1)&C_M)))&0xffffffffL; \
-	}
+    #define E_CAST(n, key, L, R, OP1, OP2, OP3)                \
+        {                                                      \
+            int i;                                             \
+            t = (key[n * 2] OP1 R) & 0xffffffffL;              \
+            i = key[n * 2 + 1];                                \
+            t = ROTL(t, i);                                    \
+            L ^= (((((*(CAST_LONG *)((unsigned char *)         \
+                                         CAST_S_table0         \
+                                     + ((t >> C_2) & C_M)) OP2 \
+                      * (CAST_LONG *)((unsigned char *)        \
+                                          CAST_S_table1        \
+                                      + ((t << C_3) & C_M)))   \
+                     & 0xffffffffL) OP3                        \
+                    * (CAST_LONG *)((unsigned char *)          \
+                                        CAST_S_table2          \
+                                    + ((t >> C_0) & C_M)))     \
+                   & 0xffffffffL) OP1                          \
+                  * (CAST_LONG *)((unsigned char *)            \
+                                      CAST_S_table3            \
+                                  + ((t >> C_1) & C_M)))       \
+                & 0xffffffffL;                                 \
+        }
 #elif defined(CAST_PTR2)
-#define E_CAST(n,key,L,R,OP1,OP2,OP3) \
-	{ \
-	int i; \
-	CAST_LONG u,v,w; \
-	w=(key[n*2] OP1 R)&0xffffffffL; \
-	i=key[n*2+1]; \
-	w=ROTL(w,i); \
-	u=w>>C_2; \
-	v=w<<C_3; \
-	u&=C_M; \
-	v&=C_M; \
-	t= *(CAST_LONG *)((unsigned char *)CAST_S_table0+u); \
-	u=w>>C_0; \
-	t=(t OP2 *(CAST_LONG *)((unsigned char *)CAST_S_table1+v))&0xffffffffL;\
-	v=w>>C_1; \
-	u&=C_M; \
-	v&=C_M; \
-	t=(t OP3 *(CAST_LONG *)((unsigned char *)CAST_S_table2+u)&0xffffffffL);\
-	t=(t OP1 *(CAST_LONG *)((unsigned char *)CAST_S_table3+v)&0xffffffffL);\
-	L^=(t&0xffffffff); \
-	}
+    #define E_CAST(n, key, L, R, OP1, OP2, OP3)                                            \
+        {                                                                                  \
+            int i;                                                                         \
+            CAST_LONG u, v, w;                                                             \
+            w = (key[n * 2] OP1 R) & 0xffffffffL;                                          \
+            i = key[n * 2 + 1];                                                            \
+            w = ROTL(w, i);                                                                \
+            u = w >> C_2;                                                                  \
+            v = w << C_3;                                                                  \
+            u &= C_M;                                                                      \
+            v &= C_M;                                                                      \
+            t = *(CAST_LONG *)((unsigned char *)CAST_S_table0 + u);                        \
+            u = w >> C_0;                                                                  \
+            t = (t OP2 * (CAST_LONG *)((unsigned char *)CAST_S_table1 + v)) & 0xffffffffL; \
+            v = w >> C_1;                                                                  \
+            u &= C_M;                                                                      \
+            v &= C_M;                                                                      \
+            t = (t OP3 * (CAST_LONG *)((unsigned char *)CAST_S_table2 + u) & 0xffffffffL); \
+            t = (t OP1 * (CAST_LONG *)((unsigned char *)CAST_S_table3 + v) & 0xffffffffL); \
+            L ^= (t & 0xffffffff);                                                         \
+        }
 #else
-#define E_CAST(n,key,L,R,OP1,OP2,OP3) \
-	{ \
-	CAST_LONG a,b,c,d; \
-	t=(key[n*2] OP1 R)&0xffffffff; \
-	t=ROTL(t,(key[n*2+1])); \
-	a=CAST_S_table0[(t>> 8)&0xff]; \
-	b=CAST_S_table1[(t    )&0xff]; \
-	c=CAST_S_table2[(t>>24)&0xff]; \
-	d=CAST_S_table3[(t>>16)&0xff]; \
-	L^=(((((a OP2 b)&0xffffffffL) OP3 c)&0xffffffffL) OP1 d)&0xffffffffL; \
-	}
+    #define E_CAST(n, key, L, R, OP1, OP2, OP3)                                           \
+        {                                                                                 \
+            CAST_LONG a, b, c, d;                                                         \
+            t = (key[n * 2] OP1 R) & 0xffffffff;                                          \
+            t = ROTL(t, (key[n * 2 + 1]));                                                \
+            a = CAST_S_table0[(t >> 8) & 0xff];                                           \
+            b = CAST_S_table1[(t) & 0xff];                                                \
+            c = CAST_S_table2[(t >> 24) & 0xff];                                          \
+            d = CAST_S_table3[(t >> 16) & 0xff];                                          \
+            L ^= (((((a OP2 b) & 0xffffffffL) OP3 c) & 0xffffffffL) OP1 d) & 0xffffffffL; \
+        }
 #endif
 
 void CAST_set_key(CAST_KEY *key, int len, const unsigned char *data);
 
-void CAST_ecb_encrypt(const unsigned char *in,unsigned char *out,CAST_KEY *key,
-		      int enc);
+void CAST_ecb_encrypt(const unsigned char *in, unsigned char *out, CAST_KEY *key,
+                      int enc);
 
-void CAST_encrypt(CAST_LONG *data,CAST_KEY *key);
+void CAST_encrypt(CAST_LONG *data, CAST_KEY *key);
 
-void CAST_decrypt(CAST_LONG *data,CAST_KEY *key);
+void CAST_decrypt(CAST_LONG *data, CAST_KEY *key);
 
 #define OPENSSL_GLOBAL
 /*
  * These rename this tables to avoid symbols collision between libSystem
  * and libcrypto.
  */
-#define CAST_S_table0	CC_CAST_S_table0
-#define CAST_S_table1	CC_CAST_S_table1
-#define CAST_S_table2	CC_CAST_S_table2
-#define CAST_S_table3	CC_CAST_S_table3
-#define CAST_S_table4	CC_CAST_S_table4
-#define CAST_S_table5	CC_CAST_S_table5
-#define CAST_S_table6	CC_CAST_S_table6
-#define CAST_S_table7	CC_CAST_S_table7
+#define CAST_S_table0 CC_CAST_S_table0
+#define CAST_S_table1 CC_CAST_S_table1
+#define CAST_S_table2 CC_CAST_S_table2
+#define CAST_S_table3 CC_CAST_S_table3
+#define CAST_S_table4 CC_CAST_S_table4
+#define CAST_S_table5 CC_CAST_S_table5
+#define CAST_S_table6 CC_CAST_S_table6
+#define CAST_S_table7 CC_CAST_S_table7
 
 OPENSSL_EXTERN const CAST_LONG CAST_S_table0[256];
 OPENSSL_EXTERN const CAST_LONG CAST_S_table1[256];

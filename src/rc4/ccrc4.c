@@ -7,6 +7,7 @@
 
 #include <corecrypto/ccrc4.h>
 
-const struct ccrc4_info *ccrc4() {
+const struct ccrc4_info *ccrc4()
+{
     return &ccrc4_eay;
 }

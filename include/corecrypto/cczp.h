@@ -35,7 +35,7 @@ typedef void (*ccmod_func_t)(cc_ws_t ws, cczp_const_t zp, cc_unit *t, const cc_u
 // make sure n is the first element see ccrsa_ctx_n macro
 #define __CCZP_HEADER_ELEMENTS_DEFINITIONS(pre) \
     cc_size pre##n;                             \
-    cc_unit pre##options;                       \
+    cc_unit pre##bitlen;                       \
     ccmod_func_t pre##mulmod_prime;
 
 #define __CCZP_ELEMENTS_DEFINITIONS(pre)    \

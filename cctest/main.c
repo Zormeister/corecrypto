@@ -7,8 +7,8 @@
 
 #include <stdio.h>
 
-#define CCTEST_MD2 0
-#define CCTEST_MD4 0
+#define CCTEST_MD2    0
+#define CCTEST_MD4    0
 #define CCTEST_RMD160 0
 
 // fr gotta make more test cases
@@ -24,7 +24,8 @@ extern int TestRMD160(void);
 
 extern void TestChaCha20(void);
 
-int main(int argc, const char * argv[]) {
+int main(int argc, const char *argv[])
+{
     int res = 0;
 #if CCTEST_MD2
     res |= TestMD2();
@@ -33,10 +34,10 @@ int main(int argc, const char * argv[]) {
 #if CCTEST_MD4
     res |= TestMD4();
 #endif
-    
+
 #if CCTEST_RMD160
     res |= TestRMD160();
 #endif
-    //TestChaCha20();
+    // TestChaCha20();
     return res;
 }

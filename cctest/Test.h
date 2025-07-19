@@ -31,5 +31,4 @@ struct {
     const uint8_t *expected_out;
 } typedef CCTestHashCase;
 
-
 #endif /* Test_h */

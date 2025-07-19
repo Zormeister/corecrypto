@@ -13,15 +13,15 @@
  *  - https://datatracker.ietf.org/doc/html/rfc7539
  */
 
-#define CHACHA_QUARTERROUND(state,a,b,c,d) \
-    state[a] += state[b]; \
+#define CHACHA_QUARTERROUND(state, a, b, c, d)  \
+    state[a] += state[b];                       \
     state[d] = CC_ROL(state[d] ^ state[a], 16); \
-    state[c] += state[d]; \
+    state[c] += state[d];                       \
     state[b] = CC_ROL(state[b] ^ state[c], 12); \
-    state[a] += state[b]; \
-    state[d] = CC_ROL(state[d] ^ state[a], 8); \
-    state[c] += state[d]; \
-    state[b] = CC_ROL(state[b] ^ state[c], 7); \
+    state[a] += state[b];                       \
+    state[d] = CC_ROL(state[d] ^ state[a], 8);  \
+    state[c] += state[d];                       \
+    state[b] = CC_ROL(state[b] ^ state[c], 7);
 
 /*
  *  c = constant, k - key, b = counter, n = nonce
@@ -31,11 +31,12 @@
  *  bbbbbbbb  nnnnnnnn  nnnnnnnn  nnnnnnnn
  */
 
-int ccchacha20_init(ccchacha20_ctx *ctx, const uint8_t *key) {
+int ccchacha20_init(ccchacha20_ctx *ctx, const uint8_t *key)
+{
     if (ctx == NULL || key == NULL) {
         return CCERR_PARAMETER;
     }
-    
+
     if (ctx->state[0] != 0) {
         return CCERR_CALL_SEQUENCE;
     }
@@ -60,7 +61,8 @@ int ccchacha20_init(ccchacha20_ctx *ctx, const uint8_t *key) {
     return CCERR_OK;
 }
 
-int ccchacha20_setcounter(ccchacha20_ctx *ctx, uint32_t counter) {
+int ccchacha20_setcounter(ccchacha20_ctx *ctx, uint32_t counter)
+{
     if (ctx == NULL) {
         return CCERR_PARAMETER;
     }
@@ -70,7 +72,8 @@ int ccchacha20_setcounter(ccchacha20_ctx *ctx, uint32_t counter) {
     return CCERR_OK;
 }
 
-int ccchacha20_setnonce(ccchacha20_ctx *ctx, const uint8_t *nonce) {
+int ccchacha20_setnonce(ccchacha20_ctx *ctx, const uint8_t *nonce)
+{
     if (ctx == NULL || nonce == NULL) {
         return CCERR_PARAMETER;
     }
@@ -87,19 +90,20 @@ int ccchacha20_setnonce(ccchacha20_ctx *ctx, const uint8_t *nonce) {
     return CCERR_OK;
 }
 
-int ccchacha20_update(ccchacha20_ctx *ctx, size_t nbytes, const void *in, void *out) {
+int ccchacha20_update(ccchacha20_ctx *ctx, size_t nbytes, const void *in, void *out)
+{
     const uint32_t *data_chunk_ptr = in;
-    uint32_t *out_chunk_buf = out;
+    uint32_t *out_chunk_buf        = out;
 
     if (ctx == NULL || in == NULL || out == NULL) { /* CHECK IF OUR PARAMETERS AREN'T NULL. or maybe that's CC_NONNULL */
         return CCERR_PARAMETER;
     }
-    
+
     for (;;) {
         if (nbytes == 0) { break; }
         /* for every block we have, */
         uint32_t *buf = (uint32_t *)ctx->buffer;
-        
+
         /* copy our initial state to the buffer so */
         CC_MEMCPY(buf, ctx->state, CCCHACHA20_BLOCK_NBYTES);
 
@@ -114,12 +118,12 @@ int ccchacha20_update(ccchacha20_ctx *ctx, size_t nbytes, const void *in, void *
             CHACHA_QUARTERROUND(buf, 2, 7, 8, 13);
             CHACHA_QUARTERROUND(buf, 3, 4, 9, 14);
         }
-        
+
         /* once we're done, we have to add the initial state to the current state, or vice versa. */
         for (int s = 0; s < 16; s++) {
             buf[s] += ctx->state[s];
         }
-        
+
         if (nbytes >= 64) {
             for (int x = 0; x < 16; x++) {
                 buf[x] ^= CC_H2LE32(data_chunk_ptr[x]);
@@ -134,7 +138,7 @@ int ccchacha20_update(ccchacha20_ctx *ctx, size_t nbytes, const void *in, void *
             CC_MEMCPY(out_chunk_buf, ctx->buffer, nbytes);
             break; /* i ASSUME this means we're done here. */
         }
-        
+
         ctx->state[12]++; /* if the counter spills over 0xFFFFFFFF then I think whoever is using this is stupid. */
         nbytes -= 64;
         data_chunk_ptr += 16;
@@ -146,19 +150,22 @@ int ccchacha20_update(ccchacha20_ctx *ctx, size_t nbytes, const void *in, void *
 
 // Is this really all it does?
 // It doesn't even wipe the nonce.
-int ccchacha20_reset(ccchacha20_ctx *ctx) {
+int ccchacha20_reset(ccchacha20_ctx *ctx)
+{
 
     ccchacha20_setcounter(ctx, 0); // reset counter
 
     return CCERR_OK;
 }
 
-int ccchacha20_final(ccchacha20_ctx *ctx) {
+int ccchacha20_final(ccchacha20_ctx *ctx)
+{
     cc_clear(sizeof(*ctx), ctx);
     return CCERR_OK;
 };
-    
-int ccchacha20(const void *key, const void *nonce, uint32_t counter, size_t nbytes, const void *in, void *out) {
+
+int ccchacha20(const void *key, const void *nonce, uint32_t counter, size_t nbytes, const void *in, void *out)
+{
     // check that we have our required args
     if (key == NULL || nonce == NULL || in == NULL || out == NULL) {
         return CCERR_PARAMETER;

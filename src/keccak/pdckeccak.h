@@ -12,7 +12,7 @@
 
 /* This is nowhere near the avaiable keccak functions in mainstream CC, but this is good enough */
 
-#define CC_KECCAK_MAX_ROW  4
+#define CC_KECCAK_MAX_ROW    4
 #define CC_KECCAK_MAX_COLUMN 4
 #define CC_KECCAK_MAX_DEPTH  64
 

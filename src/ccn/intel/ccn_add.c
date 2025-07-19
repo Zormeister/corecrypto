@@ -17,9 +17,10 @@
 #define cc_addcarry(cin, a, b, out) _addcarry_u32(cin, a, b, out)
 #endif
 
-cc_unit ccn_add_asm(cc_size n, cc_unit *r, const cc_unit *s, const cc_unit *t) {
+cc_unit ccn_add_asm(cc_size n, cc_unit *r, const cc_unit *s, const cc_unit *t)
+{
     uint8_t carry_in = 0;
-    cc_unit carry = 0;
+    cc_unit carry    = 0;
 
     for (cc_size i = 0; i < n; i++) {
         carry_in = cc_addcarry(carry_in, s[i], t[i], &r[i]);

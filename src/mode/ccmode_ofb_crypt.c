@@ -5,13 +5,14 @@
 //  Created by Zormeister on 13/6/2025.
 //
 
-#include <corecrypto/cc_priv.h>
 #include "ccmode_internal.h"
+#include <corecrypto/cc_priv.h>
 
-int ccmode_ofb_crypt(ccofb_ctx *ctx, size_t nbytes, const void *in, void *out) {
+int ccmode_ofb_crypt(ccofb_ctx *ctx, size_t nbytes, const void *in, void *out)
+{
     struct _ccmode_ofb_key *okey = (struct _ccmode_ofb_key *)ctx;
-    const uint8_t *in_ptr = in;
-    uint8_t *out_ptr = out;
+    const uint8_t *in_ptr        = in;
+    uint8_t *out_ptr             = out;
 
     /* way more efficient than just cycling it by block. maybe i should do this for other impls. */
     while (nbytes--) {

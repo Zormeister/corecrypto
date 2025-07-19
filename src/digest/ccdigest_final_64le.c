@@ -13,11 +13,12 @@
 
 #include <stddef.h>
 
-#include <corecrypto/ccdigest_priv.h>
 #include <corecrypto/cc_priv.h>
+#include <corecrypto/ccdigest_priv.h>
 
 void ccdigest_final_64le(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
-                          void *digest) {
+                         void *digest)
+{
     unsigned char *dgst = digest;
 
     ccdigest_nbits(di, ctx) += ccdigest_num(di, ctx) * 8;
@@ -43,7 +44,7 @@ void ccdigest_final_64le(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
 
     /* copy output */
     for (unsigned int i = 0; i < di->output_size / 4; i++) {
-        CC_STORE32_LE(ccdigest_state_u32(di, ctx)[i], dgst+(4*i));
+        CC_STORE32_LE(ccdigest_state_u32(di, ctx)[i], dgst + (4 * i));
     }
 }
 
@@ -51,21 +52,23 @@ void ccdigest_final_64le(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
 
 #if ZORM_TAMPERING
 
-void ccdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest) {
+void ccdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest)
+{
     di->final(di, ctx, digest);
 }
 
 #else
 
-void ccdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest) {
-	// TODO: Is this the correct implementation?
+void ccdigest_final_fn(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest)
+{
+    // TODO: Is this the correct implementation?
 
 #if BYTE_ORDER == BIG_ENDIAN
-	ccdigest_final_64be(di, ctx, digest);
+    ccdigest_final_64be(di, ctx, digest);
 #elif BYTE_ORDER == LITTLE_ENDIAN
-	ccdigest_final_64le(di, ctx, digest);
+    ccdigest_final_64le(di, ctx, digest);
 #else
-	cc_abort("Unsupported byte order");
+    cc_abort("Unsupported byte order");
 #endif
 }
 

@@ -8,7 +8,8 @@
 #include <corecrypto/cc_priv.h>
 #include <corecrypto/cccmac_priv.h>
 
-int cccmac_init(const struct ccmode_cbc *cbc, cccmac_ctx_t ctx, size_t key_nbytes, const void *key) {
+int cccmac_init(const struct ccmode_cbc *cbc, cccmac_ctx_t ctx, size_t key_nbytes, const void *key)
+{
     cccmac_cbc(ctx) = cbc;
 
     /* Block size CANNOT be larger than CMAC_BLOCKSIZE. */

@@ -10,12 +10,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-uint8_t key[32] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
-uint32_t nonce[3] = {0,0,0};
+uint8_t key[32]   = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
+uint32_t nonce[3] = { 0, 0, 0 };
 
-uint64_t data[8] = {0,0,0,0,0,0,0,0};
+uint64_t data[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
-uint64_t out[8] = {0,0,0,0,0,0,0,0};
+uint64_t out[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 /*
  * 000  76 b8 e0 ad a0 f1 3d 90 40 5d 6a e5 53 86 bd 28  v.....=.@]j.S..(
  * 016  bd d2 19 b8 a0 8d ed 1a a8 36 ef cc 8b 77 0d c7  .........6...w..
@@ -45,18 +45,18 @@ void TestChaCha20(void) {
         printf("ccchacha20_setcounter failed");
         return;
     }
-    
+
     printf("current state:\n");
     for (int i = 0; i < 16; i++) {
         printf("%04X ", ctx.state[i]);
         printf("\n");
     }
-    
+
     if (ccchacha20_update(&ctx, CCCHACHA20_BLOCK_NBYTES, data, out) != CCERR_OK) {
         printf("ccchacha20_update failed");
         return;
     }
-    
+
     if (memcmp(out, expected, sizeof(out)) == 0) {
         printf("omg it worked\n");
     } else {
@@ -66,7 +66,7 @@ void TestChaCha20(void) {
         }
         printf("\n");
     }
-    
+
     ccchacha20_final(&ctx);
 }
 */

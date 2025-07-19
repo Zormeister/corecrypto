@@ -7,6 +7,7 @@
 
 #include <corecrypto/cczp.h>
 
-int cczp_power(cczp_const_t zp, cc_unit *r, const cc_unit *m, const cc_unit *e) {
+int cczp_power(cczp_const_t zp, cc_unit *r, const cc_unit *m, const cc_unit *e)
+{
     return CCERR_OK;
 }

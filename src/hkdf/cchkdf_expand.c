@@ -10,7 +10,8 @@
 
 int cchkdf_expand(struct ccdigest_info *di, size_t prk_len, const void *prk,
                   size_t info_len, const void *info,
-                  size_t derived_len,  void *derived_key) {
+                  size_t derived_len, void *derived_key)
+{
     /* TODO */
     return CCERR_OK;
 }

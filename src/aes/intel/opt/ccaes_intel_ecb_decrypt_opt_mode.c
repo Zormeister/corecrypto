@@ -17,7 +17,8 @@ struct ccaes_intel_opt_key {
 extern void AESExpandKeyForDecryption(uint32_t *expanded_key, const uint32_t *key, long key_size);
 extern void AESDecryptWithExpandedKey(void *out, const void *in, const uint32_t *expanded_key, int nrounds);
 
-static int opt_wrapper_init(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t key_len, const void *key) {
+static int opt_wrapper_init(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t key_len, const void *key)
+{
     struct ccaes_intel_opt_key *k = (struct ccaes_intel_opt_key *)ctx;
     AESExpandKeyForDecryption(k->key, key, key_len / sizeof(uint32_t));
     switch (key_len) {
@@ -34,7 +35,8 @@ static int opt_wrapper_init(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t
     return 0;
 }
 
-static int opt_wrapper_dec(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out) {
+static int opt_wrapper_dec(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out)
+{
     struct ccaes_intel_opt_key *k = (struct ccaes_intel_opt_key *)ctx;
     while (nblocks--) {
         AESDecryptWithExpandedKey(out, in, k->key, k->rounds);
@@ -45,10 +47,10 @@ static int opt_wrapper_dec(const ccecb_ctx *ctx, size_t nblocks, const void *in,
 }
 
 const struct ccmode_ecb ccaes_intel_ecb_decrypt_opt_mode = {
-    .size = ccn_sizeof_size(sizeof(struct ccaes_intel_opt_key)),
+    .size       = ccn_sizeof_size(sizeof(struct ccaes_intel_opt_key)),
     .block_size = CCAES_BLOCK_SIZE,
-    .init = opt_wrapper_init,
-    .ecb = opt_wrapper_dec
+    .init       = opt_wrapper_init,
+    .ecb        = opt_wrapper_dec
 };
 
 #endif

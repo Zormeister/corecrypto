@@ -7,11 +7,12 @@
 
 #include "ccrc2_ltc_internal.h"
 
-int ccrc2_ltc_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out) {
+int ccrc2_ltc_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out)
+{
     uint32_t x76, x54, x32, x10;
     struct ccrc2_ltc_ctx *ltc = (struct ccrc2_ltc_ctx *)ctx;
-    const uint8_t *cur_in = in;
-    uint8_t *cur_out = out;
+    const uint8_t *cur_in     = in;
+    uint8_t *cur_out          = out;
 
     while (nblocks--) {
         x76 = ((unsigned)cur_in[7] << 8) + (unsigned)cur_in[6];
@@ -20,16 +21,16 @@ int ccrc2_ltc_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, 
         x10 = ((unsigned)cur_in[1] << 8) + (unsigned)cur_in[0];
 
         for (int i = 0; i < 16; i++) {
-            x10 = (x10 + (x32 & ~x76) + (x54 & x76) + ltc->xkey[4*i+0]) & 0xFFFF;
+            x10 = (x10 + (x32 & ~x76) + (x54 & x76) + ltc->xkey[4 * i + 0]) & 0xFFFF;
             x10 = ((x10 << 1) | (x10 >> 15));
 
-            x32 = (x32 + (x54 & ~x10) + (x76 & x10) + ltc->xkey[4*i+1]) & 0xFFFF;
+            x32 = (x32 + (x54 & ~x10) + (x76 & x10) + ltc->xkey[4 * i + 1]) & 0xFFFF;
             x32 = ((x32 << 2) | (x32 >> 14));
 
-            x54 = (x54 + (x76 & ~x32) + (x10 & x32) + ltc->xkey[4*i+2]) & 0xFFFF;
+            x54 = (x54 + (x76 & ~x32) + (x10 & x32) + ltc->xkey[4 * i + 2]) & 0xFFFF;
             x54 = ((x54 << 3) | (x54 >> 13));
 
-            x76 = (x76 + (x10 & ~x54) + (x32 & x54) + ltc->xkey[4*i+3]) & 0xFFFF;
+            x76 = (x76 + (x10 & ~x54) + (x32 & x54) + ltc->xkey[4 * i + 3]) & 0xFFFF;
             x76 = ((x76 << 5) | (x76 >> 11));
 
             if (i == 4 || i == 10) {

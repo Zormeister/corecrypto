@@ -17,12 +17,13 @@
 #include <wmmintrin.h>
 
 /* this is pain */
-int ccaes_intel_aesni_expand_key(struct ccaes_intel_aesni_ctx *ctx, size_t key_len, const void *key) {
+int ccaes_intel_aesni_expand_key(struct ccaes_intel_aesni_ctx *ctx, size_t key_len, const void *key)
+{
     if (key_len == CCAES_KEY_SIZE_128) {
         ctx->round_keys[0] = _mm_loadu_si128(key);
         return ccaes_intel_aesni128_gen_round_keys(ctx);
     } else if (key_len == CCAES_KEY_SIZE_192) {
-        ctx->round_keys[0] = _mm_loadu_si128(key); /* Key block 1. (16 bytes) */
+        ctx->round_keys[0] = _mm_loadu_si128(key);                     /* Key block 1. (16 bytes) */
         ctx->round_keys[1] = _mm_loadu_si64(key + CCAES_KEY_SIZE_128); /* Key block 2. (8 bytes) */
         return ccaes_intel_aesni192_gen_round_keys(ctx);
     } else if (key_len == CCAES_KEY_SIZE_256) {
@@ -33,7 +34,8 @@ int ccaes_intel_aesni_expand_key(struct ccaes_intel_aesni_ctx *ctx, size_t key_l
     return CCERR_PARAMETER;
 }
 
-__m128i ccaes_intel_aesni_run_cipher_encrypt(struct ccaes_intel_aesni_ctx *ctx, __m128i state) {
+__m128i ccaes_intel_aesni_run_cipher_encrypt(struct ccaes_intel_aesni_ctx *ctx, __m128i state)
+{
     __m128i cur = state;
 
     /* Key 0 round */
@@ -49,7 +51,8 @@ __m128i ccaes_intel_aesni_run_cipher_encrypt(struct ccaes_intel_aesni_ctx *ctx, 
     return cur;
 }
 
-__m128i ccaes_intel_aesni_run_cipher_decrypt(struct ccaes_intel_aesni_ctx *ctx, __m128i state) {
+__m128i ccaes_intel_aesni_run_cipher_decrypt(struct ccaes_intel_aesni_ctx *ctx, __m128i state)
+{
     __m128i cur = state;
 
     /* Last key goes first, either key 10, 12 or 14. */

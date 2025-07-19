@@ -10,13 +10,14 @@
 //  xnu https://opensource.apple.com/source/xnu/xnu-2782.40.9
 //  License https://opensource.apple.com/source/xnu/xnu-2782.40.9/APPLE_LICENSE
 
-#include <stddef.h>
-#include <corecrypto/ccdigest.h>
 #include <corecrypto/cc_priv.h>
+#include <corecrypto/ccdigest.h>
+#include <stddef.h>
 
 void ccdigest_update(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
-                      size_t len, const void *data) {
-    char * data_ptr = (char *) data;
+                     size_t len, const void *data)
+{
+    char *data_ptr = (char *)data;
     while (len > 0) {
         if (ccdigest_num(di, ctx) == 0 && len > di->block_size) {
             size_t nblocks = len / di->block_size;
@@ -27,8 +28,9 @@ void ccdigest_update(const struct ccdigest_info *di, ccdigest_ctx_t ctx,
             ccdigest_nbits(di, ctx) += nbytes * 8;
         } else {
             size_t n = di->block_size - ccdigest_num(di, ctx);
-            if (len < n)
+            if (len < n) {
                 n = len;
+            }
             CC_MEMCPY(ccdigest_data(di, ctx) + ccdigest_num(di, ctx), data_ptr, n);
             /* typecast: less than block size, will always fit into an int */
             ccdigest_num(di, ctx) += (unsigned int)n;

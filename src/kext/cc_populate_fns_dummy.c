@@ -13,7 +13,8 @@
 
 #include "../dummy/pdcrypto_dummy.h"
 
-void cc_populate_fns_dummy(crypto_functions_t fns) {
+void cc_populate_fns_dummy(crypto_functions_t fns)
+{
 #if CCKEXT_TRACE
     printf("corecrypto: populating dummies for XNU\n");
 #endif

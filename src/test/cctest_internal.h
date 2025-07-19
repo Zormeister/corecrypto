@@ -8,9 +8,9 @@
 #ifndef _CORECRYPTO_CCTEST_INTERNAL_H_
 #define _CORECRYPTO_CCTEST_INTERNAL_H_
 
-#include <stdint.h>
 #include <corecrypto/cc.h>
 #include <corecrypto/cc_config.h>
+#include <stdint.h>
 
 #if CORECRYPTO_TEST
 
@@ -57,4 +57,3 @@ int cctest_run_cipher_tests(crypto_cipher_type_t ciph, crypto_cipher_mode_t mode
 #endif /* CORECRYPTO_TEST */
 
 #endif /* _CORECRYPTO_CCTEST_INTERNAL_H_ */
-

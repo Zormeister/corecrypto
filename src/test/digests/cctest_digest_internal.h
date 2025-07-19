@@ -8,8 +8,8 @@
 #ifndef _CORECRYPTO_CCTEST_DIGEST_INTERNAL_H_
 #define _CORECRYPTO_CCTEST_DIGEST_INTERNAL_H_
 
-#include <corecrypto/cc.h>
 #include "../cctest_internal.h"
+#include <corecrypto/cc.h>
 
 #if CORECRYPTO_TEST
 

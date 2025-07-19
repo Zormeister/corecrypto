@@ -5,12 +5,12 @@
 #include <sys/systm.h>
 #endif
 
-#include <stddef.h>
-#include <corecrypto/ccmode.h>
-#include <corecrypto/ccaes.h>
-#include <corecrypto/ccn.h>
 #include <corecrypto/cc_debug.h>
 #include <corecrypto/cc_priv.h>
+#include <corecrypto/ccaes.h>
+#include <corecrypto/ccmode.h>
+#include <corecrypto/ccn.h>
+#include <stddef.h>
 
 #include "aes128.h"
 
@@ -34,7 +34,7 @@ static int pdcmode_aes_ecb_init(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, si
     }
 
     AES128_set_key((struct _pdcmode_aes128_ctx *)ctx, key);
-	return 0;
+    return 0;
 }
 
 static int pdcmode_aes_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out)
@@ -42,7 +42,7 @@ static int pdcmode_aes_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const v
     printf("%s\n", __func__);
 
     AES128_ECB_encrypt((struct _pdcmode_aes128_ctx *)ctx, nblocks, in, out);
-	return 0;
+    return 0;
 }
 
 static int pdcmode_aes_ecb_decrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out)
@@ -50,19 +50,19 @@ static int pdcmode_aes_ecb_decrypt(const ccecb_ctx *ctx, size_t nblocks, const v
     printf("%s\n", __func__);
 
     AES128_ECB_decrypt((struct _pdcmode_aes128_ctx *)ctx, nblocks, in, out);
-	return 0;
+    return 0;
 }
 
 const struct ccmode_ecb ccaes_tinyaes_ecb_encrypt_mode = {
-    .size = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
+    .size       = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
     .block_size = CCAES_BLOCK_SIZE,
-    .init = pdcmode_aes_ecb_init,
-    .ecb = pdcmode_aes_ecb_encrypt
+    .init       = pdcmode_aes_ecb_init,
+    .ecb        = pdcmode_aes_ecb_encrypt
 };
 
 const struct ccmode_ecb ccaes_tinyaes_ecb_decrypt_mode = {
-    .size = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
+    .size       = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
     .block_size = CCAES_BLOCK_SIZE,
-    .init = pdcmode_aes_ecb_init,
-    .ecb = pdcmode_aes_ecb_decrypt
+    .init       = pdcmode_aes_ecb_init,
+    .ecb        = pdcmode_aes_ecb_decrypt
 };

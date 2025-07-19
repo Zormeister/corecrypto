@@ -7,7 +7,8 @@
 
 #include "ccmode_internal.h"
 
-int ccmode_cbc_init(const struct ccmode_cbc *cbc, cccbc_ctx *ctx, size_t key_len, const void *key) {
+int ccmode_cbc_init(const struct ccmode_cbc *cbc, cccbc_ctx *ctx, size_t key_len, const void *key)
+{
     struct _ccmode_cbc_key *fctx = (struct _ccmode_cbc_key *)ctx;
 
     fctx->ecb = (struct ccmode_ecb *)cbc->custom; /* set the custom. */

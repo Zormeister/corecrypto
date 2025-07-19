@@ -6,8 +6,8 @@
 //
 
 #include <corecrypto/cc_priv.h>
-#include <corecrypto/ccmd4.h>
 #include <corecrypto/ccdigest_priv.h>
+#include <corecrypto/ccmd4.h>
 
 // Thank you so much to Tom St Denis for the implementation for MD4
 // LibTomCrypt is licensed under the unlicense.
@@ -36,18 +36,21 @@
 /* FF, GG and HH are transformations for rounds 1, 2 and 3 */
 /* Rotation is separate from addition to prevent recomputation */
 
-#define FF(a, b, c, d, x, s) { \
-    (a) += F ((b), (c), (d)) + (x); \
-    (a) = ROTATE_LEFT ((a), (s)); \
-  }
-#define GG(a, b, c, d, x, s) { \
-    (a) += G ((b), (c), (d)) + (x) + 0x5a827999UL; \
-    (a) = ROTATE_LEFT ((a), (s)); \
-  }
-#define HH(a, b, c, d, x, s) { \
-    (a) += H ((b), (c), (d)) + (x) + 0x6ed9eba1UL; \
-    (a) = ROTATE_LEFT ((a), (s)); \
-  }
+#define FF(a, b, c, d, x, s)           \
+    {                                  \
+        (a) += F((b), (c), (d)) + (x); \
+        (a) = ROTATE_LEFT((a), (s));   \
+    }
+#define GG(a, b, c, d, x, s)                          \
+    {                                                 \
+        (a) += G((b), (c), (d)) + (x) + 0x5a827999UL; \
+        (a) = ROTATE_LEFT((a), (s));                  \
+    }
+#define HH(a, b, c, d, x, s)                          \
+    {                                                 \
+        (a) += H((b), (c), (d)) + (x) + 0x6ed9eba1UL; \
+        (a) = ROTATE_LEFT((a), (s));                  \
+    }
 
 const uint32_t ccmd4_initial_state[4] = {
     0x67452301UL,
@@ -56,7 +59,8 @@ const uint32_t ccmd4_initial_state[4] = {
     0x10325476UL
 };
 
-static void md4_compress(unsigned *state, unsigned char *buffer) {
+static void md4_compress(unsigned *state, unsigned char *buffer)
+{
     uint32_t x[16], a, b, c, d;
     int i;
 
@@ -68,63 +72,62 @@ static void md4_compress(unsigned *state, unsigned char *buffer) {
 
     /* copy the state into 512-bits into W[0..15] */
     for (i = 0; i < 16; i++) {
-        CC_LOAD32_LE(x[i], buffer + (4*i));
+        CC_LOAD32_LE(x[i], buffer + (4 * i));
     }
 
     /* Round 1 */
-    FF (a, b, c, d, x[ 0], S11); /* 1 */
-    FF (d, a, b, c, x[ 1], S12); /* 2 */
-    FF (c, d, a, b, x[ 2], S13); /* 3 */
-    FF (b, c, d, a, x[ 3], S14); /* 4 */
-    FF (a, b, c, d, x[ 4], S11); /* 5 */
-    FF (d, a, b, c, x[ 5], S12); /* 6 */
-    FF (c, d, a, b, x[ 6], S13); /* 7 */
-    FF (b, c, d, a, x[ 7], S14); /* 8 */
-    FF (a, b, c, d, x[ 8], S11); /* 9 */
-    FF (d, a, b, c, x[ 9], S12); /* 10 */
-    FF (c, d, a, b, x[10], S13); /* 11 */
-    FF (b, c, d, a, x[11], S14); /* 12 */
-    FF (a, b, c, d, x[12], S11); /* 13 */
-    FF (d, a, b, c, x[13], S12); /* 14 */
-    FF (c, d, a, b, x[14], S13); /* 15 */
-    FF (b, c, d, a, x[15], S14); /* 16 */
+    FF(a, b, c, d, x[0], S11);  /* 1 */
+    FF(d, a, b, c, x[1], S12);  /* 2 */
+    FF(c, d, a, b, x[2], S13);  /* 3 */
+    FF(b, c, d, a, x[3], S14);  /* 4 */
+    FF(a, b, c, d, x[4], S11);  /* 5 */
+    FF(d, a, b, c, x[5], S12);  /* 6 */
+    FF(c, d, a, b, x[6], S13);  /* 7 */
+    FF(b, c, d, a, x[7], S14);  /* 8 */
+    FF(a, b, c, d, x[8], S11);  /* 9 */
+    FF(d, a, b, c, x[9], S12);  /* 10 */
+    FF(c, d, a, b, x[10], S13); /* 11 */
+    FF(b, c, d, a, x[11], S14); /* 12 */
+    FF(a, b, c, d, x[12], S11); /* 13 */
+    FF(d, a, b, c, x[13], S12); /* 14 */
+    FF(c, d, a, b, x[14], S13); /* 15 */
+    FF(b, c, d, a, x[15], S14); /* 16 */
 
     /* Round 2 */
-    GG (a, b, c, d, x[ 0], S21); /* 17 */
-    GG (d, a, b, c, x[ 4], S22); /* 18 */
-    GG (c, d, a, b, x[ 8], S23); /* 19 */
-    GG (b, c, d, a, x[12], S24); /* 20 */
-    GG (a, b, c, d, x[ 1], S21); /* 21 */
-    GG (d, a, b, c, x[ 5], S22); /* 22 */
-    GG (c, d, a, b, x[ 9], S23); /* 23 */
-    GG (b, c, d, a, x[13], S24); /* 24 */
-    GG (a, b, c, d, x[ 2], S21); /* 25 */
-    GG (d, a, b, c, x[ 6], S22); /* 26 */
-    GG (c, d, a, b, x[10], S23); /* 27 */
-    GG (b, c, d, a, x[14], S24); /* 28 */
-    GG (a, b, c, d, x[ 3], S21); /* 29 */
-    GG (d, a, b, c, x[ 7], S22); /* 30 */
-    GG (c, d, a, b, x[11], S23); /* 31 */
-    GG (b, c, d, a, x[15], S24); /* 32 */
+    GG(a, b, c, d, x[0], S21);  /* 17 */
+    GG(d, a, b, c, x[4], S22);  /* 18 */
+    GG(c, d, a, b, x[8], S23);  /* 19 */
+    GG(b, c, d, a, x[12], S24); /* 20 */
+    GG(a, b, c, d, x[1], S21);  /* 21 */
+    GG(d, a, b, c, x[5], S22);  /* 22 */
+    GG(c, d, a, b, x[9], S23);  /* 23 */
+    GG(b, c, d, a, x[13], S24); /* 24 */
+    GG(a, b, c, d, x[2], S21);  /* 25 */
+    GG(d, a, b, c, x[6], S22);  /* 26 */
+    GG(c, d, a, b, x[10], S23); /* 27 */
+    GG(b, c, d, a, x[14], S24); /* 28 */
+    GG(a, b, c, d, x[3], S21);  /* 29 */
+    GG(d, a, b, c, x[7], S22);  /* 30 */
+    GG(c, d, a, b, x[11], S23); /* 31 */
+    GG(b, c, d, a, x[15], S24); /* 32 */
 
     /* Round 3 */
-    HH (a, b, c, d, x[ 0], S31); /* 33 */
-    HH (d, a, b, c, x[ 8], S32); /* 34 */
-    HH (c, d, a, b, x[ 4], S33); /* 35 */
-    HH (b, c, d, a, x[12], S34); /* 36 */
-    HH (a, b, c, d, x[ 2], S31); /* 37 */
-    HH (d, a, b, c, x[10], S32); /* 38 */
-    HH (c, d, a, b, x[ 6], S33); /* 39 */
-    HH (b, c, d, a, x[14], S34); /* 40 */
-    HH (a, b, c, d, x[ 1], S31); /* 41 */
-    HH (d, a, b, c, x[ 9], S32); /* 42 */
-    HH (c, d, a, b, x[ 5], S33); /* 43 */
-    HH (b, c, d, a, x[13], S34); /* 44 */
-    HH (a, b, c, d, x[ 3], S31); /* 45 */
-    HH (d, a, b, c, x[11], S32); /* 46 */
-    HH (c, d, a, b, x[ 7], S33); /* 47 */
-    HH (b, c, d, a, x[15], S34); /* 48 */
-
+    HH(a, b, c, d, x[0], S31);  /* 33 */
+    HH(d, a, b, c, x[8], S32);  /* 34 */
+    HH(c, d, a, b, x[4], S33);  /* 35 */
+    HH(b, c, d, a, x[12], S34); /* 36 */
+    HH(a, b, c, d, x[2], S31);  /* 37 */
+    HH(d, a, b, c, x[10], S32); /* 38 */
+    HH(c, d, a, b, x[6], S33);  /* 39 */
+    HH(b, c, d, a, x[14], S34); /* 40 */
+    HH(a, b, c, d, x[1], S31);  /* 41 */
+    HH(d, a, b, c, x[9], S32);  /* 42 */
+    HH(c, d, a, b, x[5], S33);  /* 43 */
+    HH(b, c, d, a, x[13], S34); /* 44 */
+    HH(a, b, c, d, x[3], S31);  /* 45 */
+    HH(d, a, b, c, x[11], S32); /* 46 */
+    HH(c, d, a, b, x[7], S33);  /* 47 */
+    HH(b, c, d, a, x[15], S34); /* 48 */
 
     /* Update our state */
     state[0] = state[0] + a;
@@ -133,7 +136,8 @@ static void md4_compress(unsigned *state, unsigned char *buffer) {
     state[3] = state[3] + d;
 }
 
-static void md4_process(ccdigest_state_t state, size_t nblocks, const void *data) {
+static void md4_process(ccdigest_state_t state, size_t nblocks, const void *data)
+{
     uint32_t *curstate = ccdigest_u32(state);
     unsigned char *buf = (unsigned char *)data;
     for (int i = 0; i < nblocks; i++) {
@@ -144,11 +148,11 @@ static void md4_process(ccdigest_state_t state, size_t nblocks, const void *data
 
 const struct ccdigest_info ccmd4_ltc_di = {
     .initial_state = ccmd4_initial_state,
-    .output_size = CCMD4_OUTPUT_SIZE,
-    .block_size = CCMD4_BLOCK_SIZE,
-    .state_size = CCMD4_STATE_SIZE,
-    .oid = ccoid_md4,
-    .oid_size = ccoid_md4_len,
-    .compress = md4_process,
-    .final = ccdigest_final_64le,
+    .output_size   = CCMD4_OUTPUT_SIZE,
+    .block_size    = CCMD4_BLOCK_SIZE,
+    .state_size    = CCMD4_STATE_SIZE,
+    .oid           = ccoid_md4,
+    .oid_size      = ccoid_md4_len,
+    .compress      = md4_process,
+    .final         = ccdigest_final_64le,
 };

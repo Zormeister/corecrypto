@@ -7,7 +7,8 @@
 
 #include <corecrypto/ccn.h>
 
-int ccn_cmp(cc_size n, const cc_unit *s, const cc_unit *t) {
+int ccn_cmp(cc_size n, const cc_unit *s, const cc_unit *t)
+{
     if (n) {
         for (cc_size i = 0; i < n; i++) {
             if (s[i] > t[i]) {

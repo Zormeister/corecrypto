@@ -11,7 +11,8 @@
 
 /* based on https://github.com/floodyberry/poly1305-donna */
 
-int ccpoly1305_init(ccpoly1305_ctx *ctx, const uint8_t *key) {
+int ccpoly1305_init(ccpoly1305_ctx *ctx, const uint8_t *key)
+{
     uint32_t k[5];
 
     CC_LOAD32_LE(k[0], key);
@@ -47,8 +48,8 @@ int ccpoly1305_init(ccpoly1305_ctx *ctx, const uint8_t *key) {
     return CCERR_OK;
 }
 
-static void _ccpoly1305_update(ccpoly1305_ctx *ctx, size_t nblocks, const void *in) {
-
+static void _ccpoly1305_update(ccpoly1305_ctx *ctx, size_t nblocks, const void *in)
+{
 }
 
 int ccpoly1305_update(ccpoly1305_ctx *ctx, size_t nbytes, const void *in);

@@ -36,16 +36,15 @@
 
 #include "corecrypto/fipspost_trace.h"
 
-void
-cchmac(const struct ccdigest_info *di,
-    size_t key_len, const void *key,
-    size_t data_len, const void *data, unsigned char *mac)
+void cchmac(const struct ccdigest_info *di,
+            size_t key_len, const void *key,
+            size_t data_len, const void *data, unsigned char *mac)
 {
-	FIPSPOST_TRACE_EVENT;
+    FIPSPOST_TRACE_EVENT;
 
-	cchmac_di_decl(di, hc);
-	cchmac_init(di, hc, key_len, key);
-	cchmac_update(di, hc, data_len, data);
-	cchmac_final(di, hc, mac);
-	cchmac_di_clear(di, hc);
+    cchmac_di_decl(di, hc);
+    cchmac_init(di, hc, key_len, key);
+    cchmac_update(di, hc, data_len, data);
+    cchmac_final(di, hc, mac);
+    cchmac_di_clear(di, hc);
 }

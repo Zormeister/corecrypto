@@ -6,10 +6,10 @@
 //
 
 #include <corecrypto/cc_debug.h>
-#include <corecrypto/ccaes.h>
-#include <corecrypto/ccmode_impl.h>
 #include <corecrypto/cc_runtime_config.h>
+#include <corecrypto/ccaes.h>
 #include <corecrypto/ccmode_factory.h>
+#include <corecrypto/ccmode_impl.h>
 
 CCMODE_CFB_FACTORY(aes, cfb, encrypt)
 CCMODE_CFB_FACTORY(aes, cfb, decrypt)
@@ -27,7 +27,8 @@ extern const struct ccmode_ecb ccaes_intel_ecb_encrypt_aesni_mode;
 extern const struct ccmode_ecb ccaes_intel_ecb_decrypt_aesni_mode;
 #endif
 
-const struct ccmode_ecb *ccaes_ecb_encrypt_mode(void) {
+const struct ccmode_ecb *ccaes_ecb_encrypt_mode(void)
+{
 
 #if CCAES_INTEL_ASM
     if (CC_HAS_AESNI()) {
@@ -43,7 +44,8 @@ const struct ccmode_ecb *ccaes_ecb_encrypt_mode(void) {
     return &ccaes_tinyaes_ecb_encrypt_mode;
 };
 
-const struct ccmode_ecb *ccaes_ecb_decrypt_mode(void) {
+const struct ccmode_ecb *ccaes_ecb_decrypt_mode(void)
+{
 
 #if CCAES_INTEL_ASM
     if (CC_HAS_AESNI()) {
@@ -59,7 +61,8 @@ const struct ccmode_ecb *ccaes_ecb_decrypt_mode(void) {
     return &ccaes_tinyaes_ecb_decrypt_mode;
 };
 
-const struct ccmode_cbc *ccaes_cbc_encrypt_mode(void) {
+const struct ccmode_cbc *ccaes_cbc_encrypt_mode(void)
+{
 
 #if CCAES_INTEL_ASM
     if (CC_HAS_AESNI()) {
@@ -75,7 +78,8 @@ const struct ccmode_cbc *ccaes_cbc_encrypt_mode(void) {
     return &ccaes_tinyaes_cbc_encrypt_mode;
 };
 
-const struct ccmode_cbc *ccaes_cbc_decrypt_mode(void) {
+const struct ccmode_cbc *ccaes_cbc_decrypt_mode(void)
+{
 
 #if CCAES_INTEL_ASM
     if (CC_HAS_AESNI()) {

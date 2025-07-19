@@ -8,12 +8,12 @@
 #include <sys/systm.h>
 #endif
 
-#include <stddef.h>
-#include <corecrypto/ccmode.h>
-#include <corecrypto/ccaes.h>
-#include <corecrypto/ccn.h>
 #include <corecrypto/cc_debug.h>
 #include <corecrypto/cc_priv.h>
+#include <corecrypto/ccaes.h>
+#include <corecrypto/ccmode.h>
+#include <corecrypto/ccn.h>
+#include <stddef.h>
 
 #include "aes128.h"
 
@@ -37,7 +37,7 @@ static int pdcmode_aes_cbc_init(const struct ccmode_cbc *cbc, cccbc_ctx *ctx, si
     }
 
     AES128_set_key((struct _pdcmode_aes128_ctx *)ctx, key);
-	return 0;
+    return 0;
 }
 
 /*
@@ -50,7 +50,7 @@ static int pdcmode_aes_cbc_encrypt(const cccbc_ctx *ctx, cccbc_iv *iv, size_t nb
     printf("%s\n", __func__);
 
     AES128_CBC_encrypt((struct _pdcmode_aes128_ctx *)ctx, (struct pdccbc_iv *)iv, nblocks, in, out);
-	return 0;
+    return 0;
 }
 
 static int pdcmode_aes_cbc_decrypt(const cccbc_ctx *ctx, cccbc_iv *iv, size_t nblocks, const void *in, void *out)
@@ -58,21 +58,21 @@ static int pdcmode_aes_cbc_decrypt(const cccbc_ctx *ctx, cccbc_iv *iv, size_t nb
     printf("%s\n", __func__);
 
     AES128_CBC_decrypt((struct _pdcmode_aes128_ctx *)ctx, (struct pdccbc_iv *)iv, nblocks, in, out);
-	return 0;
+    return 0;
 }
 
 const struct ccmode_cbc ccaes_tinyaes_cbc_encrypt_mode = {
-    .size = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
+    .size       = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
     .block_size = CCAES_BLOCK_SIZE,
-    .init = pdcmode_aes_cbc_init,
-    .cbc = pdcmode_aes_cbc_encrypt,
-    .custom = NULL
+    .init       = pdcmode_aes_cbc_init,
+    .cbc        = pdcmode_aes_cbc_encrypt,
+    .custom     = NULL
 };
 
 const struct ccmode_cbc ccaes_tinyaes_cbc_decrypt_mode = {
-    .size = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
+    .size       = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
     .block_size = CCAES_BLOCK_SIZE,
-    .init = pdcmode_aes_cbc_init,
-    .cbc = pdcmode_aes_cbc_decrypt,
-    .custom = NULL
+    .init       = pdcmode_aes_cbc_init,
+    .cbc        = pdcmode_aes_cbc_decrypt,
+    .custom     = NULL
 };

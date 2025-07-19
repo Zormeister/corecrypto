@@ -5,9 +5,8 @@
 //  Created by Zormeister on 8/7/25.
 //
 
-#include <corecrypto/cc_priv.h>
 #include <corecrypto/cc_config.h>
-
+#include <corecrypto/cc_priv.h>
 
 //
 // cc_abort
@@ -18,10 +17,11 @@
 
 #if CC_POSIX
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-void cc_abort(const char *msg) {
+void cc_abort(const char *msg)
+{
     fprintf(stderr, "%s\n", msg);
     abort();
 }
@@ -30,9 +30,9 @@ void cc_abort(const char *msg) {
 
 #include <kern/debug.h>
 
-void cc_abort(const char *msg) {
+void cc_abort(const char *msg)
+{
     panic("%s", msg);
 }
 
 #endif
-

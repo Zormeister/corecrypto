@@ -17,7 +17,8 @@
 #define cc_subborrow(bin, x, y, out) _subborrow_u32(bin, x, y, out)
 #endif
 
-cc_unit ccn_sub_asm(cc_size n, cc_unit *r, const cc_unit *s, const cc_unit *t) {
+cc_unit ccn_sub_asm(cc_size n, cc_unit *r, const cc_unit *s, const cc_unit *t)
+{
     uint8_t borrow_in = 0;
 
     if (ccn_cmp(n, s, t) == -1) {

@@ -10,22 +10,22 @@
 #include "corecrypto/cc_priv.h"
 #include "corecrypto/ccdigest_priv.h"
 #include "corecrypto/ccn.h"
-#include <corecrypto/ccpbkdf2.h>
 #include <corecrypto/cchmac.h>
+#include <corecrypto/ccpbkdf2.h>
 
 /*
  * read this for more info:
- * https://www.rfc-editor.org/rfc/rfc2898 
+ * https://www.rfc-editor.org/rfc/rfc2898
  */
 
-int ccpbkdf2_hmac(const struct ccdigest_info *di, 
-                  size_t passwordLen, const void *password, 
-                  size_t saltLen, const void *salt, 
-                  size_t iterations, 
-                  size_t dkLen, void *dk) 
+int ccpbkdf2_hmac(const struct ccdigest_info *di,
+                  size_t passwordLen, const void *password,
+                  size_t saltLen, const void *salt,
+                  size_t iterations,
+                  size_t dkLen, void *dk)
 {
     size_t blocks = cc_ceiling(dkLen, di->output_size);
-    int counter = 1;
+    int counter   = 1;
     uint8_t block[di->output_size];
     uint8_t block2[di->output_size];
     cc_unit hmac_initial_state[ccn_nof_size(di->state_size)];
@@ -65,4 +65,3 @@ int ccpbkdf2_hmac(const struct ccdigest_info *di,
 
     return CCERR_OK;
 }
-
