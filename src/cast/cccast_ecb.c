@@ -23,7 +23,7 @@ int cccast_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, voi
     const CAST_KEY *key = (const CAST_KEY *)ctx;
 
     const void *cur_in = in;
-    void *cur_out      = out;
+    void *cur_out = out;
 
     while (nblocks--) {
         CC_LOAD32_BE(d[0], cur_in);
@@ -45,7 +45,7 @@ int cccast_ecb_decrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, voi
     const CAST_KEY *key = (const CAST_KEY *)ctx;
 
     const void *cur_in = in;
-    void *cur_out      = out;
+    void *cur_out = out;
 
     while (nblocks--) {
         CC_LOAD32_LE(d[0], cur_in);
@@ -62,15 +62,15 @@ int cccast_ecb_decrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, voi
 }
 
 const struct ccmode_ecb cccast_eay_ecb_encrypt_mode = {
-    .size       = ccn_sizeof_size(sizeof(CAST_KEY)),
+    .size = ccn_sizeof_size(sizeof(CAST_KEY)),
     .block_size = CCCAST_BLOCK_SIZE,
-    .init       = cccast_setup,
-    .ecb        = cccast_ecb_encrypt,
+    .init = cccast_setup,
+    .ecb = cccast_ecb_encrypt,
 };
 
 const struct ccmode_ecb cccast_eay_ecb_decrypt_mode = {
-    .size       = ccn_sizeof_size(sizeof(CAST_KEY)),
+    .size = ccn_sizeof_size(sizeof(CAST_KEY)),
     .block_size = CCCAST_BLOCK_SIZE,
-    .init       = cccast_setup,
-    .ecb        = cccast_ecb_decrypt,
+    .init = cccast_setup,
+    .ecb = cccast_ecb_decrypt,
 };

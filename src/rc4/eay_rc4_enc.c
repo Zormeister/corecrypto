@@ -126,13 +126,13 @@ void RC4(RC4_KEY *key, unsigned long len, const unsigned char *indata,
      *					<appro@fy.chalmers.se>
      */
 
-#define RC4_STEP (          \
-    x    = (x + 1) & 0xff,  \
-    tx   = d[x],            \
-    y    = (tx + y) & 0xff, \
-    ty   = d[y],            \
-    d[y] = tx,              \
-    d[x] = ty,              \
+#define RC4_STEP (       \
+    x = (x + 1) & 0xff,  \
+    tx = d[x],           \
+    y = (tx + y) & 0xff, \
+    ty = d[y],           \
+    d[y] = tx,           \
+    d[x] = ty,           \
     (RC4_CHUNK)d[(tx + ty) & 0xff])
 
     if ((((unsigned long)indata & (sizeof(RC4_CHUNK) - 1)) | ((unsigned long)outdata & (sizeof(RC4_CHUNK) - 1))) == 0) {
@@ -174,7 +174,7 @@ void RC4(RC4_KEY *key, unsigned long len, const unsigned char *indata,
 #define BESHFT(c) (((sizeof(RC4_CHUNK) - (c) - 1) * 8) & (sizeof(RC4_CHUNK) * 8 - 1))
             for (; len & -sizeof(RC4_CHUNK); len -= sizeof(RC4_CHUNK)) {
                 ichunk = *(RC4_CHUNK *)indata;
-                otp    = RC4_STEP << BESHFT(0);
+                otp = RC4_STEP << BESHFT(0);
                 otp |= RC4_STEP << BESHFT(1);
                 otp |= RC4_STEP << BESHFT(2);
                 otp |= RC4_STEP << BESHFT(3);
@@ -193,8 +193,8 @@ void RC4(RC4_KEY *key, unsigned long len, const unsigned char *indata,
 
                 ichunk = *(RC4_CHUNK *)indata;
                 ochunk = *(RC4_CHUNK *)outdata;
-                otp    = 0;
-                i      = BESHFT(0);
+                otp = 0;
+                i = BESHFT(0);
                 mask <<= (sizeof(RC4_CHUNK) - len) << 3;
                 switch (len & (sizeof(RC4_CHUNK) - 1)) {
                     case 7:
@@ -229,7 +229,7 @@ void RC4(RC4_KEY *key, unsigned long len, const unsigned char *indata,
 #define LESHFT(c) (((c) * 8) & (sizeof(RC4_CHUNK) * 8 - 1))
             for (; len & -sizeof(RC4_CHUNK); len -= sizeof(RC4_CHUNK)) {
                 ichunk = *(RC4_CHUNK *)indata;
-                otp    = RC4_STEP;
+                otp = RC4_STEP;
                 otp |= RC4_STEP << 8;
                 otp |= RC4_STEP << 16;
                 otp |= RC4_STEP << 24;
@@ -248,8 +248,8 @@ void RC4(RC4_KEY *key, unsigned long len, const unsigned char *indata,
 
                 ichunk = *(RC4_CHUNK *)indata;
                 ochunk = *(RC4_CHUNK *)outdata;
-                otp    = 0;
-                i      = 0;
+                otp = 0;
+                i = 0;
                 mask >>= (sizeof(RC4_CHUNK) - len) << 3;
                 switch (len & (sizeof(RC4_CHUNK) - 1)) {
                     case 7:
@@ -282,13 +282,13 @@ void RC4(RC4_KEY *key, unsigned long len, const unsigned char *indata,
         } /* little-endian */
     }
 #endif
-#define LOOP(in, out)        \
-    x    = ((x + 1) & 0xff); \
-    tx   = d[x];             \
-    y    = (tx + y) & 0xff;  \
-    d[x] = ty = d[y];        \
-    d[y]      = tx;          \
-    (out)     = d[(tx + ty) & 0xff] ^ (in);
+#define LOOP(in, out)     \
+    x = ((x + 1) & 0xff); \
+    tx = d[x];            \
+    y = (tx + y) & 0xff;  \
+    d[x] = ty = d[y];     \
+    d[y] = tx;            \
+    (out) = d[(tx + ty) & 0xff] ^ (in);
 
 #ifndef RC4_INDEX
 #define RC4_LOOP(a, b, i) LOOP(*((a)++), *((b)++))

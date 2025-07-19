@@ -10,9 +10,9 @@
 int ccmode_cbc_encrypt(const cccbc_ctx *ctx, cccbc_iv *iv, size_t nblocks, const void *in, void *out)
 {
     const struct _ccmode_cbc_key *fctx = (const struct _ccmode_cbc_key *)ctx; /* immediately get the factory context. */
-    void *cur_iv                       = iv;
-    const void *cur_in                 = in;
-    void *cur_out                      = out;
+    void *cur_iv = iv;
+    const void *cur_in = in;
+    void *cur_out = out;
 
     if (nblocks == 0) { return CCERR_OK; } /* honestly why would anyone pass in zero. */
 

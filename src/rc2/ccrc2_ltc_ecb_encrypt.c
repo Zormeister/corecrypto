@@ -11,8 +11,8 @@ int ccrc2_ltc_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, 
 {
     uint32_t x76, x54, x32, x10;
     struct ccrc2_ltc_ctx *ltc = (struct ccrc2_ltc_ctx *)ctx;
-    const uint8_t *cur_in     = in;
-    uint8_t *cur_out          = out;
+    const uint8_t *cur_in = in;
+    uint8_t *cur_out = out;
 
     while (nblocks--) {
         x76 = ((unsigned)cur_in[7] << 8) + (unsigned)cur_in[6];

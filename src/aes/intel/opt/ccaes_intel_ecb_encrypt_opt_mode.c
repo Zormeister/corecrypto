@@ -47,10 +47,10 @@ static int opt_wrapper_enc(const ccecb_ctx *ctx, size_t nblocks, const void *in,
 }
 
 const struct ccmode_ecb ccaes_intel_ecb_encrypt_opt_mode = {
-    .size       = ccn_sizeof_size(sizeof(struct ccaes_intel_opt_key)),
+    .size = ccn_sizeof_size(sizeof(struct ccaes_intel_opt_key)),
     .block_size = CCAES_BLOCK_SIZE,
-    .init       = opt_wrapper_init,
-    .ecb        = opt_wrapper_enc
+    .init = opt_wrapper_init,
+    .ecb = opt_wrapper_enc
 };
 
 #endif

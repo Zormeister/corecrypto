@@ -296,11 +296,11 @@ static void rmd160_process(ccdigest_state_t state, size_t nblocks, const void *d
 
 const struct ccdigest_info ccrmd160_ltc_di = {
     .initial_state = ccrmd160_initial_state,
-    .output_size   = CCRMD160_OUTPUT_SIZE,
-    .block_size    = CCRMD160_BLOCK_SIZE,
-    .state_size    = CCRMD160_STATE_SIZE,
-    .oid           = ccoid_rmd160,
-    .oid_size      = ccoid_rmd160_len,
-    .compress      = rmd160_process,
-    .final         = ccdigest_final_64le,
+    .output_size = CCRMD160_OUTPUT_SIZE,
+    .block_size = CCRMD160_BLOCK_SIZE,
+    .state_size = CCRMD160_STATE_SIZE,
+    .oid = ccoid_rmd160,
+    .oid_size = ccoid_rmd160_len,
+    .compress = rmd160_process,
+    .final = ccdigest_final_64le,
 };

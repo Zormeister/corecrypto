@@ -16,6 +16,5 @@ BraceWrapping:
   AfterEnum: true
   AfterExternBlock: true
 
-AlignConsecutiveAssignments: Consecutive
 AlignAfterOpenBracket: Align
 

@@ -25,7 +25,7 @@ int ccpbkdf2_hmac(const struct ccdigest_info *di,
                   size_t dkLen, void *dk)
 {
     size_t blocks = cc_ceiling(dkLen, di->output_size);
-    int counter   = 1;
+    int counter = 1;
     uint8_t block[di->output_size];
     uint8_t block2[di->output_size];
     cc_unit hmac_initial_state[ccn_nof_size(di->state_size)];

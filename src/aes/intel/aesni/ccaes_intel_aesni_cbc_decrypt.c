@@ -29,14 +29,14 @@ int ccaes_intel_aesni_cbc_decrypt_init(const struct ccmode_cbc *cbc, cccbc_ctx *
 int ccaes_intel_aesni_cbc_decrypt_cbc(const cccbc_ctx *ctx, cccbc_iv *iv, size_t nblocks, const void *in, void *out)
 {
     struct ccaes_intel_aesni_ctx *aesctx = (struct ccaes_intel_aesni_ctx *)ctx;
-    __m128i nextxor                      = _mm_loadu_si128((__m128i *)iv->b);
+    __m128i nextxor = _mm_loadu_si128((__m128i *)iv->b);
 
     while (nblocks--) {
         __m128i data = _mm_loadu_si128(in);
-        __m128i tmp  = data;
-        data         = ccaes_intel_aesni_run_cipher_encrypt(aesctx, data);
-        data         = _mm_xor_si128(data, nextxor); /* XOR the plaintext */
-        nextxor      = tmp;
+        __m128i tmp = data;
+        data = ccaes_intel_aesni_run_cipher_encrypt(aesctx, data);
+        data = _mm_xor_si128(data, nextxor); /* XOR the plaintext */
+        nextxor = tmp;
         _mm_store_si128(out, data);
         in += CCAES_BLOCK_SIZE;
         out += CCAES_BLOCK_SIZE;
@@ -46,10 +46,10 @@ int ccaes_intel_aesni_cbc_decrypt_cbc(const cccbc_ctx *ctx, cccbc_iv *iv, size_t
 };
 
 const struct ccmode_cbc ccaes_intel_cbc_decrypt_aesni_mode = {
-    .size       = ccn_sizeof_size(sizeof(struct ccaes_intel_aesni_ctx)),
+    .size = ccn_sizeof_size(sizeof(struct ccaes_intel_aesni_ctx)),
     .block_size = CCAES_BLOCK_SIZE,
-    .init       = ccaes_intel_aesni_cbc_decrypt_init,
-    .cbc        = ccaes_intel_aesni_cbc_decrypt_cbc,
+    .init = ccaes_intel_aesni_cbc_decrypt_init,
+    .cbc = ccaes_intel_aesni_cbc_decrypt_cbc,
 };
 
 #endif

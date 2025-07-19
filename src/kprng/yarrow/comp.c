@@ -125,7 +125,7 @@ comp_error_status comp_add_data(COMP_CTX *ctx, Bytef *inp, uInt inplen)
         ctx->spaceused = blocksize;
     } else {
         if (inplen + ctx->spaceused > BUFSIZE) {
-            shifts    = (uInt)ceil((inplen + ctx->spaceused - BUFSIZE) / (float)SHIFTSIZE);
+            shifts = (uInt)ceil((inplen + ctx->spaceused - BUFSIZE) / (float)SHIFTSIZE);
             blocksize = _MIN(shifts * SHIFTSIZE, ctx->spaceused);
             memmove(buf, buf + blocksize, BUFSIZE - blocksize);
             ctx->spaceused = ctx->spaceused - blocksize;
@@ -150,11 +150,11 @@ comp_error_status comp_get_ratio(COMP_CTX *ctx, float *out)
 
     if (ctx->spaceused == 0) { return COMP_SUCCESS; }
 
-    inbuf  = (Bytef *)mmGetPtr(ctx->buf);
+    inbuf = (Bytef *)mmGetPtr(ctx->buf);
     outbuf = (Bytef *)malloc(OUTBUFSIZE);
     if (outbuf == NULL) { return COMP_ERR_LOW_MEMORY; }
 
-    insize  = ctx->spaceused;
+    insize = ctx->spaceused;
     outsize = OUTBUFSIZE;
 
     resp = compress(outbuf, &outsize, inbuf, insize);

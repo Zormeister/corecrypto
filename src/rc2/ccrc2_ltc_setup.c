@@ -33,8 +33,8 @@ static const unsigned char permute[256] = {
 int ccrc2_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t key_nbytes, const void *key)
 {
     struct ccrc2_ltc_ctx *ltc = (struct ccrc2_ltc_ctx *)ctx;
-    uint32_t bits             = key_nbytes * 8;
-    const uint8_t *k          = key;
+    uint32_t bits = key_nbytes * 8;
+    const uint8_t *k = key;
     unsigned char tmp[128];
     uint32_t T8, TM;
     int i;
@@ -51,8 +51,8 @@ int ccrc2_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t key_nby
     }
 
     /* Phase 2 - reduce effective key size to "bits" */
-    T8            = (uint32_t)(bits + 7) >> 3;
-    TM            = (255 >> (uint32_t)(7 & -bits));
+    T8 = (uint32_t)(bits + 7) >> 3;
+    TM = (255 >> (uint32_t)(7 & -bits));
     tmp[128 - T8] = permute[tmp[128 - T8] & TM];
     for (i = 127 - T8; i >= 0; i--) {
         tmp[i] = permute[tmp[i + 1] ^ tmp[i + T8]];

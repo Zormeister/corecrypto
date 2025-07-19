@@ -11,8 +11,8 @@
 int ccmode_cfb8_decrypt(cccfb8_ctx *ctx, size_t nbytes, const void *in, void *out)
 {
     struct _ccmode_cfb8_key *ckey = (struct _ccmode_cfb8_key *)ctx;
-    uint8_t *out_ptr              = out;
-    const uint8_t *in_ptr         = in;
+    uint8_t *out_ptr = out;
+    const uint8_t *in_ptr = in;
 
     while (nbytes--) {
         /* ZORMEISTER: this code is ugly but gets the job done */

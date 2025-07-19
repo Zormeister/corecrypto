@@ -22,8 +22,8 @@ void deskey(const unsigned char *key, short edf, uint32_t *keyout)
     unsigned char pc1m[56], pcr[56];
 
     for (j = 0; j < 56; j++) {
-        l       = (uint32_t)pc1[j];
-        m       = l & 7;
+        l = (uint32_t)pc1[j];
+        m = l & 7;
         pc1m[j] = (unsigned char)((key[l >> 3U] & bytebit[m]) == bytebit[m] ? 1 : 0);
     }
 
@@ -33,7 +33,7 @@ void deskey(const unsigned char *key, short edf, uint32_t *keyout)
         } else {
             m = i << 1;
         }
-        n     = m + 1;
+        n = m + 1;
         kn[m] = kn[n] = 0L;
         for (j = 0; j < 28; j++) {
             l = j + (uint32_t)totrot[i];
@@ -73,7 +73,7 @@ static void cookey(const uint32_t *raw1, uint32_t *keyout)
 
     cook = dough;
     for (i = 0; i < 16; i++, raw1++) {
-        raw0  = raw1++;
+        raw0 = raw1++;
         *cook = (*raw0 & 0x00fc0000L) << 6;
         *cook |= (*raw0 & 0x00000fc0L) << 10;
         *cook |= (*raw1 & 0x00fc0000L) >> 10;

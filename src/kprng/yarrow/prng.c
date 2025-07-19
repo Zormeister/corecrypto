@@ -90,7 +90,7 @@
 #endif /* macintosh */
 
 #if MUTEX_ENABLE
-static HANDLE Statmutex     = NULL;
+static HANDLE Statmutex = NULL;
 static DWORD mutexCreatorId = 0;
 #endif
 
@@ -143,7 +143,7 @@ prng_make_new_state(GEN_CTX *ctx, BYTE *newState)
     YSHA1Update(&sha, ctx->IV, 20);
     YSHA1Final(ctx->out, &sha);
     ctx->numout = 0;
-    ctx->index  = 0;
+    ctx->index = 0;
 }
 
 #if SLOW_POLL_ENABLE
@@ -158,11 +158,11 @@ prng_slow_init(PRNG *p)
 /* This fails silently and must be fixed. */
 {
     YSHA1_CTX *ctx = NULL;
-    MMPTR mmctx    = MM_NULL;
-    BYTE *bigbuf   = NULL;
+    MMPTR mmctx = MM_NULL;
+    BYTE *bigbuf = NULL;
     MMPTR mmbigbuf = MM_NULL;
-    BYTE *buf      = NULL;
-    MMPTR mmbuf    = MM_NULL;
+    BYTE *buf = NULL;
+    MMPTR mmbuf = MM_NULL;
     DWORD polllength;
 
     mmbigbuf = mmMalloc(SPLEN);
@@ -209,9 +209,9 @@ bubbleSort(UINT *data, LONG len)
         newlast = -1;
         for (i = 0; i < last; i++) {
             if (data[i + 1] > data[i]) {
-                newlast     = i;
-                temp        = data[i];
-                data[i]     = data[i + 1];
+                newlast = i;
+                temp = data[i];
+                data[i] = data[i + 1];
                 data[i + 1] = temp;
             }
         }
@@ -262,7 +262,7 @@ prngInitialize(PrngRef *prng)
 
     /* Initialize Variables */
     for (i = 0; i < TOTAL_SOURCES; i++) {
-        p->poolSize[i]    = 0;
+        p->poolSize[i] = 0;
         p->poolEstBits[i] = 0;
     }
 
@@ -293,7 +293,7 @@ prngInitialize(PrngRef *prng)
     }
 
     p->ready = PRNG_READY;
-    *prng    = (PrngRef)p;
+    *prng = (PrngRef)p;
 
     return PRNG_SUCCESS;
 
@@ -304,7 +304,7 @@ cleanup_init:
 
 #if MUTEX_ENABLE
     CloseHandle(Statmutex);
-    Statmutex      = NULL;
+    Statmutex = NULL;
     mutexCreatorId = 0;
 #endif
 
@@ -421,7 +421,7 @@ prngForceReseed(PRNG *p, LONGLONG ticks)
 
     /* Clear counter variables */
     for (i = 0; i < TOTAL_SOURCES; i++) {
-        p->poolSize[i]    = 0;
+        p->poolSize[i] = 0;
         p->poolEstBits[i] = 0;
     }
 
@@ -585,7 +585,7 @@ prngSlowPoll(PRNG *p, UINT pollsize)
 
     buf = (BYTE *)malloc(pollsize);
     if (buf == NULL) { return PRNG_ERR_LOW_MEMORY; }
-    len    = prng_slow_poll(buf, pollsize); /* OS specific call */
+    len = prng_slow_poll(buf, pollsize); /* OS specific call */
     retval = prngInput(p, buf, len, SLOWPOLLSOURCE, len * 8);
     trashMemory(buf, pollsize);
     free(buf);
@@ -613,7 +613,7 @@ prngDestroy(PRNG *p)
 
 #if MUTEX_ENABLE
     CloseHandle(Statmutex);
-    Statmutex      = NULL;
+    Statmutex = NULL;
     mutexCreatorId = 0;
 #endif
 

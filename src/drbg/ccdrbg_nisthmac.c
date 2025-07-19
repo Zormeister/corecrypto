@@ -89,9 +89,9 @@ static void
 update(struct ccdrbg_state *ctx, unsigned ndata, ...)
 {
     struct ccdrbg_nisthmac_state *drbg_ctx = (struct ccdrbg_nisthmac_state *)ctx;
-    const struct ccdigest_info *info       = drbg_ctx->custom->di;
-    size_t outlen                          = info->output_size;
-    size_t data_nbytes                     = 0;
+    const struct ccdigest_info *info = drbg_ctx->custom->di;
+    size_t outlen = info->output_size;
+    size_t data_nbytes = 0;
     va_list args;
 
     cchmac_di_decl(info, hmac_ctx);
@@ -106,7 +106,7 @@ update(struct ccdrbg_state *ctx, unsigned ndata, ...)
         va_start(args, ndata);
 
         for (unsigned i = 0; i < ndata; i += 1) {
-            size_t nbytes   = va_arg(args, size_t);
+            size_t nbytes = va_arg(args, size_t);
             const void *buf = va_arg(args, const void *);
 
             cchmac_update(info, hmac_ctx, nbytes, buf);
@@ -145,10 +145,10 @@ init(const struct ccdrbg_info *info,
      size_t ps_nbytes,
      const void *ps)
 {
-    struct ccdrbg_nisthmac_state *drbg_ctx  = (struct ccdrbg_nisthmac_state *)ctx;
-    drbg_ctx->custom                        = info->custom;
+    struct ccdrbg_nisthmac_state *drbg_ctx = (struct ccdrbg_nisthmac_state *)ctx;
+    drbg_ctx->custom = info->custom;
     const struct ccdigest_info *digest_info = drbg_ctx->custom->di;
-    size_t outlen                           = digest_info->output_size;
+    size_t outlen = digest_info->output_size;
 
     int status = CCDRBG_STATUS_PARAM_ERROR;
     cc_require(outlen <= NISTHMAC_MAX_OUTPUT_SIZE, out);
@@ -178,7 +178,7 @@ add_isvalid(size_t add_nbytes)
 static int
 reseed(struct ccdrbg_state *ctx, size_t entropy_nbytes, const void *entropy, size_t add_nbytes, const void *add)
 {
-    struct ccdrbg_nisthmac_state *drbg_ctx  = (struct ccdrbg_nisthmac_state *)ctx;
+    struct ccdrbg_nisthmac_state *drbg_ctx = (struct ccdrbg_nisthmac_state *)ctx;
     const struct ccdigest_info *digest_info = drbg_ctx->custom->di;
 
     int status = CCDRBG_STATUS_PARAM_ERROR;
@@ -200,8 +200,8 @@ static int
 generate(struct ccdrbg_state *ctx, size_t out_nbytes, void *out, size_t add_nbytes, const void *add)
 {
     struct ccdrbg_nisthmac_state *drbg_ctx = (struct ccdrbg_nisthmac_state *)ctx;
-    const struct ccdigest_info *info       = drbg_ctx->custom->di;
-    size_t outlen                          = info->output_size;
+    const struct ccdigest_info *info = drbg_ctx->custom->di;
+    size_t outlen = info->output_size;
 
     int status = CCDRBG_STATUS_PARAM_ERROR;
     cc_require(out_nbytes <= CCDRBG_MAX_REQUEST_SIZE, out);
@@ -249,10 +249,10 @@ out:
 
 void ccdrbg_factory_nisthmac(struct ccdrbg_info *info, const struct ccdrbg_nisthmac_custom *custom)
 {
-    info->size     = sizeof(struct ccdrbg_nisthmac_state) + sizeof(struct ccdrbg_nisthmac_custom);
-    info->init     = init;
+    info->size = sizeof(struct ccdrbg_nisthmac_state) + sizeof(struct ccdrbg_nisthmac_custom);
+    info->init = init;
     info->generate = generate;
-    info->reseed   = reseed;
-    info->done     = done;
-    info->custom   = custom;
+    info->reseed = reseed;
+    info->done = done;
+    info->custom = custom;
 };

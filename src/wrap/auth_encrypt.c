@@ -22,7 +22,7 @@ int ccwrap_auth_encrypt_withiv(struct ccmode_ecb *mode, ccecb_ctx *context, size
     }
 
     uint64_t A = *(uint64_t *)iv;
-    R[0]       = A;
+    R[0] = A;
     for (int i = 1; i < n; i++) {
         R[i] = key[i];
     }
@@ -31,7 +31,7 @@ int ccwrap_auth_encrypt_withiv(struct ccmode_ecb *mode, ccecb_ctx *context, size
         for (int k = 1; k < n; k++) {
             uint64_t tmp = A | R[k];
             if (mode->ecb(context, 1, &tmp, &B) == CCERR_OK) {
-                A    = CC_H2BE64(B) ^ (n * j) + k;
+                A = CC_H2BE64(B) ^ (n * j) + k;
                 R[k] = CC_H2LE64(B);
             } else {
                 CC_MEMSET(R, 0, sizeof(R));

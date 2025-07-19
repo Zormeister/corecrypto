@@ -62,17 +62,17 @@ static int pdcmode_aes_cbc_decrypt(const cccbc_ctx *ctx, cccbc_iv *iv, size_t nb
 }
 
 const struct ccmode_cbc ccaes_tinyaes_cbc_encrypt_mode = {
-    .size       = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
+    .size = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
     .block_size = CCAES_BLOCK_SIZE,
-    .init       = pdcmode_aes_cbc_init,
-    .cbc        = pdcmode_aes_cbc_encrypt,
-    .custom     = NULL
+    .init = pdcmode_aes_cbc_init,
+    .cbc = pdcmode_aes_cbc_encrypt,
+    .custom = NULL
 };
 
 const struct ccmode_cbc ccaes_tinyaes_cbc_decrypt_mode = {
-    .size       = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
+    .size = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
     .block_size = CCAES_BLOCK_SIZE,
-    .init       = pdcmode_aes_cbc_init,
-    .cbc        = pdcmode_aes_cbc_decrypt,
-    .custom     = NULL
+    .init = pdcmode_aes_cbc_init,
+    .cbc = pdcmode_aes_cbc_decrypt,
+    .custom = NULL
 };

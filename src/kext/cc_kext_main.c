@@ -19,17 +19,17 @@
 struct crypto_functions cc_functions;
 
 static const struct cckprng_funcs cc_kprng_fns = {
-    .init     = cckprng_init,
-    .initgen  = cckprng_initgen,
-    .reseed   = cckprng_reseed,
-    .refresh  = cckprng_refresh,
+    .init = cckprng_init,
+    .initgen = cckprng_initgen,
+    .reseed = cckprng_reseed,
+    .refresh = cckprng_refresh,
     .generate = cckprng_generate
 };
 
 static struct cckprng_ctx cc_kprng_ctx = {
-    .prng                = NULL,
+    .prng = NULL,
     .bytes_since_entropy = 0,
-    .bytes_generated     = 0
+    .bytes_generated = 0
 };
 
 /* cc_populate_fns.c && cc_populate_fns_dummy.c */

@@ -95,7 +95,7 @@ void CAST_set_key(CAST_KEY *key, int len, const unsigned char *data)
         key->short_key = 0;
     }
 
-    K    = &k[0];
+    K = &k[0];
     X[0] = ((x[0] << 24) | (x[1] << 16) | (x[2] << 8) | x[3]) & 0xffffffffL;
     X[1] = ((x[4] << 24) | (x[5] << 16) | (x[6] << 8) | x[7]) & 0xffffffffL;
     X[2] = ((x[8] << 24) | (x[9] << 16) | (x[10] << 8) | x[11]) & 0xffffffffL;
@@ -139,8 +139,8 @@ void CAST_set_key(CAST_KEY *key, int len, const unsigned char *data)
         l = X[1] ^ S4[z[10]] ^ S5[z[9]] ^ S6[z[11]] ^ S7[z[8]] ^ S5[x[11]];
         CAST_exp(l, Z, z, 12);
 
-        K[8]  = S4[z[3]] ^ S5[z[2]] ^ S6[z[12]] ^ S7[z[13]] ^ S4[z[9]];
-        K[9]  = S4[z[1]] ^ S5[z[0]] ^ S6[z[14]] ^ S7[z[15]] ^ S5[z[12]];
+        K[8] = S4[z[3]] ^ S5[z[2]] ^ S6[z[12]] ^ S7[z[13]] ^ S4[z[9]];
+        K[9] = S4[z[1]] ^ S5[z[0]] ^ S6[z[14]] ^ S7[z[15]] ^ S5[z[12]];
         K[10] = S4[z[7]] ^ S5[z[6]] ^ S6[z[8]] ^ S7[z[9]] ^ S6[z[2]];
         K[11] = S4[z[5]] ^ S5[z[4]] ^ S6[z[10]] ^ S7[z[11]] ^ S7[z[6]];
 
@@ -164,7 +164,7 @@ void CAST_set_key(CAST_KEY *key, int len, const unsigned char *data)
     }
 
     for (i = 0; i < 16; i++) {
-        key->data[i * 2]     = k[i];
+        key->data[i * 2] = k[i];
         key->data[i * 2 + 1] = ((k[i + 16]) + 16) & 0x1f;
     }
 }

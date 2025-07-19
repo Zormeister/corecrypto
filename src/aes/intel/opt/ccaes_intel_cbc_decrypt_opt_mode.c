@@ -43,10 +43,10 @@ static int cbc_opt_wrapper_dec(const cccbc_ctx *ctx, cccbc_iv *iv, size_t nblock
 }
 
 const struct ccmode_cbc ccaes_intel_cbc_decrypt_opt_mode = {
-    .size       = ccn_sizeof_size(sizeof(struct ccaes_intel_opt_key)),
+    .size = ccn_sizeof_size(sizeof(struct ccaes_intel_opt_key)),
     .block_size = CCAES_BLOCK_SIZE,
-    .init       = cbc_opt_wrapper_init,
-    .cbc        = cbc_opt_wrapper_dec
+    .init = cbc_opt_wrapper_init,
+    .cbc = cbc_opt_wrapper_dec
 };
 
 #endif

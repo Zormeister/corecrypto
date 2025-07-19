@@ -21,25 +21,25 @@ const uint32_t pdcsha1_initial_state[5] = {
 };
 
 const struct ccdigest_info ccsha1_ltc_di = {
-    .output_size   = CCSHA1_OUTPUT_SIZE,
-    .state_size    = CCSHA1_STATE_SIZE,
-    .block_size    = CCSHA1_BLOCK_SIZE,
-    .oid_size      = ccoid_sha1_len,
-    .oid           = (unsigned char *)CC_DIGEST_OID_SHA1,
+    .output_size = CCSHA1_OUTPUT_SIZE,
+    .state_size = CCSHA1_STATE_SIZE,
+    .block_size = CCSHA1_BLOCK_SIZE,
+    .oid_size = ccoid_sha1_len,
+    .oid = (unsigned char *)CC_DIGEST_OID_SHA1,
     .initial_state = pdcsha1_initial_state,
-    .compress      = pdcsha1_compress,
-    .final         = ccdigest_final_64be
+    .compress = pdcsha1_compress,
+    .final = ccdigest_final_64be
 };
 
 const struct ccdigest_info ccsha1_eay_di = {
-    .output_size   = CCSHA1_OUTPUT_SIZE,
-    .state_size    = CCSHA1_STATE_SIZE,
-    .block_size    = CCSHA1_BLOCK_SIZE,
-    .oid_size      = ccoid_sha1_len,
-    .oid           = (unsigned char *)CC_DIGEST_OID_SHA1,
+    .output_size = CCSHA1_OUTPUT_SIZE,
+    .state_size = CCSHA1_STATE_SIZE,
+    .block_size = CCSHA1_BLOCK_SIZE,
+    .oid_size = ccoid_sha1_len,
+    .oid = (unsigned char *)CC_DIGEST_OID_SHA1,
     .initial_state = pdcsha1_initial_state,
-    .compress      = pdcsha1_compress,
-    .final         = ccdigest_final_64be
+    .compress = pdcsha1_compress,
+    .final = ccdigest_final_64be
 };
 
 const struct ccdigest_info *ccsha1_di(void)

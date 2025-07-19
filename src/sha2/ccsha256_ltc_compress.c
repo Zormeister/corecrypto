@@ -56,7 +56,7 @@ void ccsha256_ltc_compress(ccdigest_state_t state, size_t nblocks, const void *d
 
         for (i = 0; i < 64; ++i) {
             RND(S[0], S[1], S[2], S[3], S[4], S[5], S[6], S[7], i);
-            t    = S[7];
+            t = S[7];
             S[7] = S[6];
             S[6] = S[5];
             S[5] = S[4];

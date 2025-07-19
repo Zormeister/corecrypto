@@ -11,9 +11,9 @@
 int ccmode_ctr_crypt(ccctr_ctx *ctx, size_t nbytes, const void *in, void *out)
 {
     struct _ccmode_ctr_key *ckey = (struct _ccmode_ctr_key *)ctx;
-    size_t block_size            = ckey->ecb->block_size;
-    const uint8_t *cur_in        = in;
-    uint8_t *cur_out             = out;
+    size_t block_size = ckey->ecb->block_size;
+    const uint8_t *cur_in = in;
+    uint8_t *cur_out = out;
 
     while (nbytes--) {
         if (ckey->pad_len == block_size) {

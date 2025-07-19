@@ -93,7 +93,7 @@ int ccchacha20_setnonce(ccchacha20_ctx *ctx, const uint8_t *nonce)
 int ccchacha20_update(ccchacha20_ctx *ctx, size_t nbytes, const void *in, void *out)
 {
     const uint32_t *data_chunk_ptr = in;
-    uint32_t *out_chunk_buf        = out;
+    uint32_t *out_chunk_buf = out;
 
     if (ctx == NULL || in == NULL || out == NULL) { /* CHECK IF OUR PARAMETERS AREN'T NULL. or maybe that's CC_NONNULL */
         return CCERR_PARAMETER;

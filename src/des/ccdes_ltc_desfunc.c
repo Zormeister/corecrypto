@@ -39,7 +39,7 @@ void desfunc(uint32_t *block, const uint32_t *keys)
     right ^= (work << 8);
 
     right = CC_ROLc(right, 1);
-    work  = (leftt ^ right) & 0xaaaaaaaaL;
+    work = (leftt ^ right) & 0xaaaaaaaaL;
 
     leftt ^= work;
     right ^= work;
@@ -70,11 +70,11 @@ void desfunc(uint32_t *block, const uint32_t *keys)
     }
 
     right = CC_RORc(right, 1);
-    work  = (leftt ^ right) & 0xaaaaaaaaL;
+    work = (leftt ^ right) & 0xaaaaaaaaL;
     leftt ^= work;
     right ^= work;
     leftt = CC_RORc(leftt, 1);
-    work  = ((leftt >> 8) ^ right) & 0x00ff00ffL;
+    work = ((leftt >> 8) ^ right) & 0x00ff00ffL;
     right ^= work;
     leftt ^= (work << 8);
     /* -- */

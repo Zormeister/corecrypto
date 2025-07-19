@@ -20,7 +20,7 @@ static void ccrc4_eay_crypt(ccrc4_ctx *ctx, size_t nbytes, const void *in, void 
 }
 
 const struct ccrc4_info ccrc4_eay = {
-    .size  = ccn_sizeof_size(sizeof(RC4_KEY)),
-    .init  = ccrc4_eay_init,
+    .size = ccn_sizeof_size(sizeof(RC4_KEY)),
+    .init = ccrc4_eay_init,
     .crypt = ccrc4_eay_crypt,
 };

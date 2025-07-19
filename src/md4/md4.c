@@ -148,11 +148,11 @@ static void md4_process(ccdigest_state_t state, size_t nblocks, const void *data
 
 const struct ccdigest_info ccmd4_ltc_di = {
     .initial_state = ccmd4_initial_state,
-    .output_size   = CCMD4_OUTPUT_SIZE,
-    .block_size    = CCMD4_BLOCK_SIZE,
-    .state_size    = CCMD4_STATE_SIZE,
-    .oid           = ccoid_md4,
-    .oid_size      = ccoid_md4_len,
-    .compress      = md4_process,
-    .final         = ccdigest_final_64le,
+    .output_size = CCMD4_OUTPUT_SIZE,
+    .block_size = CCMD4_BLOCK_SIZE,
+    .state_size = CCMD4_STATE_SIZE,
+    .oid = ccoid_md4,
+    .oid_size = ccoid_md4_len,
+    .compress = md4_process,
+    .final = ccdigest_final_64le,
 };

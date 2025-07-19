@@ -22,7 +22,7 @@
 static uint32_t s_blowfish_stream2word(const unsigned char *d, int dlen, int *cur)
 {
     unsigned int z;
-    int y        = *cur;
+    int y = *cur;
     uint32_t ret = 0;
 
     for (z = 0; z < 4; z++) {
@@ -42,7 +42,7 @@ int ccblowfish_ltc_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void 
     const struct ccblowfish_ltc_ctx *skey = (const struct ccblowfish_ltc_ctx *)ctx;
 
     const void *cur_in = in;
-    void *cur_out      = out;
+    void *cur_out = out;
 
     while (nblocks--) {
         CC_LOAD32_BE(R, cur_in);
@@ -89,7 +89,7 @@ int ccblowfish_ltc_ecb_decrypt(const ccecb_ctx *ctx, size_t nblocks, const void 
     const struct ccblowfish_ltc_ctx *skey = (const struct ccblowfish_ltc_ctx *)ctx;
 
     const void *cur_in = in;
-    void *cur_out      = out;
+    void *cur_out = out;
 
 #ifndef __GNUC__
     const uint32_t *S1, *S2, *S3, *S4;
@@ -146,14 +146,14 @@ int ccblowfish_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t ke
         skey->K[x] ^= A;
     }
 
-    i    = 0;
+    i = 0;
     B[0] = 0;
     B[1] = 0;
     for (x = 0; x < 18; x += 2) {
         /* encrypt it */
         ccblowfish_ltc_ecb_encrypt((ccecb_ctx *)skey, 1, B, B);
         /* copy it */
-        skey->K[x]     = B[0];
+        skey->K[x] = B[0];
         skey->K[x + 1] = B[1];
     }
 
@@ -163,7 +163,7 @@ int ccblowfish_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t ke
             /* encrypt it */
             ccblowfish_ltc_ecb_encrypt((ccecb_ctx *)skey, 1, B, B);
             /* copy it */
-            skey->S[x][y]     = B[0];
+            skey->S[x][y] = B[0];
             skey->S[x][y + 1] = B[1];
         }
     }
@@ -172,15 +172,15 @@ int ccblowfish_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t ke
 }
 
 const struct ccmode_ecb ccblowfish_ltc_ecb_encrypt_mode = {
-    .size       = ccn_sizeof_size(sizeof(struct ccblowfish_ltc_ctx)),
+    .size = ccn_sizeof_size(sizeof(struct ccblowfish_ltc_ctx)),
     .block_size = CCBLOWFISH_BLOCK_SIZE,
-    .init       = ccblowfish_ltc_setup,
-    .ecb        = ccblowfish_ltc_ecb_encrypt,
+    .init = ccblowfish_ltc_setup,
+    .ecb = ccblowfish_ltc_ecb_encrypt,
 };
 
 const struct ccmode_ecb ccblowfish_ltc_ecb_decrypt_mode = {
-    .size       = ccn_sizeof_size(sizeof(struct ccblowfish_ltc_ctx)),
+    .size = ccn_sizeof_size(sizeof(struct ccblowfish_ltc_ctx)),
     .block_size = CCBLOWFISH_BLOCK_SIZE,
-    .init       = ccblowfish_ltc_setup,
-    .ecb        = ccblowfish_ltc_ecb_decrypt,
+    .init = ccblowfish_ltc_setup,
+    .ecb = ccblowfish_ltc_ecb_decrypt,
 };

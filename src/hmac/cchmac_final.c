@@ -44,7 +44,7 @@ void cchmac_final(const struct ccdigest_info *di, cchmac_ctx_t hc,
     ccdigest_final(di, cchmac_digest_ctx(di, hc), cchmac_data(di, hc));
 
     // Set the HMAC output size based on the digest algorithm
-    cchmac_num(di, hc)   = (unsigned int)di->output_size; /* typecast: output size will alwys fit in an unsigned int */
+    cchmac_num(di, hc) = (unsigned int)di->output_size; /* typecast: output size will alwys fit in an unsigned int */
     cchmac_nbits(di, hc) = di->block_size * 8;
 
     // Copy the pre-computed compress(key \oplus opad) back to digest state,

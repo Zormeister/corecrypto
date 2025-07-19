@@ -162,7 +162,7 @@ static void KeyExpansion(struct _pdcmode_aes128_ctx *ctx, const uint8_t *key)
 
             // Function RotWord()
             {
-                k        = tempa[0];
+                k = tempa[0];
                 tempa[0] = tempa[1];
                 tempa[1] = tempa[2];
                 tempa[2] = tempa[3];
@@ -229,23 +229,23 @@ static void ShiftRows(void)
     uint8_t temp;
 
     // Rotate first row 1 columns to left
-    temp           = (*state)[0][1];
+    temp = (*state)[0][1];
     (*state)[0][1] = (*state)[1][1];
     (*state)[1][1] = (*state)[2][1];
     (*state)[2][1] = (*state)[3][1];
     (*state)[3][1] = temp;
 
     // Rotate second row 2 columns to left
-    temp           = (*state)[0][2];
+    temp = (*state)[0][2];
     (*state)[0][2] = (*state)[2][2];
     (*state)[2][2] = temp;
 
-    temp           = (*state)[1][2];
+    temp = (*state)[1][2];
     (*state)[1][2] = (*state)[3][2];
     (*state)[3][2] = temp;
 
     // Rotate third row 3 columns to left
-    temp           = (*state)[0][3];
+    temp = (*state)[0][3];
     (*state)[0][3] = (*state)[3][3];
     (*state)[3][3] = (*state)[2][3];
     (*state)[2][3] = (*state)[1][3];
@@ -263,10 +263,10 @@ static void MixColumns(void)
     uint8_t i;
     uint8_t Tmp, Tm, t;
     for (i = 0; i < 4; ++i) {
-        t   = (*state)[i][0];
+        t = (*state)[i][0];
         Tmp = (*state)[i][0] ^ (*state)[i][1] ^ (*state)[i][2] ^ (*state)[i][3];
-        Tm  = (*state)[i][0] ^ (*state)[i][1];
-        Tm  = xtime(Tm);
+        Tm = (*state)[i][0] ^ (*state)[i][1];
+        Tm = xtime(Tm);
         (*state)[i][0] ^= Tm ^ Tmp;
         Tm = (*state)[i][1] ^ (*state)[i][2];
         Tm = xtime(Tm);
@@ -323,23 +323,23 @@ static void InvShiftRows(void)
     uint8_t temp;
 
     // Rotate first row 1 columns to right
-    temp           = (*state)[3][1];
+    temp = (*state)[3][1];
     (*state)[3][1] = (*state)[2][1];
     (*state)[2][1] = (*state)[1][1];
     (*state)[1][1] = (*state)[0][1];
     (*state)[0][1] = temp;
 
     // Rotate second row 2 columns to right
-    temp           = (*state)[0][2];
+    temp = (*state)[0][2];
     (*state)[0][2] = (*state)[2][2];
     (*state)[2][2] = temp;
 
-    temp           = (*state)[1][2];
+    temp = (*state)[1][2];
     (*state)[1][2] = (*state)[3][2];
     (*state)[3][2] = temp;
 
     // Rotate third row 3 columns to right
-    temp           = (*state)[0][3];
+    temp = (*state)[0][3];
     (*state)[0][3] = (*state)[1][3];
     (*state)[1][3] = (*state)[2][3];
     (*state)[2][3] = (*state)[3][3];
@@ -424,7 +424,7 @@ void AES128_set_key(struct _pdcmode_aes128_ctx *ctx, const void *key)
 void AES128_ECB_encrypt(const struct _pdcmode_aes128_ctx *ctx, unsigned long nblocks, const void *in, void *out)
 {
     const uint8_t *input = (const uint8_t *)in;
-    uint8_t *output      = (uint8_t *)out;
+    uint8_t *output = (uint8_t *)out;
     for (unsigned long i = 0; i < nblocks; i++) {
         // Copy input to output, and work in-memory on output
         BlockCopy(output, input);
@@ -441,7 +441,7 @@ void AES128_ECB_encrypt(const struct _pdcmode_aes128_ctx *ctx, unsigned long nbl
 void AES128_ECB_decrypt(const struct _pdcmode_aes128_ctx *ctx, unsigned long nblocks, const void *in, void *out)
 {
     const uint8_t *input = (const uint8_t *)in;
-    uint8_t *output      = (uint8_t *)out;
+    uint8_t *output = (uint8_t *)out;
 
     for (unsigned long i = 0; i < nblocks; i++) {
         // Copy input to output, and work in-memory on output
@@ -458,7 +458,7 @@ void AES128_ECB_decrypt(const struct _pdcmode_aes128_ctx *ctx, unsigned long nbl
 void AES128_CBC_encrypt(const struct _pdcmode_aes128_ctx *ctx, struct pdccbc_iv *iv, unsigned long nblocks, const void *in, void *out)
 {
     const uint8_t *input = (const uint8_t *)in;
-    uint8_t *output      = (uint8_t *)out;
+    uint8_t *output = (uint8_t *)out;
 
     uint8_t *iv_ptr = (uint8_t *)iv->b;
 
@@ -476,7 +476,7 @@ void AES128_CBC_encrypt(const struct _pdcmode_aes128_ctx *ctx, struct pdccbc_iv 
 void AES128_CBC_decrypt(const struct _pdcmode_aes128_ctx *ctx, struct pdccbc_iv *iv, unsigned long nblocks, const void *in, void *out)
 {
     const uint8_t *input = (const uint8_t *)in;
-    uint8_t *output      = (uint8_t *)out;
+    uint8_t *output = (uint8_t *)out;
 
     uint8_t *iv_ptr = (uint8_t *)iv->b;
 

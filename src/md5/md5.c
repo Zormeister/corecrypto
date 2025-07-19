@@ -22,12 +22,12 @@ const uint32_t pdcmd5_initial_state[4] = {
 #define pdcoid_md5_len 10
 
 const struct ccdigest_info pdcmd5_di = {
-    .output_size   = CCMD5_OUTPUT_SIZE,
-    .state_size    = CCMD5_STATE_SIZE,
-    .block_size    = CCMD5_BLOCK_SIZE,
-    .oid_size      = pdcoid_md5_len,
-    .oid           = (unsigned char *)CC_DIGEST_OID_MD5,
+    .output_size = CCMD5_OUTPUT_SIZE,
+    .state_size = CCMD5_STATE_SIZE,
+    .block_size = CCMD5_BLOCK_SIZE,
+    .oid_size = pdcoid_md5_len,
+    .oid = (unsigned char *)CC_DIGEST_OID_MD5,
     .initial_state = pdcmd5_initial_state,
-    .compress      = pdcmd5_compress,
-    .final         = ccdigest_final_64le
+    .compress = pdcmd5_compress,
+    .final = ccdigest_final_64le
 };

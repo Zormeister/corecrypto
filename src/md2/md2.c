@@ -99,9 +99,9 @@ static void md2_compress(unsigned char *X, unsigned char *buffer)
 
 static void md2_process(ccdigest_state_t state, size_t nblocks, const void *data)
 {
-    unsigned char *X        = ccdigest_u8(state);
+    unsigned char *X = ccdigest_u8(state);
     unsigned char *checksum = ccdigest_u8(state) + 48;
-    unsigned char *buf      = (unsigned char *)data;
+    unsigned char *buf = (unsigned char *)data;
     for (int i = 0; i < nblocks; i++) {
         md2_compress(X, buf);
         md2_update_chksum(checksum, buf);
@@ -113,7 +113,7 @@ static void md2_final(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *
 {
     unsigned long i, k;
 
-    unsigned char *X        = ccdigest_state_u8(di, ctx);
+    unsigned char *X = ccdigest_state_u8(di, ctx);
     unsigned char *checksum = ccdigest_state_u8(di, ctx) + 48;
 
     /* pad the message */
@@ -136,12 +136,12 @@ static void md2_final(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *
 }
 
 const struct ccdigest_info ccmd2_ltc_di = {
-    .block_size    = CCMD2_BLOCK_SIZE,
-    .state_size    = CCMD2_STATE_SIZE,
-    .output_size   = CCMD2_OUTPUT_SIZE,
+    .block_size = CCMD2_BLOCK_SIZE,
+    .state_size = CCMD2_STATE_SIZE,
+    .output_size = CCMD2_OUTPUT_SIZE,
     .initial_state = ccmd2_initial_state,
-    .oid           = ccoid_md2,
-    .oid_size      = ccoid_md2_len,
-    .final         = md2_final,
-    .compress      = md2_process,
+    .oid = ccoid_md2,
+    .oid_size = ccoid_md2_len,
+    .final = md2_final,
+    .compress = md2_process,
 };

@@ -28,8 +28,8 @@ void cc_leftshift_onebit(uint8_t *input, uint8_t *output)
 int cccmac_generate_subkeys(const struct ccmode_cbc *cbc, size_t key_nbytes, const void *key, uint8_t *key1, uint8_t *key2)
 {
     const uint8_t iv[CMAC_BLOCKSIZE] = { 0 };
-    uint8_t buf[CMAC_BLOCKSIZE]      = { 0 };
-    uint8_t tmp[CMAC_BLOCKSIZE]      = { 0 };
+    uint8_t buf[CMAC_BLOCKSIZE] = { 0 };
+    uint8_t tmp[CMAC_BLOCKSIZE] = { 0 };
 
     int ret = cccbc_one_shot(cbc, key_nbytes, key, iv, 1, buf, buf);
     if (ret) { return ret; }

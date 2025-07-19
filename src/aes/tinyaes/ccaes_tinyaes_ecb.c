@@ -54,15 +54,15 @@ static int pdcmode_aes_ecb_decrypt(const ccecb_ctx *ctx, size_t nblocks, const v
 }
 
 const struct ccmode_ecb ccaes_tinyaes_ecb_encrypt_mode = {
-    .size       = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
+    .size = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
     .block_size = CCAES_BLOCK_SIZE,
-    .init       = pdcmode_aes_ecb_init,
-    .ecb        = pdcmode_aes_ecb_encrypt
+    .init = pdcmode_aes_ecb_init,
+    .ecb = pdcmode_aes_ecb_encrypt
 };
 
 const struct ccmode_ecb ccaes_tinyaes_ecb_decrypt_mode = {
-    .size       = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
+    .size = ccn_sizeof_size(sizeof(struct _pdcmode_aes128_ctx)),
     .block_size = CCAES_BLOCK_SIZE,
-    .init       = pdcmode_aes_ecb_init,
-    .ecb        = pdcmode_aes_ecb_decrypt
+    .init = pdcmode_aes_ecb_init,
+    .ecb = pdcmode_aes_ecb_decrypt
 };

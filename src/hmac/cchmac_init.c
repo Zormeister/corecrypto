@@ -81,6 +81,6 @@ void cchmac_init(const struct ccdigest_info *di, cchmac_ctx_t hc,
     }
     ccdigest_copy_state(di, cchmac_istate32(di, hc), di->initial_state);
     di->compress(cchmac_istate(di, hc), 1, cchmac_data(di, hc));
-    cchmac_num(di, hc)   = 0;
+    cchmac_num(di, hc) = 0;
     cchmac_nbits(di, hc) = di->block_size * 8;
 }
