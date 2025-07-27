@@ -12,7 +12,7 @@
 #define _CORECRYPTO_CCAES_H_
 
 #include <corecrypto/cc_config.h>
-#include <corecrypto/ccmode.h>
+#include <corecrypto/ccmode_impl.h>
 
 #define CCAES_BLOCK_SIZE 16
 #define CCAES_KEY_SIZE_128 16

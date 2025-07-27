@@ -6,6 +6,7 @@
 //
 
 #include "ccmode_internal.h"
+#include "corecrypto/ccmode.h"
 
 int ccmode_cbc_init(const struct ccmode_cbc *cbc, cccbc_ctx *ctx, size_t key_len, const void *key)
 {
@@ -13,5 +14,5 @@ int ccmode_cbc_init(const struct ccmode_cbc *cbc, cccbc_ctx *ctx, size_t key_len
 
     fctx->ecb = (struct ccmode_ecb *)cbc->custom; /* set the custom. */
 
-    return fctx->ecb->init(fctx->ecb, CCMODE_CBC_KEY_ECB_CTX(fctx), key_len, key);
+    return ccecb_init(fctx->ecb, CCMODE_CBC_KEY_ECB_CTX(fctx), key_len, key);
 }

@@ -12,7 +12,6 @@
 #define _CORECRYPTO_cccmac_H_
 
 #include <corecrypto/cc.h>
-#include <corecrypto/ccmode.h>
 #include <corecrypto/ccaes.h>
 
 #define CMAC_BLOCKSIZE   16

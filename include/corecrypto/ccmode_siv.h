@@ -12,7 +12,6 @@
 #define _CORECRYPTO_CCMODE_SIV_H_
 
 #include <corecrypto/cc.h>
-#include <corecrypto/ccmode.h>
 #include <corecrypto/ccmode_impl.h>
 
 #include <corecrypto/cccmac.h>

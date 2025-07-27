@@ -9,7 +9,6 @@
 #define ccmode_siv_hmac_h
 
 #include <corecrypto/cc.h>
-#include <corecrypto/ccmode.h>
 #include <corecrypto/ccmode_impl.h>
 #include <corecrypto/ccdigest.h>
 #include <corecrypto/cchmac.h>
