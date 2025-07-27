@@ -13,9 +13,9 @@
 
 void ccmode_factory_xts_decrypt(struct ccmode_xts *xts, const struct ccmode_ecb *ecb, const struct ccmode_ecb *ecb_encrypt) {
     /* Fill in size parameters */
-    xts->size = sizeof(struct _ccmode_xts_key);
+    xts->size = ccn_sizeof_size(sizeof(struct _ccmode_xts_key)) + 2 * ccn_sizeof_size(ecb->size);
     xts->block_size = ccecb_block_size(ecb);
-    xts->tweak_size = sizeof(struct _ccmode_xts_tweak);
+    xts->tweak_size = ccn_sizeof_size(sizeof(struct _ccmode_xts_tweak)) + ccn_sizeof_size(ecb->block_size);
 
     /* Populate function callbacks */
     xts->init = ccmode_xts_init;
@@ -30,9 +30,9 @@ void ccmode_factory_xts_decrypt(struct ccmode_xts *xts, const struct ccmode_ecb 
 
 void ccmode_factory_xts_encrypt(struct ccmode_xts *xts, const struct ccmode_ecb *ecb, const struct ccmode_ecb *ecb_encrypt) {
     /* Fill in size parameters */
-    xts->size = sizeof(struct _ccmode_xts_key);
+    xts->size = ccn_sizeof_size(sizeof(struct _ccmode_xts_key)) + 2 * ccn_sizeof_size(ecb->size);
     xts->block_size = ccecb_block_size(ecb);
-    xts->tweak_size = sizeof(struct _ccmode_xts_tweak);
+    xts->tweak_size = ccn_sizeof_size(sizeof(struct _ccmode_xts_tweak)) + ccn_sizeof_size(ecb->block_size);
 
     /* Populate function callbacks */
     xts->init = ccmode_xts_init;
