@@ -33,4 +33,9 @@
 #define CCMODE_OFB_KEY_IV(okey)      okey->u
 #define CCMODE_OFB_KEY_ECB_CTX(okey) (ccecb_ctx *)okey->u + ccn_sizeof_size(okey->ecb->block_size)
 
+#define CCMODE_XTS_TWEAK_MAX_BLOCKS_PROCESSED 0x100000
+
+#define CCMODE_XTS_KEY_ECB_CTX(xkey) (ccecb_ctx *)xkey->u
+#define CCMODE_XTS_KEY_ECB_ENCRYPT_CTX(xkey) (ccecb_ctx *)xkey->u + ccn_sizeof_size(xkey->ecb->block_size)
+
 #endif /* _CORECRYPTO_CCMODE_INTERNAL_H_ */
