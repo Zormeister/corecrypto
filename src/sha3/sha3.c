@@ -6,3 +6,9 @@
 //
 
 #include <corecrypto/ccsha3.h>
+
+/*
+ * ZORMEISTER:
+ *
+ * I started with researching SHA-3. How in the hell did I get here.
+ */

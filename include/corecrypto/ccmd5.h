@@ -22,5 +22,6 @@ const struct ccdigest_info *ccmd5_di(void);
 
 /* Implementations */
 extern const struct ccdigest_info ccmd5_ltc_di;
+extern const struct ccdigest_info pdcmd5_di;
 
 #endif /* _CORECRYPTO_CCMD5_H_ */

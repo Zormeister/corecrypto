@@ -27,7 +27,7 @@ const struct ccmode_ecb *ccaes_ecb_encrypt_mode(void)
     }
 #endif
 
-    return &ccaes_tinyaes_ecb_encrypt_mode;
+    return &ccaes_ltc_ecb_encrypt_mode;
 };
 
 const struct ccmode_ecb *ccaes_ecb_decrypt_mode(void)
@@ -44,7 +44,7 @@ const struct ccmode_ecb *ccaes_ecb_decrypt_mode(void)
     }
 #endif
 
-    return &ccaes_tinyaes_ecb_decrypt_mode;
+    return &ccaes_ltc_ecb_decrypt_mode;
 };
 
 #pragma mark - CBC mode
