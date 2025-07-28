@@ -1,7 +1,7 @@
-/*	This file defines _AESEncryptWithExpandedKey or _AESDecryptWithExpandedKey,
-	according to the value of the Select preprocessor symbol.  This file is
-	designed to be included in another assembly file using the preprocessor
-	#include directive, to benefit from some assembly-time calculations.
+/*	This file defines _aes_encrypt or _aes_decrypt, according to the value of
+	the Select preprocessor symbol.  This file is designed to be included in
+	another assembly file using the preprocessor #include directive, to benefit
+	from some assembly-time calculations.
 
 	These two routines are nearly identical.  They differ only in the tables
 	they use, the direction they iterate through the key, and the permutation
@@ -12,11 +12,10 @@
 
 #include <corecrypto/cc_config.h>
 
-// Generate object code only if this implementation has been requested.
-#if CCAES_INTEL_ASM
+#if CCAES_INTEL_ASM && (defined __i386__ || defined __x86_64__)
 
 #if Select == 0
-	#define	Name		_AESEncryptWithExpandedKey	// Routine name.
+	#define	Name		_vng_aes_encrypt_opt				// Routine name.
 	#define	MTable		_AESEncryptTable			// Main table.
 	#define	FTable		_AESSubBytesWordTable		// Final table.
 	#define	P0			S0							// State permutation.
@@ -25,7 +24,25 @@
 	#define	P3			S3
 	#define	Increment	+16							// ExpandedKey increment.
 #elif Select == 1
-	#define	Name		_AESDecryptWithExpandedKey	// Routine name.
+	#define	Name		_vng_aes_decrypt_opt				// Routine name.
+	#define	MTable		_AESDecryptTable			// Main table.
+	#define	FTable		_AESInvSubBytesWordTable	// Final table.
+	#define	P0			S2							// State permutation.
+	#define	P1			S3
+	#define	P2			S0
+	#define	P3			S1
+	#define	Increment	-16							// ExpandedKey increment.
+#elif Select == 2
+	#define	Name		_aes_encrypt_xmm_no_save	// Routine name.
+	#define	MTable		_AESEncryptTable			// Main table.
+	#define	FTable		_AESSubBytesWordTable		// Final table.
+	#define	P0			S0							// State permutation.
+	#define	P1			S1
+	#define	P2			S2
+	#define	P3			S3
+	#define	Increment	+16							// ExpandedKey increment.
+#elif Select == 3
+	#define	Name		_aes_decrypt_xmm_no_save	// Routine name.
 	#define	MTable		_AESDecryptTable			// Main table.
 	#define	FTable		_AESInvSubBytesWordTable	// Final table.
 	#define	P0			S2							// State permutation.
@@ -51,11 +68,11 @@
 	Input:
 
 		Constant data:
+
+			The following names must be locally defined so the assembler
+			can calculate certain offsets.
 				
 			For encryption:
-
-				The following names must be locally defined so the assembler
-				can calculate certain offsets.
 
 				static const Word _AESEncryptTable[4][256].
 
@@ -85,83 +102,114 @@
 					where InvSubBytes is defined in FIPS-197.
 					_AESInvSubBytesWordTable differs from _AESDecryptTable in
 					that it does not include the InvMixColumn operation.  It is
-					used in performing the last round, which differs fromm the
+					used in performing the last round, which differs from the
 					previous rounds in that it does not include the
 					InvMixColumn operation.
 
 		Arguments:
 
-			Byte *OutputText.
-
-				Address of output, 16 bytes.  Best if four-byte aligned.
-
 			const Byte *InputText.
 
 				Address of input, 16 bytes.  Best if four-byte aligned.
 
-			const Byte *ExpandedKey.
+			Byte *OutputText.
 
-				Address of expanded key, which has 4 * (Nr+1) bytes.  Best if
-				four-byte aligned.
+				Address of output, 16 bytes.  Best if four-byte aligned.
 
-			int Nr
+			aes_encrypt_ctx *Context or aes_decrypt_ctx *Context
 
-				Number of rounds.
+				aes_encrypt_ctx and aes_decrypt_ctx are identical except the
+				former is used for encryption and the latter for decryption.
+
+				Each is a structure containing the expanded key beginning at
+				offset ContextKey and a four-byte "key length" beginning at
+				offset ContextKeyLength.  The "key length" is the number of
+				bytes from the start of the first round key to the start of the
+				last round key.  That is 16 less than the number of bytes in
+				the entire key.
 
 	Output:
 
 		Encrypted or decrypted data is written to *OutputText.
+
+	Return:
+
+		aes_rval	// -1 if "key length" is invalid.  0 otherwise.
 */
+
+	.text
 	.globl Name
-	.private_extern	Name
 Name:
 
 	// Push new stack frame.
 	push	r5
 
-	// Save registers and set RegisterSave size to the number of bytes used.
+	/*	Save registers and set SaveSize to the number of bytes pushed onto the
+		stack so far, including the caller's return address.
+	*/
 	push	r3
 	#if defined __i386__
 		push	r6
 		push	r7
-		#define	RegisterSaveSize	(3*4)
-	#elif defined __x86_64__
-		#define	RegisterSaveSize	(1*8)
+		#define	SaveSize	(5*4)
+	#else
+		#define	SaveSize	(3*8)
 	#endif
 
-#define	LocalsSize	Arch(4, 0)	// Number of bytes used for local variables.
+	/*	Number of bytes used for local variables:
+
+			4 (i386) or 0 (x86_64) bytes for ExpandedKeyEnd.
+
+			5 (i386) or 3 (x86_64) 16-byte spaces to save XMM registers.
+	*/
+	#define	LocalsSize	(Arch(4, 0) + Arch(5, 3)*16)
 
 	#if 0 < LocalsSize
-		sub		$LocalsSize, r4	// Allocate space on stack.
+		// Padding to position stack pointer at a multiple of 16 bytes.
+		#define	Padding	(15 & -(SaveSize + LocalsSize))
+		sub		$Padding + LocalsSize, r4	// Allocate space on stack.
+	#else
+		#define	Padding	0
 	#endif
 
-// Number of bytes from the stack pointer to the return address.
-#define	StackFrame	(LocalsSize+RegisterSaveSize)
+#ifdef CC_KERNEL
+#if	Select < 2
+	// Save XMM registers.
+	movaps	%xmm0, 0*16(r4)
+	movaps	%xmm1, 1*16(r4)
+	movaps	%xmm2, 2*16(r4)
+#if defined __i386__
+	movaps	%xmm3, 3*16(r4)
+	movaps	%xmm4, 4*16(r4)
+#endif
+#endif	// Select
+#endif	// CC_KERNEL
 
 #if defined __i386__
 
-	// Define location of argument i (presuming 4-byte arguments).
-	#define	Argument(i)	StackFrame+8+4*(i)(%esp)
+	// Number of bytes from caller's stack pointer to ours.
+	#define	StackFrame	(SaveSize + Padding + LocalsSize)
 
-	#define	ArgOutputText	Argument(0)
-	#define	ArgInputText	Argument(1)
-	#define	ArgExpandedKey	Argument(2)
-	#define	ArgNr			Argument(3)
+	// Define location of argument i (presuming 4-byte arguments).
+	#define	Argument(i)	StackFrame+4*(i)(%esp)
+
+	#define	ArgInputText	Argument(0)
+	#define	ArgOutputText	Argument(1)
+	#define	ArgContext		Argument(2)
 
 #elif defined __x86_64__
 
 	// Arguments.
-	#define	OutputText		r7	// Needed near end of routine.
-	#define	InputText		r6	// Used early then overwritten for other use.
-	#define	ArgExpandedKey	r2
-	#define	ArgNr			r1
-		/*	The arguments passed in r1 and r2 overlaps registers we need for
-		 	other work, so they must be moved early in the routine.
+	#define	InputText		r7	// Used early then overwritten for other use.
+	#define	OutputText		r6	// Needed near end of routine.
+	#define	ArgContext		r2
+		/*	The argument passed in r2 overlaps registers we need for other
+		 	work, so it must be moved early in the routine.
 		*/
 
 #endif
 
-#define	BaseP		Arch(r7, r9)	// Base pointer for addressing global data.
+#define	BaseP		Arch(r6, r9)	// Base pointer for addressing global data.
 #define	ExpandedKey	Arch(t0, r10)	// Address of expanded key.
 
 /*	The Work registers defined below are used to hold parts of the AES state
@@ -185,7 +233,7 @@ Name:
 #define	t0d		r5d		// Low 32 bits of t0.
 #define	t0l		r5l		// Low byte of t0.
 
-#define	t1		r6
+#define	t1		r7
 
 /*	S0, S1, S2, and S3 are where we assemble the new AES state when computing
 	a regular round.  S1, S2, and S3 are assigned to the Work registers, but
@@ -202,27 +250,38 @@ Name:
 	However, using more general registers requires saving them to the stack
 	and restoring them.  I timed it, and no time was saved.)
 */
-#define	vS1		%xmm1
-#define	vS2		%xmm2
-#define	vS3		%xmm3
+#define	vS1		%xmm0
+#define	vS2		%xmm1
+#define	vS3		%xmm2
 #if defined __i386__
-	#define	vExpandedKey	%xmm4
-	#define	vIncrement		%xmm5
+	#define	vExpandedKey	%xmm3
+	#define	vIncrement		%xmm4
 #endif
 
-	// Get argument.
-	mov	ArgExpandedKey, ExpandedKey
+	// Get address of expanded key.
+	mov	ArgContext, ExpandedKey
+	#if 0 != ContextKey
+		add		$ContextKey, ExpandedKey
+	#endif
 
-// Store sentinel value of ExpandedKey on stack on i386, a register on x86_64.
-#define	ExpandedKeyEnd	Arch((r4), r11)
+/*	Store sentinel value of ExpandedKey on the stack on i386, a register on
+ 	x86_64.
+*/
+#define	ExpandedKeyEnd	Arch(5*16(r4), r11)
 
-	/*	Convert ArgNr from rounds to number of bytes to move through expanded
-		key to get to (but not beyond) last 16-byte block.
-	*/
-	mov		ArgNr, r0
-	shl		$4, r0
+	// Get and check "key length".
+	movzx	ContextKeyLength(ExpandedKey), r0
+	cmp		$160, r0
+	je		2f
+	cmp		$192, r0
+	je		2f
+	cmp		$224, r0
+	je		2f
+	mov		$-1, r0		// Return error.
+	jmp		9f
+2:
 
-	#if Select == 0
+	#if (Select == 0 || Select == 2)
 		// For encryption, prepare to iterate forward through expanded key.
 		add		ExpandedKey, r0
 		mov		r0, ExpandedKeyEnd
@@ -442,9 +501,23 @@ Name:
 	mov		S2, 2*4(OutputText)
 	mov		S3, 3*4(OutputText)
 
+	xor		r0, r0		// Return success.
+
+9:
 	// Pop stack and restore registers.
+#ifdef	CC_KERNEL
+#if	Select < 2
+#if defined __i386__
+	movaps	4*16(r4), %xmm4
+	movaps	3*16(r4), %xmm3
+#endif
+	movaps	2*16(r4), %xmm2
+	movaps	1*16(r4), %xmm1
+	movaps	0*16(r4), %xmm0
+#endif	// Select
+#endif	// CC_KERNEL
 	#if 0 < LocalsSize
-		add		$LocalsSize, r4
+		add		$Padding + LocalsSize, r4
 	#endif
 	#if defined __i386__
 		pop		r7
@@ -472,7 +545,8 @@ Name:
 #undef	LookupF
 #undef	MTable
 #undef	OutputText
-#undef	RegisterSaveSize
+#undef	Padding
+#undef	SaveSize
 #undef	S0
 #undef	S1
 #undef	S2

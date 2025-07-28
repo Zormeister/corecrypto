@@ -1,37 +1,41 @@
-// Generate object code only if this implementation has been requested.
-
-#include <corecrypto/cc_config.h>
-
-#if CCAES_INTEL_ASM && defined (__x86_64__) || defined (__i386__)
-
-
 /*	AES.s -- Core AES routines for Intel processors.
 
-	Written by Eric Postpischil, December 13, 2007.
+	Written by Eric Postpischil, January 30, 2008.
 */
+#include <corecrypto/cc_config.h>
+
+#if CCAES_INTEL_ASM && (defined __i386__ || defined __x86_64__)
 
 
 /*	We build these AES routines as a single module because the routines refer
 	to labels in Data.s and it is easier and faster to refer to them as local
-	labels.
+	labels.  In my implementations of AES for CommonCrypto, both i386 and
+	x86_64 use position-independent code.  For this in-kernel implementation,
+	i386 has been converted to absolute addressing, but x86_64 still uses PIC.
 
 	A local label can be referred to with position-independent assembler
 	expressions such as "label-base(register)", where <base> is a local label
 	whose address has been loaded into <register>.  (On i386, this is typically
-	done with the idiom of a call to the next instrution and a pop of that
+	done with the idiom of a call to the next instruction and a pop of that
 	return address into a register.)  Without local labels, the references must
-	be done using spaces for addresses "lazy symbols" that are filled in by the
-	dynamic loader and loaded by the code that wants the address.
+	be done using spaces for addresses of "lazy symbols" that are filled in by
+	the dynamic loader and loaded by the code that wants the address.
 
 	So the various routines in other files are assembled here via #include
 	directives.
 */
+#include "Data.s"
+
 
 #define	TableSize	(256*4)
 	/*	Each of the arrays defined in Data.s except for the round constants
 		in _AESRcon is composed of four tables of 256 entries of four bytes
 		each.  TableSize is the number of bytes in one of those four tables.
 	*/
+
+
+// Include constants describing the AES context structures.
+#include "Context.h"
 
 
 /*	Define a macro to select a value based on architecture.  This reduces
@@ -122,6 +126,17 @@
 #include "EncryptDecrypt.s"
 #undef	Select
 
+// Define encryption routine, _AESEncryptWithExpandedKey
+#define	Select	2
+#include "EncryptDecrypt.s"
+#undef	Select
+
+
+// Define decryption routine, _AESDecryptWithExpandedKey
+#define	Select	3
+#include "EncryptDecrypt.s"
+#undef	Select
+
 
 // Define key expansion routine for encryption, _AESExpandKeyForEncryption.
 #include "ExpandKeyForEncryption.s"
@@ -129,6 +144,4 @@
 
 // Define key expansion for decryption routine, _AESExpandKeyForDecryption.
 #include "ExpandKeyForDecryption.s"
-
-
-#endif	// defined (__x86_64__) || defined (__i386__)
+#endif /* x86 based build */

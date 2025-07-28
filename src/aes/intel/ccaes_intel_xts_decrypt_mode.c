@@ -1,0 +1,127 @@
+//
+//  ccaes_intel_xts_encrypt_mode.c
+//  corecrypto
+//
+//  Created by Zormeister on 28/7/25.
+//
+
+#include <corecrypto/ccaes.h>
+
+#if CCAES_INTEL_ASM
+
+#include "vng_aes_intel.h"
+
+struct ccaes_intel_xts_decrypt_ctx {
+    vng_aes_intel_decrypt_ctx decrypt[1];
+    vng_aes_intel_encrypt_ctx encrypt_tweak[1];
+};
+
+// forward declaration
+static void key_sched_wrapper_aesni(const struct ccmode_xts *xts, ccxts_ctx *ctx, size_t key_size, const void *data_key, const void *tweak_key);
+
+static int init_wrapper_aesni(const struct ccmode_xts *xts, ccxts_ctx *ctx, size_t key_size, const void *data_key, const void *tweak_key)
+{
+    key_sched_wrapper_aesni(xts, ctx, key_size, data_key, tweak_key);
+    return CCERR_OK;
+}
+
+static void key_sched_wrapper_aesni(const struct ccmode_xts *xts, ccxts_ctx *ctx, size_t key_size, const void *data_key, const void *tweak_key)
+{
+    struct ccaes_intel_xts_decrypt_ctx *key = (struct ccaes_intel_xts_decrypt_ctx *)ctx;
+
+    vng_aes_decrypt_aesni_key(data_key, key_size, key->decrypt);
+    vng_aes_encrypt_aesni_key(tweak_key, key_size, key->encrypt_tweak);
+}
+
+static int set_tweak_wrapper_aesni(const ccxts_ctx *ctx, ccxts_tweak *tweak, const void *iv)
+{
+    struct ccaes_intel_xts_decrypt_ctx *key = (struct ccaes_intel_xts_decrypt_ctx *)ctx;
+
+    vng_aes_encrypt_aesni(iv, (uint8_t *)tweak, key->encrypt_tweak);
+
+    return CCERR_OK;
+}
+
+static void *xts_wrapper_aesni(const ccxts_ctx *ctx, ccxts_tweak *tweak, size_t nblocks, const void *in, void *out)
+{
+    struct ccaes_intel_xts_decrypt_ctx *key = (struct ccaes_intel_xts_decrypt_ctx *)ctx;
+    uint8_t *T = (uint8_t *)tweak;
+
+    if (vng_aes_xts_decrypt_aesni(in, nblocks*CCAES_BLOCK_SIZE, out, T, key->decrypt)) {
+        return NULL;
+    } else {
+        return T;
+    }
+}
+
+const struct ccmode_xts ccaes_intel_xts_decrypt_aesni_mode = {
+    /* constants */
+    .size = sizeof(struct ccaes_intel_xts_decrypt_ctx),
+    .block_size = CCAES_BLOCK_SIZE,
+    .tweak_size = 16,
+
+    /* functions */
+    .init = init_wrapper_aesni,
+    .key_sched = key_sched_wrapper_aesni,
+    .set_tweak = set_tweak_wrapper_aesni,
+    .xts = xts_wrapper_aesni,
+
+    .custom = NULL,
+    .custom1 = NULL,
+};
+
+// forward declaration
+static void key_sched_wrapper_opt(const struct ccmode_xts *xts, ccxts_ctx *ctx, size_t key_size, const void *data_key, const void *tweak_key);
+
+static int init_wrapper_opt(const struct ccmode_xts *xts, ccxts_ctx *ctx, size_t key_size, const void *data_key, const void *tweak_key)
+{
+    key_sched_wrapper_opt(xts, ctx, key_size, data_key, tweak_key);
+    return CCERR_OK;
+}
+
+static void key_sched_wrapper_opt(const struct ccmode_xts *xts, ccxts_ctx *ctx, size_t key_size, const void *data_key, const void *tweak_key)
+{
+    struct ccaes_intel_xts_decrypt_ctx *key = (struct ccaes_intel_xts_decrypt_ctx *)ctx;
+
+    vng_aes_decrypt_opt_key(data_key, key_size, key->decrypt);
+    vng_aes_encrypt_opt_key(tweak_key, key_size, key->encrypt_tweak);
+}
+
+static int set_tweak_wrapper_opt(const ccxts_ctx *ctx, ccxts_tweak *tweak, const void *iv)
+{
+    struct ccaes_intel_xts_decrypt_ctx *key = (struct ccaes_intel_xts_decrypt_ctx *)ctx;
+
+    vng_aes_encrypt_opt(iv, (uint8_t *)tweak, key->encrypt_tweak);
+
+    return CCERR_OK;
+}
+
+static void *xts_wrapper_opt(const ccxts_ctx *ctx, ccxts_tweak *tweak, size_t nblocks, const void *in, void *out)
+{
+    struct ccaes_intel_xts_decrypt_ctx *key = (struct ccaes_intel_xts_decrypt_ctx *)ctx;
+    uint8_t *T = (uint8_t *)tweak;
+
+    if (vng_aes_xts_decrypt_opt(in, nblocks*CCAES_BLOCK_SIZE, out, T, key->decrypt)) {
+        return NULL;
+    } else {
+        return T;
+    }
+}
+
+const struct ccmode_xts ccaes_intel_xts_decrypt_opt_mode = {
+    /* constants */
+    .size = sizeof(struct ccaes_intel_xts_decrypt_ctx),
+    .block_size = CCAES_BLOCK_SIZE,
+    .tweak_size = 16,
+
+    /* functions */
+    .init = init_wrapper_opt,
+    .key_sched = key_sched_wrapper_opt,
+    .set_tweak = set_tweak_wrapper_opt,
+    .xts = xts_wrapper_opt,
+
+    .custom = NULL,
+    .custom1 = NULL,
+};
+
+#endif

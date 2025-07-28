@@ -1,0 +1,148 @@
+//
+//  vng_aes_intel.h
+//  corecrypto
+//
+//  Created by Zormeister on 25/7/2025.
+//
+
+#ifndef _CORECRYPTO_CCAES_INTEL_VNG_H_
+#define _CORECRYPTO_CCAES_INTEL_VNG_H_
+
+#include <corecrypto/ccaes.h>
+
+#if CCAES_INTEL_ASM
+
+/*
+ * ZORMEISTER:
+ * So as it turns out, a lot of the initial corecrypto codebase might have been based off of the LibTomCrypt version
+ * found in CommonCrypto-55010
+ *
+ * A lot of source code for implementations was reused from LTC, and what has me interested is the mention of
+ * Gladman AES in the context of AES-CBC.
+ *
+ */
+
+enum {
+    CRYPT_OK=0,             /* Result OK */
+    CRYPT_ERROR,            /* Generic Error */
+    CRYPT_NOP,              /* Not a failure but no operation was performed */
+    
+    CRYPT_INVALID_KEYSIZE,  /* Invalid key size given */
+    CRYPT_INVALID_ROUNDS,   /* Invalid number of rounds */
+    CRYPT_FAIL_TESTVECTOR,  /* Algorithm failed test vectors */
+    
+    CRYPT_BUFFER_OVERFLOW,  /* Not enough space for output */
+    CRYPT_INVALID_PACKET,   /* Invalid input packet given */
+    
+    CRYPT_INVALID_PRNGSIZE, /* Invalid number of bits for a PRNG */
+    CRYPT_ERROR_READPRNG,   /* Could not read enough from PRNG */
+    
+    CRYPT_INVALID_CIPHER,   /* Invalid cipher specified */
+    CRYPT_INVALID_HASH,     /* Invalid hash specified */
+    CRYPT_INVALID_PRNG,     /* Invalid PRNG specified */
+    
+    CRYPT_MEM,              /* Out of memory */
+    
+    CRYPT_PK_TYPE_MISMATCH, /* Not equivalent types of PK keys */
+    CRYPT_PK_NOT_PRIVATE,   /* Requires a private PK key */
+    
+    CRYPT_INVALID_ARG,      /* Generic invalid argument */
+    CRYPT_FILE_NOTFOUND,    /* File Not Found */
+    
+    CRYPT_PK_INVALID_TYPE,  /* Invalid type of PK key */
+    CRYPT_PK_INVALID_SYSTEM,/* Invalid PK system specified */
+    CRYPT_PK_DUP,           /* Duplicate key already in key ring */
+    CRYPT_PK_NOT_FOUND,     /* Key not found in keyring */
+    CRYPT_PK_INVALID_SIZE,  /* Invalid size input for PK parameters */
+    
+    CRYPT_INVALID_PRIME_SIZE,/* Invalid size of prime requested */
+    CRYPT_PK_INVALID_PADDING,/* Invalid padding on input */
+    
+    CRYPT_HASH_OVERFLOW,     /* Hash applied to too many bits */
+    CRYPT_UNIMPLEMENTED,     /* called an unimplemented routine through a function table */
+    CRYPT_PARAM,                /* Parameter Error */
+    
+    CRYPT_FALLBACK           /* Accelerator was called, but the input didn't meet minimum criteria - fallback to software */
+};
+
+#define VNG_INTEL_KS_LENGTH       60
+
+typedef struct {   
+    uint32_t ks[VNG_INTEL_KS_LENGTH];
+    uint32_t rounds;
+} vng_aes_intel_encrypt_ctx;
+
+typedef struct {   
+    uint32_t ks[VNG_INTEL_KS_LENGTH];
+    uint32_t rounds;
+} vng_aes_intel_decrypt_ctx;
+
+typedef struct {   
+    vng_aes_intel_encrypt_ctx encrypt;
+	vng_aes_intel_decrypt_ctx decrypt;
+} vng_aes_intel_ctx;
+
+extern int vng_aes_encrypt_opt_key(const unsigned char *key, int key_len, vng_aes_intel_encrypt_ctx cx[1]);
+extern int  vng_aes_encrypt_aesni_key(const unsigned char *key, int key_len, vng_aes_intel_encrypt_ctx cx[1]);
+
+extern int vng_aes_decrypt_opt_key(const unsigned char *key, int key_len, vng_aes_intel_decrypt_ctx cx[1]);
+extern int vng_aes_decrypt_aesni_key(const unsigned char *key, int key_len, vng_aes_intel_decrypt_ctx cx[1]);
+
+extern int vng_aes_encrypt_aesni(const unsigned char *pt, unsigned char *ct, vng_aes_intel_encrypt_ctx *ctx);
+extern int vng_aes_encrypt_opt(const unsigned char *pt, unsigned char *ct, vng_aes_intel_encrypt_ctx *ctx);
+
+extern int vng_aes_decrypt_aesni(const unsigned char *ct, unsigned char *pt, vng_aes_intel_decrypt_ctx *ctx);
+extern int vng_aes_decrypt_opt(const unsigned char *ct, unsigned char *pt, vng_aes_intel_decrypt_ctx *ctx);
+    
+extern int vng_aes_decrypt_opt_cbc(const unsigned char *ibuf, unsigned char *in_iv, unsigned int num_blk,
+                              unsigned char *obuf, const vng_aes_intel_decrypt_ctx cx[1]);
+extern int vng_aes_encrypt_opt_cbc(const unsigned char *ibuf, unsigned char *in_iv, unsigned int num_blk,
+                              unsigned char *obuf, const vng_aes_intel_encrypt_ctx ctx[1]);
+
+extern int vng_aes_decrypt_aesni_cbc(const unsigned char *ibuf, unsigned char *in_iv, unsigned int num_blk,
+                              unsigned char *obuf, const vng_aes_intel_decrypt_ctx cx[1]);
+extern int vng_aes_encrypt_aesni_cbc(const unsigned char *ibuf, unsigned char *in_iv, unsigned int num_blk,
+                              unsigned char *obuf, const vng_aes_intel_encrypt_ctx ctx[1]);
+
+/* accessors to the assembly code */
+extern void aesxts_mult_x(uint8_t *I);
+
+extern int aesxts_tweak_crypt_aesni(const uint8_t *P, uint8_t *C, const uint8_t *T, vng_aes_intel_encrypt_ctx *ctx);
+extern int aesxts_tweak_crypt_opt(const uint8_t *P, uint8_t *C, const uint8_t *T, vng_aes_intel_encrypt_ctx *ctx);
+
+extern int aesxts_tweak_crypt_group_aesni(const uint8_t *P, uint8_t *C, const uint8_t *T, vng_aes_intel_encrypt_ctx *ctx, uint32_t lim);
+extern int aesxts_tweak_crypt_group_opt(const uint8_t *P, uint8_t *C, const uint8_t *T, vng_aes_intel_encrypt_ctx *ctx, uint32_t lim);
+
+extern int aesxts_tweak_uncrypt_aesni(const uint8_t *C, uint8_t *P, const uint8_t *T, vng_aes_intel_decrypt_ctx *ctx);
+extern int aesxts_tweak_uncrypt_opt(const uint8_t *C, uint8_t *P, const uint8_t *T, vng_aes_intel_decrypt_ctx *ctx);
+
+extern int aesxts_tweak_uncrypt_group_aesni(const uint8_t *C, uint8_t *P, const uint8_t *T, vng_aes_intel_decrypt_ctx *ctx, uint32_t lim);
+extern int aesxts_tweak_uncrypt_group_opt(const uint8_t *C, uint8_t *P, const uint8_t *T, vng_aes_intel_decrypt_ctx *ctx, uint32_t lim);
+
+int vng_aes_xts_encrypt_aesni(
+   const uint8_t *pt, unsigned long ptlen,
+         uint8_t *ct,
+   const uint8_t *tweak,
+         void *ctx);
+
+int vng_aes_xts_encrypt_opt(
+   const uint8_t *pt, unsigned long ptlen,
+         uint8_t *ct,
+   const uint8_t *tweak,
+         void *ctx);
+
+int vng_aes_xts_decrypt_aesni(
+   const uint8_t *ct, unsigned long ptlen,
+         uint8_t *pt,
+   const uint8_t *tweak,
+         void *ctx);
+
+int vng_aes_xts_decrypt_opt(
+   const uint8_t *ct, unsigned long ptlen,
+         uint8_t *pt,
+   const uint8_t *tweak,
+         void *ctx);
+
+#endif
+
+#endif

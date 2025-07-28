@@ -1,4 +1,5 @@
-/*	This file defines _AESExpandKeyForDecryption.  It is designed to be
+/*	This file defines _vng_aes_decrypt_key, _vng_aes_decrypt_key128,
+	_vng_aes_decrypt_key192, and _vng_aes_decrypt_key256.  It is designed to be
 	included in another assembly file with the preprocessor #include directive,
 	to benefit from some assembly-time calculations.
 
@@ -46,14 +47,13 @@
 
 #include <corecrypto/cc_config.h>
 
-
-// Generate object code only if this implementation has been requested.
-#if CCAES_INTEL_ASM
-
+#if CCAES_INTEL_ASM && (defined __i386__ || defined __x86_64__)
 
 /*	Routine:
 
-		_AESExpandKeyForDecryption.
+		_vng_aes_decrypt_key_opt.
+
+		_vng_aes_decrypt_key128, _vng_aes_decrypt_key192, and _vng_aes_decrypt_key256.
 
 	Function:
 
@@ -96,26 +96,40 @@
 
 			static const Byte _AESRcon[].
 
-				Round constants, beginning with OLDAESRcon[1] for the first round
-				(OLDAESRcon[0] is padding.)
+				Round constants, beginning with AESRcon[1] for the first round
+				(AESRcon[0] is padding.)
 	
 		Arguments:
 
-			Word *ExpandedKey
-
-				Address of output.
-
-			const AESKey *Key
+			const unsigned char *Key
 
 				Address of user's cipher key.
 
-			long Nk
+			int Length
 
-				Number of four-byte words in user's cipher key.
+				Number of bytes (16, 24, or 32) or bits (128, 192, or 256) in
+				user's cipher key.
+
+				This argument is used with _vng_aes_decrypt_key.  It is not
+				present for the other routines.  In those routines, Context
+				is the second argument.
+
+			vng_aes_decrypt_ctx *Context
+
+				Structure to contain the expanded key beginning at offset
+				ContextKey and a four-byte "key length" beginning at offset
+				ContextKeyLength.  The "key length" is the number of bytes from
+				the start of the first round key to the startof the last rond
+				key.  That is 16 less than the number of bytes in the entire
+				key.
 
 	Output:
 
-		The expanded key is written to *ExpandedKey.
+		The expanded key and the "key length" are written to *Context.
+
+	Return:
+
+		vng_aes_rval	// -1 if "key length" is invalid.  0 otherwise.
 */
 
 #define	dr		r0d				// Dissection register.
@@ -127,13 +141,13 @@
 
 #define	STable	r2				// Address of SubBytes table.  Overlaps Nk.
 #define	ITable	r3				// Address of InvMixColumn table.
-#define	offset	r5				// Address offset and loop sentinel.
+#define	offset	Arch(r5, r11)	// Address offset and loop sentinel.
 
-#define	R		r6				// Address of round constant.
-#define	K		r6				// User key pointer, second x86_64 argument.
+#define	R		r7				// Address of round constant.
+#define	K		r7				// User key pointer.
 	// R and K overlap.
 
-#define	E		r7				// Expanded key pointer, first x86_64 argument.
+#define	E		r6				// Expanded key pointer.
 
 #define	ve0		%xmm0
 #define	ve1		%xmm1
@@ -202,80 +216,176 @@ InvMixColumn:
 		pxor	vt1,vt0
 	.endmacro
 
-
-	.globl _AESExpandKeyForDecryption
-	.private_extern	_AESExpandKeyForDecryption
-_AESExpandKeyForDecryption:
-
-	// Push new stack frame.
-	push	r5
-
-	// Save registers.
+	.text
+	.globl _vng_aes_decrypt_opt_key
+//	.private_extern	_vng_aes_decrypt_opt_key
+_vng_aes_decrypt_opt_key:
+	/*	Save registers and set SaveSize to the number of bytes pushed onto the
+		stack so far, including the caller's return address.
+	*/
 	push	r3
 	#if defined __i386__
+		push	r5
 		push	r6
 		push	r7
-		#define	RegisterSaveSize	(3*4)
-	#elif defined __x86_64__
-		#define	RegisterSaveSize	(1*8)
-		// Add pushes of r12 to r15 if used.
+		#define	SaveSize	(5*4)
+	#else
+		#define	SaveSize	(2*8)
 	#endif
 
-#define	LocalsSize	0
-#define	StackFrame	(LocalsSize+RegisterSaveSize)
-	// Locals plus the registers we pushed after the new stack frame.
+	/*	Number of bytes used for local variables:
 
-/*	Define stack offset to storage space for local data.  This is in the red
-	zone.  We point far enough down to allow space for eight four-byte words
-	plus a return address (4 or 8 bytes on i386 or x86_64) for our internal
-	subroutine calls.
-*/
-#define	Local	(-8*4-8)
+			8 16-byte spaces to save XMM registers.
+
+			8 four-byte spaces for work.
+	*/
+	#define	LocalsSize	(8*16 + 8*4)
+
+	// Define stack offset to storage space for local data.
+	#define	Local	(8*16)
+
+	#if 0 < LocalsSize
+		// Padding to position stack pointer at a multiple of 16 bytes.
+		#define	Padding	(15 & -(SaveSize + LocalsSize))
+		sub		$Padding + LocalsSize, r4	// Allocate space on stack.
+	#else
+		#define	Padding	0
+	#endif
+
+	/*	StackFrame is the number of bytes in our stack frame, from caller's
+		stack pointer to ours (so it includes the return address).
+	*/
+	#define	StackFrame	(SaveSize + Padding + LocalsSize)
+
+	// Save xmm registers.
+	movaps	%xmm0, 0*16(r4)
+	movaps	%xmm1, 1*16(r4)
+	movaps	%xmm2, 2*16(r4)
+	movaps	%xmm3, 3*16(r4)
+	movaps	%xmm4, 4*16(r4)
+	movaps	%xmm5, 5*16(r4)
+	movaps	%xmm6, 6*16(r4)
+	movaps	%xmm7, 7*16(r4)
 
 #if defined __i386__
 
 	// Define location of argument i.
-	#define	Argument(i)	StackFrame+8+4*(i)(r4)
+	#define	Argument(i)	StackFrame+4*(i)(r4)
+
+	#define	Nk		t0d
 
 	// Load arguments.
-	mov		Argument(0), E
-	mov		Argument(1), K
-	#define	Nk	Argument(2)
+	mov		Argument(2), E
+	mov		Argument(1), Nk
+	mov		Argument(0), K
 
 #elif defined __x86_64__
 
-	#define	Nk		r2			// Number of words in key.  Overlaps STable.
+	#define	Nk		r9d			// Number of words in key.
+	mov		r6d, Nk				// Move Nk argument out of way.
+	mov		r2, E				// Move E argument to common register.
 
 #endif
 
-	cmp		$6,	 Nk
+	// Dispatch on key length.
+	cmp		$128, Nk
+	jge		2f
+	shl		$3, Nk				// Convert from bytes to bits.
+	cmp		$128, Nk
+2:
+	je		DKeyHas4Words
+	cmp		$192, Nk
+	je		DKeyHas6Words
+	cmp		$256, Nk
+	je		DKeyHas8Words
+	mov		$-1, r0				// Return error.
+	jmp		9f
+
+
+	.globl _vng_aes_decrypt_key128
+//	.private_extern	_vng_aes_decrypt_key128
+_vng_aes_decrypt_key128:
+
+	/*	Save registers and set SaveSize to the number of bytes pushed onto the
+		stack so far, including the caller's return address.
+	*/
+	push	r3
+	#if defined __i386__
+		push	r5
+		push	r6
+		push	r7
+		#define	SaveSize	(5*4)
+	#else
+		#define	SaveSize	(2*8)
+	#endif
+
+	/*	Number of bytes used for local variables:
+
+			8 16-byte spaces to save XMM registers.
+
+			8 four-byte spaces for work.
+	*/
+	#define	LocalsSize	(8*16 + 8*4)
+
+	// Define stack offset to storage space for local data.
+	#define	Local	(8*16)
 
 	#if 0 < LocalsSize
-		sub		$LocalsSize, r4	// Allocate space on stack.
+		// Padding to position stack pointer at a multiple of 16 bytes.
+		#define	Padding	(15 & -(SaveSize + LocalsSize))
+		sub		$Padding + LocalsSize, r4	// Allocate space on stack.
+	#else
+		#define	Padding	0
 	#endif
+
+	/*	StackFrame is the number of bytes in our stack frame, from caller's
+		stack pointer to ours (so it includes the return address).
+	*/
+	#define	StackFrame	(SaveSize + Padding + LocalsSize)
+
+	// Save xmm registers.
+	movaps	%xmm0, 0*16(r4)
+	movaps	%xmm1, 1*16(r4)
+	movaps	%xmm2, 2*16(r4)
+	movaps	%xmm3, 3*16(r4)
+	movaps	%xmm4, 4*16(r4)
+	movaps	%xmm5, 5*16(r4)
+	movaps	%xmm6, 6*16(r4)
+	movaps	%xmm7, 7*16(r4)
+
+#if defined __i386__
+
+	// Load arguments.
+	#define	Argument(i)	StackFrame+4*(i)(r4)
+	mov		Argument(1), E
+	mov		Argument(0), K
+
+#endif
+
+// Merge point for _vng_aes_decrypt_key and _vng_aes_decrypt_key128.
+DKeyHas4Words:
 
 	// First words of expanded key are copied from user key.
 	movd	0*4(K), ve0
 	movd	1*4(K), ve1
 	movd	2*4(K), ve2
 	movd	3*4(K), ve3
-	je		DKeyHas6Words
-	jg		DKeyHas8Words
-	// Fall through to DKeyHas4Words.
 
-DKeyHas4Words:
+	movl	$10*16, ContextKeyLength(E)	// Set "key length."
+
+	#if 0 != ContextKey
+		add		$ContextKey, E
+	#endif
 
 	// K cannot be used after we write to R, since they use the same register.
 
 	#if defined __i386__
-		// Get address of 0 in R.
-			call	0f			// Push program counter onto stack.
-		0:
-			pop		STable		// Get program counter.
 
-		lea		_AESRcon-0b(STable), R
-		lea		_AESInvMixColumnTable-0b(STable), ITable
-		lea		_AESSubBytesWordTable-0b(STable), STable
+			call    0f          // Push program counter onto stack.
+		0:	pop     STable      // Get program counter.
+			lea     _AESRcon-0b(STable), R
+			lea     _AESInvMixColumnTable-0b(STable), ITable
+			lea     _AESSubBytesWordTable-0b(STable), STable
 
 	#elif defined __x86_64__
 
@@ -410,37 +520,118 @@ DKeyHas4Words:
 	pxor	ve2, ve3
 	movd	ve3, 7*4(E, offset)
 
+	xor		r0, r0				// Return success.
+
+9:
 	// Pop stack and restore registers.
+	movaps	7*16(r4), %xmm7
+	movaps	6*16(r4), %xmm6
+	movaps	5*16(r4), %xmm5
+	movaps	4*16(r4), %xmm4
+	movaps	3*16(r4), %xmm3
+	movaps	2*16(r4), %xmm2
+	movaps	1*16(r4), %xmm1
+	movaps	0*16(r4), %xmm0
 	#if 0 < LocalsSize
-		add		$LocalsSize, r4
+		add		$Padding + LocalsSize, r4
 	#endif
 	#if defined __i386__
-		// Add pops of r15 to r12 if used.
 		pop		r7
 		pop		r6
-	#elif defined __x86_64__
+		pop		r5
 	#endif
 	pop		r3
-	pop		r5
 
 	ret
 
 
+	.globl _vng_aes_decrypt_key192
+//	.private_extern	_vng_aes_decrypt_key192
+_vng_aes_decrypt_key192:
+
+	/*	Save registers and set SaveSize to the number of bytes pushed onto the
+		stack so far, including the caller's return address.
+	*/
+	push	r3
+	#if defined __i386__
+		push	r5
+		push	r6
+		push	r7
+		#define	SaveSize	(5*4)
+	#else
+		#define	SaveSize	(2*8)
+	#endif
+
+	/*	Number of bytes used for local variables:
+
+			8 16-byte spaces to save XMM registers.
+
+			8 four-byte spaces for work.
+	*/
+	#define	LocalsSize	(8*16 + 8*4)
+
+	// Define stack offset to storage space for local data.
+	#define	Local	(8*16)
+
+	#if 0 < LocalsSize
+		// Padding to position stack pointer at a multiple of 16 bytes.
+		#define	Padding	(15 & -(SaveSize + LocalsSize))
+		sub		$Padding + LocalsSize, r4	// Allocate space on stack.
+	#else
+		#define	Padding	0
+	#endif
+
+	/*	StackFrame is the number of bytes in our stack frame, from caller's
+		stack pointer to ours (so it includes the return address).
+	*/
+	#define	StackFrame	(SaveSize + Padding + LocalsSize)
+
+	// Save xmm registers.
+	movaps	%xmm0, 0*16(r4)
+	movaps	%xmm1, 1*16(r4)
+	movaps	%xmm2, 2*16(r4)
+	movaps	%xmm3, 3*16(r4)
+	movaps	%xmm4, 4*16(r4)
+	movaps	%xmm5, 5*16(r4)
+	movaps	%xmm6, 6*16(r4)
+	movaps	%xmm7, 7*16(r4)
+
+#if defined __i386__
+
+	// Load arguments.
+	#define	Argument(i)	StackFrame+4*(i)(r4)
+	mov		Argument(1), E
+	mov		Argument(0), K
+
+#endif
+
+// Merge point for _vng_aes_decrypt_key and _vng_aes_decrypt_key192.
 DKeyHas6Words:
+
+	// First words of expanded key are copied from user key.
+	movd	0*4(K), ve0
+	movd	1*4(K), ve1
+	movd	2*4(K), ve2
+	movd	3*4(K), ve3
+
+	movl	$12*16, ContextKeyLength(E)	// Set "key length."
+
+	#if 0 != ContextKey
+		add		$ContextKey, E
+	#endif
+
 	movd	4*4(K), ve4
 	movd	5*4(K), ve5
 
 	// K cannot be used after we write to R, since they use the same register.
 
 	#if defined __i386__
-		// Get address of 0 in R.
-			call	0f			// Push program counter onto stack.
-		0:
-			pop		STable		// Get program counter.
 
-		lea		_AESRcon-0b(STable), R
-		lea		_AESInvMixColumnTable-0b(STable), ITable
-		lea		_AESSubBytesWordTable-0b(STable), STable
+			call    0f          // Push program counter onto stack.
+		0:	pop     STable      // Get program counter.
+			lea     _AESRcon-0b(STable), R
+			lea     _AESInvMixColumnTable-0b(STable), ITable
+			lea     _AESSubBytesWordTable-0b(STable), STable
 
 	#elif defined __x86_64__
 
@@ -600,23 +791,104 @@ DKeyHas6Words:
 	pxor	ve2, ve3
 	movd	ve3, 9*4(E, offset)
 
+	xor		r0, r0				// Return success.
+
 	// Pop stack and restore registers.
+	movaps	7*16(r4), %xmm7
+	movaps	6*16(r4), %xmm6
+	movaps	5*16(r4), %xmm5
+	movaps	4*16(r4), %xmm4
+	movaps	3*16(r4), %xmm3
+	movaps	2*16(r4), %xmm2
+	movaps	1*16(r4), %xmm1
+	movaps	0*16(r4), %xmm0
 	#if 0 < LocalsSize
-		add		$LocalsSize, r4
+		add		$Padding + LocalsSize, r4
 	#endif
 	#if defined __i386__
-		// Add pops of r15 to r12 if used.
 		pop		r7
 		pop		r6
-	#elif defined __x86_64__
+		pop		r5
 	#endif
 	pop		r3
-	pop		r5
 
 	ret
 
 
+	.globl _vng_aes_decrypt_key256
+//	.private_extern	_vng_aes_decrypt_key256
+_vng_aes_decrypt_key256:
+
+	/*	Save registers and set SaveSize to the number of bytes pushed onto the
+		stack so far, including the caller's return address.
+	*/
+	push	r3
+	#if defined __i386__
+		push	r5
+		push	r6
+		push	r7
+		#define	SaveSize	(5*4)
+	#else
+		#define	SaveSize	(2*8)
+	#endif
+
+	/*	Number of bytes used for local variables:
+
+			8 16-byte spaces to save XMM registers.
+
+			8 four-byte spaces for work.
+	*/
+	#define	LocalsSize	(8*16 + 8*4)
+
+	// Define stack offset to storage space for local data.
+	#define	Local	(8*16)
+
+	#if 0 < LocalsSize
+		// Padding to position stack pointer at a multiple of 16 bytes.
+		#define	Padding	(15 & -(SaveSize + LocalsSize))
+		sub		$Padding + LocalsSize, r4	// Allocate space on stack.
+	#else
+		#define	Padding	0
+	#endif
+
+	/*	StackFrame is the number of bytes in our stack frame, from caller's
+		stack pointer to ours (so it includes the return address).
+	*/
+	#define	StackFrame	(SaveSize + Padding + LocalsSize)
+
+	// Save xmm registers.
+	movaps	%xmm0, 0*16(r4)
+	movaps	%xmm1, 1*16(r4)
+	movaps	%xmm2, 2*16(r4)
+	movaps	%xmm3, 3*16(r4)
+	movaps	%xmm4, 4*16(r4)
+	movaps	%xmm5, 5*16(r4)
+	movaps	%xmm6, 6*16(r4)
+	movaps	%xmm7, 7*16(r4)
+
+#if defined __i386__
+
+	// Load arguments.
+	#define	Argument(i)	StackFrame+4*(i)(r4)
+	mov		Argument(1), E
+	mov		Argument(0), K
+
+#endif
+
+// Merge point for _vng_aes_decrypt_key and _vng_aes_decrypt_key256.
 DKeyHas8Words:
+
+	// First words of expanded key are copied from user key.
+	movd	0*4(K), ve0
+	movd	1*4(K), ve1
+	movd	2*4(K), ve2
+	movd	3*4(K), ve3
+
+	movl	$14*16, ContextKeyLength(E)	// Set "key length."
+
+	#if 0 != ContextKey
+		add		$ContextKey, E
+	#endif
 
 	// Store initial words of expanded key, which are copies of user's key.
 	movd	ve0, 0*4(E)
@@ -631,14 +903,12 @@ DKeyHas8Words:
 	// K cannot be used after we write to R, since they use the same register.
 
 	#if defined __i386__
-		// Get address of 0 in R.
-			call	0f			// Push program counter onto stack.
-		0:
-			pop		STable		// Get program counter.
 
-		lea		_AESRcon-0b(STable), R
-		lea		_AESInvMixColumnTable-0b(STable), ITable
-		lea		_AESSubBytesWordTable-0b(STable), STable
+			call    0f          // Push program counter onto stack.
+		0:	pop     STable      // Get program counter.
+			lea     _AESRcon-0b(STable), R
+			lea     _AESInvMixColumnTable-0b(STable), ITable
+			lea     _AESSubBytesWordTable-0b(STable), STable
 
 	#elif defined __x86_64__
 
@@ -875,18 +1145,26 @@ DKeyHas8Words:
 	pxor	ve2, ve3					// Chain.
 	movd	ve3, (3+8)*4(E, offset)
 
+	xor		r0, r0				// Return success.
+
 	// Pop stack and restore registers.
+	movaps	7*16(r4), %xmm7
+	movaps	6*16(r4), %xmm6
+	movaps	5*16(r4), %xmm5
+	movaps	4*16(r4), %xmm4
+	movaps	3*16(r4), %xmm3
+	movaps	2*16(r4), %xmm2
+	movaps	1*16(r4), %xmm1
+	movaps	0*16(r4), %xmm0
 	#if 0 < LocalsSize
-		add		$LocalsSize, r4
+		add		$Padding + LocalsSize, r4
 	#endif
 	#if defined __i386__
-		// Add pops of r15 to r12 if used.
 		pop		r7
 		pop		r6
-	#elif defined __x86_64__
+		pop		r5
 	#endif
 	pop		r3
-	pop		r5
 
 	ret
 
@@ -896,12 +1174,14 @@ DKeyHas8Words:
 #undef	E
 #undef	ITable
 #undef	K
+#undef	Local
 #undef	LocalsSize
 #undef	LookupI
 #undef	LookupS
 #undef	Nk
+#undef	Padding
 #undef	R
-#undef	RegisterSaveSize
+#undef	SaveSize
 #undef	STable
 #undef	StackFrame
 #undef	dr

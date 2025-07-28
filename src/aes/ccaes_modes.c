@@ -11,21 +11,7 @@
 #include <corecrypto/ccmode_factory.h>
 #include <corecrypto/ccmode_impl.h>
 
-CCMODE_CFB_FACTORY(aes, cfb, encrypt)
-CCMODE_CFB_FACTORY(aes, cfb, decrypt)
-CCMODE_CFB_FACTORY(aes, cfb8, decrypt);
-CCMODE_CFB_FACTORY(aes, cfb8, encrypt);
-
-CCMODE_CTR_FACTORY(aes);
-
-CCMODE_OFB_FACTORY(aes);
-
-#if CC_LINUX_ASM
-extern const struct ccmode_cbc ccaes_intel_cbc_encrypt_aesni_mode;
-extern const struct ccmode_cbc ccaes_intel_cbc_decrypt_aesni_mode;
-extern const struct ccmode_ecb ccaes_intel_ecb_encrypt_aesni_mode;
-extern const struct ccmode_ecb ccaes_intel_ecb_decrypt_aesni_mode;
-#endif
+#pragma mark - ECB mode
 
 const struct ccmode_ecb *ccaes_ecb_encrypt_mode(void)
 {
@@ -61,6 +47,8 @@ const struct ccmode_ecb *ccaes_ecb_decrypt_mode(void)
     return &ccaes_tinyaes_ecb_decrypt_mode;
 };
 
+#pragma mark - CBC mode
+
 const struct ccmode_cbc *ccaes_cbc_encrypt_mode(void)
 {
 
@@ -94,3 +82,60 @@ const struct ccmode_cbc *ccaes_cbc_decrypt_mode(void)
 
     return &ccaes_tinyaes_cbc_decrypt_mode;
 };
+
+#pragma mark - XTS mode
+
+/* If the Intel accelerated modes are available, use them instead */
+#if !CCAES_INTEL_ASM
+
+/* Use generic constructors for an unaccelerated build */
+CCMODE_XTS_FACTORY(aes, encrypt);
+CCMODE_XTS_FACTORY(aes, decrypt);
+
+/* I wonder if libcorecrypto_noasm.dylib uses the intel opt mode or not. I'll have to check. */
+
+#else
+
+const struct ccmode_xts *ccaes_xts_decrypt_mode(void)
+{
+    if (CC_HAS_AESNI()) {
+#if CORECRYPTO_DEBUG
+        cc_printf("corecrypto(aes): using the AES-NI mode for XTS decryption\n");
+#endif
+        return &ccaes_intel_xts_decrypt_aesni_mode;
+    } else {
+#if CORECRYPTO_DEBUG
+        cc_printf("corecrypto(aes): using the optimised mode for XTS decryption\n");
+#endif
+        return &ccaes_intel_xts_decrypt_opt_mode;
+    }
+};
+
+const struct ccmode_xts *ccaes_xts_encrypt_mode(void)
+{
+    if (CC_HAS_AESNI()) {
+#if CORECRYPTO_DEBUG
+        cc_printf("corecrypto(aes): using the AES-NI mode for XTS decryption\n");
+#endif
+        return &ccaes_intel_xts_encrypt_aesni_mode;
+    } else {
+#if CORECRYPTO_DEBUG
+        cc_printf("corecrypto(aes): using the optimised mode for XTS decryption\n");
+#endif
+        return &ccaes_intel_xts_encrypt_opt_mode;
+    }
+};
+
+#endif
+
+
+#pragma mark - Other constructed modes.
+
+CCMODE_CFB_FACTORY(aes, cfb, encrypt)
+CCMODE_CFB_FACTORY(aes, cfb, decrypt)
+CCMODE_CFB_FACTORY(aes, cfb8, decrypt);
+CCMODE_CFB_FACTORY(aes, cfb8, encrypt);
+
+CCMODE_CTR_FACTORY(aes);
+
+CCMODE_OFB_FACTORY(aes);
