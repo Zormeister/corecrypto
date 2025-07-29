@@ -7,6 +7,8 @@
 
 #include <corecrypto/ccaes.h>
 
+#if CCAES_INTEL_ASM
+
 #include "vng_aes_intel.h"
 
 struct ccaes_intel_decrypt_key {
@@ -56,3 +58,5 @@ const struct ccmode_cbc ccaes_intel_cbc_decrypt_aesni_mode = {
     .cbc = cbc_wrapper_aesni,
     .custom = NULL,
 };
+
+#endif
