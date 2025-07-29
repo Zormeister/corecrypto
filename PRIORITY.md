@@ -8,7 +8,7 @@ AES in the XTS mode has been made available, so file-systems making use of Full 
 
 For these environments I suggest that the following functions are prioritised:
 - A proper RNG based off of the available DRBG subsystem
-- RSA signature verification is accessible (for cryptographic validation).
+- RSA signature verification being accessible (for cryptographic validation).
 - Digests are available for hashing (SHA-1 and SHA-2 are more than enough, and already complete).
 
 ## Kernel-space
