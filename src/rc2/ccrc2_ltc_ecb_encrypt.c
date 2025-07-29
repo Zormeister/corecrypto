@@ -5,6 +5,18 @@
 //  Created by Zormeister on 2/6/2025.
 //
 
+/*
+ * Code adapted from LibTomCrypt, modular cryptographic library -- Tom St Denis
+ *
+ * LibTomCrypt is a library that provides various cryptographic
+ * algorithms in a highly modular and flexible manner.
+ *
+ * The library is free for all purposes without any express
+ * guarantee it works.
+ *
+ * Tom St Denis, tomstdenis@gmail.com, http://libtom.org
+ */
+
 #include "ccrc2_ltc_internal.h"
 
 int ccrc2_ltc_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out)

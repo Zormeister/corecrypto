@@ -5,10 +5,19 @@
 //  Created by Zormeister on 12/5/2025.
 //
 
-#include <corecrypto/ccblowfish.h>
+/*
+ * Code adapted from LibTomCrypt, modular cryptographic library -- Tom St Denis
+ *
+ * LibTomCrypt is a library that provides various cryptographic
+ * algorithms in a highly modular and flexible manner.
+ *
+ * The library is free for all purposes without any express
+ * guarantee it works.
+ *
+ * Tom St Denis, tomstdenis@gmail.com, http://libtom.org
+ */
 
-// Thank you so much to Tom St Denis for the implementation for the Blowfish cipher
-// LibTomCrypt is licensed under the unlicense.
+#include <corecrypto/ccblowfish.h>
 
 const uint32_t ORIG_P[16 + 2] = {
     0x243F6A88UL, 0x85A308D3UL, 0x13198A2EUL, 0x03707344UL,

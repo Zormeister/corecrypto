@@ -89,4 +89,6 @@ void ccsha512_ltc_compress(ccdigest_state_t state, size_t nblocks, const void *d
     for (i = 0; i < 8; i++) {
         ccdigest_u64(state)[i] += S[i];
     }
+
+    data += CCSHA512_BLOCK_SIZE;
 }

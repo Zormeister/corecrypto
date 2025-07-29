@@ -5,11 +5,19 @@
 //  Created by Zormeister on 2/6/2025.
 //
 
+/*
+ * Code adapted from LibTomCrypt, modular cryptographic library -- Tom St Denis
+ *
+ * LibTomCrypt is a library that provides various cryptographic
+ * algorithms in a highly modular and flexible manner.
+ *
+ * The library is free for all purposes without any express
+ * guarantee it works.
+ *
+ * Tom St Denis, tomstdenis@gmail.com, http://libtom.org
+ */
+
 #include "ccrc2_ltc_internal.h"
-
-/* This is adapted from LibTomCrypt, created by Tom St Dennis, licensed under the Unlicense. */
-
-/* I would like to thank him so much for the various bits and pieces reused for corecrypto. */
 
 static const unsigned char permute[256] = {
     217, 120, 249, 196, 25, 221, 181, 237, 40, 233, 253, 121, 74, 160, 216, 157,

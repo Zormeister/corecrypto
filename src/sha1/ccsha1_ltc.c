@@ -5,6 +5,18 @@
 //  Created by Zormeister on 29/7/2025.
 //
 
+/*
+ * Code adapted from LibTomCrypt, modular cryptographic library -- Tom St Denis
+ *
+ * LibTomCrypt is a library that provides various cryptographic
+ * algorithms in a highly modular and flexible manner.
+ *
+ * The library is free for all purposes without any express
+ * guarantee it works.
+ *
+ * Tom St Denis, tomstdenis@gmail.com, http://libtom.org
+ */
+
 #include "ccsha1_internal.h"
 #include <corecrypto/cc_priv.h>
 #include <corecrypto/ccdigest.h>
@@ -148,6 +160,8 @@ static void sha1_compress(ccdigest_state_t state, size_t nblocks, const void *bu
         ccdigest_u32(state)[2] += c;
         ccdigest_u32(state)[3] += d;
         ccdigest_u32(state)[4] += e;
+
+        buf += CCSHA1_BLOCK_SIZE;
     }
 }
 

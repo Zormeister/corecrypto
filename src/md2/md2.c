@@ -5,11 +5,17 @@
 //  Created by Zormeister on 25/1/2025.
 //
 
-// ltc usually refers to LibTomCrypt in CoreCrypto.
-
-// thank you so much to Tom St Denis for the implementations
-// LibTomCrypt is licensed under the unlicense.
-// Tom, you're a literal legend for open-sourcing your work and making it freely reusable in the public domain
+/*
+ * Code adapted from LibTomCrypt, modular cryptographic library -- Tom St Denis
+ *
+ * LibTomCrypt is a library that provides various cryptographic
+ * algorithms in a highly modular and flexible manner.
+ *
+ * The library is free for all purposes without any express
+ * guarantee it works.
+ *
+ * Tom St Denis, tomstdenis@gmail.com, http://libtom.org
+ */
 
 #include <corecrypto/cc_priv.h>
 #include <corecrypto/ccmd2.h>

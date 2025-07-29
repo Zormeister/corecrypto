@@ -5,12 +5,21 @@
 //  Created by Zormeister on 26/1/2025.
 //
 
+/*
+ * Code adapted from LibTomCrypt, modular cryptographic library -- Tom St Denis
+ *
+ * LibTomCrypt is a library that provides various cryptographic
+ * algorithms in a highly modular and flexible manner.
+ *
+ * The library is free for all purposes without any express
+ * guarantee it works.
+ *
+ * Tom St Denis, tomstdenis@gmail.com, http://libtom.org
+ */
+
 #include <corecrypto/cc_priv.h>
 #include <corecrypto/ccdigest_priv.h>
 #include <corecrypto/ccmd4.h>
-
-// Thank you so much to Tom St Denis for the implementation for MD4
-// LibTomCrypt is licensed under the unlicense.
 
 #define S11 3
 #define S12 7

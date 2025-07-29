@@ -11,9 +11,6 @@
 #include <corecrypto/ccdes.h>
 #include <corecrypto/ccmode_impl.h>
 
-// Thank you so much to Tom St Denis for the implementation for DES and Triple-DES
-// LibTomCrypt is licensed under the unlicense.
-
 int ccdes_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t key_len, const void *key)
 {
     struct ccdes_ltc_ecb_ctx *lctx = (struct ccdes_ltc_ecb_ctx *)ctx;

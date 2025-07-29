@@ -5,8 +5,17 @@
 //  Created by Zormeister on 27/5/2025.
 //
 
-// TYVM to Tom St Denis for LibTomCrypt, code used here is adapted from the SHA2-256 implementation
-// LibTomCrypt is licensed under the unlicense.
+/*
+ * Code adapted from LibTomCrypt, modular cryptographic library -- Tom St Denis
+ *
+ * LibTomCrypt is a library that provides various cryptographic
+ * algorithms in a highly modular and flexible manner.
+ *
+ * The library is free for all purposes without any express
+ * guarantee it works.
+ *
+ * Tom St Denis, tomstdenis@gmail.com, http://libtom.org
+ */
 
 #include "ccsha2_ltc_internal.h"
 #include <corecrypto/cc_priv.h>
@@ -144,5 +153,7 @@ void ccsha256_ltc_compress(ccdigest_state_t state, size_t nblocks, const void *d
         for (i = 0; i < 8; i++) {
             ccdigest_u32(state)[i] += S[i];
         }
+
+        data += CCSHA256_BLOCK_SIZE;
     }
 }

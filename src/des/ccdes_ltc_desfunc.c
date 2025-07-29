@@ -5,14 +5,23 @@
 //  Created by Zormeister on 10/5/2025.
 //
 
+/*
+ * Code adapted from LibTomCrypt, modular cryptographic library -- Tom St Denis
+ *
+ * LibTomCrypt is a library that provides various cryptographic
+ * algorithms in a highly modular and flexible manner.
+ *
+ * The library is free for all purposes without any express
+ * guarantee it works.
+ *
+ * Tom St Denis, tomstdenis@gmail.com, http://libtom.org
+ */
+
 #include "ccdes_ltc_internal.h"
 #include <corecrypto/cc_config.h>
 #include <corecrypto/cc_priv.h>
 #include <corecrypto/ccdes.h>
 #include <corecrypto/ccn.h>
-
-// Thank you so much to Tom St Denis for the implementation for DES and Triple-DES
-// LibTomCrypt is licensed under the unlicense.
 
 void desfunc(uint32_t *block, const uint32_t *keys)
 {
