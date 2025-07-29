@@ -17,54 +17,53 @@ int vng_aes_xts_encrypt_aesni(const uint8_t *pt, unsigned long ptlen, uint8_t *c
 
     uint8_t PP[16], CC[16];
     uint64_t i, m, mo, lim;
-    uint64_t   err;
-        
+    uint64_t err;
+
     /* get number of blocks */
-    m  = ptlen >> 4;
+    m = ptlen >> 4;
     mo = ptlen & 15;
-  
+
     /* must have at least one full block */
     if (m == 0) {
         return CRYPT_INVALID_ARG;
     }
-   
+
     /* for i = 0 to m-2 do */
     if (mo == 0) {
         lim = m;
     } else {
         lim = m - 1;
     }
-    
-    
+
     if (lim > 0) {
         err = aesxts_tweak_crypt_group_aesni(pt, ct, T, encrypt_ctx, lim);
-        ct += (lim<<4);
-        pt += (lim<<4);
+        ct += (lim << 4);
+        pt += (lim << 4);
     }
-    
+
     /* if ptlen not divide 16 then */
     if (mo > 0) {
         /* CC = tweak encrypt block m-1 */
         if ((err = aesxts_tweak_crypt_aesni(pt, CC, T, encrypt_ctx)) != 0) {
             return err;
         }
-        
+
         /* Cm = first ptlen % 16 bytes of CC */
         for (i = 0; i < mo; i++) {
-            PP[i] = pt[16+i];
-            ct[16+i] = CC[i];
+            PP[i] = pt[16 + i];
+            ct[16 + i] = CC[i];
         }
-        
+
         for (; i < 16; i++) {
             PP[i] = CC[i];
         }
-        
+
         /* Cm-1 = Tweak encrypt PP */
         if ((err = aesxts_tweak_crypt_aesni(PP, ct, T, encrypt_ctx)) != 0) {
             return err;
         }
     }
-    
+
     return err;
 }
 
@@ -74,54 +73,53 @@ int vng_aes_xts_encrypt_opt(const uint8_t *pt, unsigned long ptlen, uint8_t *ct,
 
     uint8_t PP[16], CC[16];
     uint64_t i, m, mo, lim;
-    uint64_t   err;
-        
+    uint64_t err;
+
     /* get number of blocks */
-    m  = ptlen >> 4;
+    m = ptlen >> 4;
     mo = ptlen & 15;
-  
+
     /* must have at least one full block */
     if (m == 0) {
         return CRYPT_INVALID_ARG;
     }
-   
+
     /* for i = 0 to m-2 do */
     if (mo == 0) {
         lim = m;
     } else {
         lim = m - 1;
     }
-    
-    
+
     if (lim > 0) {
         err = aesxts_tweak_crypt_group_opt(pt, ct, T, encrypt_ctx, lim);
-        ct += (lim<<4);
-        pt += (lim<<4);
+        ct += (lim << 4);
+        pt += (lim << 4);
     }
-    
+
     /* if ptlen not divide 16 then */
     if (mo > 0) {
         /* CC = tweak encrypt block m-1 */
         if ((err = aesxts_tweak_crypt_opt(pt, CC, T, encrypt_ctx)) != 0) {
             return err;
         }
-        
+
         /* Cm = first ptlen % 16 bytes of CC */
         for (i = 0; i < mo; i++) {
-            PP[i] = pt[16+i];
-            ct[16+i] = CC[i];
+            PP[i] = pt[16 + i];
+            ct[16 + i] = CC[i];
         }
-        
+
         for (; i < 16; i++) {
             PP[i] = CC[i];
         }
-        
+
         /* Cm-1 = Tweak encrypt PP */
         if ((err = aesxts_tweak_crypt_opt(PP, ct, T, encrypt_ctx)) != 0) {
             return err;
         }
     }
-    
+
     return err;
 }
 
@@ -131,57 +129,59 @@ int vng_aes_xts_decrypt_aesni(const uint8_t *ct, unsigned long ptlen, uint8_t *p
     uint8_t PP[16], CC[16], T[16];
     uint64_t i, m, mo, lim;
     uint64_t err;
-    
+
     /* check inputs */
-    if((pt == NULL) || (ct == NULL)|| (tweak == NULL) || (ctx == NULL)) return 1;
-    
+    if ((pt == NULL) || (ct == NULL) || (tweak == NULL) || (ctx == NULL)) {
+        return 1;
+    }
+
     /* get number of blocks */
-    m  = ptlen >> 4;
+    m = ptlen >> 4;
     mo = ptlen & 15;
-    
+
     /* must have at least one full block */
     if (m == 0) {
         return CRYPT_INVALID_ARG;
     }
-    
+
     /* for i = 0 to m-2 do */
     if (mo == 0) {
         lim = m;
     } else {
         lim = m - 1;
     }
-    
-    if (lim>0) {
+
+    if (lim > 0) {
         err = aesxts_tweak_uncrypt_group_aesni(ct, pt, T, decrypt_ctx, lim);
-        ct += (lim<<4);
-        pt += (lim<<4);
+        ct += (lim << 4);
+        pt += (lim << 4);
     }
-    
+
     /* if ptlen not divide 16 then */
     if (mo > 0) {
         memcpy(CC, T, 16);
         aesxts_mult_x(CC);
-        
+
         /* PP = tweak decrypt block m-1 */
         if ((err = aesxts_tweak_uncrypt_aesni(ct, PP, CC, decrypt_ctx)) != CRYPT_OK) {
             return err;
         }
-        
+
         /* Pm = first ptlen % 16 bytes of PP */
         for (i = 0; i < mo; i++) {
-            CC[i]    = ct[16+i];
-            pt[16+i] = PP[i];
+            CC[i] = ct[16 + i];
+            pt[16 + i] = PP[i];
         }
         for (; i < 16; i++) {
             CC[i] = PP[i];
         }
-        
+
         /* Pm-1 = Tweak uncrypt CC */
         if ((err = aesxts_tweak_uncrypt_aesni(CC, pt, T, decrypt_ctx)) != CRYPT_OK) {
             return err;
         }
     }
-    
+
     return CRYPT_OK;
 }
 
@@ -191,57 +191,59 @@ int vng_aes_xts_decrypt_opt(const uint8_t *ct, unsigned long ptlen, uint8_t *pt,
     uint8_t PP[16], CC[16], T[16];
     uint64_t i, m, mo, lim;
     uint64_t err;
-    
+
     /* check inputs */
-    if((pt == NULL) || (ct == NULL)|| (tweak == NULL) || (ctx == NULL)) return 1;
-    
+    if ((pt == NULL) || (ct == NULL) || (tweak == NULL) || (ctx == NULL)) {
+        return 1;
+    }
+
     /* get number of blocks */
-    m  = ptlen >> 4;
+    m = ptlen >> 4;
     mo = ptlen & 15;
-    
+
     /* must have at least one full block */
     if (m == 0) {
         return CRYPT_INVALID_ARG;
     }
-    
+
     /* for i = 0 to m-2 do */
     if (mo == 0) {
         lim = m;
     } else {
         lim = m - 1;
     }
-    
-    if (lim>0) {
+
+    if (lim > 0) {
         err = aesxts_tweak_uncrypt_group_opt(ct, pt, T, decrypt_ctx, lim);
-        ct += (lim<<4);
-        pt += (lim<<4);
+        ct += (lim << 4);
+        pt += (lim << 4);
     }
-    
+
     /* if ptlen not divide 16 then */
     if (mo > 0) {
         memcpy(CC, T, 16);
         aesxts_mult_x(CC);
-        
+
         /* PP = tweak decrypt block m-1 */
         if ((err = aesxts_tweak_uncrypt_opt(ct, PP, CC, decrypt_ctx)) != CRYPT_OK) {
             return err;
         }
-        
+
         /* Pm = first ptlen % 16 bytes of PP */
         for (i = 0; i < mo; i++) {
-            CC[i]    = ct[16+i];
-            pt[16+i] = PP[i];
+            CC[i] = ct[16 + i];
+            pt[16 + i] = PP[i];
         }
         for (; i < 16; i++) {
             CC[i] = PP[i];
         }
-        
+
         /* Pm-1 = Tweak uncrypt CC */
         if ((err = aesxts_tweak_uncrypt_opt(CC, pt, T, decrypt_ctx)) != CRYPT_OK) {
             return err;
         }
     }
-    
+
     return CRYPT_OK;
 }
 

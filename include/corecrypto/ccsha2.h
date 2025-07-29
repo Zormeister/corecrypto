@@ -69,9 +69,7 @@ const struct ccdigest_info *ccsha512_256_di(void);
 extern const struct ccdigest_info ccsha256_ltc_di;
 #if  CCSHA2_VNG_INTEL
 extern const struct ccdigest_info ccsha224_vng_intel_SupplementalSSE3_di;
-extern const struct ccdigest_info ccsha224_vng_intel_shani_di;
 extern const struct ccdigest_info ccsha256_vng_intel_SupplementalSSE3_di;
-extern const struct ccdigest_info ccsha256_vng_intel_shani_di;
 #endif
 #if  CCSHA2_VNG_ARM
 extern const struct ccdigest_info ccsha224_vng_arm_di;
@@ -97,6 +95,16 @@ extern const struct ccdigest_info ccsha512_ltc_di;
 #define	CCSHA384_OUTPUT_SIZE  48
 extern const struct ccdigest_info ccsha384_ltc_di;
 
-/* Rumor has it that corecrypto gained a SHA-512/256 function somewhere down the line. */
+/* SHA512/224 */
+#define CCSHA512_224_BLOCK_SIZE  128
+#define	CCSHA512_224_OUTPUT_SIZE  28
+#define	CCSHA512_224_STATE_SIZE   64
+extern const struct ccdigest_info ccsha512_224_ltc_di;
+
+/* SHA512/256 */
+#define CCSHA512_256_BLOCK_SIZE  128
+#define	CCSHA512_256_OUTPUT_SIZE  32
+#define	CCSHA512_256_STATE_SIZE   64
+extern const struct ccdigest_info ccsha512_256_ltc_di;
 
 #endif /* _CORECRYPTO_CCSHA2_H_ */

@@ -12,28 +12,16 @@
 
 extern const uint32_t ccsha224_initial_state[8];
 extern const uint32_t ccsha256_initial_state[8];
-extern const uint32_t ccsha384_initial_state[8];
-extern const uint32_t ccsha512_initial_state[8];
+extern const uint64_t ccsha384_initial_state[8];
+extern const uint64_t ccsha512_initial_state[8];
+extern const uint64_t ccsha512_224_initial_state[8];
+extern const uint64_t ccsha512_256_initial_state[8];
 
 extern const uint32_t ccsha256_K[64];
+extern const uint64_t ccsha512_K[80];
 
 extern void ccsha256_ltc_compress(ccdigest_state_t state, size_t nblocks, const void *data);
-
-/* 
- * LTC SHA-2 TODO: SHA-384, SHA-512.
- *
- * I think due to the way some of the code is handled DarwinBoot's CCDxe won't link properly.
- *
- * eg: for some godforsaken reason the compiled library doesn't have:
- * - ccmd5_di
- * - ccsha384_di
- * - ccsha512_di
- *
- * I thought we already had SHA-384?
- * Unless the selector code hasn't been implemented yet, I'll get around to it.
- *
- * There's a high chance I'll end up re-working the implementations anyways, mostly just to match the SHA
- * implementations with one another to avoid a weird scenario.
- */
+extern void ccsha512_ltc_compress(ccdigest_state_t state, size_t nblocks, const void *data);
+extern void ccsha512_final(const struct ccdigest_info *di, ccdigest_ctx_t ctx, void *digest);
 
 #endif

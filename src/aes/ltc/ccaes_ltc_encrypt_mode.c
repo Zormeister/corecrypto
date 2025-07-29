@@ -6,8 +6,8 @@
 //
 
 #include "ccaes_ltc_internal.h"
-#include <corecrypto/ccaes.h>
 #include <corecrypto/cc_priv.h>
+#include <corecrypto/ccaes.h>
 
 /* weird that the symbol is named this, but you know. whatecer works i guess. */
 static int ccaes_ecb_encrypt_init(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t key_nbytes, const void *key)
@@ -17,7 +17,8 @@ static int ccaes_ecb_encrypt_init(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, 
     return CCERR_OK;
 }
 
-static int ccaes_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out) {
+static int ccaes_ecb_encrypt(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out)
+{
     while (nblocks--) {
         ccaes_ltc_ecb_encrypt(in, out, __DECONST(ccecb_ctx *, ctx));
         in += CCAES_BLOCK_SIZE;

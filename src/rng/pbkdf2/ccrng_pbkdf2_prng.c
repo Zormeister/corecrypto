@@ -7,8 +7,8 @@
 
 #include <corecrypto/cc_priv.h>
 #include <corecrypto/ccpbkdf2.h>
-#include <corecrypto/ccsha2.h>
 #include <corecrypto/ccrng_pbkdf2_prng.h>
+#include <corecrypto/ccsha2.h>
 
 static int ccrng_pbkdf2_prng_generate(struct ccrng_state *rng, size_t outlen, void *out)
 {
@@ -30,10 +30,10 @@ static int ccrng_pbkdf2_prng_generate(struct ccrng_state *rng, size_t outlen, vo
 }
 
 int ccrng_pbkdf2_prng_init(struct ccrng_pbkdf2_prng_state *state,
-                          size_t max_output,
-                          size_t password_length, const void *password,
-                          size_t salt_length, const void *salt,
-                          size_t iterations)
+                           size_t max_output,
+                           size_t password_length, const void *password,
+                           size_t salt_length, const void *salt,
+                           size_t iterations)
 {
     if (max_output > 4096) {
         return CCERR_OVERFLOW;

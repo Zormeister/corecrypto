@@ -128,7 +128,6 @@ const struct ccmode_xts *ccaes_xts_encrypt_mode(void)
 
 #endif
 
-
 #pragma mark - Other constructed modes.
 
 CCMODE_CFB_FACTORY(aes, cfb, encrypt)

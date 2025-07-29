@@ -7,6 +7,7 @@
 
 #include <corecrypto/ccder.h>
 
-size_t ccder_sizeof_oid(ccoid_t oid) {
+size_t ccder_sizeof_oid(ccoid_t oid)
+{
     return ccoid_size(oid);
 }

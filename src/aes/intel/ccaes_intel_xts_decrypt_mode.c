@@ -47,7 +47,7 @@ static void *xts_wrapper_aesni(const ccxts_ctx *ctx, ccxts_tweak *tweak, size_t 
     struct ccaes_intel_xts_decrypt_ctx *key = (struct ccaes_intel_xts_decrypt_ctx *)ctx;
     uint8_t *T = (uint8_t *)tweak;
 
-    if (vng_aes_xts_decrypt_aesni(in, nblocks*CCAES_BLOCK_SIZE, out, T, key->decrypt)) {
+    if (vng_aes_xts_decrypt_aesni(in, nblocks * CCAES_BLOCK_SIZE, out, T, key->decrypt)) {
         return NULL;
     } else {
         return T;
@@ -101,7 +101,7 @@ static void *xts_wrapper_opt(const ccxts_ctx *ctx, ccxts_tweak *tweak, size_t nb
     struct ccaes_intel_xts_decrypt_ctx *key = (struct ccaes_intel_xts_decrypt_ctx *)ctx;
     uint8_t *T = (uint8_t *)tweak;
 
-    if (vng_aes_xts_decrypt_opt(in, nblocks*CCAES_BLOCK_SIZE, out, T, key->decrypt)) {
+    if (vng_aes_xts_decrypt_opt(in, nblocks * CCAES_BLOCK_SIZE, out, T, key->decrypt)) {
         return NULL;
     } else {
         return T;

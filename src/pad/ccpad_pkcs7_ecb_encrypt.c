@@ -5,8 +5,8 @@
 //  Created by Zormeister on 29/7/2025.
 //
 
-#include <corecrypto/ccmode.h>
 #include <corecrypto/cc_priv.h>
+#include <corecrypto/ccmode.h>
 #include <corecrypto/ccpad.h>
 
 /* functionally the same as ccpad_pkcs7_encrypt */

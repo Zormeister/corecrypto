@@ -25,7 +25,7 @@ static int init_wrapper_opt(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t
 static int ecb_wrapper_opt(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out)
 {
     struct ccaes_intel_encrypt_key *k = (struct ccaes_intel_encrypt_key *)ctx;
-    
+
     while (nblocks--) {
         vng_aes_encrypt_opt(in, out, k->ctx);
         in += CCAES_BLOCK_SIZE;
@@ -52,7 +52,7 @@ static int init_wrapper_aesni(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size
 static int ecb_wrapper_aesni(const ccecb_ctx *ctx, size_t nblocks, const void *in, void *out)
 {
     struct ccaes_intel_encrypt_key *k = (struct ccaes_intel_encrypt_key *)ctx;
-    
+
     while (nblocks--) {
         vng_aes_encrypt_aesni(in, out, k->ctx);
         in += CCAES_BLOCK_SIZE;

@@ -7,9 +7,9 @@
 
 #include "ccmode_internal.h"
 #include <corecrypto/cc.h>
+#include <corecrypto/cc_error.h>
 #include <corecrypto/ccmode.h>
 #include <corecrypto/ccmode_factory.h>
-#include <corecrypto/cc_error.h>
 
 /* not mentioned outside of the symbol table, assuming this runs xts_mult_x using the first parameter as the tweak */
 void ccmode_xts_mult_alpha(uint8_t *I)
@@ -31,15 +31,15 @@ void ccmode_xts_mult_alpha(uint8_t *I)
 /* the function that everyone's been waiting for. */
 
 /* ccmode_xts's declaration says we return the pointer to the tweak buffer */
-void * ccmode_xts_crypt(const ccxts_ctx *ctx, ccxts_tweak *tweak,
+void *ccmode_xts_crypt(const ccxts_ctx *ctx, ccxts_tweak *tweak,
                        size_t nblocks, const void *in, void *out)
 {
     /* grab our actual key and tweak pointers */
     struct _ccmode_xts_key *key = (struct _ccmode_xts_key *)ctx;
     struct _ccmode_xts_tweak *twk = (struct _ccmode_xts_tweak *)tweak;
 
-    /* 
-     * set_tweak has already been called at this point, therefore we don't need 
+    /*
+     * set_tweak has already been called at this point, therefore we don't need
      * to worry about anything to do with tweak enc
      */
 

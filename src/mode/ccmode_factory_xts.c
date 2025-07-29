@@ -11,7 +11,8 @@
 #include <corecrypto/ccmode_factory.h>
 #include <corecrypto/ccmode_impl.h>
 
-void ccmode_factory_xts_decrypt(struct ccmode_xts *xts, const struct ccmode_ecb *ecb, const struct ccmode_ecb *ecb_encrypt) {
+void ccmode_factory_xts_decrypt(struct ccmode_xts *xts, const struct ccmode_ecb *ecb, const struct ccmode_ecb *ecb_encrypt)
+{
     /* Fill in size parameters */
     xts->size = ccn_sizeof_size(sizeof(struct _ccmode_xts_key)) + 2 * ccn_sizeof_size(ecb->size);
     xts->block_size = ccecb_block_size(ecb);
@@ -28,7 +29,8 @@ void ccmode_factory_xts_decrypt(struct ccmode_xts *xts, const struct ccmode_ecb 
     xts->custom1 = ecb_encrypt;
 }
 
-void ccmode_factory_xts_encrypt(struct ccmode_xts *xts, const struct ccmode_ecb *ecb, const struct ccmode_ecb *ecb_encrypt) {
+void ccmode_factory_xts_encrypt(struct ccmode_xts *xts, const struct ccmode_ecb *ecb, const struct ccmode_ecb *ecb_encrypt)
+{
     /* Fill in size parameters */
     xts->size = ccn_sizeof_size(sizeof(struct _ccmode_xts_key)) + 2 * ccn_sizeof_size(ecb->size);
     xts->block_size = ccecb_block_size(ecb);

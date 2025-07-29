@@ -18,8 +18,8 @@
  */
 
 void PRF(const struct ccdigest_info *di, size_t passwordLen, const void *password,
-                  size_t length, const void *data,
-                  void *output)
+         size_t length, const void *data,
+         void *output)
 {
     cchmac(di, passwordLen, password, length, data, output);
 }
@@ -57,7 +57,7 @@ int ccpbkdf2_hmac(const struct ccdigest_info *di,
 
         /* encode the counter */
         for (int i = 0; i < 4; i++) {
-            salt_ptr[saltLen+i] = (block >> 8*(3-i)) & 0xff;
+            salt_ptr[saltLen + i] = (block >> 8 * (3 - i)) & 0xff;
         }
 
         /* run the PRF for U_1 */
