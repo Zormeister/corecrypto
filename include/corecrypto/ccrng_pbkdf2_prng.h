@@ -14,12 +14,8 @@
 struct ccrng_pbkdf2_prng_state {
     CCRNG_STATE_COMMON
 
-    const void *password;
-    size_t password_length;
-    size_t iterations;
-    const void *salt;
-    size_t salt_length;
-    size_t output_size;
+    size_t buffer_size;
+    uint8_t buffer[4096];
 };
 
 int ccrng_pbkdf2_prng_init(struct ccrng_pbkdf2_prng_state *state,
