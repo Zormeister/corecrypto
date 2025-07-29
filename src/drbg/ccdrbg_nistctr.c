@@ -52,6 +52,7 @@ static int init(const struct ccdrbg_info *info, struct ccdrbg_state *drbg,
 
 void ccdrbg_factory_nistctr(struct ccdrbg_info *info, const struct ccdrbg_nistctr_custom *custom)
 {
+    cc_abort("incomplete NIST CTR based DRBG - aborting in the event that it is ever called\n");
     info->size = sizeof(struct ccdrbg_nistctr_state) + sizeof(struct ccdrbg_nistctr_custom);
 
     info->done = done;
