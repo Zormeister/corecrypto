@@ -16,9 +16,17 @@ cc_unit ccn_add(cc_size n, cc_unit *r, const cc_unit *s, const cc_unit *t)
 #else
     cc_unit carry = 0;
 
-    cc_try_abort("wip.");
+    for (int i = 0; i < n; i++) {
+        cc_unit u = s[i] + t[i] + carry;
+        if (u < s[i] || u == s[i] && carry) {
+            carry = 1;
+        } else {
+            carry = 0;
+        }
 
-    /* TODO: regular impl */
+        r[i] = u;
+    }
+
     return carry;
 #endif
 }

@@ -30,9 +30,7 @@ cc_unit ccn_sub_asm(cc_size n, cc_unit *r, const cc_unit *s, const cc_unit *t)
         borrow_in = cc_subborrow(borrow_in, s[i], t[i], &r[i]);
     }
 
-    /* ^ i hope this is how i was supposed to do it; i need proper testing. */
-
-    return 0;
+    return borrow_in;
 }
 
 #endif
