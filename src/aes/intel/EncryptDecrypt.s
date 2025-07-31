@@ -270,7 +270,7 @@ Name:
 #define	ExpandedKeyEnd	Arch(5*16(r4), r11)
 
 	// Get and check "key length".
-	movzx	ContextKeyLength(ExpandedKey), r0
+	movzw	ContextKeyLength(ExpandedKey), r0
 	cmp		$160, r0
 	je		2f
 	cmp		$192, r0
@@ -367,50 +367,50 @@ Name:
 	*/
 
 	// Process previous S0.
-	movzx	Work0l, t0
+	movzb	Work0l, t0
 	xor		LookupM(0, t0), S0
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupM(1, t0), P3
 	shr		$16, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupM(2, t0), S2
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupM(3, t0), P1
 
 	// Process previous S1.
 	movd	vS1, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupM(0, t0), S1
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupM(1, t0), P0
 	shr		$16, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupM(2, t0), S3
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupM(3, t0), P2
 
 	// Process previous S2.
 	movd	vS2, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupM(0, t0), S2
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupM(1, t0), P1
 	shr		$16, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupM(2, t0), S0
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupM(3, t0), P3
 
 	// Process previous S3.
 	movd	vS3, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupM(0, t0), S3
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupM(1, t0), P2
 	shr		$16, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupM(2, t0), S1
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupM(3, t0), P0
 
 	#if defined __i386__
@@ -443,50 +443,50 @@ Name:
 	#endif
 
 	// Process previous S0.
-	movzx	Work0l, t0
+	movzb	Work0l, t0
 	xor		LookupF(0, t0), S0
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupF(1, t0), P3
 	shr		$16, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupF(2, t0), S2
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupF(3, t0), P1
 
 	// Process previous S1.
 	movd	vS1, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupF(0, t0), S1
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupF(1, t0), P0
 	shr		$16, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupF(2, t0), S3
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupF(3, t0), P2
 
 	// Process previous S2.
 	movd	vS2, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupF(0, t0), S2
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupF(1, t0), P1
 	shr		$16, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupF(2, t0), S0
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupF(3, t0), P3
 
 	// Process previous S3.
 	movd	vS3, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupF(0, t0), S3
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupF(1, t0), P2
 	shr		$16, Work0d
-	movzx	Work0l, t0d
+	movzb	Work0l, t0d
 	xor		LookupF(2, t0), S1
-	movzx	Work0h, t0d
+	movzb	Work0h, t0d
 	xor		LookupF(3, t0), P0
 
 	#if defined __i386__	// Architecture.

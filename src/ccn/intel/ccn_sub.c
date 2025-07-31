@@ -7,6 +7,8 @@
 
 #include <corecrypto/ccn.h>
 
+#if 0
+
 #if CCN_SUB_ASM
 
 #include <immintrin.h>
@@ -32,5 +34,7 @@ cc_unit ccn_sub_asm(cc_size n, cc_unit *r, const cc_unit *s, const cc_unit *t)
 
     return borrow_in;
 }
+
+#endif
 
 #endif

@@ -310,14 +310,14 @@ EKeyHas4Words:
 	mov		e3, dr				// Put previous word into dissection register.
 
 	// Perform SubWord(RotWord(dr)).
-	movzx	drl, t0
+	movzb	drl, t0
 	xor		LookupS(3, t0), e0		// Look up byte 0 in table 3.
-	movzx	drh, t0d
+	movzb	drh, t0d
 	xor		LookupS(0, t0), e0		// Look up byte 1 in table 0.
 	shr		$16, dr
-	movzx	drl, t0d
+	movzb	drl, t0d
 	xor		LookupS(1, t0), e0		// Look up byte 2 in table 1.
-	movzx	drh, t0d
+	movzb	drh, t0d
 	xor		LookupS(2, t0), e0		// Look up byte 3 in table 2.
 
 #if defined	__i386__
@@ -326,7 +326,7 @@ EKeyHas4Words:
 
 	add		$4*4, E
 
-	movzx	(E), t0d				// Get cached round constant.
+	movzb	(E), t0d				// Get cached round constant.
 	xor		t0d, e0					// XOR with word from four words back.
 
 	// Chain to successive words.
@@ -511,21 +511,21 @@ EKeyHas6Words:
 2:
 	add		$1, R				// Advance pointer.
 	movd	ve5, dr				// Put previous word into dissection register.
-	movzx	(R), t0				// Get round constant.
+	movzb	(R), t0				// Get round constant.
 	movd	t0d, vt1
 	pxor	vt1, ve0			// XOR with word from six words back.
 
 	// Perform SubWord(RotWord(dr)).
-	movzx	drl, t0d
+	movzb	drl, t0d
 	movd	LookupS(3, t0), vt0		// Look up byte 0 in table 3.
-	movzx	drh, t0d
+	movzb	drh, t0d
 	movd	LookupS(0, t0), vt1		// Look up byte 1 in table 0.
 	shr		$16, dr
-	movzx	drl, t0d
+	movzb	drl, t0d
 	pxor	vt1, vt0
 	pxor	vt0, ve0
 	movd	LookupS(1, t0), vt0		// Look up byte 2 in table 1.
-	movzx	drh, t0d
+	movzb	drh, t0d
 	movd	LookupS(2, t0), vt1		// Look up byte 3 in table 2.
 	pxor	vt1, vt0
 	pxor	vt0, ve0
@@ -703,14 +703,14 @@ EKeyHas8Words:
 	movd	-4*4(E, offset), ve0
 
 	// Perform SubWord(dr).
-	movzx	drl, t0
+	movzb	drl, t0
 	movd	LookupS(0, t0), vt0		// Look up byte 0 in table 0.
-	movzx	drh, t0d
+	movzb	drh, t0d
 	movd	LookupS(1, t0), vt1		// Look up byte 1 in table 1.
 	shr		$16, dr
-	movzx	drl, t0d
+	movzb	drl, t0d
 	movd	LookupS(2, t0), vt2		// Look up byte 2 in table 2.
-	movzx	drh, t0d
+	movzb	drh, t0d
 	movd	LookupS(3, t0), vt3		// Look up byte 3 in table 3.
 	pxor	vt1, vt0
 	pxor	vt3, vt2
@@ -733,20 +733,20 @@ EKeyHas8Words:
 2:
 	add		$1, R				// Advance pointer.
 	movd	ve3, dr				// Put previous word into dissection register.
-	movzx	(R), t0d			// Get round constant.
+	movzb	(R), t0d			// Get round constant.
 	movd	t0d, vt1
 	movd	0*4(E, offset), ve0	// Get word from eight words back.
 	pxor	vt1, ve0
 
 	// Perform SubWord(RotWord(dr)).
-	movzx	drl, t0
+	movzb	drl, t0
 	movd	LookupS(3, t0), vt0		// Look up byte 0 in table 3.
-	movzx	drh, t0d
+	movzb	drh, t0d
 	movd	LookupS(0, t0), vt1		// Look up byte 1 in table 0.
 	shr		$16, dr
-	movzx	drl, t0d
+	movzb	drl, t0d
 	movd	LookupS(1, t0), vt2		// Look up byte 2 in table 1.
-	movzx	drh, t0d
+	movzb	drh, t0d
 	movd	LookupS(2, t0), vt3		// Look up byte 3 in table 2.
 	pxor	vt1, vt0
 	pxor	vt3, vt2

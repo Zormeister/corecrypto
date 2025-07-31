@@ -53,7 +53,7 @@ int ccrc2_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t key_nby
 
     /* Phase 1: Expand input key to 128 bytes */
     if (key_nbytes < 128) {
-        for (i = key_nbytes; i < 128; i++) {
+        for (int i = key_nbytes; i < 128; i++) {
             tmp[i] = permute[(tmp[i - 1] + tmp[i - key_nbytes]) & 255];
         }
     }

@@ -167,16 +167,16 @@
 	_ExpandKeyForDecryption and shares register use with it.
 */
 InvMixColumn:
-	movzx	drl, t0
+	movzb	drl, t0
 	movd	LookupI(0, t0), vt0		// Look up byte 0 in table 0.
-	movzx	drh, t0d
+	movzb	drh, t0d
 	movd	LookupI(1, t0), vt1		// Look up byte 1 in table 1.
 	pxor	vt1, vt0
 	shr		$16, dr
-	movzx	drl, t0d
+	movzb	drl, t0d
 	movd	LookupI(2, t0), vt1		// Look up byte 2 in table 2.
 	pxor	vt1, vt0
-	movzx	drh, t0d
+	movzb	drh, t0d
 	movd	LookupI(3, t0), vt1		// Look up byte 3 in table 3.
 	pxor	vt1, vt0
 	ret
@@ -184,17 +184,17 @@ InvMixColumn:
 
 	// SubWordRotWord adds (XORs) SubWord(RotWord(dr)) to vt0.
 	.macro	SubWordRotWord
-		movzx	drl, t0
+		movzb	drl, t0
 		movd	LookupS(3, t0), vt1		// Look up byte 0 in table 3.
 		pxor	vt1, vt0
-		movzx	drh, t0d
+		movzb	drh, t0d
 		movd	LookupS(0, t0), vt1		// Look up byte 1 in table 0.
 		pxor	vt1, vt0
 		shr		$$16, dr
-		movzx	drl, t0d
+		movzb	drl, t0d
 		movd	LookupS(1, t0), vt1		// Look up byte 2 in table 1.
 		pxor	vt1, vt0
-		movzx	drh, t0d
+		movzb	drh, t0d
 		movd	LookupS(2, t0), vt1		// Look up byte 3 in table 2.
 		pxor	vt1, vt0
 	.endmacro
@@ -202,16 +202,16 @@ InvMixColumn:
 
 	// SubWord puts SubWord(dr) into vt0.
 	.macro	SubWord
-		movzx	drl, t0
+		movzb	drl, t0
 		movd	LookupS(0, t0), vt0		// Look up byte 0 in table 0.
-		movzx	drh, t0d
+		movzb	drh, t0d
 		movd	LookupS(1, t0), vt1		// Look up byte 1 in table 1.
 		pxor	vt1,vt0
 		shr		$$16, dr
-		movzx	drl, t0d
+		movzb	drl, t0d
 		movd	LookupS(2, t0), vt1		// Look up byte 2 in table 2.
 		pxor	vt1,vt0
-		movzx	drh, t0d
+		movzb	drh, t0d
 		movd	LookupS(3, t0), vt1		// Look up byte 3 in table 3.
 		pxor	vt1,vt0
 	.endmacro
@@ -415,7 +415,7 @@ DKeyHas4Words:
 */
 	add		$1, R					// Advance pointer.
 	movd	ve3, dr					// Put previous word into work register.
-	movzx	(R), t0d				// Get round constant.
+	movzb	(R), t0d				// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -452,7 +452,7 @@ DKeyHas4Words:
 1:
 	add		$1, R					// Advance pointer.
 	movd	ve3, dr					// Put previous word into work register.
-	movzx	(R), t0d				// Get round constant.
+	movzb	(R), t0d				// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -505,7 +505,7 @@ DKeyHas4Words:
 // Here is the final iteration, which does not perform InvMixColumn.
 
 	movd	ve3, dr					// Put previous word into work register.
-	movzx	1(R), t0d				// Get round constant.
+	movzb	1(R), t0d				// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -680,7 +680,7 @@ DKeyHas6Words:
 */
 	add		$1, R					// Advance pointer.
 	movd	ve5, dr					// Put previous word into work register.
-	movzx	(R), t0d				// Get round constant.
+	movzb	(R), t0d				// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -727,7 +727,7 @@ DKeyHas6Words:
 1:
 	add		$1, R					// Advance pointer.
 	movd	ve5, dr					// Put previous word into work register.
-	movzx	(R), t0d				// Get round constant.
+	movzb	(R), t0d				// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -776,7 +776,7 @@ DKeyHas6Words:
 // Here is the final iteration, which does not perform InvMixColumn.
 
 	movd	ve5, dr					// Put previous word into work register.
-	movzx	1(R), t0d				// Get round constant.
+	movzb	1(R), t0d				// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -958,7 +958,7 @@ DKeyHas8Words:
 */
 	add		$1, R					// Advance pointer.
 	movd	ve3, dr					// Put previous word into work register.
-	movzx	(R), t0d				// Get round constant.
+	movzb	(R), t0d				// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -1039,7 +1039,7 @@ DKeyHas8Words:
 1:
 	add		$1, R						// Advance pointer.
 	movd	ve3, dr						// Put previous word into work register.
-	movzx	(R), t0d					// Get round constant.
+	movzb	(R), t0d					// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -1123,7 +1123,7 @@ DKeyHas8Words:
 	jl		1b
 
 	movd	ve3, dr						// Put previous word into work register.
-	movzx	1(R), t0d					// Get round constant.
+	movzb	1(R), t0d					// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
