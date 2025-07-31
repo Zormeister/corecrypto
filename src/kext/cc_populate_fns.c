@@ -70,6 +70,9 @@ void cc_populate_fns(crypto_functions_t fns)
     fns->ccaes_cbc_decrypt = ccaes_cbc_decrypt_mode();
     fns->ccaes_ecb_encrypt = ccaes_ecb_encrypt_mode();
     fns->ccaes_ecb_decrypt = ccaes_ecb_decrypt_mode();
+    fns->ccaes_ctr_crypt = ccaes_ctr_crypt_mode();
+    fns->ccaes_xts_encrypt = ccaes_xts_encrypt_mode();
+    fns->ccaes_xts_decrypt = ccaes_xts_decrypt_mode();
 
     /* Blowfish functions */
     fns->ccblowfish_ecb_encrypt = ccblowfish_ecb_encrypt_mode();
