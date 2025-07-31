@@ -90,39 +90,47 @@ int ccchacha20_setnonce(ccchacha20_ctx *ctx, const uint8_t *nonce)
     return CCERR_OK;
 }
 
+int _ccchacha20_block(ccchacha20_ctx *ctx)
+{
+    uint32_t *buf = (uint32_t *)ctx->buffer;
+
+    /* copy our initial state to the buffer */
+    CC_MEMCPY(buf, ctx->state, CCCHACHA20_BLOCK_NBYTES);
+
+    /* Setup our state */
+    for (int r = 20; r > 0; r -= 2) {
+        CHACHA_QUARTERROUND(buf, 0, 4, 8, 12);
+        CHACHA_QUARTERROUND(buf, 1, 5, 9, 13);
+        CHACHA_QUARTERROUND(buf, 2, 6, 10, 14);
+        CHACHA_QUARTERROUND(buf, 3, 7, 11, 15);
+        CHACHA_QUARTERROUND(buf, 0, 5, 10, 15);
+        CHACHA_QUARTERROUND(buf, 1, 6, 11, 12);
+        CHACHA_QUARTERROUND(buf, 2, 7, 8, 13);
+        CHACHA_QUARTERROUND(buf, 3, 4, 9, 14);
+    }
+
+    /* once we're done, we have to add the initial state to the current state, or vice versa. */
+    for (int s = 0; s < 16; s++) {
+        buf[s] += ctx->state[s];
+    }
+
+    return CCERR_OK;
+}
+
 int ccchacha20_update(ccchacha20_ctx *ctx, size_t nbytes, const void *in, void *out)
 {
     const uint32_t *data_chunk_ptr = in;
     uint32_t *out_chunk_buf = out;
+    uint32_t *buf = (uint32_t *)ctx->buffer;
 
-    if (ctx == NULL || in == NULL || out == NULL) { /* CHECK IF OUR PARAMETERS AREN'T NULL. or maybe that's CC_NONNULL */
+    if (ctx == NULL || in == NULL || out == NULL) {
         return CCERR_PARAMETER;
     }
 
     for (;;) {
         if (nbytes == 0) { break; }
-        /* for every block we have, */
-        uint32_t *buf = (uint32_t *)ctx->buffer;
 
-        /* copy our initial state to the buffer so */
-        CC_MEMCPY(buf, ctx->state, CCCHACHA20_BLOCK_NBYTES);
-
-        /* Setup our state */
-        for (int r = 20; r > 0; r -= 2) {
-            CHACHA_QUARTERROUND(buf, 0, 4, 8, 12);
-            CHACHA_QUARTERROUND(buf, 1, 5, 9, 13);
-            CHACHA_QUARTERROUND(buf, 2, 6, 10, 14);
-            CHACHA_QUARTERROUND(buf, 3, 7, 11, 15);
-            CHACHA_QUARTERROUND(buf, 0, 5, 10, 15);
-            CHACHA_QUARTERROUND(buf, 1, 6, 11, 12);
-            CHACHA_QUARTERROUND(buf, 2, 7, 8, 13);
-            CHACHA_QUARTERROUND(buf, 3, 4, 9, 14);
-        }
-
-        /* once we're done, we have to add the initial state to the current state, or vice versa. */
-        for (int s = 0; s < 16; s++) {
-            buf[s] += ctx->state[s];
-        }
+        _ccchacha20_block(ctx);
 
         if (nbytes >= 64) {
             for (int x = 0; x < 16; x++) {
