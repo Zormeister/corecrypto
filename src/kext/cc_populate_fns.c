@@ -14,6 +14,7 @@
 #include <corecrypto/ccaes.h>
 #include <corecrypto/ccblowfish.h>
 #include <corecrypto/cccast.h>
+#include <corecrypto/ccchacha20poly1305.h>
 #include <corecrypto/ccdes.h>
 #include <corecrypto/ccdigest_priv.h>
 #include <corecrypto/cchmac.h>
@@ -21,6 +22,22 @@
 #include <corecrypto/ccrc4.h>
 #include <corecrypto/ccsha1.h>
 #include <corecrypto/ccsha2.h>
+
+/*
+ * Build the ChaCha20Poly1305 table
+ */
+const struct ccchacha20poly1305_fns ccchacha20poly1305_funcs = {
+    &ccchacha20poly1305_info,
+    &ccchacha20poly1305_init,
+    &ccchacha20poly1305_reset,
+    &ccchacha20poly1305_setnonce,
+    &ccchacha20poly1305_incnonce,
+    &ccchacha20poly1305_aad,
+    &ccchacha20poly1305_encrypt,
+    &ccchacha20poly1305_finalize,
+    &ccchacha20poly1305_decrypt,
+    &ccchacha20poly1305_verify,
+};
 
 /*
  * Darwin has a tendency to change how the crypto API implements functions
@@ -97,6 +114,8 @@ void cc_populate_fns(crypto_functions_t fns)
 
     /* RC4 */
     fns->ccrc4_info = ccrc4();
+
+    fns->ccchacha20poly1305_fns = &ccchacha20poly1305_funcs;
 
 #if CCKEXT_TRACE
     printf("corecrypto: finished populating implemented functions.\n");
