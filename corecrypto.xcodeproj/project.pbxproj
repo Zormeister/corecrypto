@@ -241,7 +241,6 @@
 		F00CF6F22E1F223F00349FD5 /* ccn_cmp.c in Sources */ = {isa = PBXBuildFile; fileRef = F00CF6E92E1F223F00349FD5 /* ccn_cmp.c */; };
 		F00CF6F32E1F223F00349FD5 /* ccn_sub.c in Sources */ = {isa = PBXBuildFile; fileRef = F00CF6EF2E1F223F00349FD5 /* ccn_sub.c */; };
 		F00CF6F42E1F223F00349FD5 /* ccn_sub.c in Sources */ = {isa = PBXBuildFile; fileRef = F00CF6ED2E1F223F00349FD5 /* ccn_sub.c */; };
-		F00CF6F52E1F223F00349FD5 /* ccn_read_unit.c in Sources */ = {isa = PBXBuildFile; fileRef = F00CF6EC2E1F223F00349FD5 /* ccn_read_unit.c */; };
 		F00CF6F62E1F223F00349FD5 /* ccn_n.c in Sources */ = {isa = PBXBuildFile; fileRef = F00CF6EB2E1F223F00349FD5 /* ccn_n.c */; };
 		F00CF6F72E1F223F00349FD5 /* ccn_add.c in Sources */ = {isa = PBXBuildFile; fileRef = F00CF6E82E1F223F00349FD5 /* ccn_add.c */; };
 		F00CF6F82E1F223F00349FD5 /* ccn_internal.h in Headers */ = {isa = PBXBuildFile; fileRef = F00CF6EA2E1F223F00349FD5 /* ccn_internal.h */; };
@@ -249,7 +248,6 @@
 		F00CF6FA2E1F223F00349FD5 /* ccn_cmp.c in Sources */ = {isa = PBXBuildFile; fileRef = F00CF6E92E1F223F00349FD5 /* ccn_cmp.c */; };
 		F00CF6FB2E1F223F00349FD5 /* ccn_sub.c in Sources */ = {isa = PBXBuildFile; fileRef = F00CF6EF2E1F223F00349FD5 /* ccn_sub.c */; };
 		F00CF6FC2E1F223F00349FD5 /* ccn_sub.c in Sources */ = {isa = PBXBuildFile; fileRef = F00CF6ED2E1F223F00349FD5 /* ccn_sub.c */; };
-		F00CF6FD2E1F223F00349FD5 /* ccn_read_unit.c in Sources */ = {isa = PBXBuildFile; fileRef = F00CF6EC2E1F223F00349FD5 /* ccn_read_unit.c */; };
 		F00CF6FE2E1F223F00349FD5 /* ccn_n.c in Sources */ = {isa = PBXBuildFile; fileRef = F00CF6EB2E1F223F00349FD5 /* ccn_n.c */; };
 		F00CF6FF2E1F223F00349FD5 /* ccn_add.c in Sources */ = {isa = PBXBuildFile; fileRef = F00CF6E82E1F223F00349FD5 /* ccn_add.c */; };
 		F00CF7002E1F223F00349FD5 /* ccn_internal.h in Headers */ = {isa = PBXBuildFile; fileRef = F00CF6EA2E1F223F00349FD5 /* ccn_internal.h */; };
@@ -383,8 +381,8 @@
 		F0851A2E2DEA56C200349FD5 /* ccrc2.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F0851A2C2DEA56C200349FD5 /* ccrc2.h */; };
 		F0851A302DEA56DE00349FD5 /* cckeccak.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F0851A2F2DEA56DE00349FD5 /* cckeccak.h */; };
 		F0851A312DEA56DE00349FD5 /* cckeccak.h in Headers */ = {isa = PBXBuildFile; fileRef = F0851A2F2DEA56DE00349FD5 /* cckeccak.h */; };
-		F0851A332DEA572600349FD5 /* poly1305.c in Sources */ = {isa = PBXBuildFile; fileRef = F0851A322DEA572600349FD5 /* poly1305.c */; };
-		F0851A342DEA572600349FD5 /* poly1305.c in Sources */ = {isa = PBXBuildFile; fileRef = F0851A322DEA572600349FD5 /* poly1305.c */; };
+		F0851A332DEA572600349FD5 /* ccpoly1305.c in Sources */ = {isa = PBXBuildFile; fileRef = F0851A322DEA572600349FD5 /* ccpoly1305.c */; };
+		F0851A342DEA572600349FD5 /* ccpoly1305.c in Sources */ = {isa = PBXBuildFile; fileRef = F0851A322DEA572600349FD5 /* ccpoly1305.c */; };
 		F0851A382DEA574000349FD5 /* cccmac_generate_subkeys.c in Sources */ = {isa = PBXBuildFile; fileRef = F0851A352DEA574000349FD5 /* cccmac_generate_subkeys.c */; };
 		F0851A392DEA574000349FD5 /* cccmac_update.c in Sources */ = {isa = PBXBuildFile; fileRef = F0851A372DEA574000349FD5 /* cccmac_update.c */; };
 		F0851A3A2DEA574000349FD5 /* cccmac_init.c in Sources */ = {isa = PBXBuildFile; fileRef = F0851A362DEA574000349FD5 /* cccmac_init.c */; };
@@ -462,9 +460,19 @@
 		F09953AF2D46DD810021D020 /* constants.c in Sources */ = {isa = PBXBuildFile; fileRef = F09953AE2D46DD810021D020 /* constants.c */; };
 		F09953B02D46DD810021D020 /* constants.c in Sources */ = {isa = PBXBuildFile; fileRef = F09953AE2D46DD810021D020 /* constants.c */; };
 		F09C430F2DAF80DD008E7BD3 /* ccansikdf.h in Headers */ = {isa = PBXBuildFile; fileRef = F09C430E2DAF80DD008E7BD3 /* ccansikdf.h */; };
+		F09CDC7A2E3B452600820F95 /* ccchacha20poly1305.c in Sources */ = {isa = PBXBuildFile; fileRef = F09CDC792E3B452600820F95 /* ccchacha20poly1305.c */; };
+		F09CDC7B2E3B452600820F95 /* ccchacha20poly1305.c in Sources */ = {isa = PBXBuildFile; fileRef = F09CDC792E3B452600820F95 /* ccchacha20poly1305.c */; };
+		F09CDC7D2E3B45A200820F95 /* ccn_bitlen.c in Sources */ = {isa = PBXBuildFile; fileRef = F09CDC7C2E3B45A200820F95 /* ccn_bitlen.c */; };
+		F09CDC7E2E3B45A200820F95 /* ccn_bitlen.c in Sources */ = {isa = PBXBuildFile; fileRef = F09CDC7C2E3B45A200820F95 /* ccn_bitlen.c */; };
+		F09CDC802E3B45A800820F95 /* ccn_add1.c in Sources */ = {isa = PBXBuildFile; fileRef = F09CDC7F2E3B45A800820F95 /* ccn_add1.c */; };
+		F09CDC812E3B45A800820F95 /* ccn_add1.c in Sources */ = {isa = PBXBuildFile; fileRef = F09CDC7F2E3B45A800820F95 /* ccn_add1.c */; };
+		F09CDC832E3B45B200820F95 /* ccn_read_unit.c in Sources */ = {isa = PBXBuildFile; fileRef = F09CDC822E3B45B200820F95 /* ccn_read_unit.c */; };
+		F09CDC842E3B45B200820F95 /* ccn_read_unit.c in Sources */ = {isa = PBXBuildFile; fileRef = F09CDC822E3B45B200820F95 /* ccn_read_unit.c */; };
+		F09CDC862E3B45C000820F95 /* ccn_sub1.c in Sources */ = {isa = PBXBuildFile; fileRef = F09CDC852E3B45C000820F95 /* ccn_sub1.c */; };
+		F09CDC872E3B45C000820F95 /* ccn_sub1.c in Sources */ = {isa = PBXBuildFile; fileRef = F09CDC852E3B45C000820F95 /* ccn_sub1.c */; };
 		F0B0813C2D5A924C00349FD5 /* ccchacha20poly1305_priv.h in Headers */ = {isa = PBXBuildFile; fileRef = F0B0813B2D5A923F00349FD5 /* ccchacha20poly1305_priv.h */; };
-		F0B081402D5A96E900349FD5 /* chacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0813F2D5A96E900349FD5 /* chacha20.c */; };
-		F0B081412D5A96E900349FD5 /* chacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0813F2D5A96E900349FD5 /* chacha20.c */; };
+		F0B081402D5A96E900349FD5 /* ccchacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0813F2D5A96E900349FD5 /* ccchacha20.c */; };
+		F0B081412D5A96E900349FD5 /* ccchacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0813F2D5A96E900349FD5 /* ccchacha20.c */; };
 		F0B081432D5D44D600349FD5 /* ccxof.h in Headers */ = {isa = PBXBuildFile; fileRef = F0B081422D5D44D000349FD5 /* ccxof.h */; };
 		F0B0815E2D5FECDC00349FD5 /* chacha20.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0815D2D5FECD700349FD5 /* chacha20.c */; };
 		F0B0A52C2DC9689B00349FD5 /* ccrsa_priv.h in Headers */ = {isa = PBXBuildFile; fileRef = F0B0A52B2DC9689B00349FD5 /* ccrsa_priv.h */; };
@@ -507,7 +515,6 @@
 		F0BBB4AE2E38E61F00349FD5 /* ccaes_intel_ecb_decrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4962E38E61F00349FD5 /* ccaes_intel_ecb_decrypt_mode.c */; };
 		F0BBB4AF2E38E61F00349FD5 /* ccaes_intel_xts_decrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4982E38E61F00349FD5 /* ccaes_intel_xts_decrypt_mode.c */; };
 		F0BBB4B02E38E61F00349FD5 /* AES.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB48E2E38E61F00349FD5 /* AES.s */; };
-		F0BBB4B22E38E61F00349FD5 /* EncryptDecrypt.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB49C2E38E61F00349FD5 /* EncryptDecrypt.s */; };
 		F0BBB4B32E38E61F00349FD5 /* ccaes_ltc.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4A32E38E61F00349FD5 /* ccaes_ltc.c */; };
 		F0BBB4B42E38E61F00349FD5 /* ccaes_intel_cbc_decrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4942E38E61F00349FD5 /* ccaes_intel_cbc_decrypt_mode.c */; };
 		F0BBB4B52E38E61F00349FD5 /* aes_tab.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4A22E38E61F00349FD5 /* aes_tab.c */; };
@@ -515,9 +522,7 @@
 		F0BBB4B72E38E61F00349FD5 /* aes_modes_asm.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4912E38E61F00349FD5 /* aes_modes_asm.s */; };
 		F0BBB4B82E38E61F00349FD5 /* ccaes_intel_ecb_encrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4972E38E61F00349FD5 /* ccaes_intel_ecb_encrypt_mode.c */; };
 		F0BBB4B92E38E61F00349FD5 /* vng_aes_intel.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4A02E38E61F00349FD5 /* vng_aes_intel.c */; };
-		F0BBB4BA2E38E61F00349FD5 /* ExpandKeyForDecryption.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB49D2E38E61F00349FD5 /* ExpandKeyForDecryption.s */; };
 		F0BBB4BB2E38E61F00349FD5 /* aes_key_hw.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4902E38E61F00349FD5 /* aes_key_hw.s */; };
-		F0BBB4BC2E38E61F00349FD5 /* ExpandKeyForEncryption.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB49E2E38E61F00349FD5 /* ExpandKeyForEncryption.s */; };
 		F0BBB4BD2E38E61F00349FD5 /* Data.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB49B2E38E61F00349FD5 /* Data.s */; };
 		F0BBB4BE2E38E61F00349FD5 /* ccaes_intel_xts_encrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4992E38E61F00349FD5 /* ccaes_intel_xts_encrypt_mode.c */; };
 		F0BBB4BF2E38E61F00349FD5 /* ccaes_ltc_encrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4A52E38E61F00349FD5 /* ccaes_ltc_encrypt_mode.c */; };
@@ -527,7 +532,6 @@
 		F0BBB4C32E38E61F00349FD5 /* ccaes_intel_ecb_decrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4962E38E61F00349FD5 /* ccaes_intel_ecb_decrypt_mode.c */; };
 		F0BBB4C42E38E61F00349FD5 /* ccaes_intel_xts_decrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4982E38E61F00349FD5 /* ccaes_intel_xts_decrypt_mode.c */; };
 		F0BBB4C52E38E61F00349FD5 /* AES.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB48E2E38E61F00349FD5 /* AES.s */; };
-		F0BBB4C72E38E61F00349FD5 /* EncryptDecrypt.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB49C2E38E61F00349FD5 /* EncryptDecrypt.s */; };
 		F0BBB4C82E38E61F00349FD5 /* ccaes_ltc.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4A32E38E61F00349FD5 /* ccaes_ltc.c */; };
 		F0BBB4C92E38E61F00349FD5 /* ccaes_intel_cbc_decrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4942E38E61F00349FD5 /* ccaes_intel_cbc_decrypt_mode.c */; };
 		F0BBB4CA2E38E61F00349FD5 /* aes_tab.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4A22E38E61F00349FD5 /* aes_tab.c */; };
@@ -535,9 +539,7 @@
 		F0BBB4CC2E38E61F00349FD5 /* aes_modes_asm.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4912E38E61F00349FD5 /* aes_modes_asm.s */; };
 		F0BBB4CD2E38E61F00349FD5 /* ccaes_intel_ecb_encrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4972E38E61F00349FD5 /* ccaes_intel_ecb_encrypt_mode.c */; };
 		F0BBB4CE2E38E61F00349FD5 /* vng_aes_intel.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4A02E38E61F00349FD5 /* vng_aes_intel.c */; };
-		F0BBB4CF2E38E61F00349FD5 /* ExpandKeyForDecryption.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB49D2E38E61F00349FD5 /* ExpandKeyForDecryption.s */; };
 		F0BBB4D02E38E61F00349FD5 /* aes_key_hw.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4902E38E61F00349FD5 /* aes_key_hw.s */; };
-		F0BBB4D12E38E61F00349FD5 /* ExpandKeyForEncryption.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB49E2E38E61F00349FD5 /* ExpandKeyForEncryption.s */; };
 		F0BBB4D22E38E61F00349FD5 /* Data.s in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB49B2E38E61F00349FD5 /* Data.s */; };
 		F0BBB4D32E38E61F00349FD5 /* ccaes_intel_xts_encrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4992E38E61F00349FD5 /* ccaes_intel_xts_encrypt_mode.c */; };
 		F0BBB4D42E38E61F00349FD5 /* ccaes_ltc_encrypt_mode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0BBB4A52E38E61F00349FD5 /* ccaes_ltc_encrypt_mode.c */; };
@@ -825,7 +827,6 @@
 		F00CF6E92E1F223F00349FD5 /* ccn_cmp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccn_cmp.c; sourceTree = "<group>"; };
 		F00CF6EA2E1F223F00349FD5 /* ccn_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccn_internal.h; sourceTree = "<group>"; };
 		F00CF6EB2E1F223F00349FD5 /* ccn_n.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccn_n.c; sourceTree = "<group>"; };
-		F00CF6EC2E1F223F00349FD5 /* ccn_read_unit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccn_read_unit.c; sourceTree = "<group>"; };
 		F00CF6ED2E1F223F00349FD5 /* ccn_sub.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccn_sub.c; sourceTree = "<group>"; };
 		F00CF6EE2E1F223F00349FD5 /* ccn_add.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccn_add.c; sourceTree = "<group>"; };
 		F00CF6EF2E1F223F00349FD5 /* ccn_sub.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccn_sub.c; sourceTree = "<group>"; };
@@ -909,7 +910,7 @@
 		F0851A272DEA56AA00349FD5 /* ccsrp_gp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccsrp_gp.h; sourceTree = "<group>"; };
 		F0851A2C2DEA56C200349FD5 /* ccrc2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccrc2.h; sourceTree = "<group>"; };
 		F0851A2F2DEA56DE00349FD5 /* cckeccak.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cckeccak.h; sourceTree = "<group>"; };
-		F0851A322DEA572600349FD5 /* poly1305.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = poly1305.c; sourceTree = "<group>"; };
+		F0851A322DEA572600349FD5 /* ccpoly1305.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccpoly1305.c; sourceTree = "<group>"; };
 		F0851A352DEA574000349FD5 /* cccmac_generate_subkeys.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cccmac_generate_subkeys.c; sourceTree = "<group>"; };
 		F0851A362DEA574000349FD5 /* cccmac_init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cccmac_init.c; sourceTree = "<group>"; };
 		F0851A372DEA574000349FD5 /* cccmac_update.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cccmac_update.c; sourceTree = "<group>"; };
@@ -954,8 +955,13 @@
 		F09953AB2D46DCDE0021D020 /* auth_encrypt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = auth_encrypt.c; sourceTree = "<group>"; };
 		F09953AE2D46DD810021D020 /* constants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = constants.c; sourceTree = "<group>"; };
 		F09C430E2DAF80DD008E7BD3 /* ccansikdf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccansikdf.h; sourceTree = "<group>"; };
+		F09CDC792E3B452600820F95 /* ccchacha20poly1305.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccchacha20poly1305.c; sourceTree = "<group>"; };
+		F09CDC7C2E3B45A200820F95 /* ccn_bitlen.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccn_bitlen.c; sourceTree = "<group>"; };
+		F09CDC7F2E3B45A800820F95 /* ccn_add1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccn_add1.c; sourceTree = "<group>"; };
+		F09CDC822E3B45B200820F95 /* ccn_read_unit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccn_read_unit.c; sourceTree = "<group>"; };
+		F09CDC852E3B45C000820F95 /* ccn_sub1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccn_sub1.c; sourceTree = "<group>"; };
 		F0B0813B2D5A923F00349FD5 /* ccchacha20poly1305_priv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccchacha20poly1305_priv.h; sourceTree = "<group>"; };
-		F0B0813F2D5A96E900349FD5 /* chacha20.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = chacha20.c; sourceTree = "<group>"; };
+		F0B0813F2D5A96E900349FD5 /* ccchacha20.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ccchacha20.c; sourceTree = "<group>"; };
 		F0B081422D5D44D000349FD5 /* ccxof.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccxof.h; sourceTree = "<group>"; };
 		F0B081542D5E933000349FD5 /* ccne_kext.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccne_kext.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B0815D2D5FECD700349FD5 /* chacha20.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = chacha20.c; sourceTree = "<group>"; };
@@ -1540,12 +1546,15 @@
 			children = (
 				F00CF6F02E1F223F00349FD5 /* intel */,
 				F00CF6E82E1F223F00349FD5 /* ccn_add.c */,
+				F09CDC7F2E3B45A800820F95 /* ccn_add1.c */,
+				F09CDC7C2E3B45A200820F95 /* ccn_bitlen.c */,
 				F00CF6E92E1F223F00349FD5 /* ccn_cmp.c */,
 				F00CF6EA2E1F223F00349FD5 /* ccn_internal.h */,
 				F00CF6EB2E1F223F00349FD5 /* ccn_n.c */,
-				F00CF6EC2E1F223F00349FD5 /* ccn_read_unit.c */,
-				F00CF6ED2E1F223F00349FD5 /* ccn_sub.c */,
 				F020E6B62DF68EA500349FD5 /* ccn_print.c */,
+				F09CDC822E3B45B200820F95 /* ccn_read_unit.c */,
+				F00CF6ED2E1F223F00349FD5 /* ccn_sub.c */,
+				F09CDC852E3B45C000820F95 /* ccn_sub1.c */,
 			);
 			path = ccn;
 			sourceTree = "<group>";
@@ -1762,8 +1771,9 @@
 		F0B0813D2D5A96CA00349FD5 /* chacha20poly1305 */ = {
 			isa = PBXGroup;
 			children = (
-				F0B0813F2D5A96E900349FD5 /* chacha20.c */,
-				F0851A322DEA572600349FD5 /* poly1305.c */,
+				F0B0813F2D5A96E900349FD5 /* ccchacha20.c */,
+				F09CDC792E3B452600820F95 /* ccchacha20poly1305.c */,
+				F0851A322DEA572600349FD5 /* ccpoly1305.c */,
 			);
 			path = chacha20poly1305;
 			sourceTree = "<group>";
@@ -2229,7 +2239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0851A342DEA572600349FD5 /* poly1305.c in Sources */,
+				F0851A342DEA572600349FD5 /* ccpoly1305.c in Sources */,
 				F01186D32D44F4C7009C285F /* ccmd2.c in Sources */,
 				F09953AD2D46DCDE0021D020 /* auth_encrypt.c in Sources */,
 				F0BBB4632E38E5C000349FD5 /* ccmode_xts_init.c in Sources */,
@@ -2240,13 +2250,15 @@
 				1F17F84524809D7B0080E3C3 /* sha1mod.c in Sources */,
 				F0BFEB562D69204000349FD5 /* der.c in Sources */,
 				F0851A902DEA658700349FD5 /* ccmode_factory_cfb.c in Sources */,
+				F09CDC872E3B45C000820F95 /* ccn_sub1.c in Sources */,
 				F00136892D4059EC00349FD5 /* pdcxof.c in Sources */,
 				F0BBB4DE2E38E6A300349FD5 /* ccmd5_di.c in Sources */,
 				F0BBB4DF2E38E6A300349FD5 /* ccmd5_ltc.c in Sources */,
 				F0BBB4E02E38E6A300349FD5 /* ccmd5_initial_state.c in Sources */,
-				F0B081402D5A96E900349FD5 /* chacha20.c in Sources */,
+				F0B081402D5A96E900349FD5 /* ccchacha20.c in Sources */,
 				F004EA002DD4B2F700103A8F /* ccblowfish_ltc.c in Sources */,
 				F01DBC432DCF6C2300813612 /* ccdes_ltc_desfunc.c in Sources */,
+				F09CDC7D2E3B45A200820F95 /* ccn_bitlen.c in Sources */,
 				F01DBC2E2DCF6A6800813612 /* ccrsa_fips186.c in Sources */,
 				F01DBC3F2DCF6C2300813612 /* ccdes_modes.c in Sources */,
 				1F17F84724809D7B0080E3C3 /* prng.c in Sources */,
@@ -2307,8 +2319,8 @@
 				F00CF6F22E1F223F00349FD5 /* ccn_cmp.c in Sources */,
 				F00CF6F32E1F223F00349FD5 /* ccn_sub.c in Sources */,
 				F00CF6F42E1F223F00349FD5 /* ccn_sub.c in Sources */,
-				F00CF6F52E1F223F00349FD5 /* ccn_read_unit.c in Sources */,
 				F00CF6F62E1F223F00349FD5 /* ccn_n.c in Sources */,
+				F09CDC802E3B45A800820F95 /* ccn_add1.c in Sources */,
 				F00CF6F72E1F223F00349FD5 /* ccn_add.c in Sources */,
 				F0BBB4C02E38E61F00349FD5 /* aesxts_asm.s in Sources */,
 				F0BBB4C12E38E61F00349FD5 /* ccaes_intel_cbc_encrypt_mode.c in Sources */,
@@ -2316,17 +2328,15 @@
 				F0BBB4C32E38E61F00349FD5 /* ccaes_intel_ecb_decrypt_mode.c in Sources */,
 				F0BBB4C42E38E61F00349FD5 /* ccaes_intel_xts_decrypt_mode.c in Sources */,
 				F0BBB4C52E38E61F00349FD5 /* AES.s in Sources */,
-				F0BBB4C72E38E61F00349FD5 /* EncryptDecrypt.s in Sources */,
 				F0BBB4C82E38E61F00349FD5 /* ccaes_ltc.c in Sources */,
 				F0BBB4C92E38E61F00349FD5 /* ccaes_intel_cbc_decrypt_mode.c in Sources */,
 				F0BBB4CA2E38E61F00349FD5 /* aes_tab.c in Sources */,
 				F0BBB4CB2E38E61F00349FD5 /* ccaes_ltc_decrypt_mode.c in Sources */,
 				F0BBB4CC2E38E61F00349FD5 /* aes_modes_asm.s in Sources */,
 				F0BBB4CD2E38E61F00349FD5 /* ccaes_intel_ecb_encrypt_mode.c in Sources */,
+				F09CDC832E3B45B200820F95 /* ccn_read_unit.c in Sources */,
 				F0BBB4CE2E38E61F00349FD5 /* vng_aes_intel.c in Sources */,
-				F0BBB4CF2E38E61F00349FD5 /* ExpandKeyForDecryption.s in Sources */,
 				F0BBB4D02E38E61F00349FD5 /* aes_key_hw.s in Sources */,
-				F0BBB4D12E38E61F00349FD5 /* ExpandKeyForEncryption.s in Sources */,
 				F0BBB4D22E38E61F00349FD5 /* Data.s in Sources */,
 				F0BBB4D32E38E61F00349FD5 /* ccaes_intel_xts_encrypt_mode.c in Sources */,
 				F0BBB4D42E38E61F00349FD5 /* ccaes_ltc_encrypt_mode.c in Sources */,
@@ -2363,6 +2373,7 @@
 				F0BBB47C2E38E5E000349FD5 /* ccpad_pkcs7_decode.c in Sources */,
 				F0BBB5142E38E73100349FD5 /* ccder_sizeof_oid.c in Sources */,
 				F020E6CB2DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt_mode.c in Sources */,
+				F09CDC7A2E3B452600820F95 /* ccchacha20poly1305.c in Sources */,
 				F020E6CC2DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt_mode.c in Sources */,
 				F0851A7F2DEA58BB00349FD5 /* ccsha256_di.c in Sources */,
 				F0851A802DEA58BB00349FD5 /* ccsha224_ltc_di.c in Sources */,
@@ -2423,7 +2434,7 @@
 				F01DBC402DCF6C2300813612 /* ccdes_ltc_deskey.c in Sources */,
 				F05D86082D5732C200E8FF15 /* cchmac.c in Sources */,
 				F01DBC442DCF6C2300813612 /* ccdes_ltc_ecb.c in Sources */,
-				F0B081412D5A96E900349FD5 /* chacha20.c in Sources */,
+				F0B081412D5A96E900349FD5 /* ccchacha20.c in Sources */,
 				F0BBB4732E38E5E000349FD5 /* ccpad_pkcs7_encrypt.c in Sources */,
 				F0BBB4742E38E5E000349FD5 /* ccpad_pkcs7_decrypt.c in Sources */,
 				F0BBB4752E38E5E000349FD5 /* ccpad_pkcs7_ecb_encrypt.c in Sources */,
@@ -2473,6 +2484,7 @@
 				F0BBB4E32E38E6A300349FD5 /* ccmd5_ltc.c in Sources */,
 				F0BBB4E42E38E6A300349FD5 /* ccmd5_initial_state.c in Sources */,
 				F00CF74B2E1F231F00349FD5 /* ccmode_cfb8_encrypt.c in Sources */,
+				F09CDC7B2E3B452600820F95 /* ccchacha20poly1305.c in Sources */,
 				F00CF74C2E1F231F00349FD5 /* ccmode_cbc_encrypt.c in Sources */,
 				F0BBB48A2E38E60400349FD5 /* ccsha1_initial_state.c in Sources */,
 				F0BBB48B2E38E60400349FD5 /* ccsha1_di.c in Sources */,
@@ -2482,7 +2494,6 @@
 				F0BBB4AE2E38E61F00349FD5 /* ccaes_intel_ecb_decrypt_mode.c in Sources */,
 				F0BBB4AF2E38E61F00349FD5 /* ccaes_intel_xts_decrypt_mode.c in Sources */,
 				F0BBB4B02E38E61F00349FD5 /* AES.s in Sources */,
-				F0BBB4B22E38E61F00349FD5 /* EncryptDecrypt.s in Sources */,
 				F0BBB5152E38E73100349FD5 /* ccder_sizeof_oid.c in Sources */,
 				F0BBB4B32E38E61F00349FD5 /* ccaes_ltc.c in Sources */,
 				F0BBB4B42E38E61F00349FD5 /* ccaes_intel_cbc_decrypt_mode.c in Sources */,
@@ -2506,9 +2517,7 @@
 				F0BBB4B72E38E61F00349FD5 /* aes_modes_asm.s in Sources */,
 				F0BBB4B82E38E61F00349FD5 /* ccaes_intel_ecb_encrypt_mode.c in Sources */,
 				F0BBB4B92E38E61F00349FD5 /* vng_aes_intel.c in Sources */,
-				F0BBB4BA2E38E61F00349FD5 /* ExpandKeyForDecryption.s in Sources */,
 				F0BBB4BB2E38E61F00349FD5 /* aes_key_hw.s in Sources */,
-				F0BBB4BC2E38E61F00349FD5 /* ExpandKeyForEncryption.s in Sources */,
 				F0BBB4BD2E38E61F00349FD5 /* Data.s in Sources */,
 				F0BBB4BE2E38E61F00349FD5 /* ccaes_intel_xts_encrypt_mode.c in Sources */,
 				F0BBB4BF2E38E61F00349FD5 /* ccaes_ltc_encrypt_mode.c in Sources */,
@@ -2526,14 +2535,16 @@
 				F020E6D22DF68EB800349FD5 /* ccrc2_ltc_ecb_encrypt_mode.c in Sources */,
 				F020E6D32DF68EB800349FD5 /* ccrc2_ltc_ecb_decrypt_mode.c in Sources */,
 				F001367A2D3F736400349FD5 /* pdckeccak.c in Sources */,
+				F09CDC842E3B45B200820F95 /* ccn_read_unit.c in Sources */,
 				F01DBC2B2DCF6A6800813612 /* ccrng.c in Sources */,
 				F01186D22D44F4C7009C285F /* ccmd2.c in Sources */,
-				F0851A332DEA572600349FD5 /* poly1305.c in Sources */,
+				F0851A332DEA572600349FD5 /* ccpoly1305.c in Sources */,
 				F01DBC192DCF696A00813612 /* cc_populate_fns.c in Sources */,
 				F01DBC252DCF6A4F00813612 /* ccmode_factory_cbc.c in Sources */,
 				F01DBC4D2DCF6C7B00813612 /* ccdrbg_nistctr.c in Sources */,
 				F01DBC1F2DCF6A2E00813612 /* cchkdf_expand.c in Sources */,
 				F01DBC3E2DCF6C2300813612 /* ccdes_modes.c in Sources */,
+				F09CDC7E2E3B45A200820F95 /* ccn_bitlen.c in Sources */,
 				F05D86042D5732C200E8FF15 /* cchmac_update.c in Sources */,
 				F01DBC462DCF6C2300813612 /* ccdes_ltc_constants.c in Sources */,
 				F09953AF2D46DD810021D020 /* constants.c in Sources */,
@@ -2549,6 +2560,7 @@
 				F0BBB4672E38E5C000349FD5 /* ccmode_xts_init.c in Sources */,
 				F0BBB4682E38E5C000349FD5 /* ccmode_xts_set_tweak.c in Sources */,
 				F0BBB4692E38E5C000349FD5 /* ccmode_xts_crypt.c in Sources */,
+				F09CDC862E3B45C000820F95 /* ccn_sub1.c in Sources */,
 				F0BBB46A2E38E5C000349FD5 /* ccmode_xts_keysched.c in Sources */,
 				1FABCE602355466800F25C08 /* smf.c in Sources */,
 				F09057132D45D299007C6E87 /* ccrmd160.c in Sources */,
@@ -2563,7 +2575,6 @@
 				F00CF6FA2E1F223F00349FD5 /* ccn_cmp.c in Sources */,
 				F00CF6FB2E1F223F00349FD5 /* ccn_sub.c in Sources */,
 				F00CF6FC2E1F223F00349FD5 /* ccn_sub.c in Sources */,
-				F00CF6FD2E1F223F00349FD5 /* ccn_read_unit.c in Sources */,
 				F00CF6FE2E1F223F00349FD5 /* ccn_n.c in Sources */,
 				F00CF6FF2E1F223F00349FD5 /* ccn_add.c in Sources */,
 				F0851A8F2DEA658700349FD5 /* ccmode_factory_cfb.c in Sources */,
@@ -2586,6 +2597,7 @@
 				1FABCE5E235542CB00F25C08 /* yarrowUtils.c in Sources */,
 				F09057022D459257007C6E87 /* ccmd4.c in Sources */,
 				F05D85F92D57008900E8FF15 /* argsvalid.c in Sources */,
+				F09CDC812E3B45A800820F95 /* ccn_add1.c in Sources */,
 				F004E9F32DD4B2F700103A8F /* cccast_modes.c in Sources */,
 				F0851A3F2DEA577500349FD5 /* ccdes_cbc_cksum.c in Sources */,
 				1F1D44541F280A9A0043CE92 /* pdcrypto_dummy.c in Sources */,

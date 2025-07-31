@@ -28,6 +28,8 @@ const struct ccchacha20poly1305_info *ccchacha20poly1305_info(void) { return &cc
 int ccchacha20poly1305_init(const struct ccchacha20poly1305_info *info, ccchacha20poly1305_ctx *ctx, const uint8_t *key)
 {
     ccchacha20_init(&ctx->chacha20_ctx, key);
+    
+    return 0;
 }
 
 int ccchacha20poly1305_reset(const struct ccchacha20poly1305_info *info, ccchacha20poly1305_ctx *ctx)

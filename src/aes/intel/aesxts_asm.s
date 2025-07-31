@@ -924,7 +924,7 @@ _aesxts_tweak_crypt_group_opt:
 	jge		0b							// if (lim>0) repeat the scalar loop
 
 1:	movups	%xmm7, (T)					// save final tweak 
-L_error_crypt:
+L_error_crypt_opt:
 9:
 	// if kernel, restore used xmm registers
 #ifdef	KERNEL
@@ -1589,7 +1589,7 @@ _aesxts_tweak_uncrypt_group_opt:
 	jge		0b							// if (lim>0) repeat the scalar loop
 
 1:	movups	%xmm7, (T)					// save final tweak 
-L_error_uncrypt:
+L_error_uncrypt_opt:
 9:
 	// if kernel, restore used xmm registers
 #ifdef	KERNEL

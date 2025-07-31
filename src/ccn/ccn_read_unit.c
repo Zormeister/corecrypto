@@ -8,7 +8,7 @@
 #include "corecrypto/cc_priv.h"
 #include <corecrypto/ccn.h>
 
-int ccn_read_uint(cc_size n, cc_unit *r, size_t data_nbytes, const uint8_t *data)
+int ccn_read_unit(cc_size n, cc_unit *r, size_t data_nbytes, const uint8_t *data)
 {
     /* if we need more N than we have, bail. */
     if (data_nbytes > ccn_sizeof_size(n)) {
