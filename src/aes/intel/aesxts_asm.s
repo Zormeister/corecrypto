@@ -995,8 +995,136 @@ L_error_crypt_opt:
 
 	.text
 	.align  4,0x90
-	.globl	_aesxts_tweak_uncrypt
-_aesxts_tweak_uncrypt:
+	.globl	_aesxts_tweak_uncrypt_aesni
+_aesxts_tweak_uncrypt_aesni:
+#if defined	__i386__
+
+	// push into stack for local use
+	push	%ebp
+	mov		%esp, %ebp
+	push	%ebx
+	push	%edi
+	push	%esi
+
+	// alllocate stack memory for local use
+	sub		$12+16*4, %esp				// 12 (alignment) + 3*16 (xmm save/restore) + 16 (aes_crypt calling arguments)
+
+	// load with called arguments
+	mov		8(%ebp), %eax				// C, we need this only briefly, so eax is fine
+	mov		12(%ebp), %edi				// P
+	mov		16(%ebp), %ebx				// T
+	mov		20(%ebp), %esi				// ctx
+
+	#define	C	%eax
+	#define	P	%edi
+	#define	T	%ebx
+	#define	ctx	%esi
+	#define	sp	%esp
+
+#else
+	// x86_64 calling argument order : rdi/rsi/rdx/rcx/r8
+
+	// push into stack for local use
+	push	%rbp
+	mov		%rsp, %rbp
+	push	%r12
+	push	%r13
+	push	%r14
+	push	%r15
+
+	// alllocate stack memory for local use, if kernel code, need to save/restore xmm registers
+#ifdef KERNEL
+	sub		$4*16, %rsp					// only need 3*16, add 16 extra so to make save/restore xmm common to i386
+#endif
+
+	// load with called arguments, release rdi/rsi/rdx/rcx/r8, as need to call aes_decrypt
+	mov		%rsi, %r13
+	mov		%rdx, %r14
+	mov		%rcx, %r15
+
+	#define	C 	%rdi
+	#define	P	%r13
+	#define	T	%r14
+	#define	ctx	%r15
+	#define	sp	%rsp
+
+#endif
+
+	// if kernel, save used xmm registers
+#ifdef	KERNEL
+	movaps	%xmm1, 16(sp)
+	movaps	%xmm2, 32(sp)
+	movaps	%xmm7, 48(sp)
+#endif
+
+	movups	(C), %xmm1					// C
+	movups	(T), %xmm7					// T
+
+	// setup caliing arguments for aes_decrypt
+#if defined	__i386__
+	mov		P, (%esp)					// P
+	mov		P, 4(%esp)					// P
+	mov		ctx, 8(%esp)				// ctx
+#else
+	mov		P, %rdi						// P
+	mov		P, %rsi						// P
+	mov		ctx, %rdx					// ctx
+#endif
+
+	pxor	%xmm7, %xmm1				// P = C ^ T	
+	movups	%xmm1, (P)					// save P into memory
+
+	call	_vng_aes_decrypt_aesni				// err = aes_decrypt(P,P,ctx);
+
+	cmp		$CRYPT_OK, %eax				// check err == CRYPT_OK
+	jne		9f							// if err != CRYPT_OK, exit
+
+	movups	(P), %xmm1					// load xmm1 = P
+	pxor	%xmm7, %xmm1				// P ^= T
+	movups	%xmm1, (P)					// write P with xmm1, xmm1 is freed now, will be changed in the following macro
+
+	xts_mult_x_on_xmm7					// update T (on xmm7)
+
+	movups	%xmm7, (T)					// write xmm7 to T
+9:
+
+	// restore used xmm registers if this is for kernel
+#ifdef	KERNEL
+	movaps	16(sp), %xmm1
+	movaps	32(sp), %xmm2
+	movaps	48(sp), %xmm7
+#endif
+
+	// free stack memory and restore callee registers
+#if defined	__i386__
+	add		$12+16*4, %esp				// 12 (alignment) + 3*16 (xmm save/restore) + 16 (aes_crypt calling arguments)
+	pop		%esi
+	pop		%edi
+	pop		%ebx
+#else
+#ifdef	KERNEL
+	add		$4*16, %rsp					// only need 3*16, add 16 extra so make save/restore xmm common to i386
+#endif
+	pop		%r15
+	pop		%r14
+	pop		%r13
+	pop		%r12
+#endif
+
+	// return, eax/rax already has the return val
+	leave
+	ret
+
+	#undef	P
+	#undef	C
+	#undef	T
+	#undef	ctx
+	#undef	sp
+
+	.text
+	.align  4,0x90
+	.globl	_aesxts_tweak_uncrypt_opt
+_aesxts_tweak_uncrypt_opt:
 #if defined	__i386__
 
 	// push into stack for local use

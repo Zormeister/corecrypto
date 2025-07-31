@@ -63,15 +63,6 @@
     #define CC_HAS_SHA() 0
 #endif // defined(kHasSHA)
 
-#elif __has_include(<immintrin.h>)
-    #include <immintrin.h>
-    #define CC_HAS_AESNI() _may_i_use_cpu_feature(_FEATURE_AES)
-    #define CC_HAS_SupplementalSSE3() _may_i_use_cpu_feature(_FEATURE_SSSE3)
-    #define CC_HAS_AVX1() _may_i_use_cpu_feature(_FEATURE_AVX)
-    #define CC_HAS_AVX2() _may_i_use_cpu_feature(_FEATURE_AVX2)
-    #define CC_HAS_AVX512_AND_IN_KERNEL()  0
-    #define CC_HAS_SHA() _may_i_use_cpu_feature(_FEATURE_SHA)
-
 #elif __has_include(<cpuid.h>)
     #include <cpuid.h>
 
@@ -90,6 +81,15 @@
     #define CC_HAS_AVX2() __builtin_cpu_supports("avx2")
     #define CC_HAS_AVX512_AND_IN_KERNEL() 0
     #define CC_HAS_SHA() 0
+
+#elif __has_include(<immintrin.h>)
+    #include <immintrin.h>
+    #define CC_HAS_AESNI() _may_i_use_cpu_feature(_FEATURE_AES)
+    #define CC_HAS_SupplementalSSE3() _may_i_use_cpu_feature(_FEATURE_SSSE3)
+    #define CC_HAS_AVX1() _may_i_use_cpu_feature(_FEATURE_AVX)
+    #define CC_HAS_AVX2() _may_i_use_cpu_feature(_FEATURE_AVX2)
+    #define CC_HAS_AVX512_AND_IN_KERNEL()  0
+    #define CC_HAS_SHA() _may_i_use_cpu_feature(_FEATURE_SHA)
 
 #else
     #define CC_HAS_AESNI() 0

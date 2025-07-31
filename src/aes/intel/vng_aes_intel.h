@@ -82,42 +82,42 @@ typedef struct {
 	vng_aes_intel_decrypt_ctx decrypt;
 } vng_aes_intel_ctx;
 
-extern int vng_aes_encrypt_opt_key(const unsigned char *key, int key_len, vng_aes_intel_encrypt_ctx cx[1]);
-extern int  vng_aes_encrypt_aesni_key(const unsigned char *key, int key_len, vng_aes_intel_encrypt_ctx cx[1]);
+extern int vng_aes_encrypt_opt_key(const unsigned char *key, int key_len, vng_aes_intel_encrypt_ctx cx[1]) __asm__("_vng_aes_encrypt_opt_key");
+extern int vng_aes_encrypt_aesni_key(const unsigned char *key, int key_len, vng_aes_intel_encrypt_ctx cx[1]) __asm__("_vng_aes_encrypt_aesni_key");
 
-extern int vng_aes_decrypt_opt_key(const unsigned char *key, int key_len, vng_aes_intel_decrypt_ctx cx[1]);
-extern int vng_aes_decrypt_aesni_key(const unsigned char *key, int key_len, vng_aes_intel_decrypt_ctx cx[1]);
+extern int vng_aes_decrypt_opt_key(const unsigned char *key, int key_len, vng_aes_intel_decrypt_ctx cx[1]) __asm__("_vng_aes_decrypt_opt_key");
+extern int vng_aes_decrypt_aesni_key(const unsigned char *key, int key_len, vng_aes_intel_decrypt_ctx cx[1]) __asm__("_vng_aes_decrypt_aesni_key");
 
-extern int vng_aes_encrypt_aesni(const unsigned char *pt, unsigned char *ct, vng_aes_intel_encrypt_ctx *ctx);
-extern int vng_aes_encrypt_opt(const unsigned char *pt, unsigned char *ct, vng_aes_intel_encrypt_ctx *ctx);
+extern int vng_aes_encrypt_aesni(const unsigned char *pt, unsigned char *ct, vng_aes_intel_encrypt_ctx *ctx) __asm__("_vng_aes_encrypt_aesni");
+extern int vng_aes_encrypt_opt(const unsigned char *pt, unsigned char *ct, vng_aes_intel_encrypt_ctx *ctx) __asm__("_vng_aes_encrypt_opt");
 
-extern int vng_aes_decrypt_aesni(const unsigned char *ct, unsigned char *pt, vng_aes_intel_decrypt_ctx *ctx);
-extern int vng_aes_decrypt_opt(const unsigned char *ct, unsigned char *pt, vng_aes_intel_decrypt_ctx *ctx);
+extern int vng_aes_decrypt_aesni(const unsigned char *ct, unsigned char *pt, vng_aes_intel_decrypt_ctx *ctx) __asm__("_vng_aes_decrypt_aesni");
+extern int vng_aes_decrypt_opt(const unsigned char *ct, unsigned char *pt, vng_aes_intel_decrypt_ctx *ctx) __asm__("_vng_aes_decrypt_opt");
     
 extern int vng_aes_decrypt_opt_cbc(const unsigned char *ibuf, unsigned char *in_iv, unsigned int num_blk,
-                              unsigned char *obuf, const vng_aes_intel_decrypt_ctx cx[1]);
+                              unsigned char *obuf, const vng_aes_intel_decrypt_ctx cx[1]) __asm__("_vng_aes_decrypt_opt_cbc");
 extern int vng_aes_encrypt_opt_cbc(const unsigned char *ibuf, unsigned char *in_iv, unsigned int num_blk,
-                              unsigned char *obuf, const vng_aes_intel_encrypt_ctx ctx[1]);
+                              unsigned char *obuf, const vng_aes_intel_encrypt_ctx ctx[1]) __asm__("_vng_aes_encrypt_opt_cbc");
 
 extern int vng_aes_decrypt_aesni_cbc(const unsigned char *ibuf, unsigned char *in_iv, unsigned int num_blk,
-                              unsigned char *obuf, const vng_aes_intel_decrypt_ctx cx[1]);
+                              unsigned char *obuf, const vng_aes_intel_decrypt_ctx cx[1]) __asm__("_vng_aes_decrypt_aesni_cbc");
 extern int vng_aes_encrypt_aesni_cbc(const unsigned char *ibuf, unsigned char *in_iv, unsigned int num_blk,
-                              unsigned char *obuf, const vng_aes_intel_encrypt_ctx ctx[1]);
+                              unsigned char *obuf, const vng_aes_intel_encrypt_ctx ctx[1]) __asm__("_vng_aes_encrypt_aesni_cbc");
 
 /* accessors to the assembly code */
-extern void aesxts_mult_x(uint8_t *I);
+extern void aesxts_mult_x(uint8_t *I) __asm__("_aesxts_mult_x");
 
-extern int aesxts_tweak_crypt_aesni(const uint8_t *P, uint8_t *C, const uint8_t *T, vng_aes_intel_encrypt_ctx *ctx);
-extern int aesxts_tweak_crypt_opt(const uint8_t *P, uint8_t *C, const uint8_t *T, vng_aes_intel_encrypt_ctx *ctx);
+extern int aesxts_tweak_crypt_aesni(const uint8_t *P, uint8_t *C, const uint8_t *T, vng_aes_intel_encrypt_ctx *ctx) __asm__("_aesxts_tweak_crypt_aesni");
+extern int aesxts_tweak_crypt_opt(const uint8_t *P, uint8_t *C, const uint8_t *T, vng_aes_intel_encrypt_ctx *ctx) __asm__("_aesxts_tweak_crypt_opt");
 
-extern int aesxts_tweak_crypt_group_aesni(const uint8_t *P, uint8_t *C, const uint8_t *T, vng_aes_intel_encrypt_ctx *ctx, uint32_t lim);
-extern int aesxts_tweak_crypt_group_opt(const uint8_t *P, uint8_t *C, const uint8_t *T, vng_aes_intel_encrypt_ctx *ctx, uint32_t lim);
+extern int aesxts_tweak_crypt_group_aesni(const uint8_t *P, uint8_t *C, const uint8_t *T, vng_aes_intel_encrypt_ctx *ctx, uint32_t lim) __asm__("_aesxts_tweak_crypt_group_aesni");
+extern int aesxts_tweak_crypt_group_opt(const uint8_t *P, uint8_t *C, const uint8_t *T, vng_aes_intel_encrypt_ctx *ctx, uint32_t lim) __asm__("_aesxts_tweak_crypt_group_opt");
 
-extern int aesxts_tweak_uncrypt_aesni(const uint8_t *C, uint8_t *P, const uint8_t *T, vng_aes_intel_decrypt_ctx *ctx);
-extern int aesxts_tweak_uncrypt_opt(const uint8_t *C, uint8_t *P, const uint8_t *T, vng_aes_intel_decrypt_ctx *ctx);
+extern int aesxts_tweak_uncrypt_aesni(const uint8_t *C, uint8_t *P, const uint8_t *T, vng_aes_intel_decrypt_ctx *ctx) __asm__("_aesxts_tweak_uncrypt_aesni");
+extern int aesxts_tweak_uncrypt_opt(const uint8_t *C, uint8_t *P, const uint8_t *T, vng_aes_intel_decrypt_ctx *ctx) __asm__("_aesxts_tweak_uncrypt_opt");
 
-extern int aesxts_tweak_uncrypt_group_aesni(const uint8_t *C, uint8_t *P, const uint8_t *T, vng_aes_intel_decrypt_ctx *ctx, uint32_t lim);
-extern int aesxts_tweak_uncrypt_group_opt(const uint8_t *C, uint8_t *P, const uint8_t *T, vng_aes_intel_decrypt_ctx *ctx, uint32_t lim);
+extern int aesxts_tweak_uncrypt_group_aesni(const uint8_t *C, uint8_t *P, const uint8_t *T, vng_aes_intel_decrypt_ctx *ctx, uint32_t lim) __asm__("_aesxts_tweak_uncrypt_group_aesni");
+extern int aesxts_tweak_uncrypt_group_opt(const uint8_t *C, uint8_t *P, const uint8_t *T, vng_aes_intel_decrypt_ctx *ctx, uint32_t lim) __asm__("_aesxts_tweak_uncrypt_group_opt");
 
 int vng_aes_xts_encrypt_aesni(
    const uint8_t *pt, unsigned long ptlen,

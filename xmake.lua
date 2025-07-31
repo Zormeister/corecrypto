@@ -1,5 +1,11 @@
 set_policy("check.auto_ignore_flags", false)
 
+if is_plat("linux") then
+    includes("llvm_toolchain.lua")
+
+   --  set_toolchains("llvm-linux")
+end
+
 target("libcorecrypto_static")
     set_kind("static")
     set_basename("corecrypto_static")
@@ -11,8 +17,15 @@ target("libcorecrypto_static")
     )
 
     if is_arch("x86_64", "i386") then
-        add_files("src/aes/intel/**.c")
-        add_files("src/aes/intel/opt/AES.s")
+        add_files("src/aes/intel/*.c")
+        add_files("src/aes/intel/*.s")
+
+        remove_files(
+            "src/aes/intel/Data.s",
+            "src/aes/intel/EncryptDecrypt.s",
+            "src/aes/intel/ExpandKeyForDecryption.s",
+            "src/aes/intel/ExpandKeyForEncryption.s"
+        )
     end
 
     remove_files(
@@ -21,10 +34,12 @@ target("libcorecrypto_static")
         "src/kprng/**.c"
     )
 
-    add_cflags("-Wincompatible-function-pointer-types", "-Wno-int-conversion")
+    add_cflags("-Wincompatible-pointer-types", "-Wno-int-conversion")
+    add_asflags("-x assembler-with-cpp")
 
     if is_plat("linux") then
-        add_defines("CC_LINUX_ASM=1")
+        add_cflags("-DCC_LINUX_ASM=1")
+        add_asflags("-DCC_LINUX_ASM=1")
     end
 
 target("libcorecrypto")
@@ -38,8 +53,15 @@ target("libcorecrypto")
     )
 
     if is_arch("x86_64", "i386") then
-        add_files("src/aes/intel/**.c")
-        add_files("src/aes/intel/opt/AES.s")
+        add_files("src/aes/intel/*.c")
+        add_files("src/aes/intel/*.s")
+
+        remove_files(
+            "src/aes/intel/Data.s",
+            "src/aes/intel/EncryptDecrypt.s",
+            "src/aes/intel/ExpandKeyForDecryption.s",
+            "src/aes/intel/ExpandKeyForEncryption.s"
+        )
     end
 
     -- The yarrow PRNG won't compile for Linux, and I doubt it'll compile on Windows without modifications.
@@ -50,10 +72,13 @@ target("libcorecrypto")
         "src/kprng/**.c"
     )
 
-    add_cflags("-Wincompatible-function-pointer-types", "-Wno-int-conversion")
+    add_cflags("-Wincompatible-pointer-types", "-Wno-int-conversion")
+    add_asflags("-x assembler-with-cpp")
+    add_ldflags("-fPIC")
 
     if is_plat("linux") then
-        add_defines("CC_LINUX_ASM=1")
+        add_cflags("-DCC_LINUX_ASM=1")
+        add_asflags("-DCC_LINUX_ASM=1")
     end
 
 target("libcorecrypto_noasm")
@@ -77,11 +102,7 @@ target("libcorecrypto_noasm")
         "src/kprng/**.c"
     )
 
-    add_cflags("-Wincompatible-function-pointer-types", "-Wno-int-conversion")
-
-    if is_plat("linux") then
-        add_defines("CC_LINUX_ASM=1")
-    end
+    add_cflags("-Wincompatible-pointer-types", "-Wno-int-conversion")
 
 target("cctest")
     set_kind("binary")
