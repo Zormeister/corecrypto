@@ -5,10 +5,8 @@
 //  Created by Zormeister on 30/6/2025.
 //
 
-#include "corecrypto/cc.h"
-#include "corecrypto/cc_priv.h"
-#include "corecrypto/ccn.h"
 #include <corecrypto/cc_memory.h>
+#include <corecrypto/cc_priv.h>
 #include <corecrypto/cchmac.h>
 #include <corecrypto/ccpbkdf2.h>
 
@@ -37,10 +35,10 @@ int ccpbkdf2_hmac(const struct ccdigest_info *di,
                   size_t dkLen, void *dk)
 {
     size_t hLen = di->output_size;
-    CC_WS_ALLOC_N(counter, CCPBKDF2_WORKSPACE_SALT_SIZE_N(saltLen)); /* Salt/Counter buffer */
-    CC_WS_ALLOC_N(buffer1, CCPKDDF2_WORKSPACE_BUFFER_SIZE_N(hLen));
-    CC_WS_ALLOC_N(buffer2, CCPKDDF2_WORKSPACE_BUFFER_SIZE_N(hLen));
-    CC_WS_ALLOC_N(blockbuf, CCPKDDF2_WORKSPACE_BUFFER_SIZE_N(hLen));
+    CC_WORKSPACE_STACK_DECL_N(counter, CCPBKDF2_WORKSPACE_SALT_SIZE_N(saltLen)); /* Salt/Counter buffer */
+    CC_WORKSPACE_STACK_DECL_N(buffer1, CCPKDDF2_WORKSPACE_BUFFER_SIZE_N(hLen));
+    CC_WORKSPACE_STACK_DECL_N(buffer2, CCPKDDF2_WORKSPACE_BUFFER_SIZE_N(hLen));
+    CC_WORKSPACE_STACK_DECL_N(blockbuf, CCPKDDF2_WORKSPACE_BUFFER_SIZE_N(hLen));
     uint8_t *salt_ptr = (uint8_t *)counter->start;
     size_t nblocks = (dkLen + hLen - 1) / hLen;
     size_t remainder = dkLen % hLen;
@@ -74,9 +72,9 @@ int ccpbkdf2_hmac(const struct ccdigest_info *di,
         cc_memcpy(dk + (block * hLen), blockbuf->start, outLen);
     }
 
-    CC_WS_FREE_N(counter, CCPBKDF2_WORKSPACE_SALT_SIZE_N(saltLen));
-    CC_WS_FREE_N(buffer1, CCPKDDF2_WORKSPACE_BUFFER_SIZE_N(hLen));
-    CC_WS_FREE_N(buffer2, CCPKDDF2_WORKSPACE_BUFFER_SIZE_N(hLen));
-    CC_WS_FREE_N(blockbuf, CCPKDDF2_WORKSPACE_BUFFER_SIZE_N(hLen));
+    CC_WORKSPACE_STACK_FREE_N(counter, CCPBKDF2_WORKSPACE_SALT_SIZE_N(saltLen));
+    CC_WORKSPACE_STACK_FREE_N(buffer1, CCPKDDF2_WORKSPACE_BUFFER_SIZE_N(hLen));
+    CC_WORKSPACE_STACK_FREE_N(buffer2, CCPKDDF2_WORKSPACE_BUFFER_SIZE_N(hLen));
+    CC_WORKSPACE_STACK_FREE_N(blockbuf, CCPKDDF2_WORKSPACE_BUFFER_SIZE_N(hLen));
     return CCERR_OK;
 }

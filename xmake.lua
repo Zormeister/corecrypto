@@ -1,3 +1,5 @@
+set_policy("check.auto_ignore_flags", false)
+
 target("libcorecrypto_static")
     set_kind("static")
     set_basename("corecrypto_static")
@@ -19,7 +21,7 @@ target("libcorecrypto_static")
         "src/kprng/**.c"
     )
 
-    add_cflags("-Wno-incompatible-pointer-types", "-Wno-int-conversion")
+    add_cflags("-Wincompatible-function-pointer-types", "-Wno-int-conversion")
 
     if is_plat("linux") then
         add_defines("CC_LINUX_ASM=1")
@@ -48,7 +50,7 @@ target("libcorecrypto")
         "src/kprng/**.c"
     )
 
-    add_cflags("-Wno-incompatible-pointer-types", "-Wno-int-conversion")
+    add_cflags("-Wincompatible-function-pointer-types", "-Wno-int-conversion")
 
     if is_plat("linux") then
         add_defines("CC_LINUX_ASM=1")
@@ -75,7 +77,7 @@ target("libcorecrypto_noasm")
         "src/kprng/**.c"
     )
 
-    add_cflags("-Wno-incompatible-pointer-types", "-Wno-int-conversion")
+    add_cflags("-Wincompatible-function-pointer-types", "-Wno-int-conversion")
 
     if is_plat("linux") then
         add_defines("CC_LINUX_ASM=1")
