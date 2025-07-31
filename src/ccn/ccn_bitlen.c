@@ -5,8 +5,8 @@
 //  Created by Zormeister on 30/7/2025.
 //
 
-#include <corecrypto/ccn.h>
 #include <corecrypto/cc_priv.h>
+#include <corecrypto/ccn.h>
 
 cc_size ccn_bitlen(cc_size n, const cc_unit *s)
 {

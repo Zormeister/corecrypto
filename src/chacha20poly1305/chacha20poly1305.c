@@ -14,8 +14,7 @@
 // decl from chacha20.c
 extern int _ccchacha20_block(ccchacha20_ctx *ctx);
 
-static const uint8_t constant_zero_64[64] =
-{
+static const uint8_t constant_zero_64[64] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -36,7 +35,7 @@ int ccchacha20poly1305_reset(const struct ccchacha20poly1305_info *info, ccchach
     ctx->aad_nbytes = 0;
     ctx->text_nbytes = 0;
     ctx->state = CCCHACHA20POLY1305_STATE_SETNONCE;
-    
+
     ccchacha20_reset(&ctx->chacha20_ctx);
 
     return CCERR_OK;
@@ -59,7 +58,7 @@ int ccchacha20poly1305_setnonce(const struct ccchacha20poly1305_info *info, ccch
 
     return 0;
 
-    bail:
+bail:
     return 1;
 }
 
@@ -70,13 +69,13 @@ int ccchacha20poly1305_aad(const struct ccchacha20poly1305_info *info, ccchacha2
     ccpoly1305_update(&ctx->poly1305_ctx, nbytes, aad);
     ctx->aad_nbytes += nbytes;
 
-    bail:
+bail:
     return 1;
 }
 
 int ccchacha20poly1305_encrypt(const struct ccchacha20poly1305_info *info, ccchacha20poly1305_ctx *ctx, size_t nbytes, const void *ptext, void *ctext)
 {
-    /* 
+    /*
      * padding1 -- the padding is up to 15 zero bytes, and it brings
      *    the total length so far to an integral multiple of 16.  If the
      *    length of the AAD was already an integral multiple of 16 bytes,
@@ -102,13 +101,13 @@ int ccchacha20poly1305_encrypt(const struct ccchacha20poly1305_info *info, cccha
 
     return 0;
 
-    bail:
+bail:
     return 1;
 }
 
 int ccchacha20poly1305_decrypt(const struct ccchacha20poly1305_info *info, ccchacha20poly1305_ctx *ctx, size_t nbytes, const void *ctext, void *ptext)
 {
-    /* 
+    /*
      * padding1 -- the padding is up to 15 zero bytes, and it brings
      *    the total length so far to an integral multiple of 16.  If the
      *    length of the AAD was already an integral multiple of 16 bytes,
@@ -134,13 +133,13 @@ int ccchacha20poly1305_decrypt(const struct ccchacha20poly1305_info *info, cccha
 
     return 0;
 
-    bail:
+bail:
     return 1;
 }
 
 int ccchacha20poly1305_finalize(const struct ccchacha20poly1305_info *info, ccchacha20poly1305_ctx *ctx, uint8_t *tag)
 {
-    /* 
+    /*
      * padding1 -- the padding is up to 15 zero bytes, and it brings
      *    the total length so far to an integral multiple of 16.  If the
      *    length of the AAD was already an integral multiple of 16 bytes,
@@ -177,7 +176,7 @@ int ccchacha20poly1305_finalize(const struct ccchacha20poly1305_info *info, ccch
 
     return 0;
 
-    bail:
+bail:
     return 1;
 }
 
@@ -214,11 +213,10 @@ int ccchacha20poly1305_decrypt_oneshot(const struct ccchacha20poly1305_info *inf
     ccchacha20poly1305_decrypt(info, &ctx, ctext_nbytes, ctext, ptext);
 
     return ccchacha20poly1305_verify(info, &ctx, tag);
-;
+    ;
 }
 
 int ccchacha20poly1305_incnonce(const struct ccchacha20poly1305_info *info, ccchacha20poly1305_ctx *ctx, uint8_t *nonce)
 {
     return 1;
 }
-
