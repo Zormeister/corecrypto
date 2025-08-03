@@ -18,8 +18,8 @@ int ccpoly1305_init(ccpoly1305_ctx *ctx, const uint8_t *key)
     CC_LOAD32_LE(k[0], key);
     CC_LOAD32_LE(k[1], key + 4);
     CC_LOAD32_LE(k[2], key + 7);
-    CC_LOAD32_LE(k[2], key + 10);
-    CC_LOAD32_LE(k[3], key + 12);
+    CC_LOAD32_LE(k[3], key + 10);
+    CC_LOAD32_LE(k[4], key + 12);
 
     k[1] >>= 2;
     k[2] >>= 4;
@@ -156,8 +156,8 @@ int ccpoly1305_update(ccpoly1305_ctx *ctx, size_t nbytes, const void *in)
 
 int ccpoly1305_final(ccpoly1305_ctx *ctx, void *tag)
 {
-    uint32_t h0, h1, h2, h3, h4, g0, g1, g2, g3, g4, c, f, mask;
-    uint64_t d0, d1, d2, d3, d4;
+    uint32_t h0, h1, h2, h3, h4, g0, g1, g2, g3, g4, c, mask;
+    uint64_t f;
 
     if (ctx->buf_used) {
         size_t i = ctx->buf_used;

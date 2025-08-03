@@ -41,20 +41,19 @@ static const unsigned char permute[256] = {
 int ccrc2_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t key_nbytes, const void *key)
 {
     struct ccrc2_ltc_ctx *ltc = (struct ccrc2_ltc_ctx *)ctx;
-    uint32_t bits = key_nbytes * 8;
+    uint32_t bits = (uint32_t)(key_nbytes * 8);
     const uint8_t *k = key;
     unsigned char tmp[128];
     uint32_t T8, TM;
-    int i;
 
-    for (i = 0; i < key_nbytes; i++) {
+    for (int i = 0; i < key_nbytes; i++) {
         tmp[i] = k[i] & 255;
     }
 
     /* Phase 1: Expand input key to 128 bytes */
     if (key_nbytes < 128) {
-        for (int i = key_nbytes; i < 128; i++) {
-            tmp[i] = permute[(tmp[i - 1] + tmp[i - key_nbytes]) & 255];
+        for (size_t j = key_nbytes; j < 128; j++) {
+            tmp[j] = permute[(tmp[j - 1] + tmp[j - key_nbytes]) & 255];
         }
     }
 
@@ -62,12 +61,12 @@ int ccrc2_ltc_setup(const struct ccmode_ecb *ecb, ccecb_ctx *ctx, size_t key_nby
     T8 = (uint32_t)(bits + 7) >> 3;
     TM = (255 >> (uint32_t)(7 & -bits));
     tmp[128 - T8] = permute[tmp[128 - T8] & TM];
-    for (i = 127 - T8; i >= 0; i--) {
+    for (int i = 127 - T8; i >= 0; i--) {
         tmp[i] = permute[tmp[i + 1] ^ tmp[i + T8]];
     }
 
     /* Phase 3 - copy to xkey in little-endian order */
-    for (i = 0; i < 64; i++) {
+    for (int i = 0; i < 64; i++) {
         ltc->xkey[i] = (uint32_t)tmp[2 * i] + ((uint32_t)tmp[2 * i + 1] << 8);
     }
 
