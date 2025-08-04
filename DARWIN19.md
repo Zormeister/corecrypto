@@ -22,8 +22,8 @@ CommonCrypto requires the following from corecrypto:
 - Elliptic Curve cryptography functions
 - ~~HMAC operation~~
 - ~~MD2 digest algorithm~~
-- MD4 digest algorithm
-- MD5 digest algorithm
+- ~~MD4 digest algorithm~~
+- ~~MD5 digest algorithm~~
 - ~~RC2 cipher~~
 - ~~RC4 stream cipher~~
 - RSA operations
