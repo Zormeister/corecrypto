@@ -1,9 +1,20 @@
-//
-//  ccmode_internal.h
-//  corecrypto
-//
-//  Created by Zormeister on 13/6/2025.
-//
+/*
+ * Copyright (C) 2025 Zormeister and The PureDarwin project, All rights reserved.
+ *
+ * @LICENSE_HEADER_BEGIN@
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * @LICENSE_HEADER_END@
+ */
 
 #ifndef _CORECRYPTO_CCMODE_INTERNAL_H_
 #define _CORECRYPTO_CCMODE_INTERNAL_H_
@@ -37,5 +48,7 @@
 
 #define CCMODE_XTS_KEY_ECB_CTX(xkey) (ccecb_ctx *)xkey->u
 #define CCMODE_XTS_KEY_ECB_ENCRYPT_CTX(xkey) (ccecb_ctx *)xkey->u + ccn_sizeof_size(xkey->ecb->block_size)
+
+#define CCMODE_GCM_KEY_ECB_CTX(gkey) (ccecb_ctx *)gkey->u + ccn_sizeof_size(gkey->ecb->block_size)
 
 #endif /* _CORECRYPTO_CCMODE_INTERNAL_H_ */

@@ -16,17 +16,32 @@
  * @LICENSE_HEADER_END@
  */
 
-#include "ccsha2_ltc_internal.h"
+#include "vng.h"
+#include "../ccsha2_ltc_internal.h"
 #include <corecrypto/ccdigest_priv.h>
 #include <corecrypto/ccsha2.h>
 
-const struct ccdigest_info ccsha256_ltc_di = {
+const struct ccdigest_info ccsha224_vng_intel_shani_di = {
+    .block_size = CCSHA256_BLOCK_SIZE,
+    .output_size = CCSHA224_OUTPUT_SIZE,
+    .state_size = CCSHA256_STATE_SIZE,
+
+    .final = ccdigest_final_64be,
+    .compress = vng_sha256_intel_shani_compress,
+
+    .initial_state = ccsha224_initial_state,
+
+    .oid = ccoid_sha224,
+    .oid_size = ccoid_sha224_len,
+};
+
+const struct ccdigest_info ccsha256_vng_intel_shani_di = {
     .block_size = CCSHA256_BLOCK_SIZE,
     .output_size = CCSHA256_OUTPUT_SIZE,
     .state_size = CCSHA256_STATE_SIZE,
 
     .final = ccdigest_final_64be,
-    .compress = ccsha256_ltc_compress,
+    .compress = vng_sha256_intel_shani_compress,
 
     .initial_state = ccsha256_initial_state,
 

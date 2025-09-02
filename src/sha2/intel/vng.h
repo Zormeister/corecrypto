@@ -16,19 +16,12 @@
  * @LICENSE_HEADER_END@
  */
 
-#ifndef _CORECRYPTO_CCTEST_DIGEST_INTERNAL_H_
-#define _CORECRYPTO_CCTEST_DIGEST_INTERNAL_H_
+#ifndef _CORECRYPTO_CCSHA2_INTEL_VNG_H_
+#define _CORECRYPTO_CCSHA2_INTEL_VNG_H_
 
-#include "../cctest_internal.h"
-#include <corecrypto/cc.h>
+#include <corecrypto/ccsha2.h>
 
-#if CORECRYPTO_TEST
+/* vng_sha256_intel_shani_compress.S */
+extern void vng_sha256_intel_shani_compress(ccdigest_state_t state, size_t nblocks, const void *data);
 
-struct cctest_digest_vector {
-    const char *message;
-    const char *expected;
-};
-
-#endif /* CORECRYPTO_TEST */
-
-#endif /* _CORECRYPTO_CCTEST_DIGEST_INTERNAL_H_ */
+#endif /* _CORECRYPTO_CCSHA2_INTEL_VNG_H_ */

@@ -70,6 +70,8 @@ extern const struct ccdigest_info ccsha256_ltc_di;
 #if  CCSHA2_VNG_INTEL
 extern const struct ccdigest_info ccsha224_vng_intel_SupplementalSSE3_di;
 extern const struct ccdigest_info ccsha256_vng_intel_SupplementalSSE3_di;
+extern const struct ccdigest_info ccsha224_vng_intel_shani_di;
+extern const struct ccdigest_info ccsha256_vng_intel_shani_di;
 #endif
 #if  CCSHA2_VNG_ARM
 extern const struct ccdigest_info ccsha224_vng_arm_di;
