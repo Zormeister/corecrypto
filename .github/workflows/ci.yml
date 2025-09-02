@@ -13,9 +13,9 @@ jobs:
           uses: actions/checkout@v4
         - name: Build (RELEASE)
           run : |
-            xcodebuild install -target corecrypto_user DSTROOT=$PWD/dst
-            xcodebuild install -target corecrypto_kernel DSTROOT=$PWD/dst
-            xcodebuild install -target corecrypto_static DSTROOT=$PWD/dst
+            xcodebuild install CODE_SIGNING_ALLOWED=NO -target corecrypto_user DSTROOT=$PWD/dst
+            xcodebuild install CODE_SIGNING_ALLOWED=NO -target corecrypto_kernel DSTROOT=$PWD/dst
+            xcodebuild install CODE_SIGNING_ALLOWED=NO -target corecrypto_static DSTROOT=$PWD/dst
         - name: Package (RELEASE)
           run : |
             cd dst
@@ -29,9 +29,9 @@ jobs:
             path: /Users/runner/work/corecrypto/corecrypto/dst/corecrypto.tar.xz
         - name: Build (DEBUG)
           run : |
-            xcodebuild install -configuration Debug -target corecrypto_user DSTROOT=$PWD/dbgdst
-            xcodebuild install -configuration Debug -target corecrypto_kernel DSTROOT=$PWD/dbgdst
-            xcodebuild install -configuration Debug -target corecrypto_static DSTROOT=$PWD/dbgdst
+            xcodebuild install CODE_SIGNING_ALLOWED=NO -configuration Debug -target corecrypto_user DSTROOT=$PWD/dbgdst
+            xcodebuild install CODE_SIGNING_ALLOWED=NO -configuration Debug -target corecrypto_kernel DSTROOT=$PWD/dbgdst
+            xcodebuild install CODE_SIGNING_ALLOWED=NO -configuration Debug -target corecrypto_static DSTROOT=$PWD/dbgdst
         - name: Package (DEBUG)
           run : |
             cd dbgdst
