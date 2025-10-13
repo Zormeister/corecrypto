@@ -7,7 +7,7 @@ CoreCrypto *can* be used in pre-boot (and embedded!) environments, Apple's own v
 AES in the XTS mode has been made available, so file-systems making use of Full Disk Encryption can be backed using CoreCrypto.
 
 For these environments I suggest that the following functions are prioritised:
-- A proper RNG based off of the available DRBG subsystem
+- A proper RNG based off of the available DRBG subsystem (so XNU can have a cryptographically secure seed)
 - RSA signature verification being accessible (for cryptographic validation).
 - Digests are available for hashing (SHA-1 and SHA-2 are more than enough, and already complete).
 

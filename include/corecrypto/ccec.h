@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Zormeister and The PureDarwin project, All rights reserved.
+ * Copyright (C) 2025 The PureDarwin Project, All rights reserved.
  *
  * @LICENSE_HEADER_BEGIN@
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@
 #include <corecrypto/ccrng.h>
 #include <corecrypto/cczp.h>
 
-/* ZORMEISTER: this header is a shitshow. i need to clean it up. */
+/* SAMUEL ZORMEISTER: this header is a shitshow. i need to clean it up. */
 
 // hunch based on the ccdh stuff
 struct ccec_cp {

@@ -7,8 +7,6 @@
 
 #include <corecrypto/cc.h>
 #include <corecrypto/ccchacha20poly1305_priv.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 uint8_t key[32] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
 uint32_t nonce[3] = { 0, 0, 0 };

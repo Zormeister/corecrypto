@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Zormeister and The PureDarwin project, All rights reserved.
+ * Copyright (C) 2025 The PureDarwin Project, All rights reserved.
  *
  * @LICENSE_HEADER_BEGIN@
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +20,9 @@
 #include <corecrypto/cchmac.h>
 #include <corecrypto/cc_priv.h>
 
-int cchkdf(struct ccdigest_info *di, size_t ikm_len, const void *ikm, 
-           size_t salt_len, const void *salt, 
-           size_t info_len, const void *info, 
+int cchkdf(struct ccdigest_info *di, size_t ikm_len, const void *ikm,
+           size_t salt_len, const void *salt,
+           size_t info_len, const void *info,
            size_t derived_len, void *derived_key)
 {
     uint8_t prk[di->output_size];

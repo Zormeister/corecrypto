@@ -24,8 +24,8 @@
 extern const struct ccmode_ecb ccaes_ltc_ecb_decrypt_mode;
 extern const struct ccmode_ecb ccaes_ltc_ecb_encrypt_mode;
 
-/* 
- * ZORMEISTER: This isn't actually a mode in Apple CC, this is my own doing.
+/*
+ * SAMUEL: This isn't actually a mode in Apple CC, this is my own doing.
  *
  * TODO: phase this mode out in favor of LTC AES.
  *
@@ -43,8 +43,8 @@ extern const struct ccmode_ecb ccaes_tinyaes_ecb_encrypt_mode;
 extern const struct ccmode_cbc ccaes_gladman_cbc_encrypt_mode;
 extern const struct ccmode_cbc ccaes_gladman_cbc_decrypt_mode;
 
-/* 
- * ZORMEISTER: This isn't actually a mode in Apple CC, this is my own doing.
+/*
+ * SAMUEL: This isn't actually a mode in Apple CC, this is my own doing.
  *
  * TODO: phase this mode out in favor of Gladman AES CBC.
  *
@@ -75,6 +75,23 @@ extern const struct ccmode_ofb ccaes_arm_ofb_crypt_mode;
 
 #endif
 
+/*
+ * TODO:
+ *
+ * PureDarwin needs it's own IOCryptoAcceleratorFamily for cryptographic speedup at a hardware level.
+ *
+ * The AMD Platform Security Processor is a great example of this; the CCP component provides many
+ * services for encryption and decryption that would normally be taxing on a CPU.
+ *
+ * The PSP can provide:
+ * - RSA acceleration
+ * - AES in ECB, CBC, GCM, XTS and even CMAC.
+ * - Triple-DES
+ * - SHA1, SHA2-224, SHA2-256, SHA2-384 and SHA2-512
+ *
+ * Another example is ceratin ARM SoCs additionally have hardware accelerators for cryptographic
+ * operations.
+ */
 #if CCAES_MUX
 /* Runtime check to see if hardware should be used */
 int ccaes_ios_hardware_enabled(int operation);

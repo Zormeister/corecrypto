@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Zormeister and The PureDarwin project, All rights reserved.
+ * Copyright (C) 2025 The PureDarwin Project, All rights reserved.
  *
  * @LICENSE_HEADER_BEGIN@
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -56,7 +56,6 @@ KeyMapping gParsingMap[] = {
     {"CIPHERTEXT", KeyType::Output, Test::Operation::Encrypt},
     {"PLAINTEXT", KeyType::Output, Test::Operation::Decrypt},
     {"CIPHERTEXT", KeyType::Input, Test::Operation::Decrypt},
-
 };
 
 /* This expects that the rsp vector is set on the first byte of the first */

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Zormeister and The PureDarwin project, All rights reserved.
+ * Copyright (C) 2025 The PureDarwin Project, All rights reserved.
  *
  * @LICENSE_HEADER_BEGIN@
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -99,7 +99,7 @@ typedef struct ccsrp_ctx *ccsrp_ctx_t;
 
 void ccsrp_ctx_init(ccsrp_ctx_t ctx, const struct ccdigest_info *digest, ccsrp_const_gp_t gp);
 
-int ccsrp_generate_verifier(ccsrp_ctx_t ctx, const char *username, 
+int ccsrp_generate_verifier(ccsrp_ctx_t ctx, const char *username,
                             size_t entropy_len, const void *entropy,
                             size_t salt_len, const void *salt,
                             void *out);
@@ -130,7 +130,7 @@ int csrp_server_start_authentication(ccsrp_ctx_t ctx, const struct ccrng_state *
 
 /* known SRP server funcs */
 int ccsrp_server_compute_session(ccsrp_ctx_t ctx, const char *idk,
-                                 size_t salt_len, uint8_t *salt, 
+                                 size_t salt_len, uint8_t *salt,
                                  uint8_t *server_key);
 
 int ccsrp_server_generate_public_key(ccsrp_ctx_t ctx, struct ccrng_state *rng,

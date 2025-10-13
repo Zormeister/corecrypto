@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Zormeister and The PureDarwin project, All rights reserved.
+ * Copyright (C) 2025 The PureDarwin Project, All rights reserved.
  *
  * @LICENSE_HEADER_BEGIN@
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,58 +37,58 @@ enum {
     CRYPT_OK=0,             /* Result OK */
     CRYPT_ERROR,            /* Generic Error */
     CRYPT_NOP,              /* Not a failure but no operation was performed */
-    
+
     CRYPT_INVALID_KEYSIZE,  /* Invalid key size given */
     CRYPT_INVALID_ROUNDS,   /* Invalid number of rounds */
     CRYPT_FAIL_TESTVECTOR,  /* Algorithm failed test vectors */
-    
+
     CRYPT_BUFFER_OVERFLOW,  /* Not enough space for output */
     CRYPT_INVALID_PACKET,   /* Invalid input packet given */
-    
+
     CRYPT_INVALID_PRNGSIZE, /* Invalid number of bits for a PRNG */
     CRYPT_ERROR_READPRNG,   /* Could not read enough from PRNG */
-    
+
     CRYPT_INVALID_CIPHER,   /* Invalid cipher specified */
     CRYPT_INVALID_HASH,     /* Invalid hash specified */
     CRYPT_INVALID_PRNG,     /* Invalid PRNG specified */
-    
+
     CRYPT_MEM,              /* Out of memory */
-    
+
     CRYPT_PK_TYPE_MISMATCH, /* Not equivalent types of PK keys */
     CRYPT_PK_NOT_PRIVATE,   /* Requires a private PK key */
-    
+
     CRYPT_INVALID_ARG,      /* Generic invalid argument */
     CRYPT_FILE_NOTFOUND,    /* File Not Found */
-    
+
     CRYPT_PK_INVALID_TYPE,  /* Invalid type of PK key */
     CRYPT_PK_INVALID_SYSTEM,/* Invalid PK system specified */
     CRYPT_PK_DUP,           /* Duplicate key already in key ring */
     CRYPT_PK_NOT_FOUND,     /* Key not found in keyring */
     CRYPT_PK_INVALID_SIZE,  /* Invalid size input for PK parameters */
-    
+
     CRYPT_INVALID_PRIME_SIZE,/* Invalid size of prime requested */
     CRYPT_PK_INVALID_PADDING,/* Invalid padding on input */
-    
+
     CRYPT_HASH_OVERFLOW,     /* Hash applied to too many bits */
     CRYPT_UNIMPLEMENTED,     /* called an unimplemented routine through a function table */
     CRYPT_PARAM,                /* Parameter Error */
-    
+
     CRYPT_FALLBACK           /* Accelerator was called, but the input didn't meet minimum criteria - fallback to software */
 };
 
 #define VNG_INTEL_KS_LENGTH       60
 
-typedef struct {   
+typedef struct {
     uint32_t ks[VNG_INTEL_KS_LENGTH];
     uint32_t rounds;
 } vng_aes_intel_encrypt_ctx;
 
-typedef struct {   
+typedef struct {
     uint32_t ks[VNG_INTEL_KS_LENGTH];
     uint32_t rounds;
 } vng_aes_intel_decrypt_ctx;
 
-typedef struct {   
+typedef struct {
     vng_aes_intel_encrypt_ctx encrypt;
 	vng_aes_intel_decrypt_ctx decrypt;
 } vng_aes_intel_ctx;
@@ -104,7 +104,7 @@ extern int vng_aes_encrypt_opt(const unsigned char *pt, unsigned char *ct, vng_a
 
 extern int vng_aes_decrypt_aesni(const unsigned char *ct, unsigned char *pt, vng_aes_intel_decrypt_ctx *ctx) __asm__("_vng_aes_decrypt_aesni");
 extern int vng_aes_decrypt_opt(const unsigned char *ct, unsigned char *pt, vng_aes_intel_decrypt_ctx *ctx) __asm__("_vng_aes_decrypt_opt");
-    
+
 extern int vng_aes_decrypt_opt_cbc(const unsigned char *ibuf, unsigned char *in_iv, unsigned int num_blk,
                               unsigned char *obuf, const vng_aes_intel_decrypt_ctx cx[1]) __asm__("_vng_aes_decrypt_opt_cbc");
 extern int vng_aes_encrypt_opt_cbc(const unsigned char *ibuf, unsigned char *in_iv, unsigned int num_blk,

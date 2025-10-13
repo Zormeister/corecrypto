@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Zormeister and The PureDarwin project, All rights reserved.
+ * Copyright (C) 2025 The PureDarwin Project, All rights reserved.
  *
  * @LICENSE_HEADER_BEGIN@
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,18 +16,6 @@
  * @LICENSE_HEADER_END@
  */
 
-#include "cctest_internal.h"
+
 #include <corecrypto/cc_debug.h>
 #include <corecrypto/cc_priv.h>
-
-#if CORECRYPTO_TEST
-
-cctest_digest_callback digests[crypto_digest_max];
-cctest_cipher_callback ciphers[crypto_cipher_max][crypto_cipher_mode_max];
-
-void cctest_init(void)
-{
-    cc_printf("cctest: initializing.\n");
-}
-
-#endif

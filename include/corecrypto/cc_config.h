@@ -348,7 +348,7 @@
  #define CCN_N_ASM              1
  #define CCN_SET_ASM            1
  #define CCN_SHIFT_RIGHT_ASM    1
- #if defined(__ARM_NEON__) 
+ #if defined(__ARM_NEON__)
  #define CCN_SHIFT_LEFT_ASM     1
  #else
  #define CCN_SHIFT_LEFT_ASM     0
@@ -550,6 +550,32 @@
 #define CC_FIPSPOST_TRACE 1
 #else
 #define CC_FIPSPOST_TRACE 0
+#endif
+
+/*
+ * SAMUEL ZORMEISTER:
+ * This is kind of necessary for my own development work, as the branch I'm working with is 6153/x86-dev, which I haven't been merged into 6153/dev yet.
+ * Mostly because a lot of the code is experimental, and untested to no end. I should ask someone I know to try booting it.
+ * I'm waiting on my Serial Header -> RS232/DB9 adapter to arrive.
+ */
+#if CC_XNU_KERNEL_AVAILABLE
+    #include <System/i386/cpu_capabilities.h>
+
+    #if defined (kHasSHA) && defined (kHasSHA512)
+        #define CC_SAMZORMEISTER_KERNEL 1
+    #else
+        #define CC_SAMZORMEISTER_KERNEL 0
+    #endif
+#elif CC_KERNEL
+    #include <i386/cpuid.h>
+
+    #if defined (CPUID_LEAF7_SL1_FEATURE_SHA512)
+        #define CC_SAMZORMEISTER_KERNEL 1
+    #else
+        #define CC_SAMZORMEISTER_KERNEL 0
+    #endif
+#else
+    #define CC_SAMZORMEISTER_KERNEL 0
 #endif
 
 #endif /* _CORECRYPTO_CC_CONFIG_H_ */

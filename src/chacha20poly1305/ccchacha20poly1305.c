@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Zormeister and The PureDarwin project, All rights reserved.
+ * Copyright (C) 2025 The PureDarwin Project, All rights reserved.
  *
  * @LICENSE_HEADER_BEGIN@
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,7 +39,7 @@ const struct ccchacha20poly1305_info *ccchacha20poly1305_info(void) { return &cc
 int ccchacha20poly1305_init(const struct ccchacha20poly1305_info *info, ccchacha20poly1305_ctx *ctx, const uint8_t *key)
 {
     ccchacha20_init(&ctx->chacha20_ctx, key);
-    
+
     return 0;
 }
 

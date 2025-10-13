@@ -93,6 +93,8 @@ void cc_atfork_child(void);
 #define cc_memset(dst, val, len) memset((dst), (val), (len))
 #endif
 
+#define cc_memcmp(s1, s2, len) memcmp(s1, s2, len)
+
 #define CC_ARRAY_LEN(x) (sizeof((x))/sizeof((x)[0]))
 
 // MARK: - Loads and Store

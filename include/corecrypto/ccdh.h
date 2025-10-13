@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Zormeister and The PureDarwin project, All rights reserved.
+ * Copyright (C) 2025 The PureDarwin Project, All rights reserved.
  *
  * @LICENSE_HEADER_BEGIN@
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,12 +46,10 @@ const cc_unit *ccdh_gp_prime(ccdh_const_gp_t gp) {
 cc_unit *ccdh_gp_g(ccdh_const_gp_t gp);
 cc_unit ccdh_gp_l(ccdh_const_gp_t); /* the L field is a signular unit at the end of the GP */
 cc_unit *ccdh_gp_order(ccdh_const_gp_t);
-
-
 cc_size ccdh_gp_order_bitlen(ccdh_const_gp_t);
 cc_size ccdh_gp_size(cc_size);
 
-/* 
+/*
  * todo:
  *  - ccdh_gp_g
  *  - ccdh_gp_l

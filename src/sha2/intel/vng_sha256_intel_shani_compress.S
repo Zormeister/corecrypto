@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Zormeister and The PureDarwin Project, All rights reserved.
+ * Copyright (C) 2025 The PureDarwin Project, All rights reserved.
  *
  * @LICENSE_HEADER_BEGIN@
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@
  * }
  *
  * The SHA state fields A, B, E and F are in the first operand whilst the fields C, D, G and H are in the second operand.
- * 
+ *
  */
 
 /*
@@ -56,9 +56,9 @@ _vng_sha256_intel_shani_compress:
     /* Follow the System-V ABI. Sorry Windows users, no accelerated assembly for you. */
     push %rbp
 
-    /* WIP!!! */ 
+    /* WIP!!! */
 
-    
+
 
 
 

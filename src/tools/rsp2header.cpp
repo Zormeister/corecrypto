@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Zormeister and The PureDarwin project, All rights reserved.
+ * Copyright (C) 2025 The PureDarwin Project, All rights reserved.
  *
  * @LICENSE_HEADER_BEGIN@
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ void parse_args(int argc, const char *argv[]) {
         std::string str = argv[i];
         if (str == "hash") {
             /* initialise parser context */
-            gOp = Test::Operation::Hash
+            gOp = Test::Operation::Hash;
         } else if (str == "-f") {
             gRSPPath = str.c_str();
         } else if (str == "-o") {

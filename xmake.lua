@@ -104,11 +104,23 @@ target("libcorecrypto_noasm")
 
     add_cflags("-Wincompatible-pointer-types", "-Wno-int-conversion")
 
+target("libcc_test")
+    set_kind("static")
+    set_basename("cc_test")
+
+    add_sysincludedirs("$(projectdir)/include")
+    
+    add_defines("CORECRYPTO_TEST=1")
+
+    add_files(
+        "src/test/**.c"
+    )
+
 target("cctest")
     set_kind("binary")
 
     -- Link with the static version of libcorecrypto.
-    add_deps("libcorecrypto_static")
+    add_deps("libcc_test", "libcorecrypto_static")
 
     add_sysincludedirs("$(projectdir)/include")
 

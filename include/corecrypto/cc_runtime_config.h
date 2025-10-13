@@ -39,6 +39,11 @@
     #define CC_HAS_AVX2() ((cpuid_info()->cpuid_leaf7_features & CPUID_LEAF7_FEATURE_AVX2) != 0)
     #define CC_HAS_AVX512_AND_IN_KERNEL()    ((cpuid_info()->cpuid_leaf7_features & CPUID_LEAF7_FEATURE_AVX512F) !=0)
     #define CC_HAS_SHA()  ((cpuid_info()->cpuid_leaf7_features & CPUID_LEAF7_FEATURE_SHA) != 0)
+#if CC_SAMZORMEISTER_KERNEL
+    #define CC_HAS_SHA512() ((cpuid_info()->cpuid_leaf7_sl1_features & CPUID_LEAF7_SL1_FEATURE_SHA512) != 0)
+#else
+    #define CC_HAS_SHA512() 0
+#endif
 
 #elif CC_XNU_KERNEL_AVAILABLE
     #include <System/i386/cpu_capabilities.h>
@@ -49,25 +54,19 @@
     #define CC_HAS_AVX1() (_cpu_capabilities & kHasAVX1_0)
     #define CC_HAS_AVX2() (_cpu_capabilities & kHasAVX2_0)
     #define CC_HAS_AVX512_AND_IN_KERNEL() 0
-#if defined(kHasSHA)
-    //
-    // ZORMEISTER:
-    // So far I've implemented kHasSHA in my fork of XNU 6153.141.1,
-    // (see https://github.com/Zormeister/xnu/tree/6153/x86-dev, as of commit a53a66fa63514b14d699767b273826010c2f3d2d)
-    // This will likely have to be expanded in the future, so that
-    // other clients of this corecrypto implementation can take
-    // advantage of the SHA extensions on Intel.
-    //
+#if CC_SAMZORMEISTER_KERNEL
     #define CC_HAS_SHA() (_cpu_capabilities & kHasSHA)
+    #define CC_HAS_SHA512() (_cpu_capabilities & kHasSHA512)
 #else
     #define CC_HAS_SHA() 0
-#endif // defined(kHasSHA)
+    #define CC_HAS_SHA512() 0
+#endif /* CC_SAMZORMEISTER_KERNEL */
 
 #elif __has_include(<cpuid.h>)
     #include <cpuid.h>
 
     //
-    // ZORMEISTER:
+    // SAMUEL:
     // I tried to take advantage of the available macros; but I don't
     // think I can cover everything without having to mess with
     // interacting with /proc/cpuinfo
