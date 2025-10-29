@@ -39,6 +39,7 @@
     #define CC_HAS_AVX2() ((cpuid_info()->cpuid_leaf7_features & CPUID_LEAF7_FEATURE_AVX2) != 0)
     #define CC_HAS_AVX512_AND_IN_KERNEL()    ((cpuid_info()->cpuid_leaf7_features & CPUID_LEAF7_FEATURE_AVX512F) !=0)
     #define CC_HAS_SHA()  ((cpuid_info()->cpuid_leaf7_features & CPUID_LEAF7_FEATURE_SHA) != 0)
+    #define CC_HAS_GFNI() ((cpuid_info()->cpuid_leaf7_features & CPUID_LEAF7_FEATURE_GFNI) != 0)
 #if CC_SAMZORMEISTER_KERNEL
     #define CC_HAS_SHA512() ((cpuid_info()->cpuid_leaf7_sl1_features & CPUID_LEAF7_SL1_FEATURE_SHA512) != 0)
 #else
@@ -89,6 +90,8 @@
     #define CC_HAS_AVX2() _may_i_use_cpu_feature(_FEATURE_AVX2)
     #define CC_HAS_AVX512_AND_IN_KERNEL()  0
     #define CC_HAS_SHA() _may_i_use_cpu_feature(_FEATURE_SHA)
+    /* ? */
+    #define CC_HAS_SHA512() _may_i_use_cpu_feature_ext(_FEATURE_SHA512, 1)
 
 #else
     #define CC_HAS_AESNI() 0
@@ -103,5 +106,9 @@
 #endif  // (CCSHA1_VNG_INTEL || CCSHA2_VNG_INTEL || CCAES_INTEL_ASM)
 
 #endif  // defined(__x86_64__) || defined(__i386__)
+
+/*
+ * TODO: ARM runtime switches to check for NEON and/or SVE + the cryptographic extensions to ARMv8
+ */
 
 #endif /* CORECRYPTO_CC_RUNTIME_CONFIG_H_ */

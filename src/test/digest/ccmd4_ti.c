@@ -16,25 +16,15 @@
  * @LICENSE_HEADER_END@
  */
 
+#include <corecrypto/cc_config.h>
+
+#if CORECRYPTO_TEST
+
+#include <corecrypto/ccmd2.h>
 #include <corecrypto/ccdigest_test_internal.h>
 
-ccdigest_test_vector ccdigest_test_md4_vectors[] = {
-    {
-        CCTEST_ATTRS_NONE,
-        "",
-        0,
-        "\x31\xd6\xcf\xe0\xd1\x6a\xe9\x31\xb7\x3c\x59\xd7\xe0\xc0\x89\xc0"
-    },
-    {
-        CCTEST_ATTRS_NONE,
-        "The quick brown fox jumps over the lazy dog",
-        sizeof("The quick brown fox jumps over the lazy dog")-1,
-        "\x1b\xee\x69\xa4\x6b\xa8\x11\x18\x5c\x19\x47\x62\xab\xae\xae\x90"
-    },
-    {
-        CCTEST_ATTRS_NONE,
-        "Test vector from febooti.com",
-        sizeof("Test vector from febooti.com")-1,
-        "\x65\x78\xf2\x66\x4b\xc5\x6e\x0b\x5b\x3f\x85\xed\x26\xec\xc6\x7b"
-    }
-};
+#include "vectors/md4.inc"
+
+CCDIGEST_TEST_FACTORY(md4, ccdigest_test_md4_vectors, "LTC MD4 implementation");
+
+#endif /* CORECRYPTO_TEST */
